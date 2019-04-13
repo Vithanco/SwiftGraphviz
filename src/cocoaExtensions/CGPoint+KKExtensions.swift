@@ -1,0 +1,103 @@
+//
+//  CGPoint+KKExtensions.swift
+//  QVisual Thinking
+//
+//  Created by Klaus Kneupner on 19/9/16.
+//  Copyright © 2016 Klaus Kneupner. All rights reserved.
+//
+
+import Foundation
+
+public extension CGPoint {
+    func shift(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+        return CGPoint(x: self.x + x, y: self.y + y)
+    }
+
+    func shift(_ dir: CGVector) -> CGPoint {
+        return CGPoint(x: self.x + dir.dx, y: self.y + dir.dy)
+    }
+    
+    func substract(_ dir: CGPoint) -> CGPoint {
+        return CGPoint(x: self.x - dir.x, y: self.y - dir.y)
+    }
+
+    var flipped: CGPoint {
+        return CGPoint(x: self.y, y: self.x)
+    }
+	
+    func interpolate(to: CGPoint, distance: CGFloat) -> CGPoint {
+        let x = CGFloat(1 - distance) * self.x + CGFloat(distance) * to.x
+        let y = CGFloat(1 - distance) * self.y + CGFloat(distance) * to.y
+        return CGPoint(x: x, y: y)
+    }
+    
+    func interpolateAndOrthoVector(to: CGPoint, distance: CGFloat) -> (CGPoint, CGVector) {
+        let x = CGFloat(1 - distance) * self.x + CGFloat(distance) * to.x
+        let y = CGFloat(1 - distance) * self.y + CGFloat(distance) * to.y
+        return (CGPoint(x: x, y: y), CGVector(from: self,to: to).orthogonalVector) //.normalized())
+    }
+    
+	func distance(to: CGPoint)-> CGFloat {
+        let xDist: CGFloat = to.x - self.x
+        let yDist: CGFloat = to.y - self.y
+        return CGFloat(sqrt((xDist * xDist) + (yDist * yDist)))
+    }
+    
+    var isFinite: Bool {
+        return x.isFinite && y.isFinite
+    }
+    
+    var makeNegative: CGPoint {
+        return CGPoint(x: -1.0 * self.x, y: -1.0 * self.y)
+    }
+    var asVector: CGVector {
+        return CGVector(dx: x, dy: y)
+    }
+    
+    func orderByDistance(set: Set<CGPoint>) -> [CGPoint] {
+        return self.orderByDistance(points: set.asArray)
+    }
+    
+    func orderByDistance(points: [CGPoint]) -> [CGPoint] {
+        return points.sorted(by: {a, b in return self.distance(to: a) > self.distance(to: b)})
+    }
+    
+    func orderByDistance(_ a : CGPoint, _ b: CGPoint) -> (CGPoint, CGPoint) {
+        return self.distance(to: a) > self.distance(to: b) ? (b, a) : (a, b)
+    }
+}
+
+public func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
+
+public func / (left: CGPoint, right: CGFloat) -> CGPoint {
+    return CGPoint(x: left.x / right, y: left.y / right)
+}
+
+public func / (left: CGPoint, right: Int) -> CGPoint {
+    return left / CGFloat(right)
+}
+
+extension CGPoint : Hashable {
+    public var hashValue: Int {
+        // iOS Swift Game Development Cookbook
+        // https://books.google.se/books?id=QQY_CQAAQBAJ&pg=PA304&lpg=PA304&dq=swift+CGpoint+hashvalue&source=bl&ots=1hp2Fph274&sig=LvT36RXAmNcr8Ethwrmpt1ynMjY&hl=sv&sa=X&ved=0CCoQ6AEwAWoVChMIu9mc4IrnxgIVxXxyCh3CSwSU#v=onepage&q=swift%20CGpoint%20hashvalue&f=false
+        return x.hashValue << 32 ^ y.hashValue
+    }
+}
+//
+//func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
+//    return lhs.distance(to: rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)
+//}
+
+func middlePoint(between a: CGPoint, and b: CGPoint) -> CGPoint {
+	return CGPoint(x: (a.x + b.x)/2.0, y: (a.y + b.y)/2.0)
+}
+
+/**
+ * Adds a vector to a point and returns new point
+ */
+public func + (left: CGPoint, right: CGVector) -> CGPoint {
+    return CGPoint(x: left.x + right.dx, y: left.y + right.dy)
+}
