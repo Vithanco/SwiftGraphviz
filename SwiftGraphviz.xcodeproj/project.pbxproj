@@ -31,7 +31,6 @@
 		E53228112261B78C003A9143 /* GVLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228052261B78B003A9143 /* GVLayoutConfig.swift */; };
 		E53228132261B78C003A9143 /* builtins.c in Sources */ = {isa = PBXBuildFile; fileRef = E53228072261B78B003A9143 /* builtins.c */; };
 		E53228142261B78C003A9143 /* GVEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228082261B78B003A9143 /* GVEdge.swift */; };
-		E53228152261B78C003A9143 /* graphvizBuildins.m in Sources */ = {isa = PBXBuildFile; fileRef = E53228092261B78B003A9143 /* graphvizBuildins.m */; };
 		E53228172261B78C003A9143 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		E53228672261BB11003A9143 /* libgts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228552261BB11003A9143 /* libgts.a */; };
 		E53228682261BB11003A9143 /* libcgraph_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228562261BB11003A9143 /* libcgraph_C.a */; };
@@ -54,7 +53,6 @@
 		E532287C2261BB89003A9143 /* gvc.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287A2261BB89003A9143 /* gvc.h */; };
 		E532287D2261BB89003A9143 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287B2261BB89003A9143 /* types.h */; };
 		E571EC002261BC6C000F7DA1 /* builtins.c in Sources */ = {isa = PBXBuildFile; fileRef = E53228072261B78B003A9143 /* builtins.c */; };
-		E571EC022261BC6C000F7DA1 /* graphvizBuildins.m in Sources */ = {isa = PBXBuildFile; fileRef = E53228092261B78B003A9143 /* graphvizBuildins.m */; };
 		E571EC032261BC6C000F7DA1 /* GraphvizWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228022261B78B003A9143 /* GraphvizWrapper.swift */; };
 		E571EC042261BC6C000F7DA1 /* GVCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228012261B78B003A9143 /* GVCluster.swift */; };
 		E571EC052261BC6C000F7DA1 /* GVEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228082261B78B003A9143 /* GVEdge.swift */; };
@@ -121,7 +119,6 @@
 		E53228052261B78B003A9143 /* GVLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GVLayoutConfig.swift; path = src/GVLayoutConfig.swift; sourceTree = "<group>"; };
 		E53228072261B78B003A9143 /* builtins.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = builtins.c; path = src/builtins.c; sourceTree = "<group>"; };
 		E53228082261B78B003A9143 /* GVEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GVEdge.swift; path = src/GVEdge.swift; sourceTree = "<group>"; };
-		E53228092261B78B003A9143 /* graphvizBuildins.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = graphvizBuildins.m; path = src/graphvizBuildins.m; sourceTree = "<group>"; };
 		E532280A2261B78C003A9143 /* builtins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = builtins.h; path = src/builtins.h; sourceTree = "<group>"; };
 		E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardGVLayoutConfigurations.swift; path = src/StandardGVLayoutConfigurations.swift; sourceTree = "<group>"; };
 		E532284C2261BA86003A9143 /* libSwiftGraphvizMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSwiftGraphvizMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,7 +216,6 @@
 				E532287B2261BB89003A9143 /* types.h */,
 				E53228072261B78B003A9143 /* builtins.c */,
 				E532280A2261B78C003A9143 /* builtins.h */,
-				E53228092261B78B003A9143 /* graphvizBuildins.m */,
 				E53228022261B78B003A9143 /* GraphvizWrapper.swift */,
 				E53228012261B78B003A9143 /* GVCluster.swift */,
 				E53228082261B78B003A9143 /* GVEdge.swift */,
@@ -406,7 +402,6 @@
 				E532280E2261B78C003A9143 /* GVCluster.swift in Sources */,
 				E5B1A8D02261E1D50090DBD8 /* CGPoint+KKExtensions.swift in Sources */,
 				E5B1A8DA2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */,
-				E53228152261B78C003A9143 /* graphvizBuildins.m in Sources */,
 				E5B1A8E0226200510090DBD8 /* Set+KKExtentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,7 +413,6 @@
 				E571EC002261BC6C000F7DA1 /* builtins.c in Sources */,
 				E5B1A8D62261EB820090DBD8 /* CGRect+KKExtensions.swift in Sources */,
 				E5B1A8D72261EB850090DBD8 /* CGPoint+KKExtensions.swift in Sources */,
-				E571EC022261BC6C000F7DA1 /* graphvizBuildins.m in Sources */,
 				E5B1A8DB2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */,
 				E571EC032261BC6C000F7DA1 /* GraphvizWrapper.swift in Sources */,
 				E5B1A8D82261EB880090DBD8 /* Double+KKExtensions.swift in Sources */,
@@ -608,10 +602,18 @@
 		E53228532261BA86003A9143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HN3M9PRAT4;
 				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/headers";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -619,7 +621,9 @@
 					"$(PROJECT_DIR)/macOS/gvLibs",
 					"$(PROJECT_DIR)/headers",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -632,10 +636,18 @@
 		E53228542261BA86003A9143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HN3M9PRAT4;
 				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/headers";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -643,11 +655,14 @@
 					"$(PROJECT_DIR)/macOS/gvLibs",
 					"$(PROJECT_DIR)/headers",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftGraphviz-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

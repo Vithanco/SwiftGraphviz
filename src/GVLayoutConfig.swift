@@ -9,18 +9,18 @@
 import Foundation
 
 public struct GVLayoutConfig {
-    let name: String
-    let layoutEngine: GVLayoutEngine
-    let renderEngine: GVLayoutEngine
-    let saveGVOutput: Bool
-    var params: [GVParameter: String]
-    let secondLayoutEngine: GVLayoutEngine?
-    let supportClusters: Bool
-    var usesNodeDistance: Bool {
+    public let name: String
+    public let layoutEngine: GVLayoutEngine
+    public let renderEngine: GVLayoutEngine
+    public var saveGVOutput: Bool
+    public var params: [GVParameter: String]
+    public let secondLayoutEngine: GVLayoutEngine?
+    public let supportClusters: Bool
+    public var usesNodeDistance: Bool {
         return layoutEngine == .dot
     }
     
-    func setParams(_ gv: GraphvizGraph) {
+   public  func setParams(_ gv: GraphvizGraph) {
         for p in params.keys {
             gv.setBaseValue(param: p, value: params[p]!)
             //            switch p {
@@ -29,7 +29,7 @@ public struct GVLayoutConfig {
             //            gv.setValue(param: p, value: params[p]!)
         }
     }
-    func layout(_ gvc: GVGlobalContextPointer, _ g: GVGraph) {
+   public func layout(_ gvc: GVGlobalContextPointer, _ g: GVGraph) {
         gvLayout(gvc,g,layoutEngine.graphvizName)
         gvRender(gvc,g,renderEngine.graphvizName,nil)
         if saveGVOutput {
@@ -45,7 +45,7 @@ public struct GVLayoutConfig {
         }
     }
     
-    mutating func config(graph: GraphSettings) {
+    mutating public func config(graph: GraphSettings) {
         let  direction: GVModelDirection = graph.direction
         let edgeStyle = graph.edgeStyle
         let nodeSep: GVPixel = graph.minNodeDistanceX.asCGFloat

@@ -12,10 +12,9 @@
 #include "../headers/gvplugin.h" //
 #include "../headers/gvc.h"
 
-//extern lt_symlist_t lt_preloaded_symbols[];
-GVC_t * loadGraphvizLibraries() ;
+GVC_t * loadGraphvizLibraries(void) ;
 
-
+///NODES
 pointf nd_coord(Agnode_t* n);
 double nd_width(Agnode_t* n);
 double nd_height(Agnode_t* n);
@@ -40,6 +39,7 @@ char* ed_tail_label_text(Agedge_t* e);
 boxf gd_bb(Agraph_t* g);
 textlabel_t* gd_label(Agraph_t* g);
 pointf* gd_lp(Agraph_t* g);
+char* gd_label_text(Agraph_t* g);
 
 
 

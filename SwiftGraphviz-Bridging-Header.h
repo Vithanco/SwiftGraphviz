@@ -3,8 +3,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "gvc.h"
 
-//#import "gvcext.h"
-#import "builtins.h"
-//#import "gvplugin.h"
+#include "headers/gvplugin.h" //
+#include "headers/gvc.h"
+#include "src/builtins.h"

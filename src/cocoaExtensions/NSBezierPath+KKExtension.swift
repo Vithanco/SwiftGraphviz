@@ -140,12 +140,12 @@ public extension NSBezierPath
             }
         })
     }
-//
-//    convenience init(circleAt: CGPoint, radius: CGFloat) {
-//        let rect = CGRect(middlePoint: circleAt, size: CGSize(width: radius * 2, height: radius * 2))
-//        self.init(ovalIn: rect)
-//    }
-//
+
+    convenience init(circleAt: CGPoint, radius: CGFloat) {
+        let rect = CGRect(middlePoint: circleAt, size: CGSize(width: radius * 2, height: radius * 2))
+        self.init(ovalIn: rect)
+    }
+
     convenience init(circleBetween a: CGPoint, and b: CGPoint) {
         let distance = a.distance(to: b)
         //        Swift.print("distance=\(distance)")
@@ -200,6 +200,8 @@ public extension NSBezierPath
                 count = count + 1
             case .closePath:
                 continue
+            @unknown default:
+                continue
             }
         }
         let stepWidth = CGFloat(1.0 / CGFloat(count))
@@ -223,7 +225,10 @@ public extension NSBezierPath
             return points[2]
         case .closePath:
             assert(false)
-            return zeroPoint
+            return NSZeroPoint
+        @unknown default:
+            assert(false)
+            return NSZeroPoint
         }
     }
 
@@ -259,7 +264,10 @@ public extension NSBezierPath
 
         case .closePath:
             assert(false)
-            return (zeroPoint, zeroVector)
+            return (NSZeroPoint, zeroVector)
+        @unknown default:
+            assert(false)
+            fatalError()
         }
     }
 }

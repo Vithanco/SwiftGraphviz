@@ -10,7 +10,7 @@ import Foundation
 import CoreGraphics
 
 
-private let pointsPerInch: CGFloat = 72.0
+let pointsPerInch: CGFloat = 72.0
 
 
 
@@ -163,7 +163,7 @@ public enum GVParamValueOverlap : String {
         }
     }
     
-    static var readableNames: [String] {
+    public static var readableNames: [String] {
         return ["Curved", "Lines", "PolyLines", "Orthogonal", "Splines"]
     }
 }
