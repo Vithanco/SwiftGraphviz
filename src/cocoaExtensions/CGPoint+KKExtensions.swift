@@ -75,14 +75,20 @@ public extension CGPoint {
     static func / (left: CGPoint, right: Int) -> CGPoint {
         return left / CGFloat(right)
     }
+    
+    func convertZeroPointToNil(precision: CGFloat = 0.1) -> CGPoint? {
+        if self.distance(to: NSZeroPoint) < precision {
+            return nil
+        }
+        return self
+    }
 }
 
 
-extension CGPoint : Hashable {
-    public var hashValue: Int {
-        // iOS Swift Game Development Cookbook
-        // https://books.google.se/books?id=QQY_CQAAQBAJ&pg=PA304&lpg=PA304&dq=swift+CGpoint+hashvalue&source=bl&ots=1hp2Fph274&sig=LvT36RXAmNcr8Ethwrmpt1ynMjY&hl=sv&sa=X&ved=0CCoQ6AEwAWoVChMIu9mc4IrnxgIVxXxyCh3CSwSU#v=onepage&q=swift%20CGpoint%20hashvalue&f=false
-        return x.hashValue << 32 ^ y.hashValue
+ extension CGPoint : Hashable {
+    public func hash(into hasher: inout Hasher){
+        hasher.combine(x)
+        hasher.combine(y)
     }
 }
 //
@@ -99,9 +105,13 @@ public func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }
 
-/**
+/***
  * Adds a vector to a point and returns new point
  */
 public func + (left: CGPoint, right: CGVector) -> CGPoint {
     return CGPoint(x: left.x + right.dx, y: left.y + right.dy)
+}
+
+func convertZeroPointToNil(_ gvPos: CGPoint, precision: CGFloat = 0.1) -> CGPoint? {
+    return gvPos.convertZeroPointToNil(precision:precision)
 }

@@ -28,22 +28,19 @@ public typealias GVPixel = CGFloat
 public typealias GVGlobalContextPointer = OpaquePointer?
 
 
-func convertZeroPointToNil(_ gvPos: CGPoint) -> CGPoint? {
-    if gvPos.distance(to: NSZeroPoint) < 0.1 {
-        return nil
-    }
-    return gvPos
-}
 
-func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
-    return CGPoint(gvPoint: point)
-}
+
 
 extension CGPoint {
     init (gvPoint: pointf_s) {
         self.init(x: CGFloat(gvPoint.x), y: CGFloat(gvPoint.y))
         assert (isFinite)
     }
+}
+
+// needed as parameter in some conversions, so I keep the extra function
+func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
+    return CGPoint(gvPoint: point)
 }
 
 extension CGRect {

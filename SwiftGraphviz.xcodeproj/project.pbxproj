@@ -73,8 +73,6 @@
 		E5B1A8D82261EB880090DBD8 /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8CD2261E17D0090DBD8 /* Double+KKExtensions.swift */; };
 		E5B1A8DA2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */; };
 		E5B1A8DB2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */; };
-		E5B1A8DD2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8DC2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift */; };
-		E5B1A8DE2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8DC2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift */; };
 		E5B1A8E0226200510090DBD8 /* Set+KKExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */; };
 		E5B1A8E1226200510090DBD8 /* Set+KKExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */; };
 /* End PBXBuildFile section */
@@ -149,7 +147,6 @@
 		E5B1A8D12261E3060090DBD8 /* CGRect+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+KKExtensions.swift"; path = "src/cocoaExtensions/CGRect+KKExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		E5B1A8D32261E5020090DBD8 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = src/Logging.swift; sourceTree = "<group>"; };
 		E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGVector+KKExtensions.swift"; path = "src/cocoaExtensions/CGVector+KKExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		E5B1A8DC2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBezierPath+KKExtension.swift"; path = "src/cocoaExtensions/NSBezierPath+KKExtension.swift"; sourceTree = SOURCE_ROOT; };
 		E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Set+KKExtentions.swift"; path = "src/cocoaExtensions/Set+KKExtentions.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -285,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */,
-				E5B1A8DC2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift */,
 				E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */,
 				E5B1A8D12261E3060090DBD8 /* CGRect+KKExtensions.swift */,
 				E5B1A8CF2261E1D50090DBD8 /* CGPoint+KKExtensions.swift */,
@@ -396,7 +392,6 @@
 				E53228112261B78C003A9143 /* GVLayoutConfig.swift in Sources */,
 				E5B1A8D22261E3060090DBD8 /* CGRect+KKExtensions.swift in Sources */,
 				E53228102261B78C003A9143 /* GVParameters.swift in Sources */,
-				E5B1A8DD2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift in Sources */,
 				E53228172261B78C003A9143 /* StandardGVLayoutConfigurations.swift in Sources */,
 				E53228132261B78C003A9143 /* builtins.c in Sources */,
 				E532280E2261B78C003A9143 /* GVCluster.swift in Sources */,
@@ -421,7 +416,6 @@
 				E571EC062261BC6C000F7DA1 /* GVLayoutConfig.swift in Sources */,
 				E571EC072261BC6C000F7DA1 /* GVNode.swift in Sources */,
 				E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */,
-				E5B1A8DE2261F09B0090DBD8 /* NSBezierPath+KKExtension.swift in Sources */,
 				E571EC082261BC6C000F7DA1 /* GVParameters.swift in Sources */,
 				E571EC0A2261BC6C000F7DA1 /* prepareLibraries.sh in Sources */,
 				E5B1A8E1226200510090DBD8 /* Set+KKExtentions.swift in Sources */,
