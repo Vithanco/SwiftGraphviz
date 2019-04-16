@@ -20,11 +20,6 @@ public enum HorizontalPosition {
     case right
 }
 
-public typealias Frame = NSRect
-
-public let zeroFrame = NSZeroRect
-public let zeroPoint = NSZeroPoint
-
 
 public extension CGRect {
 
@@ -138,9 +133,9 @@ public extension CGRect {
         return NSRect(x: origin.x, y: origin.y, width: size.width, height: size.height + amount)
     }
 
-    init(origin: CGPoint, size: CGSize) {
-        self.init(x: origin.x, y: origin.y, width: size.width, height: size.height)
-    }
+//    init(origin: CGPoint, size: CGSize) {
+//        self.init(x: origin.x, y: origin.y, width: size.width, height: size.height)
+//    }
 
     init(middlePoint: CGPoint, size: CGSize) {
         self.init(x: middlePoint.x - size.width / 2, y: middlePoint.y - size.height / 2, width: size.width, height: size.height)
@@ -151,7 +146,7 @@ public extension CGRect {
         self.init(x: min(point1.x, point2.x), y: min(point1.y, point2.y), width: abs(point1.x - point2.x),height: abs(point1.y - point2.y))
     }
 
-    func combine(_ other: Frame) -> Frame {
+    func combine(_ other: CGRect) -> CGRect {
         return self.union(other)
     }
 

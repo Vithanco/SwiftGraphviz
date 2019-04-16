@@ -12,7 +12,7 @@ import Foundation
 public typealias GVCluster = UnsafeMutablePointer<Agraph_t>
 
 
-extension UnsafeMutablePointer where Pointee == Agraph_t {
+public extension UnsafeMutablePointer where Pointee == Agraph_t {
     
     
     var labelPos: CGPoint? { //lp
@@ -21,4 +21,17 @@ extension UnsafeMutablePointer where Pointee == Agraph_t {
         }
         return nil
     }
+    
+    var rect: CGRect {
+        let box = gd_bb (self)
+        return CGRect(box: box)
+    }
+    
+    var labelText: String? {
+        if let text = gd_label_text(self) {
+            return String(cString: text)
+        }
+        return nil
+    }
+
 }

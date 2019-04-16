@@ -11,7 +11,7 @@ import Foundation
 
 
 @objc public enum StandardGVLayoutConfigurations : Int, CaseIterable {
-    static var saveGVOutput = false
+    public static var saveGVOutput = false
     
     case dot = 0
     case neato
@@ -21,7 +21,7 @@ import Foundation
     case twopi
     case systemsThinking
     
-    var configuration: GVLayoutConfig {
+    public var configuration: GVLayoutConfig {
         switch self {
         case .dot:
             return GVLayoutConfig(
@@ -88,11 +88,11 @@ import Foundation
                 supportClusters: false)
         }
     }
-    static var readableNames : [String] {
+    public static var readableNames : [String] {
         return self.allCases.map({c in return c.configuration.name})
     }
     
-    var usesNodeDistance: Bool {
+    public var usesNodeDistance: Bool {
         return configuration.usesNodeDistance
     }
 }

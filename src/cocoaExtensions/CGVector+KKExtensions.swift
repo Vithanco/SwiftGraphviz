@@ -100,7 +100,7 @@ public extension CGVector {
     }
 }
 
-let zeroVector = CGVector(dx: 0, dy: 0)
+public let zeroVector = CGVector(dx: 0, dy: 0)
 
 /**
  * Adds two CGVector values and returns the result as a new CGVector.

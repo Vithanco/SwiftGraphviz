@@ -65,19 +65,18 @@ public extension CGPoint {
     func orderByDistance(_ a : CGPoint, _ b: CGPoint) -> (CGPoint, CGPoint) {
         return self.distance(to: a) > self.distance(to: b) ? (b, a) : (a, b)
     }
+
+
+    
+    static func / (left: CGPoint, right: CGFloat) -> CGPoint {
+        return CGPoint(x: left.x / right, y: left.y / right)
+    }
+    
+    static func / (left: CGPoint, right: Int) -> CGPoint {
+        return left / CGFloat(right)
+    }
 }
 
-public func + (left: CGPoint, right: CGPoint) -> CGPoint {
-    return CGPoint(x: left.x + right.x, y: left.y + right.y)
-}
-
-public func / (left: CGPoint, right: CGFloat) -> CGPoint {
-    return CGPoint(x: left.x / right, y: left.y / right)
-}
-
-public func / (left: CGPoint, right: Int) -> CGPoint {
-    return left / CGFloat(right)
-}
 
 extension CGPoint : Hashable {
     public var hashValue: Int {
@@ -91,8 +90,13 @@ extension CGPoint : Hashable {
 //    return lhs.distance(to: rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)
 //}
 
-func middlePoint(between a: CGPoint, and b: CGPoint) -> CGPoint {
+public func middlePoint(between a: CGPoint, and b: CGPoint) -> CGPoint {
 	return CGPoint(x: (a.x + b.x)/2.0, y: (a.y + b.y)/2.0)
+}
+
+
+public func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }
 
 /**
