@@ -1,6 +1,6 @@
 INSTALLER_ROOT="/Users/klauskneupner"
 GVROOT="${INSTALLER_ROOT}/graphviz"  
-GVTARGET="${INSTALLER_ROOT}/Documents/xcode/VisualThinkingWorkspace/GraphizWrapper/graphviz"
+GVTARGET="${INSTALLER_ROOT}/Documents/xcode/SwiftGraphviz/gvDump"
 PLATFORM_DEVELOPER_BIN_DIR="/usr/bin"
 
 ./configure \
