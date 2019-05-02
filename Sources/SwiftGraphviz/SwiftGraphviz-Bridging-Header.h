@@ -4,6 +4,6 @@
 
 #import <Foundation/Foundation.h>
 
-#include "headers/gvplugin.h" //
-#include "headers/gvc.h"
-#include "src/builtins.h"
+#include "gvplugin.h" //
+#include "gvc.h"
+#include "builtins.h"

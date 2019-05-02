@@ -9,8 +9,8 @@
 #ifndef builtins_h
 #define builtins_h
 
-#include "../headers/gvplugin.h" //
-#include "../headers/gvc.h"
+#include "gvplugin.h" //
+#include "gvc.h"
 
 GVC_t * loadGraphvizLibraries(void) ;
 

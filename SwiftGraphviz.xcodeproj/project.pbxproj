@@ -47,45 +47,22 @@
 		E53228792261BB2A003A9143 /* builtins.h in Headers */ = {isa = PBXBuildFile; fileRef = E532280A2261B78C003A9143 /* builtins.h */; };
 		E532287C2261BB89003A9143 /* gvc.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287A2261BB89003A9143 /* gvc.h */; };
 		E532287D2261BB89003A9143 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287B2261BB89003A9143 /* types.h */; };
-		E564F831226988E9005CCB3B /* SwiftGraphvizMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E564F828226988E8005CCB3B /* SwiftGraphvizMacOS.framework */; };
-		E564F836226988E9005CCB3B /* SwiftGraphvizMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F835226988E9005CCB3B /* SwiftGraphvizMacOSTests.swift */; };
-		E564F84522699127005CCB3B /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
-		E564F84622699127005CCB3B /* Set+KKExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */; };
-		E564F84722699127005CCB3B /* CGVector+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */; };
-		E564F84822699127005CCB3B /* CGRect+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D12261E3060090DBD8 /* CGRect+KKExtensions.swift */; };
-		E564F84922699127005CCB3B /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8CF2261E1D50090DBD8 /* CGPoint+KKExtensions.swift */; };
-		E564F84A22699127005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8CD2261E17D0090DBD8 /* Double+KKExtensions.swift */; };
-		E564F84B22699127005CCB3B /* builtins.c in Sources */ = {isa = PBXBuildFile; fileRef = E53228072261B78B003A9143 /* builtins.c */; };
-		E564F84C22699127005CCB3B /* GraphvizWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228022261B78B003A9143 /* GraphvizWrapper.swift */; };
-		E564F84D22699127005CCB3B /* GVCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228012261B78B003A9143 /* GVCluster.swift */; };
-		E564F84E22699127005CCB3B /* GVEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228082261B78B003A9143 /* GVEdge.swift */; };
-		E564F84F22699127005CCB3B /* GVLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228052261B78B003A9143 /* GVLayoutConfig.swift */; };
-		E564F85022699127005CCB3B /* GVNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228002261B78B003A9143 /* GVNode.swift */; };
-		E564F85122699127005CCB3B /* GVParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228032261B78B003A9143 /* GVParameters.swift */; };
-		E564F85222699127005CCB3B /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
-		E564F85322699133005CCB3B /* SwiftGraphviz-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = E53227FF2261B78A003A9143 /* SwiftGraphviz-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E564F86C226A0C1A005CCB3B /* libcdt_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228652261BB11003A9143 /* libcdt_C.a */; };
-		E564F86D226A0C1A005CCB3B /* libcgraph_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228562261BB11003A9143 /* libcgraph_C.a */; };
-		E564F86E226A0C1A005CCB3B /* libgvc_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228572261BB11003A9143 /* libgvc_C.a */; };
-		E564F86F226A0C1A005CCB3B /* libgvplugin_core_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228592261BB11003A9143 /* libgvplugin_core_C.a */; };
-		E564F870226A0C1A005CCB3B /* libgvplugin_dot_layout_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228582261BB11003A9143 /* libgvplugin_dot_layout_C.a */; };
-		E564F871226A0C1A005CCB3B /* libgvplugin_neato_layout_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228632261BB11003A9143 /* libgvplugin_neato_layout_C.a */; };
-		E564F872226A0C1A005CCB3B /* libgvplugin_quartz_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228642261BB11003A9143 /* libgvplugin_quartz_C.a */; };
-		E564F873226A0C1A005CCB3B /* libpathplan_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E532285D2261BB11003A9143 /* libpathplan_C.a */; };
-		E564F874226A0C1A005CCB3B /* libvpsc_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228612261BB11003A9143 /* libvpsc_C.a */; };
-		E564F876226A0C1A005CCB3B /* libltdlc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E564F875226A0C1A005CCB3B /* libltdlc.a */; };
-		E564F877226A0EB9005CCB3B /* iconv.o in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228602261BB11003A9143 /* iconv.o */; };
-		E564F878226A0EB9005CCB3B /* libcharset.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E532285A2261BB11003A9143 /* libcharset.a */; };
-		E564F879226A0EB9005CCB3B /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228622261BB11003A9143 /* libexpat.a */; };
-		E564F87A226A0EB9005CCB3B /* libglib-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E532285B2261BB11003A9143 /* libglib-2.0.a */; };
-		E564F87B226A0EB9005CCB3B /* libgts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228552261BB11003A9143 /* libgts.a */; };
-		E564F87C226A0EB9005CCB3B /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228662261BB11003A9143 /* libintl.a */; };
-		E564F87D226A0EB9005CCB3B /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E532285E2261BB11003A9143 /* libz.a */; };
 		E564F885226A4307005CCB3B /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E532285E2261BB11003A9143 /* libz.a */; };
 		E564F886226A4319005CCB3B /* iconv.o in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228602261BB11003A9143 /* iconv.o */; };
 		E564F887226A4319005CCB3B /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228622261BB11003A9143 /* libexpat.a */; };
 		E564F888226A4319005CCB3B /* libglib-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E532285B2261BB11003A9143 /* libglib-2.0.a */; };
 		E564F889226A431A005CCB3B /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228662261BB11003A9143 /* libintl.a */; };
+		E564F892226B1231005CCB3B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F891226B1231005CCB3B /* Package.swift */; };
+		E564F8AC227B228B005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */; };
+		E564F8AD227B228B005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */; };
+		E564F8AE227B228B005CCB3B /* Set+KKExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A8227B228A005CCB3B /* Set+KKExtentions.swift */; };
+		E564F8AF227B228B005CCB3B /* Set+KKExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A8227B228A005CCB3B /* Set+KKExtentions.swift */; };
+		E564F8B0227B228B005CCB3B /* CGVector+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A9227B228A005CCB3B /* CGVector+KKExtensions.swift */; };
+		E564F8B1227B228B005CCB3B /* CGVector+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A9227B228A005CCB3B /* CGVector+KKExtensions.swift */; };
+		E564F8B2227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AA227B228A005CCB3B /* CGRect+KKExtensions.swift */; };
+		E564F8B3227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AA227B228A005CCB3B /* CGRect+KKExtensions.swift */; };
+		E564F8B4227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */; };
+		E564F8B5227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */; };
 		E571EC002261BC6C000F7DA1 /* builtins.c in Sources */ = {isa = PBXBuildFile; fileRef = E53228072261B78B003A9143 /* builtins.c */; };
 		E571EC032261BC6C000F7DA1 /* GraphvizWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228022261B78B003A9143 /* GraphvizWrapper.swift */; };
 		E571EC042261BC6C000F7DA1 /* GVCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228012261B78B003A9143 /* GVCluster.swift */; };
@@ -96,29 +73,9 @@
 		E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		E571EC0D2261C0C8000F7DA1 /* agraph.h in Headers */ = {isa = PBXBuildFile; fileRef = E571EC0C2261C0C8000F7DA1 /* agraph.h */; };
 		E5B1A8CB2261DCD80090DBD8 /* cdt.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1A8CA2261DCD80090DBD8 /* cdt.h */; };
-		E5B1A8CE2261E17D0090DBD8 /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8CD2261E17D0090DBD8 /* Double+KKExtensions.swift */; };
-		E5B1A8D02261E1D50090DBD8 /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8CF2261E1D50090DBD8 /* CGPoint+KKExtensions.swift */; };
-		E5B1A8D22261E3060090DBD8 /* CGRect+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D12261E3060090DBD8 /* CGRect+KKExtensions.swift */; };
 		E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
-		E5B1A8D62261EB820090DBD8 /* CGRect+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D12261E3060090DBD8 /* CGRect+KKExtensions.swift */; };
-		E5B1A8D72261EB850090DBD8 /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8CF2261E1D50090DBD8 /* CGPoint+KKExtensions.swift */; };
-		E5B1A8D82261EB880090DBD8 /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8CD2261E17D0090DBD8 /* Double+KKExtensions.swift */; };
-		E5B1A8DA2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */; };
-		E5B1A8DB2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */; };
-		E5B1A8E0226200510090DBD8 /* Set+KKExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */; };
-		E5B1A8E1226200510090DBD8 /* Set+KKExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E564F832226988E9005CCB3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E53227CA2260511C003A9143 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E564F827226988E8005CCB3B;
-			remoteInfo = SwiftGraphvizMacOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E53227D02260511C003A9143 /* CopyFiles */ = {
@@ -152,16 +109,16 @@
 		E53227F52260F8F9003A9143 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = otherLibs/libintl.a; sourceTree = "<group>"; };
 		E53227F62260F8F9003A9143 /* libgts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgts.a; path = otherLibs/libgts.a; sourceTree = "<group>"; };
 		E53227FF2261B78A003A9143 /* SwiftGraphviz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftGraphviz-Bridging-Header.h"; sourceTree = "<group>"; };
-		E53228002261B78B003A9143 /* GVNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GVNode.swift; path = src/GVNode.swift; sourceTree = "<group>"; };
-		E53228012261B78B003A9143 /* GVCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GVCluster.swift; path = src/GVCluster.swift; sourceTree = "<group>"; };
-		E53228022261B78B003A9143 /* GraphvizWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphvizWrapper.swift; path = src/GraphvizWrapper.swift; sourceTree = "<group>"; };
-		E53228032261B78B003A9143 /* GVParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GVParameters.swift; path = src/GVParameters.swift; sourceTree = "<group>"; };
-		E53228042261B78B003A9143 /* prepareLibraries.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = prepareLibraries.sh; path = src/prepareLibraries.sh; sourceTree = "<group>"; };
-		E53228052261B78B003A9143 /* GVLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GVLayoutConfig.swift; path = src/GVLayoutConfig.swift; sourceTree = "<group>"; };
-		E53228072261B78B003A9143 /* builtins.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = builtins.c; path = src/builtins.c; sourceTree = "<group>"; };
-		E53228082261B78B003A9143 /* GVEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GVEdge.swift; path = src/GVEdge.swift; sourceTree = "<group>"; };
-		E532280A2261B78C003A9143 /* builtins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = builtins.h; path = src/builtins.h; sourceTree = "<group>"; };
-		E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardGVLayoutConfigurations.swift; path = src/StandardGVLayoutConfigurations.swift; sourceTree = "<group>"; };
+		E53228002261B78B003A9143 /* GVNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVNode.swift; sourceTree = "<group>"; };
+		E53228012261B78B003A9143 /* GVCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVCluster.swift; sourceTree = "<group>"; };
+		E53228022261B78B003A9143 /* GraphvizWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphvizWrapper.swift; sourceTree = "<group>"; };
+		E53228032261B78B003A9143 /* GVParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVParameters.swift; sourceTree = "<group>"; };
+		E53228042261B78B003A9143 /* prepareLibraries.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = prepareLibraries.sh; sourceTree = "<group>"; };
+		E53228052261B78B003A9143 /* GVLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVLayoutConfig.swift; sourceTree = "<group>"; };
+		E53228072261B78B003A9143 /* builtins.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = builtins.c; sourceTree = "<group>"; };
+		E53228082261B78B003A9143 /* GVEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVEdge.swift; sourceTree = "<group>"; };
+		E532280A2261B78C003A9143 /* builtins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = builtins.h; sourceTree = "<group>"; };
+		E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardGVLayoutConfigurations.swift; sourceTree = "<group>"; };
 		E532284C2261BA86003A9143 /* libSwiftGraphvizMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSwiftGraphvizMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53228552261BB11003A9143 /* libgts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgts.a; path = macOS/otherLibs/libgts.a; sourceTree = "<group>"; };
 		E53228562261BB11003A9143 /* libcgraph_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcgraph_C.a; path = macOS/gvLibs/libcgraph_C.a; sourceTree = "<group>"; };
@@ -181,12 +138,10 @@
 		E53228642261BB11003A9143 /* libgvplugin_quartz_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgvplugin_quartz_C.a; path = macOS/gvLibs/libgvplugin_quartz_C.a; sourceTree = "<group>"; };
 		E53228652261BB11003A9143 /* libcdt_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcdt_C.a; path = macOS/gvLibs/libcdt_C.a; sourceTree = "<group>"; };
 		E53228662261BB11003A9143 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = macOS/otherLibs/libintl.a; sourceTree = "<group>"; };
-		E532287A2261BB89003A9143 /* gvc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gvc.h; path = headers/gvc.h; sourceTree = "<group>"; };
-		E532287B2261BB89003A9143 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = types.h; path = headers/types.h; sourceTree = "<group>"; };
-		E564F828226988E8005CCB3B /* SwiftGraphvizMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGraphvizMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E532287A2261BB89003A9143 /* gvc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gvc.h; sourceTree = "<group>"; };
+		E532287B2261BB89003A9143 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		E564F82A226988E9005CCB3B /* SwiftGraphvizMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftGraphvizMacOS.h; sourceTree = "<group>"; };
 		E564F82B226988E9005CCB3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E564F830226988E9005CCB3B /* SwiftGraphvizMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGraphvizMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E564F835226988E9005CCB3B /* SwiftGraphvizMacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGraphvizMacOSTests.swift; sourceTree = "<group>"; };
 		E564F837226988E9005CCB3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E564F83F22698915005CCB3B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -202,14 +157,17 @@
 		E564F875226A0C1A005CCB3B /* libltdlc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libltdlc.a; path = macOS/gvLibs/libltdlc.a; sourceTree = "<group>"; };
 		E564F87E226A113F005CCB3B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		E564F883226A34E0005CCB3B /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
-		E571EC0C2261C0C8000F7DA1 /* agraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = agraph.h; path = headers/agraph.h; sourceTree = "<group>"; };
-		E5B1A8CA2261DCD80090DBD8 /* cdt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cdt.h; path = headers/cdt.h; sourceTree = "<group>"; };
-		E5B1A8CD2261E17D0090DBD8 /* Double+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Double+KKExtensions.swift"; path = "src/cocoaExtensions/Double+KKExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		E5B1A8CF2261E1D50090DBD8 /* CGPoint+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGPoint+KKExtensions.swift"; path = "src/cocoaExtensions/CGPoint+KKExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		E5B1A8D12261E3060090DBD8 /* CGRect+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+KKExtensions.swift"; path = "src/cocoaExtensions/CGRect+KKExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		E5B1A8D32261E5020090DBD8 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = src/Logging.swift; sourceTree = "<group>"; };
-		E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGVector+KKExtensions.swift"; path = "src/cocoaExtensions/CGVector+KKExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Set+KKExtentions.swift"; path = "src/cocoaExtensions/Set+KKExtentions.swift"; sourceTree = SOURCE_ROOT; };
+		E564F88A226AEBC9005CCB3B /* libsystem_darwin.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsystem_darwin.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib/system/libsystem_darwin.tbd; sourceTree = DEVELOPER_DIR; };
+		E564F891226B1231005CCB3B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		E564F896226B35D4005CCB3B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+KKExtensions.swift"; sourceTree = "<group>"; };
+		E564F8A8227B228A005CCB3B /* Set+KKExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Set+KKExtentions.swift"; sourceTree = "<group>"; };
+		E564F8A9227B228A005CCB3B /* CGVector+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+KKExtensions.swift"; sourceTree = "<group>"; };
+		E564F8AA227B228A005CCB3B /* CGRect+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+KKExtensions.swift"; sourceTree = "<group>"; };
+		E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+KKExtensions.swift"; sourceTree = "<group>"; };
+		E571EC0C2261C0C8000F7DA1 /* agraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = agraph.h; sourceTree = "<group>"; };
+		E5B1A8CA2261DCD80090DBD8 /* cdt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cdt.h; sourceTree = "<group>"; };
+		E5B1A8D32261E5020090DBD8 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,65 +219,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E564F825226988E8005CCB3B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E564F86C226A0C1A005CCB3B /* libcdt_C.a in Frameworks */,
-				E564F86D226A0C1A005CCB3B /* libcgraph_C.a in Frameworks */,
-				E564F86E226A0C1A005CCB3B /* libgvc_C.a in Frameworks */,
-				E564F86F226A0C1A005CCB3B /* libgvplugin_core_C.a in Frameworks */,
-				E564F870226A0C1A005CCB3B /* libgvplugin_dot_layout_C.a in Frameworks */,
-				E564F871226A0C1A005CCB3B /* libgvplugin_neato_layout_C.a in Frameworks */,
-				E564F872226A0C1A005CCB3B /* libgvplugin_quartz_C.a in Frameworks */,
-				E564F877226A0EB9005CCB3B /* iconv.o in Frameworks */,
-				E564F878226A0EB9005CCB3B /* libcharset.a in Frameworks */,
-				E564F879226A0EB9005CCB3B /* libexpat.a in Frameworks */,
-				E564F87A226A0EB9005CCB3B /* libglib-2.0.a in Frameworks */,
-				E564F87B226A0EB9005CCB3B /* libgts.a in Frameworks */,
-				E564F87C226A0EB9005CCB3B /* libintl.a in Frameworks */,
-				E564F87D226A0EB9005CCB3B /* libz.a in Frameworks */,
-				E564F876226A0C1A005CCB3B /* libltdlc.a in Frameworks */,
-				E564F873226A0C1A005CCB3B /* libpathplan_C.a in Frameworks */,
-				E564F874226A0C1A005CCB3B /* libvpsc_C.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E564F82D226988E9005CCB3B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E564F831226988E9005CCB3B /* SwiftGraphvizMacOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		E53227C92260511C003A9143 = {
 			isa = PBXGroup;
 			children = (
-				E5B1A8D32261E5020090DBD8 /* Logging.swift */,
-				E5B1A8CC2261E15B0090DBD8 /* cocoaExtensions */,
-				E5B1A8CA2261DCD80090DBD8 /* cdt.h */,
-				E571EC0C2261C0C8000F7DA1 /* agraph.h */,
-				E532287A2261BB89003A9143 /* gvc.h */,
-				E532287B2261BB89003A9143 /* types.h */,
-				E53228072261B78B003A9143 /* builtins.c */,
-				E532280A2261B78C003A9143 /* builtins.h */,
-				E53228022261B78B003A9143 /* GraphvizWrapper.swift */,
-				E53228012261B78B003A9143 /* GVCluster.swift */,
-				E53228082261B78B003A9143 /* GVEdge.swift */,
-				E53228052261B78B003A9143 /* GVLayoutConfig.swift */,
-				E53228002261B78B003A9143 /* GVNode.swift */,
-				E53228032261B78B003A9143 /* GVParameters.swift */,
+				E564F891226B1231005CCB3B /* Package.swift */,
 				E53228042261B78B003A9143 /* prepareLibraries.sh */,
-				E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */,
+				E564F88C226B10D8005CCB3B /* Sources */,
 				E564F829226988E9005CCB3B /* SwiftGraphvizMacOS */,
 				E564F834226988E9005CCB3B /* SwiftGraphvizMacOSTests */,
 				E53227D32260511C003A9143 /* Products */,
 				E53227DC2260F8F2003A9143 /* Frameworks */,
-				E53227FF2261B78A003A9143 /* SwiftGraphviz-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -328,8 +240,6 @@
 			children = (
 				E53227D22260511C003A9143 /* libSwiftGraphvizIOS.a */,
 				E532284C2261BA86003A9143 /* libSwiftGraphvizMac.a */,
-				E564F828226988E8005CCB3B /* SwiftGraphvizMacOS.framework */,
-				E564F830226988E9005CCB3B /* SwiftGraphvizMacOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,6 +247,7 @@
 		E53227DC2260F8F2003A9143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E564F88A226AEBC9005CCB3B /* libsystem_darwin.tbd */,
 				E564F883226A34E0005CCB3B /* libz.1.dylib */,
 				E564F87E226A113F005CCB3B /* libz.tbd */,
 				E564F875226A0C1A005CCB3B /* libltdlc.a */,
@@ -407,16 +318,56 @@
 			path = SwiftGraphvizMacOSTests;
 			sourceTree = "<group>";
 		};
-		E5B1A8CC2261E15B0090DBD8 /* cocoaExtensions */ = {
+		E564F88C226B10D8005CCB3B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E5B1A8DF226200510090DBD8 /* Set+KKExtentions.swift */,
-				E5B1A8D92261ED590090DBD8 /* CGVector+KKExtensions.swift */,
-				E5B1A8D12261E3060090DBD8 /* CGRect+KKExtensions.swift */,
-				E5B1A8CF2261E1D50090DBD8 /* CGPoint+KKExtensions.swift */,
-				E5B1A8CD2261E17D0090DBD8 /* Double+KKExtensions.swift */,
+				E564F88D226B1151005CCB3B /* cocoaExtensions */,
+				E564F896226B35D4005CCB3B /* module.modulemap */,
+				E564F894226B18BA005CCB3B /* GraphvizInterface */,
+				E564F893226B179A005CCB3B /* SwiftGraphviz */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E564F88D226B1151005CCB3B /* cocoaExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */,
+				E564F8AA227B228A005CCB3B /* CGRect+KKExtensions.swift */,
+				E564F8A9227B228A005CCB3B /* CGVector+KKExtensions.swift */,
+				E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */,
+				E564F8A8227B228A005CCB3B /* Set+KKExtentions.swift */,
 			);
 			path = cocoaExtensions;
+			sourceTree = "<group>";
+		};
+		E564F893226B179A005CCB3B /* SwiftGraphviz */ = {
+			isa = PBXGroup;
+			children = (
+				E53227FF2261B78A003A9143 /* SwiftGraphviz-Bridging-Header.h */,
+				E5B1A8D32261E5020090DBD8 /* Logging.swift */,
+				E53228022261B78B003A9143 /* GraphvizWrapper.swift */,
+				E53228012261B78B003A9143 /* GVCluster.swift */,
+				E53228082261B78B003A9143 /* GVEdge.swift */,
+				E53228052261B78B003A9143 /* GVLayoutConfig.swift */,
+				E53228002261B78B003A9143 /* GVNode.swift */,
+				E53228032261B78B003A9143 /* GVParameters.swift */,
+				E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */,
+			);
+			path = SwiftGraphviz;
+			sourceTree = "<group>";
+		};
+		E564F894226B18BA005CCB3B /* GraphvizInterface */ = {
+			isa = PBXGroup;
+			children = (
+				E532280A2261B78C003A9143 /* builtins.h */,
+				E571EC0C2261C0C8000F7DA1 /* agraph.h */,
+				E5B1A8CA2261DCD80090DBD8 /* cdt.h */,
+				E532287B2261BB89003A9143 /* types.h */,
+				E532287A2261BB89003A9143 /* gvc.h */,
+				E53228072261B78B003A9143 /* builtins.c */,
+			);
+			path = GraphvizInterface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,14 +382,6 @@
 				E571EC0D2261C0C8000F7DA1 /* agraph.h in Headers */,
 				E532287D2261BB89003A9143 /* types.h in Headers */,
 				E53228792261BB2A003A9143 /* builtins.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E564F823226988E8005CCB3B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E564F85322699133005CCB3B /* SwiftGraphviz-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,42 +422,6 @@
 			productReference = E532284C2261BA86003A9143 /* libSwiftGraphvizMac.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		E564F827226988E8005CCB3B /* SwiftGraphvizMacOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E564F83D226988E9005CCB3B /* Build configuration list for PBXNativeTarget "SwiftGraphvizMacOS" */;
-			buildPhases = (
-				E564F823226988E8005CCB3B /* Headers */,
-				E564F824226988E8005CCB3B /* Sources */,
-				E564F825226988E8005CCB3B /* Frameworks */,
-				E564F826226988E8005CCB3B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftGraphvizMacOS;
-			productName = SwiftGraphvizMacOS;
-			productReference = E564F828226988E8005CCB3B /* SwiftGraphvizMacOS.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E564F82F226988E9005CCB3B /* SwiftGraphvizMacOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E564F83E226988E9005CCB3B /* Build configuration list for PBXNativeTarget "SwiftGraphvizMacOSTests" */;
-			buildPhases = (
-				E564F82C226988E9005CCB3B /* Sources */,
-				E564F82D226988E9005CCB3B /* Frameworks */,
-				E564F82E226988E9005CCB3B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E564F833226988E9005CCB3B /* PBXTargetDependency */,
-			);
-			name = SwiftGraphvizMacOSTests;
-			productName = SwiftGraphvizMacOSTests;
-			productReference = E564F830226988E9005CCB3B /* SwiftGraphvizMacOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -532,12 +439,6 @@
 					E532284B2261BA86003A9143 = {
 						CreatedOnToolsVersion = 10.2;
 					};
-					E564F827226988E8005CCB3B = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
-					E564F82F226988E9005CCB3B = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
 				};
 			};
 			buildConfigurationList = E53227CD2260511C003A9143 /* Build configuration list for PBXProject "SwiftGraphviz" */;
@@ -554,48 +455,30 @@
 			targets = (
 				E53227D12260511C003A9143 /* SwiftGraphvizIOS */,
 				E532284B2261BA86003A9143 /* SwiftGraphvizMac */,
-				E564F827226988E8005CCB3B /* SwiftGraphvizMacOS */,
-				E564F82F226988E9005CCB3B /* SwiftGraphvizMacOSTests */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		E564F826226988E8005CCB3B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E564F82E226988E9005CCB3B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E53227CE2260511C003A9143 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E564F8B0227B228B005CCB3B /* CGVector+KKExtensions.swift in Sources */,
+				E564F8AC227B228B005CCB3B /* Double+KKExtensions.swift in Sources */,
+				E564F8B4227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */,
 				E53228142261B78C003A9143 /* GVEdge.swift in Sources */,
 				E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */,
 				E532280F2261B78C003A9143 /* GraphvizWrapper.swift in Sources */,
-				E5B1A8CE2261E17D0090DBD8 /* Double+KKExtensions.swift in Sources */,
+				E564F8B2227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */,
+				E564F8AE227B228B005CCB3B /* Set+KKExtentions.swift in Sources */,
 				E532280D2261B78C003A9143 /* GVNode.swift in Sources */,
 				E53228112261B78C003A9143 /* GVLayoutConfig.swift in Sources */,
-				E5B1A8D22261E3060090DBD8 /* CGRect+KKExtensions.swift in Sources */,
+				E564F892226B1231005CCB3B /* Package.swift in Sources */,
 				E53228102261B78C003A9143 /* GVParameters.swift in Sources */,
 				E53228172261B78C003A9143 /* StandardGVLayoutConfigurations.swift in Sources */,
 				E53228132261B78C003A9143 /* builtins.c in Sources */,
 				E532280E2261B78C003A9143 /* GVCluster.swift in Sources */,
-				E5B1A8D02261E1D50090DBD8 /* CGPoint+KKExtensions.swift in Sources */,
-				E5B1A8DA2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */,
-				E5B1A8E0226200510090DBD8 /* Set+KKExtentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,60 +487,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				E571EC002261BC6C000F7DA1 /* builtins.c in Sources */,
-				E5B1A8D62261EB820090DBD8 /* CGRect+KKExtensions.swift in Sources */,
-				E5B1A8D72261EB850090DBD8 /* CGPoint+KKExtensions.swift in Sources */,
-				E5B1A8DB2261ED590090DBD8 /* CGVector+KKExtensions.swift in Sources */,
 				E571EC032261BC6C000F7DA1 /* GraphvizWrapper.swift in Sources */,
-				E5B1A8D82261EB880090DBD8 /* Double+KKExtensions.swift in Sources */,
+				E564F8B1227B228B005CCB3B /* CGVector+KKExtensions.swift in Sources */,
+				E564F8AD227B228B005CCB3B /* Double+KKExtensions.swift in Sources */,
 				E571EC042261BC6C000F7DA1 /* GVCluster.swift in Sources */,
 				E571EC052261BC6C000F7DA1 /* GVEdge.swift in Sources */,
 				E571EC062261BC6C000F7DA1 /* GVLayoutConfig.swift in Sources */,
 				E571EC072261BC6C000F7DA1 /* GVNode.swift in Sources */,
 				E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */,
 				E571EC082261BC6C000F7DA1 /* GVParameters.swift in Sources */,
-				E5B1A8E1226200510090DBD8 /* Set+KKExtentions.swift in Sources */,
 				E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E564F824226988E8005CCB3B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E564F84522699127005CCB3B /* Logging.swift in Sources */,
-				E564F84622699127005CCB3B /* Set+KKExtentions.swift in Sources */,
-				E564F84722699127005CCB3B /* CGVector+KKExtensions.swift in Sources */,
-				E564F84822699127005CCB3B /* CGRect+KKExtensions.swift in Sources */,
-				E564F84922699127005CCB3B /* CGPoint+KKExtensions.swift in Sources */,
-				E564F84A22699127005CCB3B /* Double+KKExtensions.swift in Sources */,
-				E564F84B22699127005CCB3B /* builtins.c in Sources */,
-				E564F84C22699127005CCB3B /* GraphvizWrapper.swift in Sources */,
-				E564F84D22699127005CCB3B /* GVCluster.swift in Sources */,
-				E564F84E22699127005CCB3B /* GVEdge.swift in Sources */,
-				E564F84F22699127005CCB3B /* GVLayoutConfig.swift in Sources */,
-				E564F85022699127005CCB3B /* GVNode.swift in Sources */,
-				E564F85122699127005CCB3B /* GVParameters.swift in Sources */,
-				E564F85222699127005CCB3B /* StandardGVLayoutConfigurations.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E564F82C226988E9005CCB3B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E564F836226988E9005CCB3B /* SwiftGraphvizMacOSTests.swift in Sources */,
+				E564F8AF227B228B005CCB3B /* Set+KKExtentions.swift in Sources */,
+				E564F8B5227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */,
+				E564F8B3227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E564F833226988E9005CCB3B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E564F827226988E8005CCB3B /* SwiftGraphvizMacOS */;
-			targetProxy = E564F832226988E9005CCB3B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E53227D72260511C003A9143 /* Debug */ = {
@@ -842,12 +688,13 @@
 				DEVELOPMENT_TEAM = HN3M9PRAT4;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/headers";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Sources/GraphvizInterface";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/macOS/otherLibs",
 					"$(PROJECT_DIR)/macOS/gvLibs",
 					"$(PROJECT_DIR)/headers",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -856,7 +703,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftGraphviz-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/SwiftGraphviz/SwiftGraphviz-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -876,12 +723,13 @@
 				DEVELOPMENT_TEAM = HN3M9PRAT4;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/headers";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Sources/GraphvizInterface";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/macOS/otherLibs",
 					"$(PROJECT_DIR)/macOS/gvLibs",
 					"$(PROJECT_DIR)/headers",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -889,134 +737,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftGraphviz-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/SwiftGraphviz/SwiftGraphviz-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		E564F839226988E9005CCB3B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = HN3M9PRAT4;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = "compiler-default";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/headers";
-				INFOPLIST_FILE = SwiftGraphvizMacOS/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/macOS/otherLibs",
-					"$(PROJECT_DIR)/macOS/gvLibs",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphvizMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftGraphviz-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E564F83A226988E9005CCB3B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = HN3M9PRAT4;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = "compiler-default";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/headers";
-				INFOPLIST_FILE = SwiftGraphvizMacOS/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/macOS/otherLibs",
-					"$(PROJECT_DIR)/macOS/gvLibs",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphvizMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftGraphviz-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E564F83B226988E9005CCB3B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HN3M9PRAT4;
-				INFOPLIST_FILE = SwiftGraphvizMacOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphvizMacOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		E564F83C226988E9005CCB3B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HN3M9PRAT4;
-				INFOPLIST_FILE = SwiftGraphvizMacOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphvizMacOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1047,24 +769,6 @@
 			buildConfigurations = (
 				E53228532261BA86003A9143 /* Debug */,
 				E53228542261BA86003A9143 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E564F83D226988E9005CCB3B /* Build configuration list for PBXNativeTarget "SwiftGraphvizMacOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E564F839226988E9005CCB3B /* Debug */,
-				E564F83A226988E9005CCB3B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E564F83E226988E9005CCB3B /* Build configuration list for PBXNativeTarget "SwiftGraphvizMacOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E564F83B226988E9005CCB3B /* Debug */,
-				E564F83C226988E9005CCB3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
