@@ -323,6 +323,7 @@ public class GraphvizGraph {
     
     /// reference to the graph structure that is used by graphviz
     private var g: GVGraph
+    private var layouter: GVLayoutConfig
     
     /// see http://graphviz.org/doc/schema/attributes.xml for more attributes
     public init(name: String, type: GVGraphType, layouter: GVLayoutConfig) {
@@ -332,7 +333,7 @@ public class GraphvizGraph {
         
 //        logThis(.debug, "layouting \(graphType.readableValue) graph")
         g = agopen(cString(name), type.graphvizValue, nil);
-        
+        self.layouter = layouter
         layouter.setParams(self)
     }
     
@@ -413,7 +414,7 @@ public class GraphvizGraph {
         agclose(g)
     }
     
-    public func newNode(cluster: GVCluster?, name: String, label: String) -> GVNode {
+    public func newNode(name: String, label: String, cluster: GVCluster? = nil) -> GVNode {
         let graph = cluster ?? g
         let node = agnode(graph, cString(name), GraphvizGraph.createNew) as GVNode
         setNodeValue(node, "label", label)
@@ -463,8 +464,9 @@ public class GraphvizGraph {
         return CGRect(box: box)
     }
     
-    public func layout(engine: GVLayoutConfig) {
-        engine.layout(gblGVContext, g)
+    public func layout( ){ //engine: GVLayoutConfig? = nil) {
+//        let usedEngine = engine ?? layouter
+        layouter.layout(gblGVContext, g)
     }
     
 //    public func getClusterPos(cluster: GVCluster) -> GVClusterPosData{
