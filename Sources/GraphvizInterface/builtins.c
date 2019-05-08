@@ -47,7 +47,7 @@ GVC_t * loadGraphvizLibraries() {
     gvAddLibrary(gvc, &gvplugin_quartz_LTX_library);
 //    gvAddLibrary(gvc, &gvplugin_visio_LTX_library);
     
-    #warning this is a workaround due to https://gitlab.com/graphviz/graphviz/issues/1520
+    #warning "this is a workaround due to https://gitlab.com/graphviz/graphviz/issues/1520"
     textfont_dict_open(gvc);
 //    gvAddLibrary(gvc, &gvplugin_lasi_LTX_library);
 //    gvAddLibrary(gvc, &gvplugin_pango_LTX_library);
