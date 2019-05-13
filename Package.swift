@@ -3,47 +3,36 @@
 
 import PackageDescription
 
+
+
+
 let package = Package(
     name: "SwiftGraphviz",
-    providers: [
-        .autotools(["Graphviz"])
-    ],
+
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "SwiftGraphvizMac",
             type: .static,
-            targets: ["SwiftGraphviz","GraphvizInterface"]
-//        ),
-//        .library(
-//            name: "GraphvizCInterface",
-//            type: .static,
-//            targets: ["GraphvizInterface"]
+            targets: ["SwiftGraphviz"]
+        ),
+        .library(
+            name: "SwiftGraphvizMacDynamic",
+            type: .dynamic,
+            targets: ["SwiftGraphviz"]
         )
-        
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://gitlab.com/vithanco/graphviz", from: "1.40.0")
-        
-    ],
-
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "SwiftGraphviz",
-            dependencies: ["GraphvizInterface"]
+            dependencies: ["CGraphviz"]
         ),
-        .target(
-            name: "GraphvizInterface",
-            dependencies: ["Graphviz"],
-            publicHeadersPath: "GraphvizInterface"
+        .systemLibrary(
+            name: "CGraphviz",
+            pkgConfig: "libgvc",    
+            providers: [.brew(["Graphviz"])]
         ),
-        .target(
-            name: "Graphiz"
-        )
         .testTarget(
             name: "SwiftGraphvizTests",
             dependencies: ["SwiftGraphviz"]),

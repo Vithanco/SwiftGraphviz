@@ -1,0 +1,19 @@
+module Ccdt [system]{
+    umbrella header "cdt.h"
+    link "cdt"
+}
+
+
+module Ccgraph [system] {
+    umbrella header "cgraph.h"
+    link "cgraph"
+    export *
+}
+
+module Cgvc [system] {
+    umbrella header "gvc.h"
+    link "gvc"
+    export *
+}
+
+module C
