@@ -16,6 +16,7 @@ enum LogType {
     case error
 }
 
+@available(macOS 10.14, *)
 fileprivate let logger = OSLog(subsystem:"com.vithanco",category:"SwiftGraphviz")
 
 

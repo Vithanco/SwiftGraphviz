@@ -1,4 +1,4 @@
-framework module GraphvizInterface {
-    umbrella header "buildins.h"
-    export *
-}
+//framework module GraphvizInterface {
+//    umbrella header "buildins.h"
+//    export *
+//}
