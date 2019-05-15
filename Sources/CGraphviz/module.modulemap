@@ -1,19 +1,15 @@
 module Ccdt [system]{
-    umbrella header "cdt.h"
+    umbrella header "../GraphvizInterface/cdt.h"
     link "cdt"
+    export *
 }
 
 
 module Ccgraph [system] {
-    umbrella header "cgraph.h"
     link "cgraph"
-    export *
 }
 
 module Cgvc [system] {
-    umbrella header "gvc.h"
     link "gvc"
-    export *
 }
 
-module C

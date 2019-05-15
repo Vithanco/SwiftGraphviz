@@ -253,7 +253,7 @@ public func prepareGraphviz() {
 //    loadGraphvizLibraries(gblGVContext)
     
     
-//          verboseGraphviz()
+//    verboseGraphviz()
 
 }
 
@@ -335,6 +335,7 @@ public class GraphvizGraph {
         g = agopen(cString(name), type.graphvizValue, nil);
         self.layouter = layouter
         layouter.setParams(self)
+        setBaseValue(param: .graph(.rank),value: GVRank.min.graphvizName)
     }
     
     /// Simple Wrapper around `agattr` function of graphviz to set variables
@@ -347,6 +348,7 @@ public class GraphvizGraph {
         agattr(g, target.rawValue, cString(attributeName), cString(value))
         #if DEBUG
         baseValues[target]!.insert(attributeName)
+        Swift.print("setBaseValue \(target.rawValue).\(attributeName) = \(value)")
         #endif
     }
     
