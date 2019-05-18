@@ -131,6 +131,22 @@ extension CGRect {
     case towardsBottom
     
     
+    public static func fromGraphvizName(value: String) -> GVModelDirection {
+        if value == "RL" {
+            return .towardsLeft
+        }
+        if value == "TB" {
+            return .towardsBottom
+        }
+        if value == "LR" {
+            return .towardsRight
+        }
+        if value == "BT" {
+            return .towardsTop
+        }
+        fatalError()
+    }
+    
     public var graphvizName: String {
         switch self {
         case .towardsLeft:
@@ -173,15 +189,19 @@ extension CGRect {
     }
     
     public func isOpposite(other: GVModelDirection) -> Bool {
+        return other == self.opposite
+    }
+    
+    public var opposite : GVModelDirection {
         switch self {
         case .towardsLeft:
-            return other == .towardsRight
+            return  .towardsRight
         case .towardsBottom:
-            return other == .towardsTop
+            return .towardsTop
         case .towardsRight:
-            return other == .towardsLeft
+            return  .towardsLeft
         case .towardsTop:
-            return other == .towardsBottom
+            return .towardsBottom
         }
     }
     
@@ -221,7 +241,7 @@ extension CGRect {
     case topRight
     case bottomLeft
     case bottomRight
-
+    
     static var readableNames: [String] {
         return ["Top-Left", "Top-Right", "Bottom-Left", "Bottom-Right"]
     }
@@ -248,13 +268,13 @@ extension CGRect {
 
 
 public func prepareGraphviz() {
-//    gblGVContext = gvContext()
-//    assert(gblGVContext.unsafelyUnwrapped != nil)
-//    loadGraphvizLibraries(gblGVContext)
+    //    gblGVContext = gvContext()
+    //    assert(gblGVContext.unsafelyUnwrapped != nil)
+    //    loadGraphvizLibraries(gblGVContext)
     
     
-//    verboseGraphviz()
-
+    //    verboseGraphviz()
+    
 }
 
 /// Make Graphviz more chatty. Call only if needed
@@ -301,11 +321,30 @@ public protocol GraphSettings: class {
     var graphType: GVGraphType {get}
     var maxNodeSize: CGSize {get}
     var nodeViewSize: CGSize {get}
-//    var logic: GraphLogic {get}
+    //    var logic: GraphLogic {get}
     var name: String? {get}
 }
 
-public class GraphvizGraph {
+public protocol GraphBuilder {
+    func newNode(name: String, label: String, cluster: GVCluster?) -> GVNode
+    func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge
+    func newCluster(name: String, label: String, parent: GVCluster?) -> GVCluster
+    func setNodeSize(node: GVNode, width: GVPixel, height: GVPixel)
+    func setFontSize(node: GVNode, fontSize: CGFloat)
+    func setNodeShape(node: GVNode, shape: GVNodeShape)
+    
+    func setBaseValue(param: GVParameter, value: String)
+    func setNodeValue(_ node: GVNode, _ attributeName: String, _ value: String)
+    func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String)
+    func setGraphValue(_ attributeName: String, _ value: String)
+    func setClusterValue(_ cluster: GVCluster, _ attributeName: String, _ value: String)
+    
+    func getGraphRect() -> CGRect
+    
+    func layout( )
+}
+
+public class GraphvizGraph: GraphBuilder {
     
     public enum Elements: Int32 {
         case graph = 0
@@ -314,11 +353,11 @@ public class GraphvizGraph {
     }
     
     static let createNew : Int32 = 1
-//    let edgeStyle: GVEdgeStyle
+    //    let edgeStyle: GVEdgeStyle
     
     #if DEBUG
     var baseValues :[Elements: Set<String> ] = [.graph : Set<String>(), .node: Set<String>(), .edge: Set<String>()]
-//    var baseEdgeValues = Set<GVEdgeParameters>()
+    //    var baseEdgeValues = Set<GVEdgeParameters>()
     #endif
     
     /// reference to the graph structure that is used by graphviz
@@ -328,10 +367,10 @@ public class GraphvizGraph {
     /// see http://graphviz.org/doc/schema/attributes.xml for more attributes
     public init(name: String, type: GVGraphType, layouter: GVLayoutConfig) {
         
-    
-//        let name = graph.name ?? "unnamed Graph"
         
-//        logThis(.debug, "layouting \(graphType.readableValue) graph")
+        //        let name = graph.name ?? "unnamed Graph"
+        
+        //        logThis(.debug, "layouting \(graphType.readableValue) graph")
         g = agopen(cString(name), type.graphvizValue, nil);
         self.layouter = layouter
         layouter.setParams(self)
@@ -339,7 +378,7 @@ public class GraphvizGraph {
     }
     
     /// Simple Wrapper around `agattr` function of graphviz to set variables
-    public func setBaseValue(_ target: Elements, _ attributeName: String, _ value: String) {
+    private func setBaseValue(_ target: Elements, _ attributeName: String, _ value: String) {
         #if DEBUG
         if baseValues[target]!.contains(attributeName) {
             logThis(.warning, "baseValue already set for  \(attributeName) for \(target)")
@@ -373,11 +412,11 @@ public class GraphvizGraph {
         agset(node, cString(attributeName), cString(value))
     }
     
-//    /// reminder: if attribute doesn't show effect then you have forgotten to set base value
-//    fileprivate func setEdgeValue(_ edge: GVEdge, _ attributeName: String, _ value: String) {
-//
-//        agset(edge, cString(attributeName), cString(value))
-//    }
+    //    /// reminder: if attribute doesn't show effect then you have forgotten to set base value
+    //    fileprivate func setEdgeValue(_ edge: GVEdge, _ attributeName: String, _ value: String) {
+    //
+    //        agset(edge, cString(attributeName), cString(value))
+    //    }
     
     /// reminder: if attribute doesn't show effect then you have forgotten to set base value
     public func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String) {
@@ -386,7 +425,7 @@ public class GraphvizGraph {
             logThis(.error, "no baseValue set for  \(param.rawValue) for Edges. Setting the attribute Value will have no effect.")
         }
         #endif
-      // setEdgeValue(edge, param.rawValue, value)
+        // setEdgeValue(edge, param.rawValue, value)
         agset(edge, cString(param.rawValue), cString(value))
     }
     
@@ -410,7 +449,7 @@ public class GraphvizGraph {
         agset(cluster, cString(attributeName), cString(value))
     }
     deinit {
-//        Swift.print("GraphvizGraph.deinit")
+        //        Swift.print("GraphvizGraph.deinit")
         /* Free data */
         gvFreeLayout(gblGVContext, g)
         agclose(g)
@@ -425,8 +464,8 @@ public class GraphvizGraph {
     
     public func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge {
         let result = agedge(g, from, to, cString(name), GraphvizGraph.createNew)!
-    
-//        Swift.print("edge: weight= \(weight), constraint= \(constraint ? "true" : "false")")
+        
+        //        Swift.print("edge: weight= \(weight), constraint= \(constraint ? "true" : "false")")
         setEdgeValue(result, .dir, dir.rawValue)
         return result
     }
@@ -460,23 +499,22 @@ public class GraphvizGraph {
     }
     
     ///return size of
-    public func getGraphRect(cluster: GVCluster? = nil) -> CGRect {
-        let graph = cluster ?? g // use global graph if not asking for particular cluster
-        let box = gd_bb (graph)
+    public func getGraphRect() -> CGRect {
+        let box = gd_bb (g)
         return CGRect(box: box)
     }
     
     public func layout( ){ //engine: GVLayoutConfig? = nil) {
-//        let usedEngine = engine ?? layouter
+        //        let usedEngine = engine ?? layouter
         layouter.layout(gblGVContext, g)
     }
     
-//    public func getClusterPos(cluster: GVCluster) -> GVClusterPosData{
-//        var rect = getGraphRect(cluster: cluster)
-//        
-//        let lblPos = cluster.labelPos ?? NSZeroPoint
-//        let result = GVClusterPosData(rect: rect, labelPos: lblPos, isHidden: false)
-//        return result
-//    }
+    //    public func getClusterPos(cluster: GVCluster) -> GVClusterPosData{
+    //        var rect = getGraphRect(cluster: cluster)
+    //
+    //        let lblPos = cluster.labelPos ?? NSZeroPoint
+    //        let result = GVClusterPosData(rect: rect, labelPos: lblPos, isHidden: false)
+    //        return result
+    //    }
     
 }

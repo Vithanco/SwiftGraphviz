@@ -20,7 +20,7 @@ public struct GVLayoutConfig {
         return layoutEngine == .dot
     }
     
-   public  func setParams(_ gv: GraphvizGraph) {
+   public  func setParams(_ gv: GraphBuilder) {
         for p in params.keys {
             gv.setBaseValue(param: p, value: params[p]!)
             //            switch p {
