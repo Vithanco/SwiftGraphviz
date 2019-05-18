@@ -98,6 +98,17 @@ public enum GVEdgeParamDir : String {
             }
         }
     }
+    
+    public var opposite: GVEdgeParamDir {
+        switch self {
+        case .both, .none:
+            return self
+        case .back:
+            return .forward
+        case .forward:
+            return .back
+        }
+    }
 }
 
 public enum GVParamValueOverlap : String {
