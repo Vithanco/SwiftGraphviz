@@ -61,7 +61,7 @@ extension CGRect {
         return ["Layered (dot)", "Star (neato)", "Star (fdp)", "Star (neato -nop)", "Star (neato -nop2)", "twopi", "Systems Thinking"]
     }
     
-    var graphvizName: String {
+    public var graphvizName: String {
         switch self {
         case .dot: return "dot"
         case .fdp: return "fdp"
@@ -387,7 +387,7 @@ public class GraphvizGraph: GraphBuilder {
         agattr(g, target.rawValue, cString(attributeName), cString(value))
         #if DEBUG
         baseValues[target]!.insert(attributeName)
-        Swift.print("setBaseValue \(target.rawValue).\(attributeName) = \(value)")
+//        Swift.print("setBaseValue \(target.rawValue).\(attributeName) = \(value)")
         #endif
     }
     

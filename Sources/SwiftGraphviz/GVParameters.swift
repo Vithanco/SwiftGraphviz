@@ -143,7 +143,7 @@ public enum GVParamValueOverlap : String {
         return ["None", "Arrow", "Dot", "Diamond"]
     }
     
-    var graphvizName : String {
+    public var graphvizName : String {
         switch self {
         case .none:  return "none"
         case .normal:  return  "normal"
