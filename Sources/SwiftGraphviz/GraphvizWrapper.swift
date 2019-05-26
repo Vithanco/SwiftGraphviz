@@ -325,6 +325,10 @@ public protocol GraphSettings: class {
     var name: String? {get}
 }
 
+
+
+public typealias GVParams = [GVParameter: String]
+
 public protocol GraphBuilder {
     func newNode(name: String, label: String, cluster: GVCluster?) -> GVNode
     func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge
@@ -334,6 +338,7 @@ public protocol GraphBuilder {
     func setNodeShape(node: GVNode, shape: GVNodeShape)
     
     func setBaseValue(param: GVParameter, value: String)
+    func setBaseValues(_ params: GVParams)
     func setNodeValue(_ node: GVNode, _ attributeName: String, _ value: String)
     func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String)
     func setGraphValue(_ attributeName: String, _ value: String)
@@ -342,6 +347,16 @@ public protocol GraphBuilder {
     func getGraphRect() -> CGRect
     
     func layout( )
+}
+
+extension GraphBuilder {
+    public func setBaseValues(_ params: GVParams) {
+        for p in params.keys {
+            if let value = params[p] {
+                setBaseValue(param: p, value: value)
+            }
+        }
+    }
 }
 
 public class GraphvizGraph: GraphBuilder {
@@ -366,16 +381,11 @@ public class GraphvizGraph: GraphBuilder {
     
     /// see http://graphviz.org/doc/schema/attributes.xml for more attributes
     public init(name: String, type: GVGraphType, layouter: GVLayoutConfig) {
-        
-        
-        //        let name = graph.name ?? "unnamed Graph"
-        
-        //        logThis(.debug, "layouting \(graphType.readableValue) graph")
         g = agopen(cString(name), type.graphvizValue, nil);
         self.layouter = layouter
-        layouter.setParams(self)
-        setBaseValue(param: .graph(.rank),value: GVRank.min.graphvizName)
     }
+    
+    
     
     /// Simple Wrapper around `agattr` function of graphviz to set variables
     private func setBaseValue(_ target: Elements, _ attributeName: String, _ value: String) {
