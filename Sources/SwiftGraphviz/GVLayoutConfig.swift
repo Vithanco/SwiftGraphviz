@@ -13,22 +13,13 @@ public struct GVLayoutConfig {
     public let layoutEngine: GVLayoutEngine
     public let renderEngine: GVLayoutEngine
     public var saveGVOutput: Bool
-    public var params: [GVParameter: String]
+    public var params: GVParams
     public let secondLayoutEngine: GVLayoutEngine?
     public let supportClusters: Bool
     public var usesNodeDistance: Bool {
         return layoutEngine == .dot
     }
     
-   public  func setParams(_ gv: GraphBuilder) {
-        for p in params.keys {
-            gv.setBaseValue(param: p, value: params[p]!)
-            //            switch p {
-            //            case .edge(let ep): gv.setBaseValue(param: <#T##GVParameter#>, value: <#T##String#>)(, <#T##attributeName: String##String#>, <#T##value: String##String#>)
-            //            }
-            //            gv.setValue(param: p, value: params[p]!)
-        }
-    }
    public func layout(_ gvc: GVGlobalContextPointer, _ g: GVGraph) {
         gvLayout(gvc,g,layoutEngine.graphvizName)
         gvRender(gvc,g,renderEngine.graphvizName,nil)
@@ -68,7 +59,7 @@ public struct GVLayoutConfig {
         params[.graph(.ranksep)] = pixelToInchParameter(yDistance)
         params[.graph(.nodesep)] = pixelToInchParameter(nodeSep)
         params[.graph(.margin)] = "12"
-        params[.graph(.fontname)] = "Verdana"
+        params[.graph(.fontname)] = "Verdana-Bold"
         params[.graph(.label)] = ""
         params[.graph(.pad)] = "0.5"
         params[.graph(.sep)] = "0.05"
