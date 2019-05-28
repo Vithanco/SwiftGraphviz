@@ -12,8 +12,6 @@ import CoreGraphics
 
 let pointsPerInch: CGFloat = 72.0
 
-
-
 func pixelToInchParameter(_ x: CGFloat) -> String {
     return "\(x / pointsPerInch)"
 }
@@ -69,6 +67,8 @@ public enum GVNodeParameters : String {
     case fixedsize
     case fontsize
     case fontname
+    case labelloc
+    case margin
 }
 
 public enum GVParameter : Hashable {

@@ -12,7 +12,6 @@ enum GraphvizError : Error {
     case noPath
 }
 
-public typealias GVGraph = UnsafeMutablePointer<Agraph_t>
 
 
 ///Global Graphviz Context.
@@ -367,8 +366,10 @@ public class GraphvizGraph: GraphBuilder {
         case edge = 2
     }
     
-    static let createNew : Int32 = 1
-    //    let edgeStyle: GVEdgeStyle
+    public enum SearchOrCreate : Int32 {
+        case searchForExisting = 0
+        case createNew = 1
+    }
     
     #if DEBUG
     var baseValues :[Elements: Set<String> ] = [.graph : Set<String>(), .node: Set<String>(), .edge: Set<String>()]
@@ -467,13 +468,13 @@ public class GraphvizGraph: GraphBuilder {
     
     public func newNode(name: String, label: String, cluster: GVCluster? = nil) -> GVNode {
         let graph = cluster ?? g
-        let node = agnode(graph, cString(name), GraphvizGraph.createNew) as GVNode
+        let node = agnode(graph, cString(name), SearchOrCreate.createNew.rawValue) as GVNode
         setNodeValue(node, "label", label)
         return node
     }
     
     public func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge {
-        let result = agedge(g, from, to, cString(name), GraphvizGraph.createNew)!
+        let result = agedge(g, from, to, cString(name), SearchOrCreate.createNew.rawValue)!
         
         //        Swift.print("edge: weight= \(weight), constraint= \(constraint ? "true" : "false")")
         setEdgeValue(result, .dir, dir.rawValue)
@@ -482,7 +483,7 @@ public class GraphvizGraph: GraphBuilder {
     
     public func newCluster(name: String, label: String, parent: GVCluster?) -> GVCluster {
         let p = parent ?? g
-        let result = agsubg(p, cString("cluster\(name)"), GraphvizGraph.createNew)!
+        let result = agsubg(p, cString("cluster\(name)"), SearchOrCreate.createNew.rawValue)!
         setClusterValue(result, "label", label)
         setClusterValue(result, "margin", "8")
         setClusterValue(result, "fontsize", "15")
@@ -517,6 +518,11 @@ public class GraphvizGraph: GraphBuilder {
     public func layout( ){ //engine: GVLayoutConfig? = nil) {
         //        let usedEngine = engine ?? layouter
         layouter.layout(gblGVContext, g)
+//                let dir = NSString("~/Downloads")
+//                let file = NSString("graph.txt")
+//                let path = NSString(string: dir.expandingTildeInPath)
+//                let filePath = path.appendingPathComponent(file as String)
+//        saveTo(fileName: filePath)
     }
     
     //    public func getClusterPos(cluster: GVCluster) -> GVClusterPosData{
@@ -526,5 +532,12 @@ public class GraphvizGraph: GraphBuilder {
     //        let result = GVClusterPosData(rect: rect, labelPos: lblPos, isHidden: false)
     //        return result
     //    }
+    public func saveTo(fileName: String) {
+//        let dir = NSString("~/Downloads")
+//        let file = NSString("graph.txt")
+//        let path = NSString(string: dir.expandingTildeInPath)
+//        let filePath = path.appendingPathComponent(file as String)
+        g.saveTo(fileName: fileName)
+    }
     
 }
