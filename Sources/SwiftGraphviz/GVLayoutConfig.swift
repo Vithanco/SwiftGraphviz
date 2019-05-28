@@ -75,6 +75,8 @@ public struct GVLayoutConfig {
         params[.node(.fontsize)] = "11"
         params[.node(.fontname)] = "Verdana"
         params[.node(.shape)] = "box"
+        params[.node(.labelloc)] = "c"
+        params[.node(.margin)] = "0"
         //        params[.graph,"color","white")
         //        params[.node(.ordering)] = "out")
         

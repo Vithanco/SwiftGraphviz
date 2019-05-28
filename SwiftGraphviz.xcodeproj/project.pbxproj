@@ -72,10 +72,29 @@
 		E571EC082261BC6C000F7DA1 /* GVParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228032261B78B003A9143 /* GVParameters.swift */; };
 		E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		E571EC0D2261C0C8000F7DA1 /* agraph.h in Headers */ = {isa = PBXBuildFile; fileRef = E571EC0C2261C0C8000F7DA1 /* agraph.h */; };
+		E5862840229C6C9A0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
+		E5862841229C6C9B0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
 		E5B1A8CB2261DCD80090DBD8 /* cdt.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1A8CA2261DCD80090DBD8 /* cdt.h */; };
 		E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E586286B229D6E8B0074F6DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5862866229D6E8B0074F6DC /* VithancoData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E586284C229D6E620074F6DC;
+			remoteInfo = VithancoData;
+		};
+		E586286D229D6E8B0074F6DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5862866229D6E8B0074F6DC /* VithancoData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E5862855229D6E620074F6DC;
+			remoteInfo = VithancoDataTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E53227D02260511C003A9143 /* CopyFiles */ = {
@@ -166,6 +185,8 @@
 		E564F8AA227B228A005CCB3B /* CGRect+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+KKExtensions.swift"; sourceTree = "<group>"; };
 		E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+KKExtensions.swift"; sourceTree = "<group>"; };
 		E571EC0C2261C0C8000F7DA1 /* agraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = agraph.h; sourceTree = "<group>"; };
+		E586283E229C6AC50074F6DC /* GVGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GVGraph.swift; sourceTree = "<group>"; };
+		E5862866229D6E8B0074F6DC /* VithancoData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VithancoData.xcodeproj; path = ../VithancoData/VithancoData.xcodeproj; sourceTree = "<group>"; };
 		E5B1A8CA2261DCD80090DBD8 /* cdt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cdt.h; sourceTree = "<group>"; };
 		E5B1A8D32261E5020090DBD8 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +246,7 @@
 		E53227C92260511C003A9143 = {
 			isa = PBXGroup;
 			children = (
+				E5862866229D6E8B0074F6DC /* VithancoData.xcodeproj */,
 				E564F891226B1231005CCB3B /* Package.swift */,
 				E53228042261B78B003A9143 /* prepareLibraries.sh */,
 				E564F88C226B10D8005CCB3B /* Sources */,
@@ -353,6 +375,7 @@
 				E53228002261B78B003A9143 /* GVNode.swift */,
 				E53228032261B78B003A9143 /* GVParameters.swift */,
 				E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */,
+				E586283E229C6AC50074F6DC /* GVGraph.swift */,
 			);
 			path = SwiftGraphviz;
 			sourceTree = "<group>";
@@ -368,6 +391,15 @@
 				E53228072261B78B003A9143 /* builtins.c */,
 			);
 			path = GraphvizInterface;
+			sourceTree = "<group>";
+		};
+		E5862867229D6E8B0074F6DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E586286C229D6E8B0074F6DC /* VithancoData.framework */,
+				E586286E229D6E8B0074F6DC /* VithancoDataTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +483,12 @@
 			mainGroup = E53227C92260511C003A9143;
 			productRefGroup = E53227D32260511C003A9143 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E5862867229D6E8B0074F6DC /* Products */;
+					ProjectRef = E5862866229D6E8B0074F6DC /* VithancoData.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E53227D12260511C003A9143 /* SwiftGraphvizIOS */,
@@ -458,6 +496,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E586286C229D6E8B0074F6DC /* VithancoData.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VithancoData.framework;
+			remoteRef = E586286B229D6E8B0074F6DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E586286E229D6E8B0074F6DC /* VithancoDataTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VithancoDataTests.xctest;
+			remoteRef = E586286D229D6E8B0074F6DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E53227CE2260511C003A9143 /* Sources */ = {
@@ -471,6 +526,7 @@
 				E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */,
 				E532280F2261B78C003A9143 /* GraphvizWrapper.swift in Sources */,
 				E564F8B2227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */,
+				E5862841229C6C9B0074F6DC /* GVGraph.swift in Sources */,
 				E564F8AE227B228B005CCB3B /* Set+KKExtentions.swift in Sources */,
 				E532280D2261B78C003A9143 /* GVNode.swift in Sources */,
 				E53228112261B78C003A9143 /* GVLayoutConfig.swift in Sources */,
@@ -497,6 +553,7 @@
 				E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */,
 				E571EC082261BC6C000F7DA1 /* GVParameters.swift in Sources */,
 				E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */,
+				E5862840229C6C9A0074F6DC /* GVGraph.swift in Sources */,
 				E564F8AF227B228B005CCB3B /* Set+KKExtentions.swift in Sources */,
 				E564F8B5227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */,
 				E564F8B3227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */,
