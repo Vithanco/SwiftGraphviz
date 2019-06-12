@@ -58,7 +58,7 @@ public struct GVLayoutConfig {
         params[.graph(.fontsize)] = "14"
         params[.graph(.ranksep)] = pixelToInchParameter(yDistance)
         params[.graph(.nodesep)] = pixelToInchParameter(nodeSep)
-        params[.graph(.margin)] = "12"
+        params[.graph(.margin)] = pixelToInchParameter(12)
         params[.graph(.fontname)] = "Verdana-Bold"
         params[.graph(.label)] = ""
         params[.graph(.pad)] = "0.5"
@@ -68,8 +68,8 @@ public struct GVLayoutConfig {
 
         //        params[.graph(.rank)] = "max")
         params[.node(.style)] = "rounded"
-        params[.node(.height)] = "40"
-        params[.node(.width)] = "100"
+        params[.node(.height)] = pixelToInchParameter(40)
+        params[.node(.width)] = pixelToInchParameter(100)
         params[.node(.label)] = "correct me"
         params[.node(.fixedsize)] = "true"
         params[.node(.fontsize)] = "11"
