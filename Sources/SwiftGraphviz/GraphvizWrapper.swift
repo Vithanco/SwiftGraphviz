@@ -272,7 +272,7 @@ public func prepareGraphviz() {
     //    loadGraphvizLibraries(gblGVContext)
     
     
-    //    verboseGraphviz()
+//        verboseGraphviz()
     
 }
 
@@ -364,6 +364,14 @@ public class GraphvizGraph: GraphBuilder {
         case graph = 0
         case node = 1
         case edge = 2
+        
+        static var readableNames: [String] {
+            return ["graph", "node", "edge"]
+        }
+        
+        var debugName: String {
+            return GraphvizGraph.Elements.readableNames[Int(self.rawValue)]
+        }
     }
     
     public enum SearchOrCreate : Int32 {
@@ -398,7 +406,7 @@ public class GraphvizGraph: GraphBuilder {
         agattr(g, target.rawValue, cString(attributeName), cString(value))
         #if DEBUG
         baseValues[target]!.insert(attributeName)
-//        Swift.print("setBaseValue \(target.rawValue).\(attributeName) = \(value)")
+//        Swift.print("setBaseValue \(target.debugName).\(attributeName) = \(value)")
         #endif
     }
     
