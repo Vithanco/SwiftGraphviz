@@ -65,6 +65,7 @@ public struct GVLayoutConfig {
         params[.graph(.sep)] = "0.05"
         params[.graph(.rankdir)] = direction.graphvizName
         params[.graph(.splines)] = edgeStyle.graphvizName
+//        params[.graph(.newrank)] = "true"
 
         //        params[.graph(.rank)] = "max")
         params[.node(.style)] = "rounded"

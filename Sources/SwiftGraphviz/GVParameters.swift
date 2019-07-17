@@ -56,6 +56,7 @@ public enum GVGraphParameters : String {
     case fontsize
     case epsilon
     case rank
+    case newrank
 }
 
 public enum GVNodeParameters : String {
