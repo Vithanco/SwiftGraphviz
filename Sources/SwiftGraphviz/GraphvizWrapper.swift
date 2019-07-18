@@ -129,6 +129,14 @@ extension CGRect {
     case towardsTop
     case towardsBottom
     
+    public var isVertical: Bool{
+        return self == .towardsTop || self == .towardsBottom
+    }
+    
+    public var isHorizontal: Bool{
+        return self == .towardsLeft || self == .towardsRight
+    }
+    
     
     public static func fromGraphvizName(value: String) -> GVModelDirection {
         if value == "RL" {
