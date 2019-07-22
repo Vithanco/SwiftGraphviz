@@ -82,8 +82,19 @@ public extension CGPoint {
         }
         return self
     }
+    
+    init (gvPoint: pointf_s) {
+        self.init(x: CGFloat(gvPoint.x), y: CGFloat(gvPoint.y))
+        assert (isFinite)
+    }
+    
 }
 
+
+// needed as parameter in some conversions, so I keep the extra function
+func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
+    return CGPoint(gvPoint: point)
+}
 
  extension CGPoint : Hashable {
     public func hash(into hasher: inout Hasher){
