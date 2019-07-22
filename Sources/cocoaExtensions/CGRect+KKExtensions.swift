@@ -169,5 +169,9 @@ public extension CGRect {
         path.stroke()
     }
     
-
+    
+    init (box: boxf) {
+        self.init(x: box.LL.x, y: box.LL.y, width: box.UR.x - box.LL.x, height: box.UR.y - box.LL.y)
+    }
+    
 }

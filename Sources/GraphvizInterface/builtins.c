@@ -180,6 +180,15 @@ pointf* gd_lp(Agraph_t* g) {
     return 0;
 }
 
+pointf* gd_lsize(Agraph_t* g) {
+    textlabel_t* label;
+    label = gd_label(g);
+    if (label) {
+        return &label->space;
+    }
+    return 0;
+}
+
 char* gd_label_text(Agraph_t* g){
     textlabel_t* label;
     label = gd_label(g);

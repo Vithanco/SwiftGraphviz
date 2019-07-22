@@ -39,6 +39,7 @@ char* ed_tail_label_text(Agedge_t* e);
 boxf gd_bb(Agraph_t* g);
 textlabel_t* gd_label(Agraph_t* g);
 pointf* gd_lp(Agraph_t* g);
+pointf* gd_lsize(Agraph_t* g);
 char* gd_label_text(Agraph_t* g);
 
 

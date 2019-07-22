@@ -30,24 +30,6 @@ public typealias GVGlobalContextPointer = OpaquePointer?
 
 
 
-extension CGPoint {
-    init (gvPoint: pointf_s) {
-        self.init(x: CGFloat(gvPoint.x), y: CGFloat(gvPoint.y))
-        assert (isFinite)
-    }
-}
-
-// needed as parameter in some conversions, so I keep the extra function
-func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
-    return CGPoint(gvPoint: point)
-}
-
-extension CGRect {
-    init (box: boxf) {
-        self.init(x: box.LL.x, y: box.LL.y, width: box.UR.x - box.LL.x, height: box.UR.y - box.LL.y)
-    }
-}
-
 @objc public enum GVLayoutEngine: Int {
     case dot = 0
     case neato
