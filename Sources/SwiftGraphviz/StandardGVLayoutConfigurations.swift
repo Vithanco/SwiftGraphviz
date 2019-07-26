@@ -36,7 +36,7 @@ import Foundation
             return GVLayoutConfig(
                 name: "Star (neato)",
                 layoutEngine: .neato,
-                renderEngine: .dot,
+                renderEngine: .neato,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
                 params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue], //,.graph(.sep): "+20,20"],
                 secondLayoutEngine: nil,
@@ -54,28 +54,28 @@ import Foundation
             return GVLayoutConfig(
                 name: "nop",
                 layoutEngine: .dot,
-                renderEngine: .dot,
+                renderEngine: .nop,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
                 params: [:],
-                secondLayoutEngine: .nop,
+                secondLayoutEngine: nil,
                 supportClusters: true)
         case .nop2:
             return GVLayoutConfig(
                 name: "nop2",
                 layoutEngine: .dot,
-                renderEngine: .dot,
+                renderEngine: .nop2,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
                 params: [:],
-                secondLayoutEngine: .nop2,
+                secondLayoutEngine: nil,
                 supportClusters: true)
         case .twopi:
             return GVLayoutConfig(
                 name: "twopi",
-                layoutEngine: .dot,
+                layoutEngine: .twopi,
                 renderEngine: .dot,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [:],
-                secondLayoutEngine: .twopi,
+                params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue],
+                secondLayoutEngine: nil,
                 supportClusters: false)
         case .systemsThinking:
             return GVLayoutConfig(
