@@ -23,17 +23,18 @@ public struct GVLayoutConfig {
    public func layout(_ gvc: GVGlobalContextPointer, _ g: GVGraph) {
         gvLayout(gvc,g,layoutEngine.graphvizName)
         gvRender(gvc,g,renderEngine.graphvizName,nil)
-        if saveGVOutput {
-            Swift.print("now saving Graphviz Graph to file!")
-            gvRenderFilename(gvc, g, "png", cString("/Users/klauskneupner/Downloads/test.png"))
-            gvRenderFilename(gvc, g, "cmap", cString("/Users/klauskneupner/Downloads/out.map"))
-            
-            //            gvRender(gvc, g, "plain", stdout);
-        }
+
         if let second = secondLayoutEngine {
-            gvLayout(gvc,g,second.graphvizName)
-            gvRender(gvc,g,renderEngine.graphvizName,nil)
+//            gvLayout(gvc,g,second.graphvizName)
+            gvRender(gvc,g,second.graphvizName,nil)
         }
+    if saveGVOutput {
+        Swift.print("now saving Graphviz Graph to file!")
+        gvRenderFilename(gvc, g, "png", cString(("~/Downloads/Graphviz.png" as NSString).expandingTildeInPath))
+//        gvRenderFilename(gvc, g, "cmap", cString("/Users/klauskneupner/Downloads/out.map"))
+        
+        //            gvRender(gvc, g, "plain", stdout);
+    }
     }
     
     mutating public func config(graph: GraphSettings) {

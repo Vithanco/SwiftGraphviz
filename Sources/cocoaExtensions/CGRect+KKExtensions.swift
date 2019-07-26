@@ -174,4 +174,9 @@ public extension CGRect {
         self.init(x: box.LL.x, y: box.LL.y, width: box.UR.x - box.LL.x, height: box.UR.y - box.LL.y)
     }
     
+    
+    func minSized(_ minSize: CGSize) -> CGRect{
+        return CGRect(middlePoint: self.midPoint, size: CGSize(width: max(minSize.width, self.width), height: max(minSize.height,self.height)))
+    }
+    
 }
