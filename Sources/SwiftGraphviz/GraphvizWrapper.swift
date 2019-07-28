@@ -336,6 +336,7 @@ public protocol GraphBuilder {
     func getGraphRect() -> CGRect
     
     func layout( )
+    var graph: GVGraph {get}
 }
 
 extension GraphBuilder {
@@ -384,7 +385,9 @@ public class GraphvizGraph: GraphBuilder {
         self.layouter = layouter
     }
     
-    
+    public var graph: GVGraph {
+        return g
+    }
     
     /// Simple Wrapper around `agattr` function of graphviz to set variables
     private func setBaseValue(_ target: Elements, _ attributeName: String, _ value: String) {
