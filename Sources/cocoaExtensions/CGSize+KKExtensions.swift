@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension CGSize {
+public extension CGSize {
     var isFinite: Bool {
         return width.isFinite && height.isFinite
     }
@@ -27,6 +27,10 @@ extension CGSize {
     
     var area: CGFloat {
         return width * height
+    }
+    
+    func hasAtLeastSize (_ minSize: CGSize) -> Bool {
+        return self.width >= minSize.width && self.height >= minSize.height
     }
 }
 
