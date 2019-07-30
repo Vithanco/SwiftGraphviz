@@ -180,8 +180,13 @@ public extension CGRect {
     
     
     func minSized(_ minSize: CGSize) -> CGRect{
-        return CGRect(middlePoint: self.midPoint, size: CGSize(width: max(minSize.width, self.width), height: max(minSize.height,self.height)))
+        return minSized(width: minSize.width, height: minSize.height)
     }
+    
+    func minSized(width: CGFloat, height: CGFloat) -> CGRect{
+        return CGRect(middlePoint: self.midPoint, size: CGSize(width: max(width, self.width), height: max(height,self.height)))
+    }
+    
     
 
 }
