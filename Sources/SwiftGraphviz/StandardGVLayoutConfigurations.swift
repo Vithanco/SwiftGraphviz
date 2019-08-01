@@ -36,7 +36,7 @@ import Foundation
             return GVLayoutConfig(
                 name: "Star (neato)",
                 layoutEngine: .neato,
-                renderEngine: .neato,
+                renderEngine: .dot,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
                 params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue], //,.graph(.sep): "+20,20"],
                 secondLayoutEngine: nil,
