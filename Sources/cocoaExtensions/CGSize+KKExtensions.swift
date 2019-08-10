@@ -32,9 +32,14 @@ public extension CGSize {
     func hasAtLeastSize (_ minSize: CGSize) -> Bool {
         return self.width >= minSize.width && self.height >= minSize.height
     }
+    
+    func restrictTo (maxSize: CGSize) -> CGSize {
+        return CGSize(width: min(self.width, maxSize.width), height: min(self.height, maxSize.height))
+    }
 }
 
 
 func convertZeroSizeToNil(_ gvSize: CGSize, precision: CGFloat = 0.1) -> CGSize? {
     return gvSize.convertZeroSizeToNil(precision:precision)
 }
+
