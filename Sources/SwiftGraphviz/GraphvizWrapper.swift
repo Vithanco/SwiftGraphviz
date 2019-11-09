@@ -93,7 +93,7 @@ public typealias GVGlobalContextPointer = OpaquePointer?
         return GVGraphType.readableNames[self.rawValue]
     }
     
-    static var readableNames: [String] {
+    public static var readableNames: [String] {
         return ["Non-Strict Directed", "Strict Directed", "Non-Strict Non-Directed", "Strict Non-Directed"]
     }
     
@@ -101,6 +101,13 @@ public typealias GVGlobalContextPointer = OpaquePointer?
         switch self {
         case .nonStrictDirected, .nonStrictNonDirected : return false
         case .strictDirected, .strictNonDirected : return true
+        }
+    }
+    
+    public var isDirected: Bool {
+        switch self {
+        case .nonStrictDirected, .strictDirected : return true
+        case .nonStrictNonDirected, .strictNonDirected : return false
         }
     }
 }
@@ -320,7 +327,8 @@ public typealias GVParams = [GVParameter: String]
 
 public protocol GraphBuilder {
     func newNode(name: String, label: String, cluster: GVCluster?) -> GVNode
-    func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge
+    /// can return nil for strict graphs
+    func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge?
     func newCluster(name: String, label: String, parent: GVCluster?) -> GVCluster
     func setNodeSize(node: GVNode, width: GVPixel, height: GVPixel)
     func setFontSize(node: GVNode, fontSize: CGFloat)
@@ -474,12 +482,13 @@ public class GraphvizGraph: GraphBuilder {
         return node
     }
     
-    public func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge {
-        let result = agedge(g, from, to, cString(name), SearchOrCreate.createNew.rawValue)!
-        
+    public func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge? {
+        if let result = agedge(g, from, to, cString(name), SearchOrCreate.createNew.rawValue) {
         //        Swift.print("edge: weight= \(weight), constraint= \(constraint ? "true" : "false")")
-        setEdgeValue(result, .dir, dir.rawValue)
-        return result
+            setEdgeValue(result, .dir, dir.rawValue)
+            return result
+        }
+        return nil
     }
     
     public func newCluster(name: String, label: String, parent: GVCluster?) -> GVCluster {
