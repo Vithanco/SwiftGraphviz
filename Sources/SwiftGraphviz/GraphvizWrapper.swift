@@ -484,6 +484,7 @@ public class GraphvizGraph: GraphBuilder {
     
     public func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge? {
         if let result = agedge(g, from, to, cString(name), SearchOrCreate.createNew.rawValue) {
+
         //        Swift.print("edge: weight= \(weight), constraint= \(constraint ? "true" : "false")")
             setEdgeValue(result, .dir, dir.rawValue)
             return result
