@@ -16,7 +16,9 @@ public enum VerticalPosition {
 
 public enum HorizontalPosition {
     case left
+    case oneQuarter
     case middle
+    case threeQuarters
     case right
 }
 
@@ -58,6 +60,10 @@ public extension CGRect {
             x = self.origin.x + self.width * 0.5
         case .right:
             x = self.origin.x + self.width
+        case .oneQuarter:
+            x = self.origin.x + self.width * 0.25
+        case .threeQuarters:
+            x = self.origin.x + self.width * 0.75
         }
         return NSMakePoint(x, y)
     }
@@ -80,6 +86,10 @@ public extension CGRect {
             x = self.origin.x + self.width * 0.5
         case .right:
             x = self.origin.x + self.width - distance
+        case .oneQuarter:
+            x = self.origin.x + self.width * 0.25
+        case .threeQuarters:
+            x = self.origin.x + self.width * 0.75
         }
         return NSMakePoint(x, y)
     }
