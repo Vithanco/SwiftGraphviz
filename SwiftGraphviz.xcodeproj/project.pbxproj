@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89B96393238539B3008CCBB2 /* SwiftGraphvizMac in Frameworks */ = {isa = PBXBuildFile; productRef = 89B96392238539B3008CCBB2 /* SwiftGraphvizMac */; };
 		E53227E62260F8F2003A9143 /* libgvplugin_dot_layout_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DD2260F8F2003A9143 /* libgvplugin_dot_layout_C.a */; };
 		E53227E72260F8F3003A9143 /* libpathplan_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DE2260F8F2003A9143 /* libpathplan_C.a */; };
 		E53227E82260F8F3003A9143 /* libcdt_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DF2260F8F2003A9143 /* libcdt_C.a */; };
@@ -184,6 +185,7 @@
 				E53227E62260F8F2003A9143 /* libgvplugin_dot_layout_C.a in Frameworks */,
 				E53227E72260F8F3003A9143 /* libpathplan_C.a in Frameworks */,
 				E53227F72260F8F9003A9143 /* libz.a in Frameworks */,
+				89B96393238539B3008CCBB2 /* SwiftGraphvizMac in Frameworks */,
 				E53227F82260F8F9003A9143 /* libltdlc.a in Frameworks */,
 				E53227F92260F8F9003A9143 /* iconv.o in Frameworks */,
 				E53227FA2260F8F9003A9143 /* libglib-2.0.a in Frameworks */,
@@ -409,6 +411,9 @@
 			dependencies = (
 			);
 			name = SwiftGraphvizIOS;
+			packageProductDependencies = (
+				89B96392238539B3008CCBB2 /* SwiftGraphvizMac */,
+			);
 			productName = SwiftGraphviz;
 			productReference = E53227D22260511C003A9143 /* libSwiftGraphvizIOS.a */;
 			productType = "com.apple.product-type.library.static";
@@ -457,6 +462,9 @@
 				en,
 			);
 			mainGroup = E53227C92260511C003A9143;
+			packageReferences = (
+				89B96391238539B3008CCBB2 /* XCRemoteSwiftPackageReference "swiftgraphviz" */,
+			);
 			productRefGroup = E53227D32260511C003A9143 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -791,6 +799,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		89B96391238539B3008CCBB2 /* XCRemoteSwiftPackageReference "swiftgraphviz" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitlab.com/vithanco/swiftgraphviz.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		89B96392238539B3008CCBB2 /* SwiftGraphvizMac */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89B96391238539B3008CCBB2 /* XCRemoteSwiftPackageReference "swiftgraphviz" */;
+			productName = SwiftGraphvizMac;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E53227CA2260511C003A9143 /* Project object */;
 }
