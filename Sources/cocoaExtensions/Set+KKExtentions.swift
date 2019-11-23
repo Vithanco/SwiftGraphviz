@@ -14,3 +14,9 @@ public extension Set {
         return Array(self)
     }
 }
+
+public extension Array where Element : Hashable {
+    var asSet: Set<Element> {
+        return Set<Element>(self)
+    }
+}
