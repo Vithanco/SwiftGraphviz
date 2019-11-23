@@ -327,6 +327,7 @@ public typealias GVParams = [GVParameter: String]
 
 public protocol GraphBuilder {
     func newNode(name: String, label: String, cluster: GVCluster?) -> GVNode
+    /// can return nil for strict graphs
     func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge?
     func newCluster(name: String, label: String, parent: GVCluster?) -> GVCluster
     func setNodeSize(node: GVNode, width: GVPixel, height: GVPixel)
@@ -483,6 +484,8 @@ public class GraphvizGraph: GraphBuilder {
     
     public func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge? {
         if let result = agedge(g, from, to, cString(name), SearchOrCreate.createNew.rawValue) {
+
+        //        Swift.print("edge: weight= \(weight), constraint= \(constraint ? "true" : "false")")
             setEdgeValue(result, .dir, dir.rawValue)
             return result
         }
