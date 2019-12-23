@@ -52,6 +52,9 @@ public typealias GVGlobalContextPointer = OpaquePointer?
         case .twopi: return "twopi"
         }
     }
+    public var supportsLayers: Bool {
+        return self != .neato
+    }
 }
 
 ///marked as @objc in order to be able to save it as a simple scalar in core data / NSManagedObject

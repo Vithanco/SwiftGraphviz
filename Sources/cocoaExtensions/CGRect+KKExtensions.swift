@@ -39,7 +39,7 @@ public extension CGRect {
     }
 
     func moveMiddleTo(_ point: CGPoint) -> CGRect {
-        return CGRect(middlePoint: point, size: self.size)
+        return CGRect(midPoint: point, size: self.size)
     }
 
     func position(_ vertical: VerticalPosition, horizontal: HorizontalPosition) -> CGPoint {
@@ -151,8 +151,8 @@ public extension CGRect {
 //        self.init(x: origin.x, y: origin.y, width: size.width, height: size.height)
 //    }
 
-    init(middlePoint: CGPoint, size: CGSize) {
-        self.init(x: middlePoint.x - size.width / 2, y: middlePoint.y - size.height / 2, width: size.width, height: size.height)
+    init(midPoint: CGPoint, size: CGSize) {
+        self.init(x: midPoint.x - size.width / 2, y: midPoint.y - size.height / 2, width: size.width, height: size.height)
     }
     
     /// create a rect that is determined by two opposing corners
@@ -194,7 +194,7 @@ public extension CGRect {
     }
     
     func minSized(width: CGFloat, height: CGFloat) -> CGRect{
-        return CGRect(middlePoint: self.midPoint, size: CGSize(width: max(width, self.width), height: max(height,self.height)))
+        return CGRect(midPoint: self.midPoint, size: CGSize(width: max(width, self.width), height: max(height,self.height)))
     }
     
     
