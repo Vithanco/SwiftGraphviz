@@ -95,4 +95,8 @@ import Foundation
     public var usesNodeDistance: Bool {
         return configuration.usesNodeDistance
     }
+    
+    public var supportsLayers: Bool {
+        return configuration.layoutEngine.supportsLayers
+    }
 }

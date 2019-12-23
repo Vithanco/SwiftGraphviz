@@ -107,7 +107,7 @@ func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
 //    return lhs.distance(to: rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)
 //}
 
-public func middlePoint(between a: CGPoint, and b: CGPoint) -> CGPoint {
+public func midPoint(between a: CGPoint, and b: CGPoint) -> CGPoint {
 	return CGPoint(x: (a.x + b.x)/2.0, y: (a.y + b.y)/2.0)
 }
 

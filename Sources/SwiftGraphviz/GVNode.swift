@@ -30,7 +30,7 @@ public extension UnsafeMutablePointer where Pointee == Agnode_t {
         let mid = self.pos
         let w = self.width
         let h = self.height
-        return CGRect(middlePoint: mid, size: CGSize(width: w, height: h))
+        return CGRect(midPoint: mid, size: CGSize(width: w, height: h))
     }
 
 }
