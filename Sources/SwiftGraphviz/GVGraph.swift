@@ -12,6 +12,9 @@ import Foundation
 
 public typealias GVGraph = UnsafeMutablePointer<Agraph_t>
 
+public struct AGWriteWrongEncoding: Error { }
+public struct CannotOpenFileDescriptor: Error { }
+
 public extension UnsafeMutablePointer where Pointee == Agraph_t {
     
     func saveTo(fileName: String)  {
@@ -39,7 +42,8 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
     }
 }
 
-@discardableResult fileprivate func use<R>(
+@discardableResult
+fileprivate func use<R>(
     fileDescriptor: Int32,
     mode: UnsafePointer<Int8>!,
     closure: (UnsafeMutablePointer<FILE>) throws -> R
