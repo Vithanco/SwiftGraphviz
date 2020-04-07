@@ -143,6 +143,10 @@ public extension CGRect {
         return NSRect(x: origin.x, y: origin.y, width: size.width, height: size.height + amount)
     }
     
+    func addToWidth(_ amount: CGFloat) -> NSRect {
+        return NSRect(x: origin.x, y: origin.y, width: size.width + amount, height: size.height )
+    }
+    
     func substractFromHeight(_ amount: CGFloat) -> NSRect {
         return addToHeight(-1 * amount)
     }
