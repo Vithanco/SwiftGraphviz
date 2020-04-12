@@ -66,7 +66,7 @@ public extension UnsafeMutablePointer where Pointee == Agedge_t {
         return spline
     }
     
-    func getPath () throws -> [CGPoint]  {
+    func getPath() throws -> [CGPoint]  {
         guard let spline = spline, let bezier = spline.pointee.list else {  //warning! this could be an array, see warning log before
             throw GraphvizError.noPath
         }
