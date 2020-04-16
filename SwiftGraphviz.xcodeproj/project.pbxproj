@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		89B96393238539B3008CCBB2 /* SwiftGraphvizMac in Frameworks */ = {isa = PBXBuildFile; productRef = 89B96392238539B3008CCBB2 /* SwiftGraphvizMac */; };
+		89CBA85B2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */; };
+		89CBA85C2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */; };
 		E53227E62260F8F2003A9143 /* libgvplugin_dot_layout_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DD2260F8F2003A9143 /* libgvplugin_dot_layout_C.a */; };
 		E53227E72260F8F3003A9143 /* libpathplan_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DE2260F8F2003A9143 /* libpathplan_C.a */; };
 		E53227E82260F8F3003A9143 /* libcdt_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DF2260F8F2003A9143 /* libcdt_C.a */; };
@@ -95,6 +97,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphBuilderBias.swift; sourceTree = "<group>"; };
 		E53227D22260511C003A9143 /* libSwiftGraphvizIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSwiftGraphvizIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53227DD2260F8F2003A9143 /* libgvplugin_dot_layout_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgvplugin_dot_layout_C.a; path = gvLibs/libgvplugin_dot_layout_C.a; sourceTree = "<group>"; };
 		E53227DE2260F8F2003A9143 /* libpathplan_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpathplan_C.a; path = gvLibs/libpathplan_C.a; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 				E53228002261B78B003A9143 /* GVNode.swift */,
 				E53228032261B78B003A9143 /* GVParameters.swift */,
 				E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */,
+				89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */,
 				E586283E229C6AC50074F6DC /* GVGraph.swift */,
 			);
 			path = SwiftGraphviz;
@@ -485,6 +489,7 @@
 				E564F8AC227B228B005CCB3B /* Double+KKExtensions.swift in Sources */,
 				E564F8B4227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */,
 				E53228142261B78C003A9143 /* GVEdge.swift in Sources */,
+				89CBA85B2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */,
 				E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */,
 				E532280F2261B78C003A9143 /* GraphvizWrapper.swift in Sources */,
 				E564F8B2227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */,
@@ -514,6 +519,7 @@
 				E571EC072261BC6C000F7DA1 /* GVNode.swift in Sources */,
 				E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */,
 				E571EC082261BC6C000F7DA1 /* GVParameters.swift in Sources */,
+				89CBA85C2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */,
 				E5B10A1F22E645ED00150B65 /* CGSize+KKExtensions.swift in Sources */,
 				E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */,
 				E5862840229C6C9A0074F6DC /* GVGraph.swift in Sources */,

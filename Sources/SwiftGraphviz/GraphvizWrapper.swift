@@ -10,14 +10,12 @@ import Foundation
 
 enum GraphvizError : Error {
     case noPath
+    case headTailMissing
 }
-
-
 
 ///Global Graphviz Context.
 ///To be set at program start and freed and progam end
 fileprivate var gblGVContext: GVGlobalContextPointer = loadGraphvizLibraries() //UnsafeMutablePointer<GVC_t>?
-
 
 public typealias CHAR = UnsafeMutablePointer<Int8>
 public typealias CHAR_ARRAY = UnsafeMutablePointer<UnsafeMutablePointer<Int8>>
@@ -25,10 +23,6 @@ public typealias GVSplines = UnsafeMutablePointer<splines>
 public typealias GVBezier = UnsafeMutablePointer<bezier>
 public typealias GVPixel = CGFloat
 public typealias GVGlobalContextPointer = OpaquePointer?
-
-
-
-
 
 @objc public enum GVLayoutEngine: Int {
     case dot = 0
@@ -246,36 +240,6 @@ public typealias GVGlobalContextPointer = OpaquePointer?
     }
 }
 
-
-//public struct GVClusterPosData {
-//    public let rect: CGRect
-//    public let labelPos: CGPoint
-//    
-//    ///Hide the cluster if the layout engine doesn't support it 
-//    public let isHidden: Bool
-//    
-//    public func addToHeight(_ add: CGFloat) -> GVClusterPosData {
-//        return GVClusterPosData(rect: rect.addToHeight(add), labelPos: labelPos, isHidden: isHidden)
-//    }
-//    
-//    public init(rect: CGRect, labelPos: CGPoint ,isHidden: Bool) {
-//        self.rect = rect
-//        self.labelPos = labelPos
-//        self.isHidden = isHidden
-//    }
-//}
-
-
-public func prepareGraphviz() {
-    //    gblGVContext = gvContext()
-    //    assert(gblGVContext.unsafelyUnwrapped != nil)
-    //    loadGraphvizLibraries(gblGVContext)
-    
-    
-//        verboseGraphviz()
-    
-}
-
 /// Make Graphviz more chatty. Call only if needed
 /// Based on http://stackoverflow.com/questions/29469158/interact-with-legacy-c-terminal-app-from-swift
 public func verboseGraphviz() {
@@ -320,7 +284,6 @@ public protocol GraphSettings: class {
     var graphType: GVGraphType {get}
     var maxNodeSize: CGSize {get}
     var nodeViewSize: CGSize {get}
-    //    var logic: GraphLogic {get}
     var name: String? {get}
 }
 
@@ -435,13 +398,7 @@ public class GraphvizGraph: GraphBuilder {
         agset(node, cString(attributeName), cString(value))
     }
     
-    //    /// reminder: if attribute doesn't show effect then you have forgotten to set base value
-    //    fileprivate func setEdgeValue(_ edge: GVEdge, _ attributeName: String, _ value: String) {
-    //
-    //        agset(edge, cString(attributeName), cString(value))
-    //    }
-    
-    /// reminder: if attribute doesn't show effect then you have forgotten to set base value
+    /// reminder: if attribute doesn't show effect then you most likely have forgotten to set base value
     public func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String) {
         #if DEBUG
         if !baseValues[.edge]!.contains(param.rawValue) {
@@ -487,8 +444,6 @@ public class GraphvizGraph: GraphBuilder {
     
     public func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge? {
         if let result = agedge(g, from, to, cString(name), SearchOrCreate.createNew.rawValue) {
-
-        //        Swift.print("edge: weight= \(weight), constraint= \(constraint ? "true" : "false")")
             setEdgeValue(result, .dir, dir.rawValue)
             return result
         }
@@ -529,28 +484,11 @@ public class GraphvizGraph: GraphBuilder {
         return CGRect(box: box)
     }
     
-    public func layout( ){ //engine: GVLayoutConfig? = nil) {
-        //        let usedEngine = engine ?? layouter
+    public func layout( ){
         layouter.layout(gblGVContext, g)
-//                let dir = NSString("~/Downloads")
-//                let file = NSString("graph.txt")
-//                let path = NSString(string: dir.expandingTildeInPath)
-//                let filePath = path.appendingPathComponent(file as String)
-//        saveTo(fileName: filePath)
     }
     
-    //    public func getClusterPos(cluster: GVCluster) -> GVClusterPosData{
-    //        var rect = getGraphRect(cluster: cluster)
-    //
-    //        let lblPos = cluster.labelPos ?? NSZeroPoint
-    //        let result = GVClusterPosData(rect: rect, labelPos: lblPos, isHidden: false)
-    //        return result
-    //    }
     public func saveTo(fileName: String) {
-//        let dir = NSString("~/Downloads")
-//        let file = NSString("graph.txt")
-//        let path = NSString(string: dir.expandingTildeInPath)
-//        let filePath = path.appendingPathComponent(file as String)
         g.saveTo(fileName: fileName)
     }
     
