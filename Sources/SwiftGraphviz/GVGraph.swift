@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 public typealias GVGraph = UnsafeMutablePointer<Agraph_t>
 
 public struct AGWriteWrongEncoding: Error { }
