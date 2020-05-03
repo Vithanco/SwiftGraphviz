@@ -284,7 +284,7 @@ public protocol GraphSettings: class {
     var graphType: GVGraphType {get}
     var maxNodeSize: CGSize {get}
     var nodeViewSize: CGSize {get}
-    var name: String? {get}
+    var graphName: String {get}
 }
 
 
