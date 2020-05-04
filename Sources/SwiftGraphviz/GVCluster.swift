@@ -9,18 +9,6 @@
 import Foundation
 
 
-public protocol ClusterLayout {
-    var labelPos: CGPoint? {get}
-    var labelSize: CGSize? {get}
-    var rect: CGRect {get}
-}
-
-struct ClusterLayoutImpl : ClusterLayout {
-    let labelPos: CGPoint?
-    let labelSize: CGSize?
-    let rect: CGRect
-}
-
 
 public typealias GVCluster = UnsafeMutablePointer<Agraph_t>
 
@@ -52,9 +40,5 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
             return String(cString: text)
         }
         return nil
-    }
-
-    var asClusterLayout : ClusterLayout {
-        return ClusterLayoutImpl(labelPos: labelPos, labelSize: labelSize, rect: rect)
     }
 }

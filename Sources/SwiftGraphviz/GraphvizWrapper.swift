@@ -273,19 +273,25 @@ func cString(_ s: String) -> CHAR {
 }
 
 
-public protocol GraphSettings: class {
-    var direction: GVModelDirection {get}
-    var maxNodeWidth: Double {get}
-    var maxNodeHeight: Double {get}
-    var minNodeDistanceX: Double {get} //nodesep
-    var minNodeDistanceY: Double {get} //ranksep
-    var edgeStyle: GVEdgeStyle {get}
-    var layouter: GVLayoutConfig {get}
-    var graphType: GVGraphType {get}
-    var maxNodeSize: CGSize {get}
-    var nodeViewSize: CGSize {get}
-    var graphName: String {get}
+
+@objc public enum GraphBias: Int64, CaseIterable {
+    case fletchingSide = 0 // Graphviz default
+    case pointySide = 1
+
+    public static var readableNames: [String] {
+        return ["Source Model Direction", "Target Model Direction"]
+    }
+
+    public static var toolTips: [String] {
+        return ["If in doubt, then place the nodes as far as possible towards the backside of the graphs arrows (the side where the fletchings would be at a real arrow).", "If in doubt, then place the nodes as far as possible towards the pointy side of the graphs arrows"]
+    }
+
+    var asString: String {
+        return GraphBias.readableNames[Int(self.rawValue)]
+    }
 }
+
+
 
 
 

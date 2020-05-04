@@ -9,26 +9,6 @@
 import Foundation
 
 
-public protocol NodeLayout{
-    var pos: CGPoint {get}
-    var size: CGSize {get}
-}
-
-private struct NodeLayoutImpl : NodeLayout {
-     let pos: CGPoint
-    let size: CGSize
-    init(node: GVNode) {
-        self.pos = node.pos
-        self.size = node.size
-    }
-}
-
-public extension NodeLayout {
-    var rect: CGRect{
-        return CGRect(midPoint: self.pos, size: self.size)
-    }
-}
-
 public typealias GVNode = UnsafeMutablePointer<Agnode_t>
 
 extension UnsafeMutablePointer where Pointee == Agnode_t  {
@@ -57,7 +37,4 @@ extension UnsafeMutablePointer where Pointee == Agnode_t  {
         return CGRect(midPoint: mid, size: CGSize(width: w, height: h))
     }
     
-    var asNodeLayout: NodeLayout {
-        return NodeLayoutImpl (node: self)
-    }
 }

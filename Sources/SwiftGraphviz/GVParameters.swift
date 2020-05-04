@@ -12,7 +12,7 @@ import CoreGraphics
 
 let pointsPerInch: CGFloat = 72.0
 
-func pixelToInchParameter(_ x: CGFloat) -> String {
+public func pixelToInchParameter(_ x: CGFloat) -> String {
     return "\(x / pointsPerInch)"
 }
 
@@ -161,7 +161,7 @@ public enum GVParamValueOverlap : String {
     case orthogonal
     case splines
     
-    var graphvizName: String {
+    public var graphvizName: String {
         switch self {
         case .curved:
             return "curved"
@@ -189,7 +189,7 @@ public enum GVParamValueOverlap : String {
     case max
     case sink
     
-    var graphvizName: String {
+    public var graphvizName: String {
         switch self {
         case .same:
             return "same"
