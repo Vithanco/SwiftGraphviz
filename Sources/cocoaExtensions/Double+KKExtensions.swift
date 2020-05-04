@@ -17,13 +17,16 @@ func isCGFloatEqual(_ left: CGFloat, _  right: CGFloat, delta: CGFloat = 0.01) -
     return abs(left - right) <= delta
 }
 
-extension CGFloat {
+public extension CGFloat {
     var squared: CGFloat {
         return self*self
     }
+    var asDouble: Double {
+        return Double(self)
+    }
 }
 
-extension Double {
+public extension Double {
     var asCGFloat: CGFloat {
         return CGFloat(self)
     }
