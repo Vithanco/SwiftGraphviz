@@ -201,6 +201,9 @@ public extension CGRect {
         return CGRect(midPoint: self.midPoint, size: CGSize(width: max(width, self.width), height: max(height,self.height)))
     }
     
+    func enlarge(width: CGFloat, height: CGFloat) -> CGRect{
+           return CGRect(midPoint: self.midPoint, size: CGSize(width:  self.width + width, height: self.height + height))
+       }
     
    
 }
