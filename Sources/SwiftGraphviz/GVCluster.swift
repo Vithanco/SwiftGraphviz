@@ -44,7 +44,7 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
 }
 
 extension CGRect {
-    init (box: boxf) {
+    public init (box: boxf) {
         self.init(x: box.LL.x, y: box.LL.y, width: box.UR.x - box.LL.x, height: box.UR.y - box.LL.y)
     }
 }

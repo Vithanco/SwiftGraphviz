@@ -62,7 +62,7 @@ public extension UnsafeMutablePointer where Pointee == Agedge_t {
             return nil
         }
         if spline.pointee.size != 1 {
-            logThis(.warning, "an edge with size == \(spline.pointee.size)")
+            logger.warning("an edge with size == \(spline.pointee.size)")
         }
         return spline
     }

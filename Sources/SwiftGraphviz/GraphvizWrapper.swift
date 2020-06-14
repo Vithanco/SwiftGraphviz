@@ -151,7 +151,7 @@ public typealias GVGlobalContextPointer = OpaquePointer?
         case .towardsTop:
             return "BT"
         default:
-            logThis(.warning, "Unknown GVModelDirection : \(self.rawValue)")
+            logger.warning("Unknown GVModelDirection : \(self.rawValue)")
             return "LR"
         }
     }
@@ -373,7 +373,7 @@ public class GraphvizGraph: GraphBuilder {
     private func setBaseValue(_ target: Elements, _ attributeName: String, _ value: String) {
         #if DEBUG
         if baseValues[target]!.contains(attributeName) {
-            logThis(.warning, "baseValue already set for  \(attributeName) for \(target)")
+            logger.warning("baseValue already set for  \(attributeName) for \(target)")
         }
         #endif
         agattr(g, target.rawValue, cString(attributeName), cString(value))
@@ -398,7 +398,7 @@ public class GraphvizGraph: GraphBuilder {
     public func setNodeValue(_ node: GVNode, _ attributeName: String, _ value: String) {
         #if DEBUG
         if !baseValues[.node]!.contains(attributeName) {
-            logThis(.error, "no baseValue set for  \(attributeName) for Nodes. Setting the attribute Value will have no effect.")
+            logger.error("no baseValue set for  \(attributeName) for Nodes. Setting the attribute Value will have no effect.")
         }
         #endif
         agset(node, cString(attributeName), cString(value))
@@ -408,7 +408,7 @@ public class GraphvizGraph: GraphBuilder {
     public func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String) {
         #if DEBUG
         if !baseValues[.edge]!.contains(param.rawValue) {
-            logThis(.error, "no baseValue set for  \(param.rawValue) for Edges. Setting the attribute Value will have no effect.")
+            logger.error("no baseValue set for  \(param.rawValue) for Edges. Setting the attribute Value will have no effect.")
         }
         #endif
         // setEdgeValue(edge, param.rawValue, value)
@@ -419,7 +419,7 @@ public class GraphvizGraph: GraphBuilder {
     public func setGraphValue(_ attributeName: String, _ value: String) {
         #if DEBUG
         if !baseValues[.graph]!.contains(attributeName) {
-            logThis(.error, "no baseValue set for  \(attributeName) for Graphs. Setting the attribute Value will have no effect.")
+            logger.error("no baseValue set for  \(attributeName) for Graphs. Setting the attribute Value will have no effect.")
         }
         #endif
         agset(g, cString(attributeName), cString(value))
@@ -429,7 +429,7 @@ public class GraphvizGraph: GraphBuilder {
     public func setClusterValue(_ cluster: GVCluster, _ attributeName: String, _ value: String) {
         #if DEBUG
         if !baseValues[.graph]!.contains(attributeName) {
-            logThis(.error, "no baseValue set for  \(attributeName) for Clusters. Setting the attribute Value will have no effect.")
+            logger.error("no baseValue set for  \(attributeName) for Clusters. Setting the attribute Value will have no effect.")
         }
         #endif
         agset(cluster, cString(attributeName), cString(value))

@@ -10,6 +10,7 @@
 		89B96393238539B3008CCBB2 /* SwiftGraphvizMac in Frameworks */ = {isa = PBXBuildFile; productRef = 89B96392238539B3008CCBB2 /* SwiftGraphvizMac */; };
 		89CBA85B2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */; };
 		89CBA85C2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */; };
+		89F4ED2E2495436B0099B6C6 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 89F4ED2D2495436B0099B6C6 /* Logging */; };
 		E53227E62260F8F2003A9143 /* libgvplugin_dot_layout_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DD2260F8F2003A9143 /* libgvplugin_dot_layout_C.a */; };
 		E53227E72260F8F3003A9143 /* libpathplan_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DE2260F8F2003A9143 /* libpathplan_C.a */; };
 		E53227E82260F8F3003A9143 /* libcdt_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53227DF2260F8F2003A9143 /* libcdt_C.a */; };
@@ -200,6 +201,7 @@
 				E53227E92260F8F3003A9143 /* libcgraph_C.a in Frameworks */,
 				E53227EA2260F8F3003A9143 /* libgvplugin_neato_layout_C.a in Frameworks */,
 				E53227EB2260F8F3003A9143 /* libgvplugin_quartz_C.a in Frameworks */,
+				89F4ED2E2495436B0099B6C6 /* Logging in Frameworks */,
 				E53227EC2260F8F3003A9143 /* libgvc_C.a in Frameworks */,
 				E53227ED2260F8F3003A9143 /* libvpsc_C.a in Frameworks */,
 				E53227EE2260F8F3003A9143 /* libgvplugin_core_C.a in Frameworks */,
@@ -417,6 +419,7 @@
 			name = SwiftGraphvizIOS;
 			packageProductDependencies = (
 				89B96392238539B3008CCBB2 /* SwiftGraphvizMac */,
+				89F4ED2D2495436B0099B6C6 /* Logging */,
 			);
 			productName = SwiftGraphviz;
 			productReference = E53227D22260511C003A9143 /* libSwiftGraphvizIOS.a */;
@@ -433,6 +436,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				89F4ED3724955F180099B6C6 /* PBXTargetDependency */,
 			);
 			name = SwiftGraphvizMac;
 			productName = SwiftGraphvizMac;
@@ -468,6 +472,7 @@
 			mainGroup = E53227C92260511C003A9143;
 			packageReferences = (
 				89B96391238539B3008CCBB2 /* XCRemoteSwiftPackageReference "swiftgraphviz" */,
+				89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = E53227D32260511C003A9143 /* Products */;
 			projectDirPath = "";
@@ -531,6 +536,13 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		89F4ED3724955F180099B6C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 89F4ED3624955F180099B6C6 /* Logging */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		E53227D72260511C003A9143 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -584,7 +596,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -640,7 +652,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -726,7 +738,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -763,7 +775,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -815,6 +827,14 @@
 				kind = branch;
 			};
 		};
+		89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -822,6 +842,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89B96391238539B3008CCBB2 /* XCRemoteSwiftPackageReference "swiftgraphviz" */;
 			productName = SwiftGraphvizMac;
+		};
+		89F4ED2D2495436B0099B6C6 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		89F4ED3624955F180099B6C6 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
