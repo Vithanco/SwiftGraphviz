@@ -66,8 +66,6 @@ public extension CGPoint {
         return self.distance(to: a) > self.distance(to: b) ? (b, a) : (a, b)
     }
 
-
-    
     static func / (left: CGPoint, right: CGFloat) -> CGPoint {
         return CGPoint(x: left.x / right, y: left.y / right)
     }
@@ -87,6 +85,10 @@ public extension CGPoint {
         self.init(x: CGFloat(gvPoint.x), y: CGFloat(gvPoint.y))
         assert (isFinite)
     }
+//
+//    static var zero: CGPoint {
+//        return CGPoint(x: 0, y: 0)
+//    }
     
 }
 
