@@ -7,8 +7,5 @@
 //
 
 import Logging
-import Cocoa
 
-@available(macOS 10.14, *)
 internal let logger = Logger(label: "com.vithanco.swiftGraphviz")
-
