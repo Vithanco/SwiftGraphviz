@@ -9,13 +9,13 @@
 import Foundation
 
 
-public extension Set {
+internal extension Set {
     var asArray: [Element] {
         return Array(self)
     }
 }
 
-public extension Array where Element : Hashable {
+internal extension Array where Element : Hashable {
     var asSet: Set<Element> {
         return Set<Element>(self)
     }
