@@ -26,7 +26,7 @@ public extension CGFloat {
     }
 }
 
-public extension Double {
+  extension Double {
     var asCGFloat: CGFloat {
         return CGFloat(self)
     }
