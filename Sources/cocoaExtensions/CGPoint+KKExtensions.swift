@@ -99,7 +99,7 @@ func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
 }
 
  extension CGPoint : Hashable {
-    public func hash(into hasher: inout Hasher){
+    public  func hash(into hasher: inout Hasher){
         hasher.combine(x)
         hasher.combine(y)
     }
@@ -109,9 +109,7 @@ func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
 //    return lhs.distance(to: rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)
 //}
 
-public func midPoint(between a: CGPoint, and b: CGPoint) -> CGPoint {
-	return CGPoint(x: (a.x + b.x)/2.0, y: (a.y + b.y)/2.0)
-}
+
 
 
 public func + (left: CGPoint, right: CGPoint) -> CGPoint {
