@@ -16,6 +16,7 @@ extern gvplugin_library_t gvplugin_quartz_LTX_library;
 //extern gvplugin_library_t gvplugin_lasi_LTX_library;
 //extern gvplugin_library_t gvplugin_pango_LTX_library;
 
+extern struct _dt_s textfont_dict_open(GVC_t * gvc);
 
 lt_symlist_t lt_preloaded_symbols[] = {
     { "gvplugin_core_LTX_library", (void*)(&gvplugin_core_LTX_library) },
