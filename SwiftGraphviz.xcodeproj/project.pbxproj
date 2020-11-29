@@ -99,9 +99,9 @@
 		E53228752261BB11003A9143 /* libgvplugin_neato_layout_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228632261BB11003A9143 /* libgvplugin_neato_layout_C.a */; };
 		E53228762261BB11003A9143 /* libgvplugin_quartz_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228642261BB11003A9143 /* libgvplugin_quartz_C.a */; };
 		E53228772261BB11003A9143 /* libcdt_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228652261BB11003A9143 /* libcdt_C.a */; };
-		E53228792261BB2A003A9143 /* builtins.h in Headers */ = {isa = PBXBuildFile; fileRef = E532280A2261B78C003A9143 /* builtins.h */; };
-		E532287C2261BB89003A9143 /* gvc.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287A2261BB89003A9143 /* gvc.h */; };
-		E532287D2261BB89003A9143 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287B2261BB89003A9143 /* types.h */; };
+		E53228792261BB2A003A9143 /* builtins.h in Headers */ = {isa = PBXBuildFile; fileRef = E532280A2261B78C003A9143 /* builtins.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E532287C2261BB89003A9143 /* gvc.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287A2261BB89003A9143 /* gvc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E532287D2261BB89003A9143 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = E532287B2261BB89003A9143 /* types.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E564F885226A4307005CCB3B /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E532285E2261BB11003A9143 /* libz.a */; };
 		E564F886226A4319005CCB3B /* iconv.o in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228602261BB11003A9143 /* iconv.o */; };
 		E564F887226A4319005CCB3B /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53228622261BB11003A9143 /* libexpat.a */; };
@@ -118,6 +118,17 @@
 		E564F8B3227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AA227B228A005CCB3B /* CGRect+KKExtensions.swift */; };
 		E564F8B4227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */; };
 		E564F8B5227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */; };
+		E565681C2573E397001CD7B4 /* SwiftGraphviz.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214F9624FBB50600B2FCC9 /* SwiftGraphviz.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E56568212573E466001CD7B4 /* gvplugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FDC24FBC43200B2FCC9 /* gvplugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E565682A2573E6E2001CD7B4 /* SwiftGraphviz-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = E53227FF2261B78A003A9143 /* SwiftGraphviz-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E565682F2573E6F3001CD7B4 /* arith.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FDE24FBC47000B2FCC9 /* arith.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E56568342573E6F8001CD7B4 /* cgraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FE224FBC47000B2FCC9 /* cgraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E56568392573E6FF001CD7B4 /* geom.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FE024FBC47000B2FCC9 /* geom.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E565683E2573E703001CD7B4 /* gvcext.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FDF24FBC47000B2FCC9 /* gvcext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E56568432573E706001CD7B4 /* pathgeom.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FE324FBC47100B2FCC9 /* pathgeom.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E56568482573E709001CD7B4 /* textspan.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FE124FBC47000B2FCC9 /* textspan.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E565684D2573E70C001CD7B4 /* usershape.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214FE424FBC47100B2FCC9 /* usershape.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E565687A257410A7001CD7B4 /* libltdlc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E564F875226A0C1A005CCB3B /* libltdlc.a */; };
 		E571EC002261BC6C000F7DA1 /* builtins.c in Sources */ = {isa = PBXBuildFile; fileRef = E53228072261B78B003A9143 /* builtins.c */; };
 		E571EC032261BC6C000F7DA1 /* GraphvizWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228022261B78B003A9143 /* GraphvizWrapper.swift */; };
 		E571EC042261BC6C000F7DA1 /* GVCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228012261B78B003A9143 /* GVCluster.swift */; };
@@ -126,12 +137,12 @@
 		E571EC072261BC6C000F7DA1 /* GVNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228002261B78B003A9143 /* GVNode.swift */; };
 		E571EC082261BC6C000F7DA1 /* GVParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228032261B78B003A9143 /* GVParameters.swift */; };
 		E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
-		E571EC0D2261C0C8000F7DA1 /* agraph.h in Headers */ = {isa = PBXBuildFile; fileRef = E571EC0C2261C0C8000F7DA1 /* agraph.h */; };
+		E571EC0D2261C0C8000F7DA1 /* agraph.h in Headers */ = {isa = PBXBuildFile; fileRef = E571EC0C2261C0C8000F7DA1 /* agraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5862840229C6C9A0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
 		E5862841229C6C9B0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
 		E5B10A1E22E6454500150B65 /* CGSize+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */; };
 		E5B10A1F22E645ED00150B65 /* CGSize+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */; };
-		E5B1A8CB2261DCD80090DBD8 /* cdt.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1A8CA2261DCD80090DBD8 /* cdt.h */; };
+		E5B1A8CB2261DCD80090DBD8 /* cdt.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1A8CA2261DCD80090DBD8 /* cdt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 /* End PBXBuildFile section */
@@ -319,7 +330,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53228772261BB11003A9143 /* libcdt_C.a in Frameworks */,
 				E53228682261BB11003A9143 /* libcgraph_C.a in Frameworks */,
+				E53228692261BB11003A9143 /* libgvc_C.a in Frameworks */,
+				E532286B2261BB11003A9143 /* libgvplugin_core_C.a in Frameworks */,
+				E532286A2261BB11003A9143 /* libgvplugin_dot_layout_C.a in Frameworks */,
+				E53228752261BB11003A9143 /* libgvplugin_neato_layout_C.a in Frameworks */,
+				E53228762261BB11003A9143 /* libgvplugin_quartz_C.a in Frameworks */,
+				E565687A257410A7001CD7B4 /* libltdlc.a in Frameworks */,
+				E532286F2261BB11003A9143 /* libpathplan_C.a in Frameworks */,
+				E53228732261BB11003A9143 /* libvpsc_C.a in Frameworks */,
 				E564F886226A4319005CCB3B /* iconv.o in Frameworks */,
 				E532286C2261BB11003A9143 /* libcharset.a in Frameworks */,
 				E564F887226A4319005CCB3B /* libexpat.a in Frameworks */,
@@ -327,15 +347,7 @@
 				E53228672261BB11003A9143 /* libgts.a in Frameworks */,
 				E564F889226A431A005CCB3B /* libintl.a in Frameworks */,
 				E564F885226A4307005CCB3B /* libz.a in Frameworks */,
-				E53228692261BB11003A9143 /* libgvc_C.a in Frameworks */,
-				E532286A2261BB11003A9143 /* libgvplugin_dot_layout_C.a in Frameworks */,
-				E532286B2261BB11003A9143 /* libgvplugin_core_C.a in Frameworks */,
 				E532286E2261BB11003A9143 /* libltdlc.a in Frameworks */,
-				E532286F2261BB11003A9143 /* libpathplan_C.a in Frameworks */,
-				E53228732261BB11003A9143 /* libvpsc_C.a in Frameworks */,
-				E53228752261BB11003A9143 /* libgvplugin_neato_layout_C.a in Frameworks */,
-				E53228762261BB11003A9143 /* libgvplugin_quartz_C.a in Frameworks */,
-				E53228772261BB11003A9143 /* libcdt_C.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,11 +564,21 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5B1A8CB2261DCD80090DBD8 /* cdt.h in Headers */,
-				E532287C2261BB89003A9143 /* gvc.h in Headers */,
-				E571EC0D2261C0C8000F7DA1 /* agraph.h in Headers */,
-				E532287D2261BB89003A9143 /* types.h in Headers */,
+				E565681C2573E397001CD7B4 /* SwiftGraphviz.h in Headers */,
+				E56568212573E466001CD7B4 /* gvplugin.h in Headers */,
 				E53228792261BB2A003A9143 /* builtins.h in Headers */,
+				E56568482573E709001CD7B4 /* textspan.h in Headers */,
+				E565684D2573E70C001CD7B4 /* usershape.h in Headers */,
+				E56568392573E6FF001CD7B4 /* geom.h in Headers */,
+				E56568432573E706001CD7B4 /* pathgeom.h in Headers */,
+				E5B1A8CB2261DCD80090DBD8 /* cdt.h in Headers */,
+				E571EC0D2261C0C8000F7DA1 /* agraph.h in Headers */,
+				E565683E2573E703001CD7B4 /* gvcext.h in Headers */,
+				E565682F2573E6F3001CD7B4 /* arith.h in Headers */,
+				E565682A2573E6E2001CD7B4 /* SwiftGraphviz-Bridging-Header.h in Headers */,
+				E532287D2261BB89003A9143 /* types.h in Headers */,
+				E56568342573E6F8001CD7B4 /* cgraph.h in Headers */,
+				E532287C2261BB89003A9143 /* gvc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,7 +838,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -860,7 +882,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -972,7 +994,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Klaus Kneupner (6M2837MY72)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -991,8 +1013,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1035,7 +1057,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Klaus Kneupner (6M2837MY72)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1048,8 +1070,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1136,8 +1158,8 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				ONLY_ACTIVE_ARCH = NO;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1174,7 +1196,8 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
