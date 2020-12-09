@@ -8,4 +8,4 @@
 
 import Logging
 
-internal let logger = Logger(label: "com.vithanco.swiftGraphviz")
+internal let logger = Logger(label: "com.vithanco.SwiftGraphviz")
