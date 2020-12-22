@@ -126,3 +126,7 @@ public func + (left: CGPoint, right: CGVector) -> CGPoint {
 func convertZeroPointToNil(_ gvPos: CGPoint, precision: CGFloat = 0.1) -> CGPoint? {
     return gvPos.convertZeroPointToNil(precision:precision)
 }
+
+public func midPoint(between: CGPoint, and: CGPoint) -> CGPoint{
+    return (between + and) / 2
+}
