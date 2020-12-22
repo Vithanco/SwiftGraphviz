@@ -7,7 +7,7 @@
 		<key>SwiftGraphviz.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>8</integer>
 		</dict>
 		<key>SwiftGraphvizMac.xcscheme_^#shared#^_</key>
 		<dict>
@@ -18,6 +18,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>9</integer>
+		</dict>
+		<key>swiftGraphvizIntelMac.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>swiftgraphviz.xcscheme_^#shared#^_</key>
 		<dict>
