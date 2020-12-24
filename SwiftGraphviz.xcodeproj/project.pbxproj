@@ -62,6 +62,7 @@
 		89CBA85B2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */; };
 		89CBA85C2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */; };
 		89F4ED2E2495436B0099B6C6 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 89F4ED2D2495436B0099B6C6 /* Logging */; };
+		E529D17725952A9300733ACA /* iconv.o in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C4193258FFD3A00081254 /* iconv.o */; };
 		E52C419B258FFD3A00081254 /* libltdlc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418B258FFD3A00081254 /* libltdlc.a */; };
 		E52C419C258FFD3A00081254 /* libgvplugin_core_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418C258FFD3A00081254 /* libgvplugin_core_C.a */; };
 		E52C419E258FFD3A00081254 /* libgvplugin_dot_layout_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418E258FFD3A00081254 /* libgvplugin_dot_layout_C.a */; };
@@ -346,6 +347,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E529D17725952A9300733ACA /* iconv.o in Frameworks */,
 				E52C419B258FFD3A00081254 /* libltdlc.a in Frameworks */,
 				E52C419C258FFD3A00081254 /* libgvplugin_core_C.a in Frameworks */,
 				E52C419E258FFD3A00081254 /* libgvplugin_dot_layout_C.a in Frameworks */,
@@ -1233,7 +1235,7 @@
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1275,7 +1277,7 @@
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
