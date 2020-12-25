@@ -33,17 +33,18 @@ public typealias GVGlobalContextPointer = OpaquePointer?
     case twopi
     
     public static var readableNames: [String] {
-        return ["Layered (dot)", "Star (neato)", "Star (fdp)", "Star (neato -nop)", "Star (neato -nop2)", "twopi", "Systems Thinking"]
+        return ["Layered (dot)", "Star (neato)", "Star (fdp)", "Star (neato -nop)", "Star (neato -nop2)", "twopi"]
     }
     
     public var graphvizName: String {
         switch self {
         case .dot: return "dot"
-        case .fdp: return "fdp"
         case .neato: return "neato"
+        case .fdp: return "fdp"
         case .nop: return "nop"
         case .nop2: return "nop2"
         case .twopi: return "twopi"
+        default: return "unknown"
         }
     }
     public var supportsLayers: Bool {
