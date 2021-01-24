@@ -6,9 +6,9 @@ extern "C" {
 #endif
 
 /*	Public interface for the dictionary library
-**
-**      Written by Kiem-Phong Vo
-*/
+ **
+ **      Written by Kiem-Phong Vo
+ */
 
 #define CDT_VERSION	20050420L
 
@@ -43,79 +43,79 @@ typedef int			(*Dtevent_f)(Dt_t*,int,void*,Dtdisc_t*);
 
 struct _dtlink_s
 {	Dtlink_t*	right;	/* right child		*/
-	union
-	{ unsigned int	_hash;	/* hash value		*/
-	  Dtlink_t*	_left;	/* left child		*/
-	} hl;
+    union
+    { unsigned int	_hash;	/* hash value		*/
+        Dtlink_t*	_left;	/* left child		*/
+    } hl;
 };
 
 /* private structure to hold an object */
 struct _dthold_s
 {	Dtlink_t	hdr;	/* header		*/
-	void*		obj;	/* user object		*/
+    void*		obj;	/* user object		*/
 };
 
 /* method to manipulate dictionary structure */
 struct _dtmethod_s
 {	Dtsearch_f	searchf; /* search function	*/
-	int		type;	/* type of operation	*/
+    int		type;	/* type of operation	*/
 };
 
 /* stuff that may be in shared memory */
 struct _dtdata_s
 {	int		type;	/* type of dictionary			*/
-	Dtlink_t*	here;	/* finger to last search element	*/
-	union
-	{ Dtlink_t**	_htab;	/* hash table				*/
-	  Dtlink_t*	_head;	/* linked list				*/
-	} hh;
-	int		ntab;	/* number of hash slots			*/
-	int		size;	/* number of objects			*/
-	int		loop;	/* number of nested loops		*/
-	int		minp;	/* min path before splay, always even	*/
-				/* for hash dt, > 0: fixed table size 	*/
+    Dtlink_t*	here;	/* finger to last search element	*/
+    union
+    { Dtlink_t**	_htab;	/* hash table				*/
+        Dtlink_t*	_head;	/* linked list				*/
+    } hh;
+    int		ntab;	/* number of hash slots			*/
+    int		size;	/* number of objects			*/
+    int		loop;	/* number of nested loops		*/
+    int		minp;	/* min path before splay, always even	*/
+    /* for hash dt, > 0: fixed table size 	*/
 };
 
 /* structure to hold methods that manipulate an object */
 struct _dtdisc_s
 {	int		key;	/* where the key begins in an object	*/
-	int		size;	/* key size and type			*/
-	int		link;	/* offset to Dtlink_t field		*/
-	Dtmake_f	makef;	/* object constructor			*/
-	Dtfree_f	freef;	/* object destructor			*/
-	Dtcompar_f	comparf;/* to compare two objects		*/
-	Dthash_f	hashf;	/* to compute hash value of an object	*/
-	Dtmemory_f	memoryf;/* to allocate/free memory		*/
-	Dtevent_f	eventf;	/* to process events			*/
+    int		size;	/* key size and type			*/
+    int		link;	/* offset to Dtlink_t field		*/
+    Dtmake_f	makef;	/* object constructor			*/
+    Dtfree_f	freef;	/* object destructor			*/
+    Dtcompar_f	comparf;/* to compare two objects		*/
+    Dthash_f	hashf;	/* to compute hash value of an object	*/
+    Dtmemory_f	memoryf;/* to allocate/free memory		*/
+    Dtevent_f	eventf;	/* to process events			*/
 };
 
 #define DTDISC(dc,ky,sz,lk,mkf,frf,cmpf,hshf,memf,evf) \
-	( (dc)->key = (ky), (dc)->size = (sz), (dc)->link = (lk), \
-	  (dc)->makef = (mkf), (dc)->freef = (frf), \
-	  (dc)->comparf = (cmpf), (dc)->hashf = (hshf), \
-	  (dc)->memoryf = (memf), (dc)->eventf = (evf) )
+( (dc)->key = (ky), (dc)->size = (sz), (dc)->link = (lk), \
+(dc)->makef = (mkf), (dc)->freef = (frf), \
+(dc)->comparf = (cmpf), (dc)->hashf = (hshf), \
+(dc)->memoryf = (memf), (dc)->eventf = (evf) )
 
 /* the dictionary structure itself */
 struct _dt_s
 {	Dtsearch_f	searchf;/* search function			*/
-	Dtdisc_t*	disc;	/* method to manipulate objs		*/
-	Dtdata_t*	data;	/* sharable data			*/
-	Dtmemory_f	memoryf;/* function to alloc/free memory	*/
-	Dtmethod_t*	meth;	/* dictionary method			*/
-	int		type;	/* type information			*/
-	int		nview;	/* number of parent view dictionaries	*/
-	Dt_t*		view;	/* next on viewpath			*/
-	Dt_t*		walk;	/* dictionary being walked		*/
-	void*		user;	/* for user's usage			*/
+    Dtdisc_t*	disc;	/* method to manipulate objs		*/
+    Dtdata_t*	data;	/* sharable data			*/
+    Dtmemory_f	memoryf;/* function to alloc/free memory	*/
+    Dtmethod_t*	meth;	/* dictionary method			*/
+    int		type;	/* type information			*/
+    int		nview;	/* number of parent view dictionaries	*/
+    Dt_t*		view;	/* next on viewpath			*/
+    Dt_t*		walk;	/* dictionary being walked		*/
+    void*		user;	/* for user's usage			*/
 };
 
 /* structure to get status of a dictionary */
 struct _dtstat_s
 {	int	dt_meth;	/* method type				*/
-	int	dt_size;	/* number of elements			*/
-	int	dt_n;		/* number of chains or levels		*/
-	int	dt_max;		/* max size of a chain or a level	*/
-	int*	dt_count;	/* counts of chains or levels by size	*/
+    int	dt_size;	/* number of elements			*/
+    int	dt_n;		/* number of chains or levels		*/
+    int	dt_max;		/* max size of a chain or a level	*/
+    int*	dt_count;	/* counts of chains or levels by size	*/
 };
 
 /* flag set if the last search operation actually found the object */
@@ -203,42 +203,42 @@ CDT_API unsigned int	dtstrhash(unsigned int, void*, int);
 /* internal functions for translating among holder, object and key */
 #define _DT(dt)		((Dt_t*)(dt))
 #define _DTDSC(dc,ky,sz,lk,cmpf) \
-			(ky = dc->key, sz = dc->size, lk = dc->link, cmpf = dc->comparf)
+(ky = dc->key, sz = dc->size, lk = dc->link, cmpf = dc->comparf)
 #define _DTLNK(o,lk)	((Dtlink_t*)((char*)(o) + lk) )
 #define _DTOBJ(e,lk)	(lk < 0 ? ((Dthold_t*)(e))->obj : (void*)((char*)(e) - lk) )
 #define _DTKEY(o,ky,sz)	(void*)(sz < 0 ? *((char**)((char*)(o)+ky)) : ((char*)(o)+ky))
 
 #define _DTCMP(dt,k1,k2,dc,cmpf,sz) \
-			(cmpf ? (*cmpf)(dt,k1,k2,dc) : \
-			 (sz <= 0 ? strcmp(k1,k2) : memcmp(k1,k2,sz)) )
+(cmpf ? (*cmpf)(dt,k1,k2,dc) : \
+(sz <= 0 ? strcmp(k1,k2) : memcmp(k1,k2,sz)) )
 #define _DTHSH(dt,ky,dc,sz) (dc->hashf ? (*dc->hashf)(dt,ky,dc) : dtstrhash(0,ky,sz) )
 
 /* special search function for tree structure only */
 #define _DTMTCH(dt,key,action) \
-	do { Dtlink_t* _e; void *_o, *_k, *_key; Dtdisc_t* _dc; \
-	     int _ky, _sz, _lk, _cmp; Dtcompar_f _cmpf; \
-	     _dc = (dt)->disc; _DTDSC(_dc, _ky, _sz, _lk, _cmpf); \
-	     _key = (key); \
-	     for(_e = (dt)->data->here; _e; _e = _cmp < 0 ? _e->hl._left : _e->right) \
-	     {	_o = _DTOBJ(_e, _lk); _k = _DTKEY(_o, _ky, _sz); \
-		if((_cmp = _DTCMP((dt), _key, _k, _dc, _cmpf, _sz)) == 0) \
-			break; \
-	     } \
-	     action (_e ? _o : (void*)0); \
-	} while(0)
+do { Dtlink_t* _e; void *_o, *_k, *_key; Dtdisc_t* _dc; \
+int _ky, _sz, _lk, _cmp; Dtcompar_f _cmpf; \
+_dc = (dt)->disc; _DTDSC(_dc, _ky, _sz, _lk, _cmpf); \
+_key = (key); \
+for(_e = (dt)->data->here; _e; _e = _cmp < 0 ? _e->hl._left : _e->right) \
+{	_o = _DTOBJ(_e, _lk); _k = _DTKEY(_o, _ky, _sz); \
+if((_cmp = _DTCMP((dt), _key, _k, _dc, _cmpf, _sz)) == 0) \
+break; \
+} \
+action (_e ? _o : (void*)0); \
+} while(0)
 
 #define _DTSRCH(dt,obj,action) \
-	do { Dtlink_t* _e; void *_o, *_k, *_key; Dtdisc_t* _dc; \
-	     int _ky, _sz, _lk, _cmp; Dtcompar_f _cmpf; \
-	     _dc = (dt)->disc; _DTDSC(_dc, _ky, _sz, _lk, _cmpf); \
-	     _key = _DTKEY(obj, _ky, _sz); \
-	     for(_e = (dt)->data->here; _e; _e = _cmp < 0 ? _e->hl._left : _e->right) \
-	     {	_o = _DTOBJ(_e, _lk); _k = _DTKEY(_o, _ky, _sz); \
-		if((_cmp = _DTCMP((dt), _key, _k, _dc, _cmpf, _sz)) == 0) \
-			break; \
-	     } \
-	     action (_e ? _o : (void*)0); \
-	} while(0)
+do { Dtlink_t* _e; void *_o, *_k, *_key; Dtdisc_t* _dc; \
+int _ky, _sz, _lk, _cmp; Dtcompar_f _cmpf; \
+_dc = (dt)->disc; _DTDSC(_dc, _ky, _sz, _lk, _cmpf); \
+_key = _DTKEY(obj, _ky, _sz); \
+for(_e = (dt)->data->here; _e; _e = _cmp < 0 ? _e->hl._left : _e->right) \
+{	_o = _DTOBJ(_e, _lk); _k = _DTKEY(_o, _ky, _sz); \
+if((_cmp = _DTCMP((dt), _key, _k, _dc, _cmpf, _sz)) == 0) \
+break; \
+} \
+action (_e ? _o : (void*)0); \
+} while(0)
 
 #define DTTREEMATCH(dt,key,action)	_DTMTCH(_DT(dt),(void*)(key),action)
 #define DTTREESEARCH(dt,obj,action)	_DTSRCH(_DT(dt),(void*)(obj),action)

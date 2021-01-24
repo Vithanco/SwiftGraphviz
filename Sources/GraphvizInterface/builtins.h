@@ -11,6 +11,7 @@
 
 #include "gvplugin.h" //
 #include "gvc.h"
+#include "gvcint.h"
 
 GVC_t * loadGraphvizLibraries(void) ;
 
