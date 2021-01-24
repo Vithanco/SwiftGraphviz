@@ -22,7 +22,10 @@ public typealias CHAR_ARRAY = UnsafeMutablePointer<UnsafeMutablePointer<Int8>>
 public typealias GVSplines = UnsafeMutablePointer<splines>
 public typealias GVBezier = UnsafeMutablePointer<bezier>
 public typealias GVPixel = CGFloat
-public typealias GVGlobalContextPointer = OpaquePointer?
+public typealias GVGlobalContextPointer = UnsafeMutablePointer<GVC_t>
+
+public let stdFontName = "Verdana"
+public let stdFontNameBold = "Verdana-Bold"
 
 @objc public enum GVLayoutEngine: Int {
     case dot = 0
@@ -463,7 +466,7 @@ public class GraphvizGraph: GraphBuilder {
         setClusterValue(result, "label", label)
         setClusterValue(result, "margin", "8")
         setClusterValue(result, "fontsize", "15")
-        setClusterValue(result, "fontname", "Verdana-Bold")
+        setClusterValue(result, "fontname", stdFontNameBold)
         return result
     }
     
