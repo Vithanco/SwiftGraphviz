@@ -12,8 +12,6 @@ import Foundation
 public typealias GVEdge = UnsafeMutablePointer<Agedge_t>
 
 public extension UnsafeMutablePointer where Pointee == Agedge_t {
-    
-    
     var labelPos: CGPoint? { //lp
         if let lPos = ed_lp(self) {
             return convertZeroPointToNil(CGPoint(gvPoint: lPos.pointee))
