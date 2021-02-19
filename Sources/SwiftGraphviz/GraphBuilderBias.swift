@@ -11,7 +11,7 @@ import Foundation
 
 
 /// Similar to Bias from Flying Logic. Not perfect but good enough.
-public class GraphBuilderBias: GraphBuilder {
+public struct GraphBuilderBias: GraphBuilder {
     let base: GraphBuilder
     let newDir: GVModelDirection
 
