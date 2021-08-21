@@ -40,6 +40,8 @@
 		E53228142261B78C003A9143 /* GVEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228082261B78B003A9143 /* GVEdge.swift */; };
 		E53228172261B78C003A9143 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		E53228792261BB2A003A9143 /* builtins.h in Headers */ = {isa = PBXBuildFile; fileRef = E532280A2261B78C003A9143 /* builtins.h */; };
+		E539EB7826CA789D00484EA0 /* libcdt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E539EB7726CA789D00484EA0 /* libcdt.a */; };
+		E539EB7D26CA7A9400484EA0 /* libexpat.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */; };
 		E564F892226B1231005CCB3B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F891226B1231005CCB3B /* Package.swift */; };
 		E564F8AC227B228B005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */; };
 		E564F8AD227B228B005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */; };
@@ -63,6 +65,7 @@
 		E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		E5862840229C6C9A0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
 		E5862841229C6C9B0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
+		E58770F226CB6BA900944743 /* SwiftGraphviz in Resources */ = {isa = PBXBuildFile; fileRef = E5BDB98025978E3F00437F2C /* SwiftGraphviz */; };
 		E59BC09825DAFBCC00402577 /* libcdt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09725DAFBCC00402577 /* libcdt.a */; };
 		E59BC09A25DAFBCC00402577 /* libcgraph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09925DAFBCC00402577 /* libcgraph.a */; };
 		E59BC09C25DAFBCC00402577 /* libcircogen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09B25DAFBCC00402577 /* libcircogen.a */; };
@@ -106,11 +109,11 @@
 		E59BC37525DB1E4E00402577 /* gvcint.h in Headers */ = {isa = PBXBuildFile; fileRef = E59BC37425DB1E4E00402577 /* gvcint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E59BC37F25DB1E6C00402577 /* gvcjob.h in Headers */ = {isa = PBXBuildFile; fileRef = E59BC37E25DB1E6C00402577 /* gvcjob.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E59BC38925DB1E8900402577 /* color.h in Headers */ = {isa = PBXBuildFile; fileRef = E59BC38825DB1E8900402577 /* color.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E59BC46A25DBF02E00402577 /* libexpat.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC46925DBF02E00402577 /* libexpat.1.tbd */; };
 		E5B10A1E22E6454500150B65 /* CGSize+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */; };
 		E5B10A1F22E645ED00150B65 /* CGSize+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */; };
 		E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
+		E5BFE27826CA8337005828C5 /* libltdlc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418B258FFD3A00081254 /* libltdlc.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +193,9 @@
 		E53228642261BB11003A9143 /* libgvplugin_quartz_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgvplugin_quartz_C.a; path = macOS/gvLibs/libgvplugin_quartz_C.a; sourceTree = "<group>"; };
 		E53228652261BB11003A9143 /* libcdt_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcdt_C.a; path = macOS/gvLibs/libcdt_C.a; sourceTree = "<group>"; };
 		E53228662261BB11003A9143 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = macOS/otherLibs/libintl.a; sourceTree = "<group>"; };
+		E539EB7726CA789D00484EA0 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.1.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libexpat.1.tbd; sourceTree = DEVELOPER_DIR; };
+		E55CD06826CA8079000C3963 /* libdl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libdl.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libdl.tbd; sourceTree = DEVELOPER_DIR; };
 		E564F83F22698915005CCB3B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E564F8412269891E005CCB3B /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
 		E564F84322698924005CCB3B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -276,7 +282,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E59BC46A25DBF02E00402577 /* libexpat.1.tbd in Frameworks */,
+				E5BFE27826CA8337005828C5 /* libltdlc.a in Frameworks */,
+				E539EB7D26CA7A9400484EA0 /* libexpat.1.tbd in Frameworks */,
+				E539EB7826CA789D00484EA0 /* libcdt.a in Frameworks */,
 				E59BC09825DAFBCC00402577 /* libcdt.a in Frameworks */,
 				E59BC09A25DAFBCC00402577 /* libcgraph.a in Frameworks */,
 				E59BC09C25DAFBCC00402577 /* libcircogen.a in Frameworks */,
@@ -390,6 +398,9 @@
 		E53227DC2260F8F2003A9143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E55CD06826CA8079000C3963 /* libdl.tbd */,
+				E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */,
+				E539EB7726CA789D00484EA0 /* libcdt.a */,
 				E59BC46925DBF02E00402577 /* libexpat.1.tbd */,
 				E59BC14725DB0ED300402577 /* CoreText.framework */,
 				E59BC09725DAFBCC00402577 /* libcdt.a */,
@@ -589,6 +600,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E539EB7A26CA78F600484EA0 /* PBXTargetDependency */,
 			);
 			name = SwiftGraphviz;
 			packageProductDependencies = (
@@ -709,6 +721,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58770F226CB6BA900944743 /* SwiftGraphviz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,6 +828,10 @@
 			isa = PBXTargetDependency;
 			productRef = 89F4ED3624955F180099B6C6 /* Logging */;
 		};
+		E539EB7A26CA78F600484EA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = E539EB7926CA78F600484EA0 /* Logging */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -846,33 +863,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/macOS/otherLibs",
-					"$(PROJECT_DIR)/macOS/gvLibs",
-					"$(PROJECT_DIR)/headers",
 					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/universal",
 				);
-				"LIBRARY_SEARCH_PATHS[arch=arm64]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/macOS_ARM/otherLibs",
-					"$(PROJECT_DIR)/macOS_ARM/gvLibs",
-					"$(PROJECT_DIR)/headers",
-					"$(SDKROOT)/usr/lib/system",
-				);
-				"LIBRARY_SEARCH_PATHS[arch=arm64e]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/macOS/otherLibs",
-					"$(PROJECT_DIR)/macOS/gvLibs",
-					"$(PROJECT_DIR)/headers",
-					"$(SDKROOT)/usr/lib/system",
-				);
-				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/macOS_ARM/otherLibs",
-					"$(PROJECT_DIR)/macOS_ARM/gvLibs",
-					"$(PROJECT_DIR)/headers",
-					"$(SDKROOT)/usr/lib/system",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -918,12 +912,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/macOS/otherLibs",
-					"$(PROJECT_DIR)/macOS/gvLibs",
-					"$(PROJECT_DIR)/headers",
 					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/universal",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1180,7 +1172,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1220,7 +1212,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1314,6 +1306,11 @@
 			productName = Logging;
 		};
 		89F4ED3624955F180099B6C6 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		E539EB7926CA78F600484EA0 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
