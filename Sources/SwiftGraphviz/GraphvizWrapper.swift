@@ -257,7 +257,9 @@ public func verboseGraphviz() {
     _ = gvParseArgs(gblGVContext, Int32(args.count), &cargs)
     // Free the duplicated strings:
     for ptr in cargs {
-        free(ptr)
+        if let ptr = ptr {
+            free(ptr)
+        }
     }
 }
 
