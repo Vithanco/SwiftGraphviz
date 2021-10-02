@@ -65,7 +65,6 @@
 		E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		E5862840229C6C9A0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
 		E5862841229C6C9B0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
-		E58770F226CB6BA900944743 /* SwiftGraphviz in Resources */ = {isa = PBXBuildFile; fileRef = E5BDB98025978E3F00437F2C /* SwiftGraphviz */; };
 		E59BC09825DAFBCC00402577 /* libcdt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09725DAFBCC00402577 /* libcdt.a */; };
 		E59BC09A25DAFBCC00402577 /* libcgraph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09925DAFBCC00402577 /* libcgraph.a */; };
 		E59BC09C25DAFBCC00402577 /* libcircogen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09B25DAFBCC00402577 /* libcircogen.a */; };
@@ -268,12 +267,10 @@
 		E59BC46925DBF02E00402577 /* libexpat.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.1.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libexpat.1.tbd; sourceTree = DEVELOPER_DIR; };
 		E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+KKExtensions.swift"; sourceTree = "<group>"; };
 		E5B1A8D32261E5020090DBD8 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		E5BDB98025978E3F00437F2C /* SwiftGraphviz */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftGraphviz; sourceTree = "<group>"; };
 		E5F0910E259D192F0069A360 /* libexpat.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libexpat.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F09114259D19360069A360 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F0911A259D194A0069A360 /* libcharset.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcharset.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libcharset.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F09120259D19580069A360 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
-		E5F09126259D19850069A360 /* universal */ = {isa = PBXFileReference; lastKnownFileType = folder; path = universal; sourceTree = "<group>"; };
 		E5F0915C259DA7200069A360 /* prepareCMake.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = prepareCMake.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -373,7 +370,6 @@
 				E59BC33025DB1D7E00402577 /* geom.h */,
 				E59BC32625DB1D5A00402577 /* gvc.h */,
 				E5F0915C259DA7200069A360 /* prepareCMake.sh */,
-				E5BDB98025978E3F00437F2C /* SwiftGraphviz */,
 				E564F891226B1231005CCB3B /* Package.swift */,
 				E53228042261B78B003A9143 /* prepareLibraries.sh */,
 				E564F88C226B10D8005CCB3B /* Sources */,
@@ -439,7 +435,6 @@
 				E5671A6D25A19C0900727759 /* libgvplugin_dot_layout.dylib */,
 				E5671A6C25A19C0900727759 /* libgvplugin_neato_layout.dylib */,
 				E5671A6625A19BCD00727759 /* libgvplugin_core.dylib */,
-				E5F09126259D19850069A360 /* universal */,
 				E5F09120259D19580069A360 /* libz.tbd */,
 				E5F0911A259D194A0069A360 /* libcharset.tbd */,
 				E5F09114259D19360069A360 /* libiconv.tbd */,
@@ -721,7 +716,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58770F226CB6BA900944743 /* SwiftGraphviz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
