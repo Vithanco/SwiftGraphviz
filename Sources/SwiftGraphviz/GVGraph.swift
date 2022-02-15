@@ -39,6 +39,10 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
             return nil
         }
     }
+    
+    func unflatten(doFan: Bool = false, maxMinlen : Int32 = 0, chainLimit : Int32 = 0, chainSize : Int32 = 0) {
+        agUnflatten(self,doFan ? 1 : 0, maxMinlen ,chainLimit,chainSize )
+    }
 }
 
 @discardableResult

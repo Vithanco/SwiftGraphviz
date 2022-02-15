@@ -11,6 +11,7 @@
 #include "gvplugin.h" //
 #include "gvc.h"
 #include "builtins.h"
+#include "unflatten.h"
 
 //! Project version number for SwiftGraphviz.
 FOUNDATION_EXPORT double SwiftGraphvizVersionNumber;
