@@ -44,5 +44,4 @@ pointf* gd_lsize(Agraph_t* g);
 char* gd_label_text(Agraph_t* g);
 
 
-
 #endif /* builtins_h */

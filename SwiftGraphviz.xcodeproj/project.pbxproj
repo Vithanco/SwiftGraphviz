@@ -42,6 +42,7 @@
 		E53228792261BB2A003A9143 /* builtins.h in Headers */ = {isa = PBXBuildFile; fileRef = E532280A2261B78C003A9143 /* builtins.h */; };
 		E539EB7826CA789D00484EA0 /* libcdt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E539EB7726CA789D00484EA0 /* libcdt.a */; };
 		E539EB7D26CA7A9400484EA0 /* libexpat.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */; };
+		E53AE88527BC367C00B42392 /* unflatten.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F14D6027B9A43C00ECEAC3 /* unflatten.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E564F892226B1231005CCB3B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F891226B1231005CCB3B /* Package.swift */; };
 		E564F8AC227B228B005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */; };
 		E564F8AD227B228B005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */; };
@@ -113,6 +114,9 @@
 		E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5BFE27826CA8337005828C5 /* libltdlc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418B258FFD3A00081254 /* libltdlc.a */; };
+		E5F14D5A27B9986800ECEAC3 /* unflatten.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F14D5927B9986800ECEAC3 /* unflatten.c */; };
+		E5F14D5C27B998D800ECEAC3 /* libingraphs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F14D5B27B998D800ECEAC3 /* libingraphs.a */; };
+		E5F14D5F27B9A36E00ECEAC3 /* unflatten.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F14D5927B9986800ECEAC3 /* unflatten.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +198,7 @@
 		E53228662261BB11003A9143 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = macOS/otherLibs/libintl.a; sourceTree = "<group>"; };
 		E539EB7726CA789D00484EA0 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.1.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libexpat.1.tbd; sourceTree = DEVELOPER_DIR; };
+		E53AE88627BC39A500B42392 /* cgraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cgraph.h; path = Sources/GraphvizInterface/cgraph.h; sourceTree = "<group>"; };
 		E55CD06826CA8079000C3963 /* libdl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libdl.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libdl.tbd; sourceTree = DEVELOPER_DIR; };
 		E564F83F22698915005CCB3B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E564F8412269891E005CCB3B /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
@@ -272,6 +277,9 @@
 		E5F0911A259D194A0069A360 /* libcharset.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcharset.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libcharset.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F09120259D19580069A360 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F0915C259DA7200069A360 /* prepareCMake.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = prepareCMake.sh; sourceTree = "<group>"; };
+		E5F14D5927B9986800ECEAC3 /* unflatten.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unflatten.c; sourceTree = "<group>"; };
+		E5F14D5B27B998D800ECEAC3 /* libingraphs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libingraphs.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5F14D6027B9A43C00ECEAC3 /* unflatten.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unflatten.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +306,7 @@
 				E59BC0B225DAFBCC00402577 /* liblabel.a in Frameworks */,
 				E59BC0B425DAFBCC00402577 /* libneatogen.a in Frameworks */,
 				E59BC0B625DAFBCC00402577 /* libortho.a in Frameworks */,
+				E5F14D5C27B998D800ECEAC3 /* libingraphs.a in Frameworks */,
 				E59BC0B825DAFBCC00402577 /* libosage.a in Frameworks */,
 				E59BC0BA25DAFBCC00402577 /* libpack.a in Frameworks */,
 				E59BC0BC25DAFBCC00402577 /* libpatchwork.a in Frameworks */,
@@ -359,6 +368,7 @@
 		E53227C92260511C003A9143 = {
 			isa = PBXGroup;
 			children = (
+				E53AE88627BC39A500B42392 /* cgraph.h */,
 				E59BC38825DB1E8900402577 /* color.h */,
 				E59BC37E25DB1E6C00402577 /* gvcjob.h */,
 				E59BC37425DB1E4E00402577 /* gvcint.h */,
@@ -394,6 +404,7 @@
 		E53227DC2260F8F2003A9143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5F14D5B27B998D800ECEAC3 /* libingraphs.a */,
 				E55CD06826CA8079000C3963 /* libdl.tbd */,
 				E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */,
 				E539EB7726CA789D00484EA0 /* libcdt.a */,
@@ -529,6 +540,8 @@
 		E564F894226B18BA005CCB3B /* GraphvizInterface */ = {
 			isa = PBXGroup;
 			children = (
+				E5F14D6027B9A43C00ECEAC3 /* unflatten.h */,
+				E5F14D5927B9986800ECEAC3 /* unflatten.c */,
 				E59BC39A25DB22AF00402577 /* inttypes.h */,
 				E59BC2B125DB1BF500402577 /* gvcext.h */,
 				E59BC30925DB1CCB00402577 /* types.h */,
@@ -561,6 +574,7 @@
 				E59BC32725DB1D5A00402577 /* gvc.h in Headers */,
 				E59BC34F25DB1DD300402577 /* textspan.h in Headers */,
 				E59BC36325DB1E1100402577 /* usershape.h in Headers */,
+				E53AE88527BC367C00B42392 /* unflatten.h in Headers */,
 				E59BC38925DB1E8900402577 /* color.h in Headers */,
 				E59BC34525DB1DBA00402577 /* pathgeom.h in Headers */,
 				E59BC37525DB1E4E00402577 /* gvcint.h in Headers */,
@@ -733,6 +747,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F14D5F27B9A36E00ECEAC3 /* unflatten.c in Sources */,
 				89214FBB24FBB55700B2FCC9 /* Logging.swift in Sources */,
 				89214FBA24FBB55200B2FCC9 /* builtins.c in Sources */,
 				89214FAB24FBB53A00B2FCC9 /* CGPoint+KKExtensions.swift in Sources */,
@@ -771,6 +786,7 @@
 				E564F8B4227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */,
 				E53228142261B78C003A9143 /* GVEdge.swift in Sources */,
 				89CBA85B2444D4C600D7F208 /* GraphBuilderBias.swift in Sources */,
+				E5F14D5A27B9986800ECEAC3 /* unflatten.c in Sources */,
 				E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */,
 				E532280F2261B78C003A9143 /* GraphvizWrapper.swift in Sources */,
 				E564F8B2227B228B005CCB3B /* CGRect+KKExtensions.swift in Sources */,
@@ -860,7 +876,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/universal",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -909,7 +925,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/universal",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1022,7 +1038,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1079,7 +1095,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1166,7 +1182,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1206,7 +1222,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
