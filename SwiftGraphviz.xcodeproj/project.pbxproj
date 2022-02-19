@@ -541,7 +541,6 @@
 			isa = PBXGroup;
 			children = (
 				E5F14D6027B9A43C00ECEAC3 /* unflatten.h */,
-				E5F14D5927B9986800ECEAC3 /* unflatten.c */,
 				E59BC39A25DB22AF00402577 /* inttypes.h */,
 				E59BC2B125DB1BF500402577 /* gvcext.h */,
 				E59BC30925DB1CCB00402577 /* types.h */,
@@ -552,6 +551,7 @@
 				89214F9624FBB50600B2FCC9 /* SwiftGraphviz.h */,
 				E532280A2261B78C003A9143 /* builtins.h */,
 				E53228072261B78B003A9143 /* builtins.c */,
+				E5F14D5927B9986800ECEAC3 /* unflatten.c */,
 			);
 			path = GraphvizInterface;
 			sourceTree = "<group>";

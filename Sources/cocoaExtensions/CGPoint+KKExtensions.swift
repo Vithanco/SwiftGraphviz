@@ -89,6 +89,9 @@ public extension CGPoint {
 //    static var zero: CGPoint {
 //        return CGPoint(x: 0, y: 0)
 //    }
+    var rounded: CGPoint {
+        return CGPoint(x: self.x.rounded(), y: self.y.rounded())
+    }
     
 }
 

@@ -35,8 +35,6 @@ static int MaxMinlen = 0;
 static int ChainLimit = 0;
 static int ChainSize = 0;
 static Agnode_t *ChainNode;
-static FILE *outFile;
-static char *cmd;
 
 static int myindegree(Agnode_t *n)
 {
@@ -133,19 +131,14 @@ static void transform(Agraph_t * g)
     }
 }
 
-static Agraph_t *gread(FILE * fp)
-{
-    return agread(fp, (Agdisc_t *) 0);
-}
 
-
-
-int agUnflatten(Agraph_t * g,  int doFans, int maxMinlen, int chainLimit, int chainSize) {
+int agUnflatten(Agraph_t * g,  int doFans, int maxMinlen, int chainLimit) {
 //    setting module parameters
     Do_fans = doFans;
     MaxMinlen = maxMinlen;
     ChainLimit = chainLimit;
-    ChainSize = chainSize;
+    ChainSize = 0;
+    ChainNode = 0;
 // execute unflatten
     transform(g);
     return 0;

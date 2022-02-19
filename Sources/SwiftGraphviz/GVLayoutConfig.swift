@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//import Vithanco
 
 public struct GVLayoutConfig {
     public let name: String
@@ -21,6 +22,7 @@ public struct GVLayoutConfig {
     }
     
     public func layout(_ gvc: GVGlobalContextPointer, _ g: GVGraph) {
+
         gvLayout(gvc,g,layoutEngine.graphvizName)
         gvRender(gvc,g,renderEngine.graphvizName,nil)
         
