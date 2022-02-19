@@ -11,6 +11,6 @@
 
 #include "gvc.h"
 
-int agUnflatten(Agraph_t * g, int doFans, int maxMinlen, int chainLimit, int chainSize);
+int agUnflatten(Agraph_t * g, int doFans, int maxMinlen, int chainLimit);
 
 #endif /* unflatten_h */
