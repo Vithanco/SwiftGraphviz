@@ -316,8 +316,8 @@ public protocol GraphBuilder {
     func setBaseValues(_ params: GVParams)
     func setNodeValue(_ node: GVNode, _ attributeName: String, _ value: String)
     func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String)
-    func setGraphValue(_ attributeName: String, _ value: String)
-    func setClusterValue(_ cluster: GVCluster, _ attributeName: String, _ value: String)
+    func setGraphValue(_ param: GVGraphParameters, _ value: String)
+    func setClusterValue(_ cluster: GVCluster, _ param: GVGraphParameters, _ value: String)
     
     func getGraphRect() -> CGRect
     
@@ -422,7 +422,8 @@ public class GraphvizGraph: GraphBuilder {
     }
     
     /// reminder: if attribute doesn't show effect then you have forgotten to set base value
-    public func setGraphValue(_ attributeName: String, _ value: String) {
+    public func setGraphValue(_ param: GVGraphParameters, _ value: String) {
+        let attributeName = param.rawValue
         #if DEBUG
         if !baseValues[.graph]!.contains(attributeName) {
             logger.error("no baseValue set for  \(attributeName) for Graphs. Setting the attribute Value will have no effect.")
@@ -432,7 +433,8 @@ public class GraphvizGraph: GraphBuilder {
     }
     
     /// reminder: if attribute doesn't show effect then you have forgotten to set base value
-    public func setClusterValue(_ cluster: GVCluster, _ attributeName: String, _ value: String) {
+    public func setClusterValue(_ cluster: GVCluster, _ param: GVGraphParameters, _ value: String) {
+        let attributeName = param.rawValue
         #if DEBUG
         if !baseValues[.graph]!.contains(attributeName) {
             logger.error("no baseValue set for  \(attributeName) for Clusters. Setting the attribute Value will have no effect.")
@@ -465,10 +467,10 @@ public class GraphvizGraph: GraphBuilder {
     public func newCluster(name: String, label: String, parent: GVCluster?) -> GVCluster {
         let p = parent ?? g
         let result = agsubg(p, cString("cluster\(name)"), SearchOrCreate.createNew.rawValue)!
-        setClusterValue(result, "label", label)
-        setClusterValue(result, "margin", "8")
-        setClusterValue(result, "fontsize", "15")
-        setClusterValue(result, "fontname", stdFontNameBold)
+        setClusterValue(result, GVGraphParameters.label, label)
+        setClusterValue(result, GVGraphParameters.margin, "8")
+        setClusterValue(result, GVGraphParameters.fontsize, "15")
+        setClusterValue(result, GVGraphParameters.fontname, stdFontNameBold)
         return result
     }
     
