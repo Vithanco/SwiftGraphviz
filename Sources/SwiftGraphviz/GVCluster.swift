@@ -23,7 +23,7 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
         return nil
     }
     
-    var labelSize: CGSize? { //lp
+    var labelSize: CGSize? { //lsize
         if let lPos = gd_lsize(self) {
             return CGSize(gvPoint: lPos.pointee).convertZeroSizeToNil()
         }

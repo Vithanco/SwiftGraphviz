@@ -120,12 +120,12 @@ public struct GraphBuilderBias: GraphBuilder {
         base.setEdgeValue(edge, param, value)
     }
 
-    public func setGraphValue(_ attributeName: String, _ value: String) {
-        base.setGraphValue(attributeName, value)
+    public func setGraphValue(_ param: GVGraphParameters, _ value: String) {
+        base.setGraphValue(param, value)
     }
 
-    public func setClusterValue(_ cluster: GVCluster, _ attributeName: String, _ value: String) {
-        base.setClusterValue(cluster, attributeName, value)
+    public func setClusterValue(_ cluster: GVCluster, _ param: GVGraphParameters, _ value: String) {
+        base.setClusterValue(cluster, param, value)
     }
 
     public func layout() {
