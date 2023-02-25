@@ -26,7 +26,7 @@
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-#include    <cgraph.h>
+//#include    <cgraph.h>
 
 #include <getopt.h>
 
@@ -65,9 +65,9 @@ static int ischainnode(Agnode_t * n)
 
 static void adjustlen(Agedge_t * e, Agsym_t * sym, int newlen)
 {
-    char buf[10];
+    char buf[12];
 
-    sprintf(buf, "%d", newlen);
+    snprintf(buf, sizeof(buf), "%d", newlen);
     agxset(e, sym, buf);
 }
 

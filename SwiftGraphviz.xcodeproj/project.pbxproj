@@ -40,8 +40,6 @@
 		E53228142261B78C003A9143 /* GVEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228082261B78B003A9143 /* GVEdge.swift */; };
 		E53228172261B78C003A9143 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		E53228792261BB2A003A9143 /* builtins.h in Headers */ = {isa = PBXBuildFile; fileRef = E532280A2261B78C003A9143 /* builtins.h */; };
-		E539EB7826CA789D00484EA0 /* libcdt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E539EB7726CA789D00484EA0 /* libcdt.a */; };
-		E539EB7D26CA7A9400484EA0 /* libexpat.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */; };
 		E53AE88527BC367C00B42392 /* unflatten.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F14D6027B9A43C00ECEAC3 /* unflatten.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E564F892226B1231005CCB3B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F891226B1231005CCB3B /* Package.swift */; };
 		E564F8AC227B228B005CCB3B /* Double+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */; };
@@ -56,6 +54,21 @@
 		E564F8B5227B228B005CCB3B /* CGPoint+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564F8AB227B228B005CCB3B /* CGPoint+KKExtensions.swift */; };
 		E565681C2573E397001CD7B4 /* SwiftGraphviz.h in Headers */ = {isa = PBXBuildFile; fileRef = 89214F9624FBB50600B2FCC9 /* SwiftGraphviz.h */; };
 		E565682A2573E6E2001CD7B4 /* SwiftGraphviz-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = E53227FF2261B78A003A9143 /* SwiftGraphviz-Bridging-Header.h */; };
+		E569663729AA83ED00EAD705 /* libcdt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662629AA83EC00EAD705 /* libcdt.a */; };
+		E569663829AA83ED00EAD705 /* libcgraph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662729AA83EC00EAD705 /* libcgraph.a */; };
+		E569663929AA83EE00EAD705 /* libcircogen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662829AA83EC00EAD705 /* libcircogen.a */; };
+		E569663A29AA83EF00EAD705 /* libcommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662929AA83EC00EAD705 /* libcommon.a */; };
+		E569663B29AA83EF00EAD705 /* libdotgen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662A29AA83EC00EAD705 /* libdotgen.a */; };
+		E569663C29AA83F000EAD705 /* libgvc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662B29AA83EC00EAD705 /* libgvc.a */; };
+		E569663D29AA83F100EAD705 /* libgvplugin_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662C29AA83EC00EAD705 /* libgvplugin_core.a */; };
+		E569663E29AA83F200EAD705 /* libgvplugin_dot_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662D29AA83EC00EAD705 /* libgvplugin_dot_layout.a */; };
+		E569663F29AA83F300EAD705 /* libgvplugin_gd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662E29AA83EC00EAD705 /* libgvplugin_gd.a */; };
+		E569664029AA83F500EAD705 /* libgvplugin_neato_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569662F29AA83EC00EAD705 /* libgvplugin_neato_layout.a */; };
+		E569664129AA83F600EAD705 /* libgvplugin_pango.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569663029AA83EC00EAD705 /* libgvplugin_pango.a */; };
+		E569664229AA83F700EAD705 /* libgvplugin_quartz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569663129AA83EC00EAD705 /* libgvplugin_quartz.a */; };
+		E569664529AA83FC00EAD705 /* libpathplan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569663429AA83EC00EAD705 /* libpathplan.a */; };
+		E569664629AA83FD00EAD705 /* libsparse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569663529AA83EC00EAD705 /* libsparse.a */; };
+		E569664729AA83FF00EAD705 /* libxdot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E569663629AA83EC00EAD705 /* libxdot.a */; };
 		E571EC002261BC6C000F7DA1 /* builtins.c in Sources */ = {isa = PBXBuildFile; fileRef = E53228072261B78B003A9143 /* builtins.c */; };
 		E571EC032261BC6C000F7DA1 /* GraphvizWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228022261B78B003A9143 /* GraphvizWrapper.swift */; };
 		E571EC042261BC6C000F7DA1 /* GVCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228012261B78B003A9143 /* GVCluster.swift */; };
@@ -64,35 +77,27 @@
 		E571EC072261BC6C000F7DA1 /* GVNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228002261B78B003A9143 /* GVNode.swift */; };
 		E571EC082261BC6C000F7DA1 /* GVParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228032261B78B003A9143 /* GVParameters.swift */; };
 		E571EC0B2261BC6C000F7DA1 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
+		E57616A929AA94D9001C4A07 /* libortho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616A829AA94D9001C4A07 /* libortho.a */; };
+		E57616AB29AA9532001C4A07 /* libgvplugin_neato_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616AA29AA9532001C4A07 /* libgvplugin_neato_layout.a */; };
+		E57616AD29AA9532001C4A07 /* libosage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616AC29AA9532001C4A07 /* libosage.a */; };
+		E57616AF29AA9532001C4A07 /* libpack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616AE29AA9532001C4A07 /* libpack.a */; };
+		E57616B129AA9532001C4A07 /* libsfdpgen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616B029AA9532001C4A07 /* libsfdpgen.a */; };
+		E57616B329AA9532001C4A07 /* libtwopigen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616B229AA9532001C4A07 /* libtwopigen.a */; };
+		E57616B529AA95BD001C4A07 /* libcircogen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616B429AA95BD001C4A07 /* libcircogen.a */; };
+		E57616B729AA95BD001C4A07 /* libgvplugin_neato_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616B629AA95BD001C4A07 /* libgvplugin_neato_layout.a */; };
+		E57616B929AA95DD001C4A07 /* libneatogen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616B829AA95DD001C4A07 /* libneatogen.a */; };
+		E57616BB29AA9619001C4A07 /* librbtree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616BA29AA9619001C4A07 /* librbtree.a */; };
+		E57616BD29AA9663001C4A07 /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C4195258FFD3A00081254 /* libexpat.a */; };
+		E57616BE29AA9663001C4A07 /* libcharset.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418D258FFD3A00081254 /* libcharset.a */; };
+		E57616BF29AA9663001C4A07 /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C4199258FFD3A00081254 /* libintl.a */; };
+		E57616C029AA9663001C4A07 /* libltdlc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418B258FFD3A00081254 /* libltdlc.a */; };
+		E57616C229AA969F001C4A07 /* libfdpgen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616C129AA969F001C4A07 /* libfdpgen.a */; };
+		E57616C329AA9716001C4A07 /* libglib-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C4196258FFD3A00081254 /* libglib-2.0.a */; };
+		E57616C429AA9795001C4A07 /* libgts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C4194258FFD3A00081254 /* libgts.a */; };
+		E57616C629AA97DB001C4A07 /* libpatchwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616C529AA97DB001C4A07 /* libpatchwork.a */; };
+		E57616C829AA9806001C4A07 /* liblabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616C729AA9806001C4A07 /* liblabel.a */; };
 		E5862840229C6C9A0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
 		E5862841229C6C9B0074F6DC /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
-		E59BC09825DAFBCC00402577 /* libcdt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09725DAFBCC00402577 /* libcdt.a */; };
-		E59BC09A25DAFBCC00402577 /* libcgraph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09925DAFBCC00402577 /* libcgraph.a */; };
-		E59BC09C25DAFBCC00402577 /* libcircogen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09B25DAFBCC00402577 /* libcircogen.a */; };
-		E59BC09E25DAFBCC00402577 /* libcommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09D25DAFBCC00402577 /* libcommon.a */; };
-		E59BC0A025DAFBCC00402577 /* libdotgen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC09F25DAFBCC00402577 /* libdotgen.a */; };
-		E59BC0A225DAFBCC00402577 /* libfdpgen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0A125DAFBCC00402577 /* libfdpgen.a */; };
-		E59BC0A425DAFBCC00402577 /* libgvc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0A325DAFBCC00402577 /* libgvc.a */; };
-		E59BC0A625DAFBCC00402577 /* libgvplugin_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0A525DAFBCC00402577 /* libgvplugin_core.a */; };
-		E59BC0A825DAFBCC00402577 /* libgvplugin_dot_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0A725DAFBCC00402577 /* libgvplugin_dot_layout.a */; };
-		E59BC0AA25DAFBCC00402577 /* libgvplugin_gd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0A925DAFBCC00402577 /* libgvplugin_gd.a */; };
-		E59BC0AC25DAFBCC00402577 /* libgvplugin_neato_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0AB25DAFBCC00402577 /* libgvplugin_neato_layout.a */; };
-		E59BC0AE25DAFBCC00402577 /* libgvplugin_pango.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0AD25DAFBCC00402577 /* libgvplugin_pango.a */; };
-		E59BC0B025DAFBCC00402577 /* libingraphs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0AF25DAFBCC00402577 /* libingraphs.a */; };
-		E59BC0B225DAFBCC00402577 /* liblabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0B125DAFBCC00402577 /* liblabel.a */; };
-		E59BC0B425DAFBCC00402577 /* libneatogen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0B325DAFBCC00402577 /* libneatogen.a */; };
-		E59BC0B625DAFBCC00402577 /* libortho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0B525DAFBCC00402577 /* libortho.a */; };
-		E59BC0B825DAFBCC00402577 /* libosage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0B725DAFBCC00402577 /* libosage.a */; };
-		E59BC0BA25DAFBCC00402577 /* libpack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0B925DAFBCC00402577 /* libpack.a */; };
-		E59BC0BC25DAFBCC00402577 /* libpatchwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0BB25DAFBCC00402577 /* libpatchwork.a */; };
-		E59BC0BE25DAFBCC00402577 /* libpathplan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0BD25DAFBCC00402577 /* libpathplan.a */; };
-		E59BC0C025DAFBCC00402577 /* librbtree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0BF25DAFBCC00402577 /* librbtree.a */; };
-		E59BC0C225DAFBCC00402577 /* libsfdpgen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0C125DAFBCC00402577 /* libsfdpgen.a */; };
-		E59BC0C425DAFBCC00402577 /* libsparse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0C325DAFBCC00402577 /* libsparse.a */; };
-		E59BC0C625DAFBCC00402577 /* libspine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0C525DAFBCC00402577 /* libspine.a */; };
-		E59BC0C825DAFBCC00402577 /* libtwopigen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0C725DAFBCC00402577 /* libtwopigen.a */; };
-		E59BC0CA25DAFBCC00402577 /* libvmalloc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0C925DAFBCC00402577 /* libvmalloc.a */; };
-		E59BC0CC25DAFBCC00402577 /* libxdot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59BC0CB25DAFBCC00402577 /* libxdot.a */; };
 		E59BC25625DB147000402577 /* gvplugin.h in Headers */ = {isa = PBXBuildFile; fileRef = E59BC24225DB143800402577 /* gvplugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E59BC25725DB147000402577 /* cdt.h in Headers */ = {isa = PBXBuildFile; fileRef = E59BC1C225DB12A100402577 /* cdt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E59BC25825DB147000402577 /* gvcommon.h in Headers */ = {isa = PBXBuildFile; fileRef = E59BC1A425DB113500402577 /* gvcommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,9 +118,9 @@
 		E5B10A1F22E645ED00150B65 /* CGSize+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */; };
 		E5B1A8D42261E5030090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
-		E5BFE27826CA8337005828C5 /* libltdlc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C418B258FFD3A00081254 /* libltdlc.a */; };
+		E5B5DB8C29AA9F580055C4E8 /* iconv.o in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C4193258FFD3A00081254 /* iconv.o */; };
+		E5B5DB8D29AA9F850055C4E8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616CA29AA9920001C4A07 /* libiconv.tbd */; };
 		E5F14D5A27B9986800ECEAC3 /* unflatten.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F14D5927B9986800ECEAC3 /* unflatten.c */; };
-		E5F14D5C27B998D800ECEAC3 /* libingraphs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F14D5B27B998D800ECEAC3 /* libingraphs.a */; };
 		E5F14D5F27B9A36E00ECEAC3 /* unflatten.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F14D5927B9986800ECEAC3 /* unflatten.c */; };
 /* End PBXBuildFile section */
 
@@ -223,6 +228,138 @@
 		E5671A7E25A19C5A00727759 /* gvc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gvc.framework; path = "../graphviz/_build/_CPack_Packages/Darwin/ZIP/Graphviz-2.44.2~dev.20201210.0457-Darwin/frameworks/gvc.framework"; sourceTree = "<group>"; };
 		E5671A7F25A19C5A00727759 /* pathplan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pathplan.framework; path = "../graphviz/_build/_CPack_Packages/Darwin/ZIP/Graphviz-2.44.2~dev.20201210.0457-Darwin/frameworks/pathplan.framework"; sourceTree = "<group>"; };
 		E5671A8025A19C5A00727759 /* xdot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = xdot.framework; path = "../graphviz/_build/_CPack_Packages/Darwin/ZIP/Graphviz-2.44.2~dev.20201210.0457-Darwin/frameworks/xdot.framework"; sourceTree = "<group>"; };
+		E569654F29AA71F100EAD705 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655129AA727E00EAD705 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655329AA747600EAD705 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655529AA747600EAD705 /* libcgraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcgraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655729AA747600EAD705 /* libcommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655929AA747600EAD705 /* libdotgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libdotgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655B29AA747600EAD705 /* libgvplugin_core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_core.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655D29AA747600EAD705 /* libgvplugin_dot_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_dot_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569655F29AA747600EAD705 /* libgvplugin_gd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_gd.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656129AA747600EAD705 /* libgvplugin_neato_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_neato_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656329AA747600EAD705 /* libgvplugin_pango.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_pango.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656529AA747600EAD705 /* libgvplugin_quartz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_quartz.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656729AA747600EAD705 /* libxdot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxdot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656929AA751300EAD705 /* libast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libast.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656B29AA751300EAD705 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656D29AA751300EAD705 /* libcgraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcgraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569656F29AA751300EAD705 /* libcircogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcircogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657129AA751300EAD705 /* libcommon_obj.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcommon_obj.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657329AA751300EAD705 /* libcommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657529AA751300EAD705 /* libdotgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libdotgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657729AA751300EAD705 /* libedgepaintlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libedgepaintlib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657929AA751300EAD705 /* libexpr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libexpr.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657B29AA751300EAD705 /* libfdpgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfdpgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657D29AA751300EAD705 /* libgvc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569657F29AA751300EAD705 /* libgvplugin_core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_core.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658129AA751300EAD705 /* libgvplugin_dot_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_dot_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658329AA751300EAD705 /* libgvplugin_gd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_gd.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658529AA751300EAD705 /* libgvplugin_neato_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_neato_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658729AA751300EAD705 /* libgvplugin_pango.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_pango.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658929AA751300EAD705 /* libgvplugin_quartz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_quartz.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658B29AA751300EAD705 /* libgvplugin_visio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_visio.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658D29AA751300EAD705 /* libgvplugin_webp.6.0.0.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libgvplugin_webp.6.0.0.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569658F29AA751300EAD705 /* libgvpr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvpr.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659129AA751300EAD705 /* libingraphs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libingraphs.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659329AA751300EAD705 /* liblabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = liblabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659529AA751300EAD705 /* libneatogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libneatogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659729AA751300EAD705 /* libortho_obj.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libortho_obj.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659929AA751300EAD705 /* libortho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libortho.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659B29AA751300EAD705 /* libosage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libosage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659D29AA751300EAD705 /* libpack_obj.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpack_obj.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569659F29AA751300EAD705 /* libpack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpack.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965A129AA751300EAD705 /* libpatchwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpatchwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965A329AA751300EAD705 /* libpathplan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpathplan.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965A529AA751300EAD705 /* librbtree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librbtree.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965A729AA751300EAD705 /* libsfdpgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsfdpgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965A929AA751300EAD705 /* libsfio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsfio.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965AB29AA751300EAD705 /* libsparse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsparse.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965AD29AA751300EAD705 /* libtwopigen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libtwopigen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965AF29AA751300EAD705 /* libvmalloc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvmalloc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B129AA751300EAD705 /* libxdot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxdot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B329AA75EF00EAD705 /* libast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libast.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B429AA75EF00EAD705 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B529AA75EF00EAD705 /* libcgraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcgraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B629AA75EF00EAD705 /* libcircogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcircogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B729AA75EF00EAD705 /* libcommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B829AA75EF00EAD705 /* libdotgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libdotgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965B929AA75EF00EAD705 /* libedgepaintlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libedgepaintlib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965BA29AA75EF00EAD705 /* libexpr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libexpr.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965BB29AA75EF00EAD705 /* libfdpgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfdpgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965BC29AA75EF00EAD705 /* libgvc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965BD29AA75EF00EAD705 /* libgvplugin_core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_core.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965BE29AA75EF00EAD705 /* libgvplugin_dot_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_dot_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965BF29AA75EF00EAD705 /* libgvplugin_gd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_gd.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C029AA75EF00EAD705 /* libgvplugin_neato_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_neato_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C129AA75EF00EAD705 /* libgvplugin_pango.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_pango.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C229AA75EF00EAD705 /* libgvplugin_quartz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_quartz.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C329AA75EF00EAD705 /* libgvplugin_visio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_visio.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C429AA75EF00EAD705 /* libgvpr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvpr.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C529AA75EF00EAD705 /* libingraphs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libingraphs.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C629AA75EF00EAD705 /* liblabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = liblabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C729AA75EF00EAD705 /* libneatogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libneatogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C829AA75EF00EAD705 /* libortho_obj.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libortho_obj.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965C929AA75EF00EAD705 /* libortho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libortho.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965CA29AA75EF00EAD705 /* libosage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libosage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965CB29AA75EF00EAD705 /* libpack_obj.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpack_obj.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965CC29AA75EF00EAD705 /* libpack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpack.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965CD29AA75EF00EAD705 /* libpatchwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpatchwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965CE29AA75EF00EAD705 /* libpathplan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpathplan.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965CF29AA75EF00EAD705 /* librbtree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librbtree.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965D029AA75EF00EAD705 /* libsfdpgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsfdpgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965D129AA75EF00EAD705 /* libsfio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsfio.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965D229AA75EF00EAD705 /* libsparse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsparse.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965D329AA75EF00EAD705 /* libtwopigen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libtwopigen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965D429AA75EF00EAD705 /* libvmalloc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvmalloc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965D529AA75EF00EAD705 /* libxdot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxdot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965F929AA795700EAD705 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965FA29AA795700EAD705 /* libcgraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcgraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965FB29AA795700EAD705 /* libgvc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965FC29AA795700EAD705 /* libgvplugin_core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_core.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965FD29AA795700EAD705 /* libgvplugin_dot_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_dot_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965FE29AA795700EAD705 /* libgvplugin_neato_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_neato_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56965FF29AA795700EAD705 /* libgvplugin_quartz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_quartz.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569660029AA795700EAD705 /* libpathplan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpathplan.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569660129AA795700EAD705 /* libxdot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxdot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569661429AA7A2300EAD705 /* libltdlc.a_signature.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = libltdlc.a_signature.txt; path = universal/libltdlc.a_signature.txt; sourceTree = "<group>"; };
+		E569661529AA7A2300EAD705 /* ltdl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ltdl.h; path = universal/ltdl.h; sourceTree = "<group>"; };
+		E569661629AA7A2400EAD705 /* libgd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgd.a; path = universal/libgd.a; sourceTree = "<group>"; };
+		E569661729AA7A4500EAD705 /* libcircogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcircogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569661929AA7A7700EAD705 /* libtwopigen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libtwopigen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569661B29AA7AA200EAD705 /* libpack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpack.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569661D29AA82AA00EAD705 /* libcommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662629AA83EC00EAD705 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662729AA83EC00EAD705 /* libcgraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcgraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662829AA83EC00EAD705 /* libcircogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcircogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662929AA83EC00EAD705 /* libcommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662A29AA83EC00EAD705 /* libdotgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libdotgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662B29AA83EC00EAD705 /* libgvc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662C29AA83EC00EAD705 /* libgvplugin_core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_core.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662D29AA83EC00EAD705 /* libgvplugin_dot_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_dot_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662E29AA83EC00EAD705 /* libgvplugin_gd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_gd.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569662F29AA83EC00EAD705 /* libgvplugin_neato_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_neato_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569663029AA83EC00EAD705 /* libgvplugin_pango.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_pango.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569663129AA83EC00EAD705 /* libgvplugin_quartz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_quartz.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569663229AA83EC00EAD705 /* libortho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libortho.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569663329AA83EC00EAD705 /* libpack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpack.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569663429AA83EC00EAD705 /* libpathplan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpathplan.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569663529AA83EC00EAD705 /* libsparse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsparse.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569663629AA83EC00EAD705 /* libxdot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxdot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616A829AA94D9001C4A07 /* libortho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libortho.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616AA29AA9532001C4A07 /* libgvplugin_neato_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_neato_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616AC29AA9532001C4A07 /* libosage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libosage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616AE29AA9532001C4A07 /* libpack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpack.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616B029AA9532001C4A07 /* libsfdpgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsfdpgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616B229AA9532001C4A07 /* libtwopigen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libtwopigen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616B429AA95BD001C4A07 /* libcircogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcircogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616B629AA95BD001C4A07 /* libgvplugin_neato_layout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgvplugin_neato_layout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616B829AA95DD001C4A07 /* libneatogen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libneatogen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616BA29AA9619001C4A07 /* librbtree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librbtree.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616C129AA969F001C4A07 /* libfdpgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfdpgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616C529AA97DB001C4A07 /* libpatchwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpatchwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616C729AA9806001C4A07 /* liblabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = liblabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57616CA29AA9920001C4A07 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		E586283E229C6AC50074F6DC /* GVGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GVGraph.swift; sourceTree = "<group>"; };
 		E59BC09725DAFBCC00402577 /* libcdt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcdt.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59BC09925DAFBCC00402577 /* libcgraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcgraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,37 +424,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5BFE27826CA8337005828C5 /* libltdlc.a in Frameworks */,
-				E539EB7D26CA7A9400484EA0 /* libexpat.1.tbd in Frameworks */,
-				E539EB7826CA789D00484EA0 /* libcdt.a in Frameworks */,
-				E59BC09825DAFBCC00402577 /* libcdt.a in Frameworks */,
-				E59BC09A25DAFBCC00402577 /* libcgraph.a in Frameworks */,
-				E59BC09C25DAFBCC00402577 /* libcircogen.a in Frameworks */,
-				E59BC09E25DAFBCC00402577 /* libcommon.a in Frameworks */,
-				E59BC0A025DAFBCC00402577 /* libdotgen.a in Frameworks */,
-				E59BC0A225DAFBCC00402577 /* libfdpgen.a in Frameworks */,
-				E59BC0A425DAFBCC00402577 /* libgvc.a in Frameworks */,
-				E59BC0A625DAFBCC00402577 /* libgvplugin_core.a in Frameworks */,
-				E59BC0A825DAFBCC00402577 /* libgvplugin_dot_layout.a in Frameworks */,
-				E59BC0AA25DAFBCC00402577 /* libgvplugin_gd.a in Frameworks */,
-				E59BC0AC25DAFBCC00402577 /* libgvplugin_neato_layout.a in Frameworks */,
-				E59BC0AE25DAFBCC00402577 /* libgvplugin_pango.a in Frameworks */,
-				E59BC0B025DAFBCC00402577 /* libingraphs.a in Frameworks */,
-				E59BC0B225DAFBCC00402577 /* liblabel.a in Frameworks */,
-				E59BC0B425DAFBCC00402577 /* libneatogen.a in Frameworks */,
-				E59BC0B625DAFBCC00402577 /* libortho.a in Frameworks */,
-				E5F14D5C27B998D800ECEAC3 /* libingraphs.a in Frameworks */,
-				E59BC0B825DAFBCC00402577 /* libosage.a in Frameworks */,
-				E59BC0BA25DAFBCC00402577 /* libpack.a in Frameworks */,
-				E59BC0BC25DAFBCC00402577 /* libpatchwork.a in Frameworks */,
-				E59BC0BE25DAFBCC00402577 /* libpathplan.a in Frameworks */,
-				E59BC0C025DAFBCC00402577 /* librbtree.a in Frameworks */,
-				E59BC0C225DAFBCC00402577 /* libsfdpgen.a in Frameworks */,
-				E59BC0C425DAFBCC00402577 /* libsparse.a in Frameworks */,
-				E59BC0C625DAFBCC00402577 /* libspine.a in Frameworks */,
-				E59BC0C825DAFBCC00402577 /* libtwopigen.a in Frameworks */,
-				E59BC0CA25DAFBCC00402577 /* libvmalloc.a in Frameworks */,
-				E59BC0CC25DAFBCC00402577 /* libxdot.a in Frameworks */,
+				E57616C829AA9806001C4A07 /* liblabel.a in Frameworks */,
+				E57616C629AA97DB001C4A07 /* libpatchwork.a in Frameworks */,
+				E57616C429AA9795001C4A07 /* libgts.a in Frameworks */,
+				E57616C329AA9716001C4A07 /* libglib-2.0.a in Frameworks */,
+				E57616C229AA969F001C4A07 /* libfdpgen.a in Frameworks */,
+				E57616BD29AA9663001C4A07 /* libexpat.a in Frameworks */,
+				E5B5DB8D29AA9F850055C4E8 /* libiconv.tbd in Frameworks */,
+				E57616BE29AA9663001C4A07 /* libcharset.a in Frameworks */,
+				E57616BF29AA9663001C4A07 /* libintl.a in Frameworks */,
+				E57616C029AA9663001C4A07 /* libltdlc.a in Frameworks */,
+				E57616BB29AA9619001C4A07 /* librbtree.a in Frameworks */,
+				E57616B929AA95DD001C4A07 /* libneatogen.a in Frameworks */,
+				E57616B529AA95BD001C4A07 /* libcircogen.a in Frameworks */,
+				E57616B729AA95BD001C4A07 /* libgvplugin_neato_layout.a in Frameworks */,
+				E57616AB29AA9532001C4A07 /* libgvplugin_neato_layout.a in Frameworks */,
+				E57616AD29AA9532001C4A07 /* libosage.a in Frameworks */,
+				E57616AF29AA9532001C4A07 /* libpack.a in Frameworks */,
+				E57616B129AA9532001C4A07 /* libsfdpgen.a in Frameworks */,
+				E57616B329AA9532001C4A07 /* libtwopigen.a in Frameworks */,
+				E57616A929AA94D9001C4A07 /* libortho.a in Frameworks */,
+				E569663829AA83ED00EAD705 /* libcgraph.a in Frameworks */,
+				E569664129AA83F600EAD705 /* libgvplugin_pango.a in Frameworks */,
+				E569663B29AA83EF00EAD705 /* libdotgen.a in Frameworks */,
+				E569663729AA83ED00EAD705 /* libcdt.a in Frameworks */,
+				E569663929AA83EE00EAD705 /* libcircogen.a in Frameworks */,
+				E569663E29AA83F200EAD705 /* libgvplugin_dot_layout.a in Frameworks */,
+				E569663A29AA83EF00EAD705 /* libcommon.a in Frameworks */,
+				E5B5DB8C29AA9F580055C4E8 /* iconv.o in Frameworks */,
+				E569664629AA83FD00EAD705 /* libsparse.a in Frameworks */,
+				E569664529AA83FC00EAD705 /* libpathplan.a in Frameworks */,
+				E569663C29AA83F000EAD705 /* libgvc.a in Frameworks */,
+				E569664729AA83FF00EAD705 /* libxdot.a in Frameworks */,
+				E569663D29AA83F100EAD705 /* libgvplugin_core.a in Frameworks */,
+				E569663F29AA83F300EAD705 /* libgvplugin_gd.a in Frameworks */,
+				E569664229AA83F700EAD705 /* libgvplugin_quartz.a in Frameworks */,
+				E569664029AA83F500EAD705 /* libgvplugin_neato_layout.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +546,138 @@
 		E53227DC2260F8F2003A9143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E57616CA29AA9920001C4A07 /* libiconv.tbd */,
+				E57616C729AA9806001C4A07 /* liblabel.a */,
+				E57616C529AA97DB001C4A07 /* libpatchwork.a */,
+				E57616C129AA969F001C4A07 /* libfdpgen.a */,
+				E57616BA29AA9619001C4A07 /* librbtree.a */,
+				E57616B829AA95DD001C4A07 /* libneatogen.a */,
+				E57616B429AA95BD001C4A07 /* libcircogen.a */,
+				E57616B629AA95BD001C4A07 /* libgvplugin_neato_layout.a */,
+				E57616AA29AA9532001C4A07 /* libgvplugin_neato_layout.a */,
+				E57616AC29AA9532001C4A07 /* libosage.a */,
+				E57616AE29AA9532001C4A07 /* libpack.a */,
+				E57616B029AA9532001C4A07 /* libsfdpgen.a */,
+				E57616B229AA9532001C4A07 /* libtwopigen.a */,
+				E57616A829AA94D9001C4A07 /* libortho.a */,
+				E569662629AA83EC00EAD705 /* libcdt.a */,
+				E569662729AA83EC00EAD705 /* libcgraph.a */,
+				E569662829AA83EC00EAD705 /* libcircogen.a */,
+				E569662929AA83EC00EAD705 /* libcommon.a */,
+				E569662A29AA83EC00EAD705 /* libdotgen.a */,
+				E569662B29AA83EC00EAD705 /* libgvc.a */,
+				E569662C29AA83EC00EAD705 /* libgvplugin_core.a */,
+				E569662D29AA83EC00EAD705 /* libgvplugin_dot_layout.a */,
+				E569662E29AA83EC00EAD705 /* libgvplugin_gd.a */,
+				E569662F29AA83EC00EAD705 /* libgvplugin_neato_layout.a */,
+				E569663029AA83EC00EAD705 /* libgvplugin_pango.a */,
+				E569663129AA83EC00EAD705 /* libgvplugin_quartz.a */,
+				E569663229AA83EC00EAD705 /* libortho.a */,
+				E569663329AA83EC00EAD705 /* libpack.a */,
+				E569663429AA83EC00EAD705 /* libpathplan.a */,
+				E569663529AA83EC00EAD705 /* libsparse.a */,
+				E569663629AA83EC00EAD705 /* libxdot.a */,
+				E569661D29AA82AA00EAD705 /* libcommon.a */,
+				E569661B29AA7AA200EAD705 /* libpack.a */,
+				E569661929AA7A7700EAD705 /* libtwopigen.a */,
+				E569661729AA7A4500EAD705 /* libcircogen.a */,
+				E569661629AA7A2400EAD705 /* libgd.a */,
+				E569661429AA7A2300EAD705 /* libltdlc.a_signature.txt */,
+				E569661529AA7A2300EAD705 /* ltdl.h */,
+				E56965F929AA795700EAD705 /* libcdt.a */,
+				E56965FA29AA795700EAD705 /* libcgraph.a */,
+				E56965FB29AA795700EAD705 /* libgvc.a */,
+				E56965FC29AA795700EAD705 /* libgvplugin_core.a */,
+				E56965FD29AA795700EAD705 /* libgvplugin_dot_layout.a */,
+				E56965FE29AA795700EAD705 /* libgvplugin_neato_layout.a */,
+				E56965FF29AA795700EAD705 /* libgvplugin_quartz.a */,
+				E569660029AA795700EAD705 /* libpathplan.a */,
+				E569660129AA795700EAD705 /* libxdot.a */,
+				E56965B329AA75EF00EAD705 /* libast.a */,
+				E56965B429AA75EF00EAD705 /* libcdt.a */,
+				E56965B529AA75EF00EAD705 /* libcgraph.a */,
+				E56965B629AA75EF00EAD705 /* libcircogen.a */,
+				E56965B729AA75EF00EAD705 /* libcommon.a */,
+				E56965B829AA75EF00EAD705 /* libdotgen.a */,
+				E56965B929AA75EF00EAD705 /* libedgepaintlib.a */,
+				E56965BA29AA75EF00EAD705 /* libexpr.a */,
+				E56965BB29AA75EF00EAD705 /* libfdpgen.a */,
+				E56965BC29AA75EF00EAD705 /* libgvc.a */,
+				E56965BD29AA75EF00EAD705 /* libgvplugin_core.a */,
+				E56965BE29AA75EF00EAD705 /* libgvplugin_dot_layout.a */,
+				E56965BF29AA75EF00EAD705 /* libgvplugin_gd.a */,
+				E56965C029AA75EF00EAD705 /* libgvplugin_neato_layout.a */,
+				E56965C129AA75EF00EAD705 /* libgvplugin_pango.a */,
+				E56965C229AA75EF00EAD705 /* libgvplugin_quartz.a */,
+				E56965C329AA75EF00EAD705 /* libgvplugin_visio.a */,
+				E56965C429AA75EF00EAD705 /* libgvpr.a */,
+				E56965C529AA75EF00EAD705 /* libingraphs.a */,
+				E56965C629AA75EF00EAD705 /* liblabel.a */,
+				E56965C729AA75EF00EAD705 /* libneatogen.a */,
+				E56965C829AA75EF00EAD705 /* libortho_obj.a */,
+				E56965C929AA75EF00EAD705 /* libortho.a */,
+				E56965CA29AA75EF00EAD705 /* libosage.a */,
+				E56965CB29AA75EF00EAD705 /* libpack_obj.a */,
+				E56965CC29AA75EF00EAD705 /* libpack.a */,
+				E56965CD29AA75EF00EAD705 /* libpatchwork.a */,
+				E56965CE29AA75EF00EAD705 /* libpathplan.a */,
+				E56965CF29AA75EF00EAD705 /* librbtree.a */,
+				E56965D029AA75EF00EAD705 /* libsfdpgen.a */,
+				E56965D129AA75EF00EAD705 /* libsfio.a */,
+				E56965D229AA75EF00EAD705 /* libsparse.a */,
+				E56965D329AA75EF00EAD705 /* libtwopigen.a */,
+				E56965D429AA75EF00EAD705 /* libvmalloc.a */,
+				E56965D529AA75EF00EAD705 /* libxdot.a */,
+				E569656929AA751300EAD705 /* libast.a */,
+				E569656B29AA751300EAD705 /* libcdt.a */,
+				E569656D29AA751300EAD705 /* libcgraph.a */,
+				E569656F29AA751300EAD705 /* libcircogen.a */,
+				E569657129AA751300EAD705 /* libcommon_obj.a */,
+				E569657329AA751300EAD705 /* libcommon.a */,
+				E569657529AA751300EAD705 /* libdotgen.a */,
+				E569657729AA751300EAD705 /* libedgepaintlib.a */,
+				E569657929AA751300EAD705 /* libexpr.a */,
+				E569657B29AA751300EAD705 /* libfdpgen.a */,
+				E569657D29AA751300EAD705 /* libgvc.a */,
+				E569657F29AA751300EAD705 /* libgvplugin_core.a */,
+				E569658129AA751300EAD705 /* libgvplugin_dot_layout.a */,
+				E569658329AA751300EAD705 /* libgvplugin_gd.a */,
+				E569658529AA751300EAD705 /* libgvplugin_neato_layout.a */,
+				E569658729AA751300EAD705 /* libgvplugin_pango.a */,
+				E569658929AA751300EAD705 /* libgvplugin_quartz.a */,
+				E569658B29AA751300EAD705 /* libgvplugin_visio.a */,
+				E569658D29AA751300EAD705 /* libgvplugin_webp.6.0.0.dylib */,
+				E569658F29AA751300EAD705 /* libgvpr.a */,
+				E569659129AA751300EAD705 /* libingraphs.a */,
+				E569659329AA751300EAD705 /* liblabel.a */,
+				E569659529AA751300EAD705 /* libneatogen.a */,
+				E569659729AA751300EAD705 /* libortho_obj.a */,
+				E569659929AA751300EAD705 /* libortho.a */,
+				E569659B29AA751300EAD705 /* libosage.a */,
+				E569659D29AA751300EAD705 /* libpack_obj.a */,
+				E569659F29AA751300EAD705 /* libpack.a */,
+				E56965A129AA751300EAD705 /* libpatchwork.a */,
+				E56965A329AA751300EAD705 /* libpathplan.a */,
+				E56965A529AA751300EAD705 /* librbtree.a */,
+				E56965A729AA751300EAD705 /* libsfdpgen.a */,
+				E56965A929AA751300EAD705 /* libsfio.a */,
+				E56965AB29AA751300EAD705 /* libsparse.a */,
+				E56965AD29AA751300EAD705 /* libtwopigen.a */,
+				E56965AF29AA751300EAD705 /* libvmalloc.a */,
+				E56965B129AA751300EAD705 /* libxdot.a */,
+				E569655329AA747600EAD705 /* libcdt.a */,
+				E569655529AA747600EAD705 /* libcgraph.a */,
+				E569655729AA747600EAD705 /* libcommon.a */,
+				E569655929AA747600EAD705 /* libdotgen.a */,
+				E569655B29AA747600EAD705 /* libgvplugin_core.a */,
+				E569655D29AA747600EAD705 /* libgvplugin_dot_layout.a */,
+				E569655F29AA747600EAD705 /* libgvplugin_gd.a */,
+				E569656129AA747600EAD705 /* libgvplugin_neato_layout.a */,
+				E569656329AA747600EAD705 /* libgvplugin_pango.a */,
+				E569656529AA747600EAD705 /* libgvplugin_quartz.a */,
+				E569656729AA747600EAD705 /* libxdot.a */,
+				E569655129AA727E00EAD705 /* libcdt.a */,
+				E569654F29AA71F100EAD705 /* libcdt.a */,
 				E5F14D5B27B998D800ECEAC3 /* libingraphs.a */,
 				E55CD06826CA8079000C3963 /* libdl.tbd */,
 				E539EB7C26CA7A9400484EA0 /* libexpat.1.tbd */,
@@ -609,7 +883,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E539EB7A26CA78F600484EA0 /* PBXTargetDependency */,
 			);
 			name = SwiftGraphviz;
 			packageProductDependencies = (
@@ -838,10 +1111,6 @@
 			isa = PBXTargetDependency;
 			productRef = 89F4ED3624955F180099B6C6 /* Logging */;
 		};
-		E539EB7A26CA78F600484EA0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = E539EB7926CA78F600484EA0 /* Logging */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -875,6 +1144,8 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/universal",
+					"$(PROJECT_DIR)/../graphviz/_build/**",
+					"$(PROJECT_DIR)/macOS/otherLibs",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
@@ -924,6 +1195,8 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/universal",
+					"$(PROJECT_DIR)/../graphviz/_build/**",
+					"$(PROJECT_DIR)/macOS/otherLibs",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
@@ -991,7 +1264,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1023,7 +1296,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1054,7 +1327,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1086,7 +1359,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1316,11 +1589,6 @@
 			productName = Logging;
 		};
 		89F4ED3624955F180099B6C6 /* Logging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */;
-			productName = Logging;
-		};
-		E539EB7926CA78F600484EA0 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 89F4ED2C2495436B0099B6C6 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
