@@ -120,6 +120,7 @@
 		E5B1A8D52261EB7D0090DBD8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B1A8D32261E5020090DBD8 /* Logging.swift */; };
 		E5B5DB8C29AA9F580055C4E8 /* iconv.o in Frameworks */ = {isa = PBXBuildFile; fileRef = E52C4193258FFD3A00081254 /* iconv.o */; };
 		E5B5DB8D29AA9F850055C4E8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E57616CA29AA9920001C4A07 /* libiconv.tbd */; };
+		E5B8FACD29F85969005C1DCA /* libSystem_asan.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B8FACC29F858DB005C1DCA /* libSystem_asan.tbd */; };
 		E5F14D5A27B9986800ECEAC3 /* unflatten.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F14D5927B9986800ECEAC3 /* unflatten.c */; };
 		E5F14D5F27B9A36E00ECEAC3 /* unflatten.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F14D5927B9986800ECEAC3 /* unflatten.c */; };
 /* End PBXBuildFile section */
@@ -409,6 +410,7 @@
 		E59BC46925DBF02E00402577 /* libexpat.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.1.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libexpat.1.tbd; sourceTree = DEVELOPER_DIR; };
 		E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+KKExtensions.swift"; sourceTree = "<group>"; };
 		E5B1A8D32261E5020090DBD8 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		E5B8FACC29F858DB005C1DCA /* libSystem_asan.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem_asan.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/lib/libSystem_asan.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F0910E259D192F0069A360 /* libexpat.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libexpat.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F09114259D19360069A360 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		E5F0911A259D194A0069A360 /* libcharset.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcharset.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libcharset.tbd; sourceTree = DEVELOPER_DIR; };
@@ -458,6 +460,7 @@
 				E569664729AA83FF00EAD705 /* libxdot.a in Frameworks */,
 				E569663D29AA83F100EAD705 /* libgvplugin_core.a in Frameworks */,
 				E569663F29AA83F300EAD705 /* libgvplugin_gd.a in Frameworks */,
+				E5B8FACD29F85969005C1DCA /* libSystem_asan.tbd in Frameworks */,
 				E569664229AA83F700EAD705 /* libgvplugin_quartz.a in Frameworks */,
 				E569664029AA83F500EAD705 /* libgvplugin_neato_layout.a in Frameworks */,
 			);
@@ -546,6 +549,7 @@
 		E53227DC2260F8F2003A9143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5B8FACC29F858DB005C1DCA /* libSystem_asan.tbd */,
 				E57616CA29AA9920001C4A07 /* libiconv.tbd */,
 				E57616C729AA9806001C4A07 /* liblabel.a */,
 				E57616C529AA97DB001C4A07 /* libpatchwork.a */,
@@ -1149,6 +1153,10 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-fsanitize=thread",
+					"-static-libsan",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
@@ -1200,6 +1208,10 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-fsanitize=thread",
+					"-static-libsan",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vithanco.SwiftGraphviz;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
