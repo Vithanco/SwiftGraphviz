@@ -76,12 +76,39 @@ textlabel_t* ed_label(Agedge_t* e) {
     return ED_label(e);
 }
 
+double ed_label_fontsize(Agedge_t* e) {
+    textlabel_t* label;
+    label = ED_label(e);
+    if (label) {
+        return label->fontsize;
+    }
+    return 0;
+}
+
 textlabel_t* ed_head_label(Agedge_t* e) {
     return ED_head_label(e);
 }
 
+double ed_headlabel_fontsize(Agedge_t* e) {
+    textlabel_t* label;
+    label = ED_head_label(e);
+    if (label) {
+        return label->fontsize;
+    }
+    return 0;
+}
+
 textlabel_t* ed_tail_label(Agedge_t* e) {
     return ED_tail_label(e);
+}
+
+double ed_taillabel_fontsize(Agedge_t* e) {
+    textlabel_t* label;
+    label = ED_tail_label(e);
+    if (label) {
+        return label->fontsize;
+    }
+    return 0;
 }
 
 

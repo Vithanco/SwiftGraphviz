@@ -9,6 +9,7 @@
 //https://github.com/raywenderlich/SKTUtils/blob/master/SKTUtils/CGVector%2BExtensions.swift
 
 import CoreGraphics
+import Foundation
 //import SpriteKit
 
 public extension CGVector {
@@ -97,6 +98,14 @@ public extension CGVector {
     func angleBetween(other: CGVector) -> CGFloat{
         let diff = self - other
         return diff.angle
+    }
+    
+    func turn (degree: Double) -> CGVector {
+        let sinus = sin(degree)
+        let cosinus = cos(degree)
+        let x2 = cosinus * self.dx - sinus * self.dy
+        let y2 = sinus * self.dx + cosinus * self.dy
+        return CGVector(dx: x2, dy: y2)
     }
 }
 

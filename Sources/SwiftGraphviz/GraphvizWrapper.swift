@@ -298,9 +298,6 @@ func cString(_ s: String) -> CHAR {
 }
 
 
-
-
-
 public typealias GVParams = [GVParameter: String]
 
 public protocol GraphBuilder {

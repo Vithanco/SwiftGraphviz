@@ -22,9 +22,10 @@ public struct GVLayoutConfig {
     }
     
     public func layout(_ gvc: GVGlobalContextPointer, _ g: GVGraph) {
-
+        g.saveTo(fileName: "simplegraph.dot")
+        
         gvLayout(gvc,g,layoutEngine.graphvizName)
-        gvRender(gvc,g,renderEngine.graphvizName,nil)
+    //    gvRender(gvc,g,renderEngine.graphvizName,nil)
         
         if let second = secondLayoutEngine {
             //            gvLayout(gvc,g,second.graphvizName)

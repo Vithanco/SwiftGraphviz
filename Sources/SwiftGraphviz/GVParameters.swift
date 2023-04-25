@@ -32,9 +32,12 @@ public enum GVEdgeParameters : String {
     case tailport
     case style
     case headlabel
+    case headtooltip 
     case taillabel
     case labelangle
     case labeldistance
+    case labelfloat
+    case labelfontsize
     case len
     case fontname
     case fontsize
@@ -126,7 +129,6 @@ public enum GVParamValueOverlap : String {
 }
 
 @objc public enum GVEdgeEnding: Int {
-    
     /// no ending
     case none = 0
     
@@ -138,7 +140,6 @@ public enum GVParamValueOverlap : String {
     
     ///diamond
     case diamond
-    
     
     static var readableNames: [String] {
         return ["None", "Arrow", "Dot", "Diamond"]

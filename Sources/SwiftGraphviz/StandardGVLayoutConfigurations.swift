@@ -83,7 +83,8 @@ import Foundation
                 layoutEngine: .neato,
                 renderEngine: .neato,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue,.graph(.sep):"+20",.edge(.len):"3"],
+                params: [//.graph(.overlap):GVParamValueOverlap.scale.rawValue,
+                    .graph(.sep):"+20",.edge(.len):"2.5"],
                 secondLayoutEngine: nil,
                 supportClusters: false)
         }
