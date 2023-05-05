@@ -38,7 +38,7 @@ import Foundation
                 layoutEngine: .neato,
                 renderEngine: .dot,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue], //,.graph(.sep): "+20,20"],
+                params: [:], //.graph(.overlap):GVParamValueOverlap.scale.rawValue], //,.graph(.sep): "+20,20"], //TODO: get it back
                 secondLayoutEngine: nil,
                 supportClusters: false)
         case .fdp:
@@ -74,7 +74,7 @@ import Foundation
                 layoutEngine: .twopi,
                 renderEngine: .dot,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue],
+                params: [:], //.graph(.overlap):GVParamValueOverlap.scale.rawValue],//TODO: get it back
                 secondLayoutEngine: nil,
                 supportClusters: false)
         case .systemsThinking:
@@ -83,7 +83,7 @@ import Foundation
                 layoutEngine: .neato,
                 renderEngine: .neato,
                 saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [//.graph(.overlap):GVParamValueOverlap.scale.rawValue,
+                params: [//.graph(.overlap):GVParamValueOverlap.scale.rawValue,//TODO: get it back
                     .graph(.sep):"+20",.edge(.len):"2.5"],
                 secondLayoutEngine: nil,
                 supportClusters: false)
