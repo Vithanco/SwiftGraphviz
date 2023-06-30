@@ -37,7 +37,7 @@ lt_symlist_t lt_preloaded_symbols[] = {
 
 
 
-GVC_t * loadGraphvizLibraries() {
+GVC_t * loadGraphvizLibraries(void) {
     
     GVC_t * gvc =  gvNEWcontext(&lt_preloaded_symbols[0], 0);
     textfont_dict_open(gvc);  // this is a workaround due to https://gitlab.com/graphviz/graphviz/issues/1520
