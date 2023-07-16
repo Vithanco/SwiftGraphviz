@@ -2,3 +2,7 @@
 /.build
 /Packages
 /*.xcodeproj
+/.swiftpm
+merging.txt
+universal/all.txt
+
