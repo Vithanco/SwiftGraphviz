@@ -97,7 +97,6 @@
 		E57870CF2A476E5500E42F56 /* libexpr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870CE2A476E5500E42F56 /* libexpr.a */; };
 		E57870D12A476E5500E42F56 /* libgvplugin_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870D02A476E5500E42F56 /* libgvplugin_core.a */; };
 		E57870D32A476E5500E42F56 /* libgvplugin_dot_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870D22A476E5500E42F56 /* libgvplugin_dot_layout.a */; };
-		E57870D52A476E5500E42F56 /* libgvplugin_gd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870D42A476E5500E42F56 /* libgvplugin_gd.a */; };
 		E57870D72A476E5500E42F56 /* libgvplugin_neato_layout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870D62A476E5500E42F56 /* libgvplugin_neato_layout.a */; };
 		E57870D92A476E5600E42F56 /* libgvplugin_pango.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870D82A476E5600E42F56 /* libgvplugin_pango.a */; };
 		E57870DB2A476E5600E42F56 /* libgvplugin_quartz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870DA2A476E5600E42F56 /* libgvplugin_quartz.a */; };
@@ -216,6 +215,7 @@
 		89214FA124FBB50600B2FCC9 /* SwiftGraphvizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGraphvizTests.swift; sourceTree = "<group>"; };
 		89214FA324FBB50600B2FCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphBuilderBias.swift; sourceTree = "<group>"; };
+		E52B9EEE2A63D6B900C3328A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E52C418B258FFD3A00081254 /* libltdlc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libltdlc.a; path = universal/libltdlc.a; sourceTree = "<group>"; };
 		E52C418D258FFD3A00081254 /* libcharset.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcharset.a; path = universal/libcharset.a; sourceTree = "<group>"; };
 		E52C4190258FFD3A00081254 /* libgvc_C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgvc_C.a; path = universal/libgvc_C.a; sourceTree = "<group>"; };
@@ -326,7 +326,6 @@
 				E57870CF2A476E5500E42F56 /* libexpr.a in Frameworks */,
 				E57870D12A476E5500E42F56 /* libgvplugin_core.a in Frameworks */,
 				E57870D32A476E5500E42F56 /* libgvplugin_dot_layout.a in Frameworks */,
-				E57870D52A476E5500E42F56 /* libgvplugin_gd.a in Frameworks */,
 				E57870D72A476E5500E42F56 /* libgvplugin_neato_layout.a in Frameworks */,
 				E57870D92A476E5600E42F56 /* libgvplugin_pango.a in Frameworks */,
 				E57870DB2A476E5600E42F56 /* libgvplugin_quartz.a in Frameworks */,
@@ -420,6 +419,7 @@
 		E53227C92260511C003A9143 = {
 			isa = PBXGroup;
 			children = (
+				E52B9EEE2A63D6B900C3328A /* README.md */,
 				E5DA5D192A2A1AD40021AB84 /* gvplugin.h */,
 				E5DA5D172A2A1A8A0021AB84 /* gvcext.h */,
 				E5DA5D112A2A175B0021AB84 /* cdt.h */,
