@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 public extension CGPoint {
     func shift(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
