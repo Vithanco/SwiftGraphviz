@@ -23,70 +23,71 @@ import Foundation
     
     public var configuration: GVLayoutConfig {
         switch self {
-        case .dot:
-            return GVLayoutConfig(
-                name: "Layered (Dot)",
-                layoutEngine: .dot,
-                renderEngine: .dot,
-                saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [:],
-                secondLayoutEngine: nil,
-                supportClusters: true)
-        case .neato:
-            return GVLayoutConfig(
-                name: "Star (neato)",
-                layoutEngine: .neato,
-                renderEngine: .dot,
-                saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [:], //.graph(.overlap):GVParamValueOverlap.scale.rawValue], //,.graph(.sep): "+20,20"], //TODO: get it back
-                secondLayoutEngine: nil,
-                supportClusters: false)
-        case .fdp:
-            return GVLayoutConfig(
-                name: "Star (fdp)",
-                layoutEngine: .fdp,
-                renderEngine: .dot,
-                saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [:],
-                secondLayoutEngine: nil,
-                supportClusters: true)
-        case .nop:
-            return GVLayoutConfig(
-                name: "nop",
-                layoutEngine: .dot,
-                renderEngine: .nop,
-                saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [:],
-                secondLayoutEngine: nil,
-                supportClusters: true)
-        case .nop2:
-            return GVLayoutConfig(
-                name: "nop2",
-                layoutEngine: .dot,
-                renderEngine: .nop2,
-                saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [:],
-                secondLayoutEngine: nil,
-                supportClusters: true)
-        case .twopi:
-            return GVLayoutConfig(
-                name: "twopi",
-                layoutEngine: .twopi,
-                renderEngine: .dot,
-                saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [:], //.graph(.overlap):GVParamValueOverlap.scale.rawValue],//TODO: get it back
-                secondLayoutEngine: nil,
-                supportClusters: false)
-        case .systemsThinking:
-            return GVLayoutConfig(
-                name: "SystemsThinking",
-                layoutEngine: .neato,
-                renderEngine: .neato,
-                saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
-                params: [//.graph(.overlap):GVParamValueOverlap.scale.rawValue,//TODO: get it back
-                    .graph(.sep):"+20",.edge(.len):"2.5"],
-                secondLayoutEngine: nil,
-                supportClusters: false)
+            case .dot:
+                return GVLayoutConfig(
+                    name: "Layered (Dot)",
+                    layoutEngine: .dot,
+                    renderEngine: .dot,
+                    saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
+                    params: [:],
+                    secondLayoutEngine: nil,
+                    supportClusters: true)
+            case .neato:
+                return GVLayoutConfig(
+                    name: "Star (neato)",
+                    layoutEngine: .neato,
+                    renderEngine: .dot,
+                    saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
+                    params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue,.graph(.sep): "+20,20"], //TODO: get it back
+                    secondLayoutEngine: nil,
+                    supportClusters: false)
+            case .fdp:
+                return GVLayoutConfig(
+                    name: "Star (fdp)",
+                    layoutEngine: .fdp,
+                    renderEngine: .dot,
+                    saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
+                    params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue,
+                             .graph(.sep):"+20",.edge(.len):"2.5"],
+                    secondLayoutEngine: nil,
+                    supportClusters: true)
+            case .nop:
+                return GVLayoutConfig(
+                    name: "nop",
+                    layoutEngine: .dot,
+                    renderEngine: .nop,
+                    saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
+                    params: [:],
+                    secondLayoutEngine: nil,
+                    supportClusters: true)
+            case .nop2:
+                return GVLayoutConfig(
+                    name: "nop2",
+                    layoutEngine: .dot,
+                    renderEngine: .nop2,
+                    saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
+                    params: [:],
+                    secondLayoutEngine: nil,
+                    supportClusters: true)
+            case .twopi:
+                return GVLayoutConfig(
+                    name: "twopi",
+                    layoutEngine: .twopi,
+                    renderEngine: .dot,
+                    saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
+                    params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue,.graph(.sep):"+20",.edge(.len):"2.5"],
+                    secondLayoutEngine: nil,
+                    supportClusters: false)
+            case .systemsThinking:
+                return GVLayoutConfig(
+                    name: "SystemsThinking",
+                    layoutEngine: .neato,
+                    renderEngine: .neato,
+                    saveGVOutput: StandardGVLayoutConfigurations.saveGVOutput,
+                    params: [.graph(.overlap):GVParamValueOverlap.scale.rawValue,
+                             .graph(.sep):"+20",.edge(.len):"2.5"],
+                    secondLayoutEngine: nil,
+                    supportClusters: false)
         }
     }
     public static var readableNames : [String] {
@@ -99,5 +100,17 @@ import Foundation
     
     public var supportsLayers: Bool {
         return configuration.layoutEngine.supportsLayers
+    }
+    
+    public var isLayered: Bool {
+        switch self {
+            case .dot: return true
+            case .neato: return false
+            case .fdp: return false
+            case .nop: return false
+            case .nop2: return false
+            case .twopi: return false
+            case .systemsThinking: return false
+        }
     }
 }
