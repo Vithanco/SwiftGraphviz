@@ -27,7 +27,7 @@ public typealias GVGlobalContextPointer = UnsafeMutablePointer<GVC_t>
 public let stdFontName = "Verdana"
 public let stdFontNameBold = "Verdana-Bold"
 
-@objc public enum GVLayoutEngine: Int {
+@objc public enum GVLayoutEngine: Int , CaseIterable{
     case dot = 0
     case neato
     case fdp
@@ -37,6 +37,10 @@ public let stdFontNameBold = "Verdana-Bold"
     
     public static var readableNames: [String] {
         return ["Layered (dot)", "Star (neato)", "Star (fdp)", "Star (neato -nop)", "Star (neato -nop2)", "twopi"]
+    }
+    
+    public var readableName : String {
+        return GVLayoutEngine.readableNames[self.rawValue]
     }
     
     public var graphvizName: String {
@@ -56,7 +60,7 @@ public let stdFontNameBold = "Verdana-Bold"
 }
 
 ///marked as @objc in order to be able to save it as a simple scalar in core data / NSManagedObject
-@objc public enum GVNodeShape : Int {
+@objc public enum GVNodeShape : Int, Equatable , Codable, CaseIterable {
     case box = 0
     case circle = 1
     
@@ -75,7 +79,7 @@ public let stdFontNameBold = "Verdana-Bold"
     
 }
 
-@objc public enum GVGraphType : Int {
+@objc public enum GVGraphType : Int, CaseIterable {
     case nonStrictDirected = 0
     case strictDirected
     case nonStrictNonDirected
@@ -90,7 +94,7 @@ public let stdFontNameBold = "Verdana-Bold"
         }
     }
     
-    public var readableValue : String {
+    public var readableName : String {
         return GVGraphType.readableNames[self.rawValue]
     }
     
@@ -231,9 +235,13 @@ public let stdFontNameBold = "Verdana-Bold"
     public static var readableNames: [String] {
         return ["Right to Left", "Left to Right", "Bottom to Top", "Top to Bottom", "MindMap"]
     }
+    
+    public var readableName : String {
+        return GVModelDirection.readableNames[self.rawValue]
+    }
 }
 
-@objc public enum GVClusterLabelPos: Int {
+@objc public enum GVClusterLabelPos: Int , CaseIterable{
     case topLeft = 0
     case topRight
     case bottomLeft
@@ -241,6 +249,10 @@ public let stdFontNameBold = "Verdana-Bold"
     
     static var readableNames: [String] {
         return ["Top-Left", "Top-Right", "Bottom-Left", "Bottom-Right"]
+    }
+    
+    public var readableName : String {
+        return GVClusterLabelPos.readableNames[self.rawValue]
     }
 }
 
@@ -292,7 +304,7 @@ func cString(_ s: String) -> CHAR {
         return ["If in doubt, then place the nodes as far as possible towards the backside of the graphs arrows (the side where the fletchings would be at a real arrow).", "If in doubt, then place the nodes as far as possible towards the pointy side of the graphs arrows"]
     }
 
-    var asString: String {
+    public var readableName: String {
         return GraphBias.readableNames[Int(self.rawValue)]
     }
 }
@@ -311,7 +323,7 @@ public protocol GraphBuilder {
     
     func setBaseValue(param: GVParameter, value: String)
     func setBaseValues(_ params: GVParams)
-    func setNodeValue(_ node: GVNode, _ attributeName: String, _ value: String)
+    func setNodeValue(_ node: GVNode, _ param: GVNodeParameters, _ value: String)
     func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String)
     func setGraphValue(_ param: GVGraphParameters, _ value: String)
     func setClusterValue(_ cluster: GVCluster, _ param: GVGraphParameters, _ value: String)
@@ -343,7 +355,7 @@ public class GraphvizGraph: GraphBuilder {
             return ["graph", "node", "edge"]
         }
         
-        var debugName: String {
+        var readableName: String {
             return GraphvizGraph.Elements.readableNames[Int(self.rawValue)]
         }
     }
@@ -398,13 +410,13 @@ public class GraphvizGraph: GraphBuilder {
     }
     
     /// reminder: if attribute doesn't show effect then you have forgotten to set base value
-    public func setNodeValue(_ node: GVNode, _ attributeName: String, _ value: String) {
+    public func setNodeValue(_ node: GVNode, _ param: GVNodeParameters, _ value: String) {
         #if DEBUG
-        if !baseValues[.node]!.contains(attributeName) {
-            logger.error("no baseValue set for  \(attributeName) for Nodes. Setting the attribute Value will have no effect.")
+        if !baseValues[.node]!.contains(param.rawValue) {
+            logger.error("no baseValue set for  \(param.rawValue) for Nodes. Setting the attribute Value will have no effect.")
         }
         #endif
-        agset(node, cString(attributeName), cString(value))
+        agset(node, cString(param.rawValue), cString(value))
     }
     
     /// reminder: if attribute doesn't show effect then you most likely have forgotten to set base value
@@ -449,7 +461,7 @@ public class GraphvizGraph: GraphBuilder {
     public func newNode(name: String, label: String, cluster: GVCluster? = nil) -> GVNode {
         let graph = cluster ?? g
         let node = agnode(graph, cString(name), SearchOrCreate.createNew.rawValue) as GVNode
-        setNodeValue(node, "label", label)
+        setNodeValue(node, .label, label)
         return node
     }
     
@@ -477,16 +489,17 @@ public class GraphvizGraph: GraphBuilder {
     }
     
     public func setNodeSize(node: GVNode, width: GVPixel, height: GVPixel) {
-        setNodeValue(node, "width", pixelToInchParameter(width-2))
-        setNodeValue(node, "height", pixelToInchParameter(height-2))
+        setNodeValue(node, GVNodeParameters.width , pixelToInchParameter(width))
+        setNodeValue(node, .height, pixelToInchParameter(height))
+        
     }
     
     public func setFontSize(node: GVNode, fontSize: CGFloat) {
-        setNodeValue(node, "fontsize", "\(fontSize)")
+        setNodeValue(node, .fontname, "\(fontSize)")
     }
     
     public func setNodeShape(node: GVNode, shape: GVNodeShape){
-        setNodeValue(node, "shape", shape.graphvizName)
+        setNodeValue(node, .shape, shape.graphvizName)
     }
     
     ///return size of

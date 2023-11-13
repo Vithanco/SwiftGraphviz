@@ -6,7 +6,7 @@
 //  Copyright © 2019 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
+import AppKit
 
 
 public typealias GVEdge = UnsafeMutablePointer<Agedge_t>
@@ -84,7 +84,8 @@ public extension UnsafeMutablePointer where Pointee == Agedge_t {
             
         }
         let result = bezier.pointee.ep
-        return convertZeroPointToNil(pointTransformGraphvizToCGPoint(result))
+//        return convertZeroPointToNil(pointTransformGraphvizToCGPoint(result))
+        return pointTransformGraphvizToCGPoint(result)
     }
     
     var arrowTail: CGPoint? {
@@ -92,7 +93,9 @@ public extension UnsafeMutablePointer where Pointee == Agedge_t {
             fatalError()
         }
         let result = bezier.pointee.sp
-        return convertZeroPointToNil(pointTransformGraphvizToCGPoint(result))
+//        return convertZeroPointToNil(pointTransformGraphvizToCGPoint(result))
+        return pointTransformGraphvizToCGPoint(result)
+   
     }
     
     var headPortPos: CGPoint {

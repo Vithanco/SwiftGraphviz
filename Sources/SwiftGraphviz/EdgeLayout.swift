@@ -6,33 +6,8 @@
 //  Copyright © 2023 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
+import AppKit
 import CoreGraphics
-
-
-// MARK: Edge
-public protocol EdgeLayout {
-    var path: CGPath {get}
-    var labelPos: CGPoint? {get}
-    var headLabelPos: CGPoint? {get}
-    var tailLabelPos: CGPoint? {get}
-
-    /// the head is between arrowHead2 -> arrowHead
-    var arrowHead: CGPoint {get}
-    /// the head is between arrowHead2 -> arrowHead
-    var arrowHead2: CGPoint {get}
-
-    /// the tail is between arrowTail -> arrowTail2
-    var arrowTail: CGPoint {get}
-    /// the tail is between arrowTail -> arrowTail2
-    var arrowTail2: CGPoint {get}
-
-  //  func fixDirection(tailNode: CGPoint) -> EdgeLayout
-}
-
-
-
-
 
 
 //func asEdgeLayout() throws -> EdgeLayout {
@@ -43,20 +18,24 @@ public protocol EdgeLayout {
 //    return try EdgeLayoutImpl(gvEdge: self).fixDirection(tailNode: tailNode)
 //}
 
-private struct EdgeLayoutImpl: EdgeLayout {
-    let path: CGPath
-    let labelPos: CGPoint?
-    let headLabelPos: CGPoint?
-    let tailLabelPos: CGPoint?
-    let arrowHead: CGPoint
-    let arrowTail: CGPoint
-    let arrowHead2: CGPoint
-    let arrowTail2: CGPoint
-}
+public struct EdgeLayout : Equatable, Hashable {
+    /// the head is between arrowHead2 -> arrowHead
+    public let arrowHead: CGPoint
+    /// the tail is between arrowTail -> arrowTail2
+    public let arrowTail: CGPoint
+    /// the head is between arrowHead2 -> arrowHead
+    public let arrowHead2: CGPoint
+    /// the tail is between arrowTail -> arrowTail2
+    public let arrowTail2: CGPoint
+    public let path: CGPath
+    public let labelPos: CGPoint?
+    public let headLabelPos: CGPoint?
+    public let tailLabelPos: CGPoint?
+//
+//    public let arrowHeadStype: GVEdgeEnding
+//    public let arrowTailStype: GVEdgeEnding
 
-
-extension EdgeLayoutImpl {
-    init(gvEdge: GVEdge) throws {
+    public init(gvEdge: GVEdge) throws {
         self.labelPos = gvEdge.labelPos
         self.headLabelPos = gvEdge.headLabelPos
         self.tailLabelPos = gvEdge.tailLabelPos
@@ -79,11 +58,39 @@ extension EdgeLayoutImpl {
         arrowHead2 = cgPath[cgPath.count-1]
         arrowTail2 = cgPath[0]
     }
+    
+    public func getHeadPath(type: GVEdgeEnding) -> CGPath {
+        return definePath(pos: arrowHead, type: type, otherPoint: arrowHead2)
+    }
+    
+    public func getTailPath(type: GVEdgeEnding) -> CGPath {
+        return definePath(pos: arrowTail, type: type, otherPoint: arrowTail2)
+    }
+    
+    private func definePath (pos: CGPoint, type: GVEdgeEnding, otherPoint: CGPoint) -> CGPath {
+        switch type {
+            case .normal :
+//                let secondPos = pos + CGVector(from: pos, to: otherPoint).normalized() * CGFloat(10.0)
+//                return NSBezierPath(arrowHeadWithStartPoint: secondPos, endPoint: pos, tailWidth: 2, headWidth: 8, headLength: secondPos.distance(to: pos)).cgPath
+                return NSBezierPath(arrowHeadWithStartPoint: otherPoint, endPoint: pos, tailWidth: 2, headWidth: 8, headLength: otherPoint.distance(to: pos)).cgPath
+            case .dot:
+//                let secondPos = pos + CGVector(from: pos, to: otherPoint).normalized() * CGFloat(8.0)
+//                return NSBezierPath(circleBetween: pos, and: secondPos).cgPath
+                return NSBezierPath(circleBetween: pos, and: otherPoint).cgPath
+            case .none:
+                let path = NSBezierPath()
+                path.move(to: pos)
+                path.line(to: otherPoint)
+//                debugPrint("none - length \(CGVector(from: pos, to: otherPoint).length())")
+                return path.cgPath
+            case  .diamond:
+//                let secondPos = pos + CGVector(from: pos, to: otherPoint) * CGFloat(10.0)
+                return NSBezierPath(diamondBetween: pos, and: otherPoint).cgPath
+        }
+    }
+    
 }
 
-func convertEdge(_ gvEdge: GVEdge) throws -> EdgeLayout{
-    return try EdgeLayoutImpl(gvEdge: gvEdge)
-}
 
 
 // don't think I need this any longer

@@ -22,7 +22,6 @@
 		89214FB424FBB53A00B2FCC9 /* GVLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228052261B78B003A9143 /* GVLayoutConfig.swift */; };
 		89214FB524FBB53A00B2FCC9 /* GVNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228002261B78B003A9143 /* GVNode.swift */; };
 		89214FB624FBB53A00B2FCC9 /* GVParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53228032261B78B003A9143 /* GVParameters.swift */; };
-		89214FB724FBB53A00B2FCC9 /* StandardGVLayoutConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */; };
 		89214FB824FBB53A00B2FCC9 /* GraphBuilderBias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */; };
 		89214FB924FBB53A00B2FCC9 /* GVGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586283E229C6AC50074F6DC /* GVGraph.swift */; };
 		89214FBA24FBB55200B2FCC9 /* builtins.c in Sources */ = {isa = PBXBuildFile; fileRef = E53228072261B78B003A9143 /* builtins.c */; };
@@ -61,6 +60,7 @@
 		E57870F32A476EA900E42F56 /* libfdpgen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870F22A476EA900E42F56 /* libfdpgen.a */; };
 		E57870F52A476EE700E42F56 /* libpatchwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870F42A476EE700E42F56 /* libpatchwork.a */; };
 		E57870F72A476F0E00E42F56 /* liblabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E57870F62A476F0E00E42F56 /* liblabel.a */; };
+		E57C50572AE1E5BB001575C6 /* NSBezier+KKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C50562AE1E5BB001575C6 /* NSBezier+KKExtensions.swift */; };
 		E59BC25925DB147000402577 /* builtins.h in Headers */ = {isa = PBXBuildFile; fileRef = E532280A2261B78C003A9143 /* builtins.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5DA5D012A2A168D0021AB84 /* cgraph.h in Headers */ = {isa = PBXBuildFile; fileRef = E56FE9B72A2A0B510050E1E6 /* cgraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5DA5D022A2A169B0021AB84 /* pathgeom.h in Headers */ = {isa = PBXBuildFile; fileRef = E56FE9B52A2A0B360050E1E6 /* pathgeom.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,7 +123,6 @@
 		E53228072261B78B003A9143 /* builtins.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = builtins.c; sourceTree = "<group>"; };
 		E53228082261B78B003A9143 /* GVEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVEdge.swift; sourceTree = "<group>"; };
 		E532280A2261B78C003A9143 /* builtins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = builtins.h; sourceTree = "<group>"; };
-		E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardGVLayoutConfigurations.swift; sourceTree = "<group>"; };
 		E53228552261BB11003A9143 /* libgts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgts.a; path = macOS/otherLibs/libgts.a; sourceTree = "<group>"; };
 		E532285A2261BB11003A9143 /* libcharset.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcharset.a; path = macOS/otherLibs/libcharset.a; sourceTree = "<group>"; };
 		E532285B2261BB11003A9143 /* libglib-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libglib-2.0.a"; path = "macOS/otherLibs/libglib-2.0.a"; sourceTree = "<group>"; };
@@ -183,6 +182,7 @@
 		E57870F22A476EA900E42F56 /* libfdpgen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfdpgen.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57870F42A476EE700E42F56 /* libpatchwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpatchwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57870F62A476F0E00E42F56 /* liblabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = liblabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57C50562AE1E5BB001575C6 /* NSBezier+KKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezier+KKExtensions.swift"; sourceTree = "<group>"; };
 		E586283E229C6AC50074F6DC /* GVGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GVGraph.swift; sourceTree = "<group>"; };
 		E59D2D132A2C029400136F42 /* SwiftGraphviz copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SwiftGraphviz copy-Info.plist"; path = "/Users/klauskneupner/xcode/SwiftGraphviz/SwiftGraphviz copy-Info.plist"; sourceTree = "<absolute>"; };
 		E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+KKExtensions.swift"; sourceTree = "<group>"; };
@@ -386,6 +386,7 @@
 				E564F8A7227B228A005CCB3B /* Double+KKExtensions.swift */,
 				E564F8A8227B228A005CCB3B /* Set+KKExtentions.swift */,
 				E5B10A1D22E6454500150B65 /* CGSize+KKExtensions.swift */,
+				E57C50562AE1E5BB001575C6 /* NSBezier+KKExtensions.swift */,
 			);
 			path = cocoaExtensions;
 			sourceTree = "<group>";
@@ -401,7 +402,6 @@
 				E53228052261B78B003A9143 /* GVLayoutConfig.swift */,
 				E53228002261B78B003A9143 /* GVNode.swift */,
 				E53228032261B78B003A9143 /* GVParameters.swift */,
-				E532280C2261B78C003A9143 /* StandardGVLayoutConfigurations.swift */,
 				89CBA85A2444D4C600D7F208 /* GraphBuilderBias.swift */,
 				E586283E229C6AC50074F6DC /* GVGraph.swift */,
 				E5F036312AA38BC1004ED916 /* NodeLayout.swift */,
@@ -576,7 +576,7 @@
 				89214FB524FBB53A00B2FCC9 /* GVNode.swift in Sources */,
 				89214FB624FBB53A00B2FCC9 /* GVParameters.swift in Sources */,
 				E5F036382AA38D55004ED916 /* ClusterLayout.swift in Sources */,
-				89214FB724FBB53A00B2FCC9 /* StandardGVLayoutConfigurations.swift in Sources */,
+				E57C50572AE1E5BB001575C6 /* NSBezier+KKExtensions.swift in Sources */,
 				89214FB824FBB53A00B2FCC9 /* GraphBuilderBias.swift in Sources */,
 				89214FB924FBB53A00B2FCC9 /* GVGraph.swift in Sources */,
 			);
@@ -639,7 +639,7 @@
 				);
 				LLVM_LTO = NO;
 				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "-Xcc -Wno-error=non-modular-include-in-framework-module";
@@ -700,7 +700,7 @@
 				);
 				LLVM_LTO = NO;
 				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "-Xcc -Wno-error=non-modular-include-in-framework-module";

@@ -8,32 +8,21 @@
 
 import Foundation
 
-
-// MARK: Node
-public protocol NodeLayout {
-    var pos: CGPoint {get}
-    var size: CGSize {get}
-}
-
-private struct NodeLayoutImpl: NodeLayout {
-    let pos: CGPoint
-    let size: CGSize
-    init(node: GVNode) {
+public  struct NodeLayout: Equatable {
+    public let pos: CGPoint
+    public let size: CGSize
+    public init(pos: CGPoint,size: CGSize) {
+        self.pos = pos
+        self.size = size
+    }
+    public init(node: GVNode) {
         self.pos = node.pos
         self.size = node.size
     }
-}
-
-private extension NodeLayoutImpl {
-    var rect: CGRect {
+    public static var zero: NodeLayout {
+        return NodeLayout(pos: .zero, size: .zero)
+    }
+    public var rect: CGRect {
         return CGRect(midPoint: self.pos, size: self.size)
     }
-}
-
- extension GVNode: NodeLayout {
-    
-}
-
-func convertNodeLayout(_ gvNode: GVNode) -> NodeLayout {
-    return NodeLayoutImpl(node: gvNode)
 }

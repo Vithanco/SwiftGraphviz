@@ -14,8 +14,6 @@ public typealias GVCluster = UnsafeMutablePointer<Agraph_t>
 
 
 public extension UnsafeMutablePointer where Pointee == Agraph_t {
-    
-    
     var labelPos: CGPoint? { //lp
         if let lPos = gd_lp(self) {
             return convertZeroPointToNil(CGPoint(gvPoint: lPos.pointee))
@@ -48,3 +46,4 @@ extension CGRect {
         self.init(x: box.LL.x, y: box.LL.y, width: box.UR.x - box.LL.x, height: box.UR.y - box.LL.y)
     }
 }
+

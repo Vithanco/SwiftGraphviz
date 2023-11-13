@@ -7,32 +7,39 @@
 //
 
 import Foundation
+import CoreGraphics
 
-
-
-// MARK: Cluster
-public protocol ClusterLayout {
-    var labelPos: CGPoint? {get}
-    var labelSize: CGSize? {get}
-    var rect: CGRect {get}
-}
-
-public struct ClusterLayoutImpl: ClusterLayout {
-    public let labelPos: CGPoint?
-    public let labelSize: CGSize?
-    public let rect: CGRect
-}
-
-extension ClusterLayoutImpl {
-    init (cluster: GVCluster) {
-        self.init(labelPos: cluster.labelPos, labelSize: cluster.labelSize, rect: cluster.rect)
+extension CGRect: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.origin)
+        hasher.combine(self.size)
     }
 }
 
-extension GVCluster : ClusterLayout {
-    
+extension CGSize : Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.width)
+        hasher.combine(self.height)
+    }
 }
 
-func convertCluster(_ gvCluster: GVCluster) -> ClusterLayout {
-    return ClusterLayoutImpl(cluster: gvCluster)
+public struct ClusterLayout : Equatable, Hashable{
+    public let labelPos: CGPoint?
+    public let labelSize: CGSize?
+    public let rect: CGRect
+    
+    public static var zero: ClusterLayout {
+        return ClusterLayout(labelPos: .zero, labelSize: .zero, rect: .zero)
+    }
+}
+
+public extension ClusterLayout {
+    init (cluster: GVCluster) {
+        self.init(labelPos: cluster.labelPos, labelSize: cluster.labelSize, rect: cluster.rect)
+//        debugPrint("Created ClusterLayout: \(self)")
+    }
+}
+
+public func convertCluster(_ gvCluster: GVCluster) -> ClusterLayout {
+    return ClusterLayout(cluster: gvCluster)
 }
