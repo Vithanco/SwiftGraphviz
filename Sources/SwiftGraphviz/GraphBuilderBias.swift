@@ -104,8 +104,8 @@ public struct GraphBuilderBias: GraphBuilder {
         base.setBaseValue(param: param, value: value)
     }
 
-    public func setNodeValue(_ node: GVNode, _ attributeName: String, _ value: String) {
-        base.setNodeValue(node, attributeName, value)
+    public func setNodeValue(_ node: GVNode, _ param: GVNodeParameters, _ value: String) {
+        base.setNodeValue(node, param, value)
     }
 
     public func setEdgeValue(_ edge: GVEdge, _ param: GVEdgeParameters, _ value: String) {

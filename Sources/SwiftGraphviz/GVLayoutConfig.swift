@@ -21,6 +21,22 @@ public struct GVLayoutConfig {
         return layoutEngine == .dot
     }
     
+    public init(name: String, 
+                layoutEngine: GVLayoutEngine,
+                renderEngine: GVLayoutEngine,
+                saveGVOutput: Bool,
+                params: GVParams,
+                secondLayoutEngine: GVLayoutEngine?,
+                supportClusters: Bool) {
+        self.name = name
+        self.layoutEngine = layoutEngine
+        self.renderEngine = renderEngine
+        self.saveGVOutput = saveGVOutput
+        self.params = params
+        self.secondLayoutEngine = secondLayoutEngine
+        self.supportClusters = supportClusters
+    }
+    
     public func layout(_ gvc: GVGlobalContextPointer, _ g: GVGraph) {
         g.saveTo(fileName: "simplegraph.dot")
         
