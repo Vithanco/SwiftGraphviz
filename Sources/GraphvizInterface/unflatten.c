@@ -38,7 +38,7 @@ static Agnode_t *ChainNode;
 
 static int myindegree(Agnode_t *n)
 {
-	return agdegree(n->root, n, TRUE, FALSE);
+	return agdegree(n->root, n, true, false);
 }
 
 /* need outdegree without selfarcs */
@@ -93,7 +93,7 @@ static void transform(Agraph_t * g)
 	    if (ChainLimit < 1)
 		continue;
 	    if (ChainNode) {
-		e = agedge(g, ChainNode, n, "", TRUE);
+		e = agedge(g, ChainNode, n, "", false);
 		agxset(e, s_ix, "invis");
 		ChainSize++;
 		if (ChainSize < ChainLimit)
