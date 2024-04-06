@@ -24,7 +24,6 @@ In case that SwiftGraphviz doesn't automatically pick up the right libraries: th
 - libguplugin_core.a
 - libguplugin_dot_layout.a
 - libguplugin_neato_layout.a
-- libgvplugin_pango.a
 - libgvplugin_quartz.a
 - libgupr.a
 - libneatogen.a

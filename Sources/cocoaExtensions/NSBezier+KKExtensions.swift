@@ -200,6 +200,12 @@ public extension NSBezierPath {
                 count = count + 1
             case .closePath:
                 continue
+            case .cubicCurveTo:
+                elementForStep[count] = index
+                count += 1
+            case .quadraticCurveTo:
+                elementForStep[count] = index
+                count += 1
             @unknown default:
                 continue
             }
@@ -225,6 +231,10 @@ public extension NSBezierPath {
         case .closePath:
             assert(false)
             return NSPoint.zero
+        case .cubicCurveTo:
+            return points[2] // The endpoint of the cubic curve
+        case .quadraticCurveTo:
+            return points[2] // Assuming quadratic curves are treated similarly, with the endpoint as the last point.
         @unknown default:
             assert(false)
             return NSPoint.zero
@@ -264,6 +274,54 @@ public extension NSBezierPath {
         case .closePath:
             assert(false)
             return (NSPoint.zero, zeroVector)
+        case .cubicCurveTo:  // chatGPT, supposingly based on De Casteljau's algorithm
+            let controlPoint1 = points[0]
+            let controlPoint2 = points[1]
+            let endPoint = points[2]
+
+            // First level of interpolation
+            let a = startingPoint.interpolate(to: controlPoint1, distance: x)
+            let b = controlPoint1.interpolate(to: controlPoint2, distance: x)
+            let c = controlPoint2.interpolate(to: endPoint, distance: x)
+
+            // Second level of interpolation
+            let d = a.interpolate(to: b, distance: x)
+            let e = b.interpolate(to: c, distance: x)
+
+            // Final level of interpolation
+            let pointOnCurve = d.interpolate(to: e, distance: x)
+
+            // To find the orthogonal vector, you would typically calculate the derivative of the Bezier curve at this point.
+            // However, for simplicity, let's calculate a tangent vector from 'd' to 'e' and then find its orthogonal.
+            let tangent = CGVector(dx: e.x - d.x, dy: e.y - d.y)
+            let orthogonalVector = CGVector(dx: -tangent.dy, dy: tangent.dx) // Rotate 90 degrees to get the orthogonal vector
+
+            // Normalize the orthogonal vector if necessary
+            let length = sqrt(orthogonalVector.dx * orthogonalVector.dx + orthogonalVector.dy * orthogonalVector.dy)
+            let normalizedOrthogonalVector = CGVector(dx: orthogonalVector.dx / length, dy: orthogonalVector.dy / length)
+
+            return (pointOnCurve, normalizedOrthogonalVector)
+        case .quadraticCurveTo: // chatGPT, supposingly based on De Casteljau's algorithm
+            let controlPoint = points[0]
+            let endPoint = points[1]
+
+            // First level of interpolation: interpolate between starting point and control point, and control point and endpoint.
+            let a = startingPoint.interpolate(to: controlPoint, distance: x)
+            let b = controlPoint.interpolate(to: endPoint, distance: x)
+
+            // Second level of interpolation: interpolate between points 'a' and 'b' to find the point on the curve.
+            let pointOnCurve = a.interpolate(to: b, distance: x)
+
+            // Compute the tangent vector by subtracting point 'a' from point 'b'. This will guide us to the orthogonal vector.
+            let tangent = CGVector(dx: b.x - a.x, dy: b.y - a.y)
+            let orthogonalVector = CGVector(dx: -tangent.dy, dy: tangent.dx) // Rotate 90 degrees to get the orthogonal vector
+
+            // Normalize the orthogonal vector, assuming normalization is required for your use case.
+            let length = sqrt(orthogonalVector.dx * orthogonalVector.dx + orthogonalVector.dy * orthogonalVector.dy)
+            let normalizedOrthogonalVector = CGVector(dx: orthogonalVector.dx / length, dy: orthogonalVector.dy / length)
+
+            return (pointOnCurve, normalizedOrthogonalVector)
+
         @unknown default:
             assert(false)
             fatalError()
