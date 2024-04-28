@@ -153,11 +153,11 @@ public let stdFontNameBold = "Verdana-Bold"
         case .towardsLeft:
             return "RL"
         case .towardsBottom:
-            return "TB"
+            return "BT"
         case .towardsRight:
             return "LR"
         case .towardsTop:
-            return "BT"
+            return "TB"
         default:
             logger.warning("Unknown GVModelDirection : \(self.rawValue)")
             return "LR"
@@ -326,6 +326,7 @@ public protocol GraphBuilder {
     func setNodeValue(_ node: GVNode, _ param: GVNodeParameters, _ value: String)
     func setEdgeValue(_ edge: GVEdge,_ param: GVEdgeParameters, _ value: String)
     func setGraphValue(_ param: GVGraphParameters, _ value: String)
+    func getGraphValue(_ param: GVGraphParameters) -> String
     func setClusterValue(_ cluster: GVCluster, _ param: GVGraphParameters, _ value: String)
     
     func getGraphRect() -> CGRect
@@ -439,6 +440,17 @@ public class GraphvizGraph: GraphBuilder {
         }
         #endif
         agset(g, cString(attributeName), cString(value))
+    }
+    
+    
+    public func getGraphValue(_ param: GVGraphParameters) -> String {
+        let attributeName = param.rawValue
+       
+        if let result = agget(g, cString(attributeName)) {
+             return String(cString: result)
+         } else {
+             return ""
+         }
     }
     
     /// reminder: if attribute doesn't show effect then you have forgotten to set base value
