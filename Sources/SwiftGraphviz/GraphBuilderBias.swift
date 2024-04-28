@@ -123,6 +123,10 @@ public struct GraphBuilderBias: GraphBuilder {
     public func setGraphValue(_ param: GVGraphParameters, _ value: String) {
         base.setGraphValue(param, value)
     }
+    
+    public func getGraphValue(_ param: GVGraphParameters) -> String {
+        return base.getGraphValue(param)
+    }
 
     public func setClusterValue(_ cluster: GVCluster, _ param: GVGraphParameters, _ value: String) {
         base.setClusterValue(cluster, param, value)
