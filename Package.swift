@@ -1,40 +1,25 @@
-// swift-tools-version:5.0
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
+
+
+// this package requires to build SwiftGraphviz previously via XCode in order to co
 
 import PackageDescription
 
 
-
-
 let package = Package(
-    name: "SwiftGraphviz",
-
+    name: "MyLibrary",
+    platforms: [
+        .macOS(.v10_15),
+        .iOS(.v13)
+    ],
     products: [
-        .library(
-            name: "SwiftGraphvizMac",
-            type: .static,
-            targets: ["SwiftGraphviz"]
-        ),
-        .library(
-            name: "SwiftGraphvizMacDynamic",
-            type: .dynamic,
-            targets: ["SwiftGraphviz"]
-        )
+        .library(name: "MyLibrary", targets: ["MyLibrary"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "SwiftGraphviz",
-            dependencies: ["CGraphviz"]
-        ),
-        .systemLibrary(
-            name: "CGraphviz",
-            pkgConfig: "libgvc",    
-            providers: [.brew(["Graphviz"])]
-        ),
-        .testTarget(
-            name: "SwiftGraphvizTests",
-            dependencies: ["SwiftGraphviz"]),
+        .binaryTarget(
+            name: "MyLibrary",
+            path: "./../../c/graphviz/_build/lib/cdt/Release/libcdt.a" // or use local path for .a file
+        )
     ]
 )
