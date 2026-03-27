@@ -1,0 +1,24 @@
+{
+  "originHash" : "9ea203c0a16cc99b114a65b76d50608e816f2c7a6ff011a93e0db07e988df04f",
+  "pins" : [
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
+        "version" : "1.5.4"
+      }
+    },
+    {
+      "identity" : "swiftgraphviz",
+      "kind" : "remoteSourceControl",
+      "location" : "https://gitlab.com/vithanco/swiftgraphviz.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3dec187491a07bbcf7958a8821ac82fb45b9e73c"
+      }
+    }
+  ],
+  "version" : 3
+}
