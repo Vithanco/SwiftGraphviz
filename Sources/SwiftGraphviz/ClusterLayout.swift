@@ -31,6 +31,12 @@ public struct ClusterLayout : Equatable, Hashable{
     public static var zero: ClusterLayout {
         return ClusterLayout(labelPos: .zero, labelSize: .zero, rect: .zero)
     }
+    
+    public init(labelPos: CGPoint?, labelSize: CGSize?, rect: CGRect) {
+        self.labelPos = labelPos
+        self.labelSize = labelSize
+        self.rect = rect
+    }
 }
 
 public extension ClusterLayout {

@@ -72,4 +72,4 @@ class Logger {
     }
 }
 
-let logger = Logger()
+nonisolated(unsafe) let logger = Logger()

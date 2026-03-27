@@ -15,7 +15,7 @@ enum GraphvizError : Error {
 
 ///Global Graphviz Context.
 ///To be set at program start and freed and progam end
-fileprivate var gblGVContext: GVGlobalContextPointer = loadGraphvizLibraries() //UnsafeMutablePointer<GVC_t>?
+nonisolated(unsafe) fileprivate var gblGVContext: GVGlobalContextPointer = loadGraphvizLibraries() //UnsafeMutablePointer<GVC_t>?
 
 public typealias CHAR = UnsafeMutablePointer<Int8>
 public typealias CHAR_ARRAY = UnsafeMutablePointer<UnsafeMutablePointer<Int8>>
@@ -85,12 +85,12 @@ public let stdFontNameBold = "Verdana-Bold"
     case nonStrictNonDirected
     case strictNonDirected
     
-    public var graphvizValue : Agdesc_t {
+    public nonisolated var graphvizValue : Agdesc_t {
         switch self {
-        case .nonStrictDirected: return Agdirected
-        case .strictDirected : return Agstrictdirected
-        case .nonStrictNonDirected: return Agundirected
-        case .strictNonDirected: return Agstrictundirected
+        case .nonStrictDirected: return Agdesc_t(directed: 1, strict: 0, no_loop: 0, maingraph: 1, no_write: 0, has_attrs: 0, has_cmpnd: 0)
+        case .strictDirected : return Agdesc_t(directed: 1, strict: 1, no_loop: 0, maingraph: 1, no_write: 0, has_attrs: 0, has_cmpnd: 0)
+        case .nonStrictNonDirected: return Agdesc_t(directed: 0, strict: 0, no_loop: 0, maingraph: 1, no_write: 0, has_attrs: 0, has_cmpnd: 0)
+        case .strictNonDirected: return Agdesc_t(directed: 1, strict: 0, no_loop: 0, maingraph: 1, no_write: 0, has_attrs: 0, has_cmpnd: 0)
         }
     }
     
@@ -258,7 +258,7 @@ public let stdFontNameBold = "Verdana-Bold"
 
 /// Make Graphviz more chatty. Call only if needed
 /// Based on http://stackoverflow.com/questions/29469158/interact-with-legacy-c-terminal-app-from-swift
-public func verboseGraphviz() {
+@MainActor public func verboseGraphviz() {
     //        let args = ["dot", "-v", "-llibvplugin_dot_layout.6.dylib"]
     let args = ["dot", "-v"]
     // Create [UnsafeMutablePointer<Int8>]:
@@ -277,7 +277,7 @@ public func verboseGraphviz() {
 
 
 /// Needs to be called once before closing down the application
-public func finishGraphviz() {
+@MainActor public func finishGraphviz() {
     gvFreeContext(gblGVContext)
 }
 
@@ -312,7 +312,8 @@ func cString(_ s: String) -> CHAR {
 
 public typealias GVParams = [GVParameter: String]
 
-public protocol GraphBuilder {
+
+public protocol GraphBuilder  {
     func newNode(name: String, label: String, cluster: GVCluster?) -> GVNode
     /// can return nil for strict graphs
     func newEdge(from: GVNode, to: GVNode, name: String, dir: GVEdgeParamDir) -> GVEdge?
@@ -374,11 +375,26 @@ public class GraphvizGraph: GraphBuilder {
     /// reference to the graph structure that is used by graphviz
     private var g: GVGraph
     private var layouter: GVLayoutConfig
+    private var isLayouted: Bool = false
     
     /// see http://graphviz.org/doc/schema/attributes.xml for more attributes
     public init(name: String, type: GVGraphType, layouter: GVLayoutConfig) {
         g = agopen(cString(name), type.graphvizValue, nil);
         self.layouter = layouter
+    }
+    
+    deinit {
+        //        Swift.print("GraphvizGraph.deinit")
+        /* Free data */
+        removePotentialLayout()
+        agclose(g)
+    }
+    
+    func removePotentialLayout() {
+        if isLayouted {
+            gvFreeLayout(gblGVContext, g)
+            isLayouted = false
+        }
     }
     
     public var graph: GVGraph {
@@ -463,12 +479,7 @@ public class GraphvizGraph: GraphBuilder {
         #endif
         agset(cluster, cString(attributeName), cString(value))
     }
-    deinit {
-        //        Swift.print("GraphvizGraph.deinit")
-        /* Free data */
-        gvFreeLayout(gblGVContext, g)
-        agclose(g)
-    }
+
     
     public func newNode(name: String, label: String, cluster: GVCluster? = nil) -> GVNode {
         let graph = cluster ?? g
@@ -507,7 +518,7 @@ public class GraphvizGraph: GraphBuilder {
     }
     
     public func setFontSize(node: GVNode, fontSize: CGFloat) {
-        setNodeValue(node, .fontname, "\(fontSize)")
+        setNodeValue(node, .fontsize, "\(fontSize)")
     }
     
     public func setNodeShape(node: GVNode, shape: GVNodeShape){
@@ -521,7 +532,9 @@ public class GraphvizGraph: GraphBuilder {
     }
     
     public func layout( ){
+        removePotentialLayout()
         layouter.layout(gblGVContext, g)
+        isLayouted = true
     }
     
     public func saveTo(fileName: String) {

@@ -9,8 +9,10 @@
 import Foundation
 
 public  struct NodeLayout: Equatable {
+    
     public let pos: CGPoint
     public let size: CGSize
+    
     public init(pos: CGPoint,size: CGSize) {
         self.pos = pos
         self.size = size
