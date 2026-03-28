@@ -9,21 +9,7 @@
 import Foundation
 import CoreGraphics
 
-extension CGRect: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.origin)
-        hasher.combine(self.size)
-    }
-}
-
-extension CGSize : Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.width)
-        hasher.combine(self.height)
-    }
-}
-
-public struct ClusterLayout : Equatable, Hashable{
+public struct ClusterLayout: Equatable, Hashable {
     public let labelPos: CGPoint?
     public let labelSize: CGSize?
     public let rect: CGRect

@@ -39,7 +39,7 @@ extension NSBezierPath {
         let ydiff: Float = Float(endPoint.y) - Float(startPoint.y)
         let length = CGFloat(hypotf(xdiff, ydiff))
         if length.isZero {
-            logger.warning("length between start and end isZero. Why?")
+            assertionFailure("length between start and end isZero")
             return
         }
         //        Swift.print("length \(length)")
