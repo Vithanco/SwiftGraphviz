@@ -6,8 +6,8 @@
 # Build artifacts
 _build/
 _staging/
+staging/
 graphviz_src/
-Graphviz.xcframework/
 *.o
 
 # Xcode
