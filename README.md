@@ -14,16 +14,16 @@ import GraphvizBridge
 let g = agopen("G", Agdesc_t(directed: 1, strict: 0, no_loop: 0,
                               maingraph: 1, no_write: 0, has_attrs: 0, has_cmpnd: 0), nil)!
 
-// Set base attributes (required before setting values on individual elements)
-agattr(g, Int32(AGNODE), "label", "")
-agattr(g, Int32(AGNODE), "width", "")
-agattr(g, Int32(AGNODE), "height", "")
+// Register default attributes (required before setting values on individual elements)
+g.setDefault(.node(.label))
+g.setDefault(.node(.width))
+g.setDefault(.node(.height))
 
 // Add nodes and an edge
 let a = agnode(g, "a", 1)!
-agset(a, "label", "Hello")
+a.set(.label, "Hello")
 let b = agnode(g, "b", 1)!
-agset(b, "label", "World")
+b.set(.label, "World")
 let e = agedge(g, a, b, "e", 1)!
 
 // Run layout
@@ -68,9 +68,10 @@ All Graphviz C functions are callable directly: `agopen`, `agnode`, `agedge`, `a
 
 On top of the C API, the package provides:
 
-**Pointer extensions** for reading layout results:
-- `GVNode.pos`, `.width`, `.height`, `.size`, `.rect`
-- `GVEdge.getPath()`, `.labelPos`, `.arrowHead`, `.arrowTail`
+**Pointer extensions** for setting attributes and reading layout results:
+- `GVGraph.setDefault(_:value:)`, `.set(_:_:)`, `.get(_:)`
+- `GVNode.set(_:_:)`, `.pos`, `.width`, `.height`, `.size`, `.rect`
+- `GVEdge.set(_:_:)`, `.getPath()`, `.labelPos`, `.arrowHead`, `.arrowTail`
 - `GVGraph.asString`, `.saveTo(fileName:)`, `.unflatten()`
 
 **Layout structs** that snapshot results into safe value types:

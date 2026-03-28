@@ -14,6 +14,19 @@ public typealias GVNode = UnsafeMutablePointer<Agnode_t>
 
 extension UnsafeMutablePointer where Pointee == Agnode_t {
 
+    // MARK: - Attribute helpers
+
+    /// Set a node attribute value.
+    public func set(_ param: GVNodeParameters, _ value: String) {
+        let cName = strdup(param.rawValue)
+        let cVal = strdup(value)
+        agset(self, cName, cVal)
+        free(cName)
+        free(cVal)
+    }
+
+    // MARK: - Layout results
+
     public var pos: CGPoint {
         let s = nd_coord(self)
         return CGPoint(gvPoint: s)

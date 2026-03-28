@@ -13,6 +13,20 @@ import GraphvizBridge
 public typealias GVEdge = UnsafeMutablePointer<Agedge_t>
 
 public extension UnsafeMutablePointer where Pointee == Agedge_t {
+
+    // MARK: - Attribute helpers
+
+    /// Set an edge attribute value.
+    func set(_ param: GVEdgeParameters, _ value: String) {
+        let cName = strdup(param.rawValue)
+        let cVal = strdup(value)
+        agset(self, cName, cVal)
+        free(cName)
+        free(cVal)
+    }
+
+    // MARK: - Layout results
+
     var labelPos: CGPoint? { //lp
         if let lPos = ed_lp(self) {
             return convertZeroPointToNil(CGPoint(gvPoint: lPos.pointee))
