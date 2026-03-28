@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphvizBridge
 
 enum GraphvizError : Error {
     case noPath

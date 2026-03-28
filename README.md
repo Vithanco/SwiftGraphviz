@@ -1,56 +1,49 @@
-This is everything that you need in order to create Mac App Store software that 
-uses the Graphviz library. That means you can use this to:
-- create Graphviz diagrams based on DOT files
-- Use Graphviz as a library, by creating the representation of the graph in memory and as well receive the internal data structures from Graphviz back which allows you to use Graphviz as a lay-outer for your software.  
+# SwiftGraphviz
 
+A Swift wrapper around the [Graphviz](https://graphviz.org) layout engine, packaged as a Swift Package. Build graphs in memory and get back node/edge positions — use Graphviz as a layout engine for your app.
 
+Supports macOS and iOS. Linux support is planned.
 
-# Graphviz libraries
-The normal build process for Graphviz is differently configured than needed. 
-Therefore, you should use the https://github.com/Vithanco/graphviz together with this library. 
-After cloning the package to your system, run ´./kkbuild.sh´ to prepare the build. You can then open the ´Graphviz.xcodeproj´ in XCode and compile.
+## Prerequisites
 
-The suggestion is that you use a ´graphviz´ library in the same directory as the ´SwiftGraphviz´ library (note capitals used).
-In case that SwiftGraphviz doesn't automatically pick up the right libraries: this is the list of libraries included by default:
-- liblabel.a
-- libpatchwork.a
-- libfdpgen.a
-- libtwopigen.a
-- librbtree.a
-- libcircogen.a
-- libcommon.a
-- libdotgen.a
-- libexpr.a
-- libguplugin_core.a
-- libguplugin_dot_layout.a
-- libguplugin_neato_layout.a
-- libgvplugin_quartz.a
-- libgupr.a
-- libneatogen.a
-- libortho.a
-- libosage.a
-- libpack.a
-- libpathplan.a
-- libsfdpgen.a
-- libsparse.a
-- libxdot.a
-- libgvc.a
-- libcdt.a
-- libcgraph.a
+- Xcode (with command-line tools)
+- CMake (`brew install cmake`)
 
-# Other libraries needed
-Currently this repository has committed the static libraries that are needed. 
-I would like to change this towards the whole build pipeline. See needed 
-libraries below. 
+## Setup
 
-The source code in this uses the Eclipse Public License 1.0.  It is (to my 
-knowledge) the same license as Graphviz uses and therefore choosen. 
+Clone the repository, then build the Graphviz xcframework from source:
 
-Some of the compiled & included libraries use different licenses. So before 
-using this software please review and accept licenses for the following software:
-* iconv.o & libcharset.a - https://www.gnu.org/software/libiconv/
-* libexpat.a - https://libexpat.github.io
-* libglib-2.0.a - https://developer.gnome.org/glib/
-* libgts.a - https://gts.sourceforge.io/
-* libintl.a - https://www.gnu.org/software/gettext/
-* libz.a - http://zlib.net/
+```bash
+./build_xcframework.sh
+```
+
+This clones Graphviz, builds it as a minimal static library (layout engines only, no rendering plugins, no external dependencies), and packages it as `Graphviz.xcframework`.
+
+To use a local Graphviz checkout instead of cloning:
+
+```bash
+GRAPHVIZ_SRC=/path/to/graphviz ./build_xcframework.sh
+```
+
+The script also runs `swift build` to verify everything links correctly.
+
+## Usage
+
+Add SwiftGraphviz as a dependency in your `Package.swift` or open the directory in Xcode.
+
+The library provides Swift access to Graphviz layout engines: dot, neato, fdp, twopi, circo, osage, and patchwork.
+
+## What's included
+
+The xcframework bundles only what's needed for layout computation:
+
+- **Core**: libcgraph, libcdt, libgvc, libcommon, libpathplan
+- **Layout engines**: libdotgen, libneatogen, libfdpgen, libtwopigen, libcircogen, libosage, libpatchwork
+- **Layout support**: libortho, libpack, librbtree, liblabel, libvpsc, libsparse, libxdot
+- **Plugins**: gvplugin_core, gvplugin_dot_layout, gvplugin_neato_layout
+
+No external dependencies (no GLib, GTS, expat, zlib, iconv, etc.).
+
+## License
+
+The source code in this repository uses the Eclipse Public License 1.0, the same license as Graphviz.

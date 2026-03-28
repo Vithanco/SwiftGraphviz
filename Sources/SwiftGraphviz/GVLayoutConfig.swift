@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphvizBridge
 //import Vithanco
 
 public struct GVLayoutConfig {

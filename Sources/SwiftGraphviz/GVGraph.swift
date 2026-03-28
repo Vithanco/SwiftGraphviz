@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphvizBridge
 
 
 public typealias GVGraph = UnsafeMutablePointer<Agraph_t>

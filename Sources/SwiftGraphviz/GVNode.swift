@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphvizBridge
 
 
 public typealias GVNode = UnsafeMutablePointer<Agnode_t>

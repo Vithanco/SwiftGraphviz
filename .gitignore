@@ -1,8 +1,18 @@
 .DS_Store
 /.build
 /Packages
-
 /.swiftpm
-merging.txt
-universal/all.txt
 
+# Build artifacts
+_build/
+_staging/
+graphviz_src/
+Graphviz.xcframework/
+*.o
+
+# Xcode
+*.xcodeproj/
+*.xcuserdatad/
+
+# Claude Code
+.claude/

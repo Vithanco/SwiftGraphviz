@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphvizBridge
 
 public extension CGSize {
     var isFinite: Bool {
