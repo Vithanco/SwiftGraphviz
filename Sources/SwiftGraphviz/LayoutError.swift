@@ -6,9 +6,6 @@
 //  Copyright © 2023 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
-
-
 enum LayoutError: Error {
     case gvHeadTailMissing
 }

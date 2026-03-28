@@ -7,13 +7,12 @@
 
 #include "builtins.h" //
 
+#ifdef __APPLE__
+// Apple: static plugin registration for the xcframework (no dynamic loading)
+
 extern gvplugin_library_t gvplugin_dot_layout_LTX_library;
 extern gvplugin_library_t gvplugin_neato_layout_LTX_library;
 extern gvplugin_library_t gvplugin_core_LTX_library;
-//extern gvplugin_library_t gvplugin_quartz_LTX_library;
-//extern gvplugin_library_t gvplugin_visio_LTX_library;
-//extern gvplugin_library_t gvplugin_lasi_LTX_library;
-//extern gvplugin_library_t gvplugin_pango_LTX_library;
 
 extern struct _dt_s * textfont_dict_open(GVC_t * gvc);
 
@@ -21,37 +20,28 @@ lt_symlist_t lt_preloaded_symbols[] = {
     { "gvplugin_core_LTX_library", (void*)(&gvplugin_core_LTX_library) },
     { "gvplugin_dot_layout_LTX_library", (void*)(&gvplugin_dot_layout_LTX_library) },
     { "gvplugin_neato_layout_LTX_library", (void*)(&gvplugin_neato_layout_LTX_library) },
-//    { "gvplugin_quartz_LTX_library", (void*)(&gvplugin_quartz_LTX_library)},
-    //    { "gvplugin_visio_LTX_library", (void*)(&gvplugin_visio_LTX_library)},
-    //#ifdef HAVE_PANGOCAIRO
-    //    { "gvplugin_pango_LTX_library", (void*)(&gvplugin_pango_LTX_library) },
-    //#ifdef HAVE_WEBP
-    //    { "gvplugin_webp_LTX_library", (void*)(&gvplugin_webp_LTX_library) },
-    //#endif
-    //#endif
-    //#ifdef HAVE_LIBGD
-    //    { "gvplugin_gd_LTX_library", (void*)(&gvplugin_gd_LTX_library) },
-    //#endif
     { 0, 0 }
 };
 
-
-
 GVC_t * loadGraphvizLibraries(void) {
-    
     GVC_t * gvc =  gvNEWcontext(&lt_preloaded_symbols[0], 0);
-    textfont_dict_open(gvc);  // this is a workaround due to https://gitlab.com/graphviz/graphviz/issues/1520
-    
+    textfont_dict_open(gvc);  // workaround for https://gitlab.com/graphviz/graphviz/issues/1520
+
     gvAddLibrary(gvc, &gvplugin_core_LTX_library);
     gvAddLibrary(gvc, &gvplugin_dot_layout_LTX_library);
     gvAddLibrary(gvc, &gvplugin_neato_layout_LTX_library);
-   // gvAddLibrary(gvc, &gvplugin_quartz_LTX_library);
-    //    gvAddLibrary(gvc, &gvplugin_visio_LTX_library);
-    //    gvAddLibrary(gvc, &gvplugin_lasi_LTX_library);
- //   gvAddLibrary(gvc, &gvplugin_pango_LTX_library);
-   
+
     return gvc;
 }
+
+#else
+// Linux: use standard gvContext() which discovers plugins dynamically
+
+GVC_t * loadGraphvizLibraries(void) {
+    return gvContext();
+}
+
+#endif
 
 pointf nd_coord(Agnode_t* n) {
     return ND_coord(n);

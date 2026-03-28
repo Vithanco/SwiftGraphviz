@@ -66,7 +66,7 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
     func saveTo(fileName: String) {
         fileName.withCString { nameCStr in
             "w".withCString { modeCStr in
-                let f = fopen(nameCStr, modeCStr)
+                guard let f = fopen(nameCStr, modeCStr) else { return }
                 agwrite(self, f)
                 fsync(fileno(f))
                 fclose(f)

@@ -6,26 +6,23 @@
 //  Copyright © 2019 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
-import CoreGraphics
-
 // MARK: - Unit Types
 
 /// Graphviz uses 72 points per inch
-public let pointsPerInch: CGFloat = 72.0
+public let pointsPerInch: Double = 72.0
 
 /// A value measured in screen points (72 points = 1 inch).
 /// Use this for sizes as seen on screen / in CoreGraphics coordinates.
-public struct GVPoints: Equatable, Hashable {
-    public let value: CGFloat
-    public init(_ value: CGFloat) { self.value = value }
+public struct GVPoints: Equatable, Hashable, Sendable {
+    public let value: Double
+    public init(_ value: Double) { self.value = value }
     public var asInches: GVInches { GVInches(value / pointsPerInch) }
 }
 
 /// A value measured in inches, as used internally by Graphviz for node width/height.
-public struct GVInches: Equatable, Hashable {
-    public let value: CGFloat
-    public init(_ value: CGFloat) { self.value = value }
+public struct GVInches: Equatable, Hashable, Sendable {
+    public let value: Double
+    public init(_ value: Double) { self.value = value }
     public var asPoints: GVPoints { GVPoints(value * pointsPerInch) }
 }
 

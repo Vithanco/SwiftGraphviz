@@ -11,7 +11,9 @@
 
 #include "gvplugin.h" //
 #include "gvc.h"
+#ifdef __APPLE__
 #include "gvcint.h"
+#endif
 
 GVC_t * loadGraphvizLibraries(void) ;
 
