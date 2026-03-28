@@ -17,6 +17,52 @@ public struct CannotOpenFileDescriptor: Error { }
 
 public extension UnsafeMutablePointer where Pointee == Agraph_t {
 
+    // MARK: - Attribute helpers
+
+    /// Register a default attribute value on this graph. Must be called before `set(_:_:)` on individual elements.
+    ///
+    /// Usage:
+    /// ```swift
+    /// g.setDefault(.node(.label))
+    /// g.setDefault(.edge(.dir), value: "forward")
+    /// g.setDefault(.graph(.rankdir), value: "LR")
+    /// ```
+    func setDefault(_ param: GVParameter, value: String = "") {
+        let kind: Int32
+        let name: String
+        switch param {
+        case .node(let p):  kind = Int32(AGNODE);  name = p.rawValue
+        case .edge(let p):  kind = Int32(AGEDGE);  name = p.rawValue
+        case .graph(let p): kind = Int32(AGRAPH);  name = p.rawValue
+        }
+        let cName = strdup(name)
+        let cVal = strdup(value)
+        agattr(self, kind, cName, cVal)
+        free(cName)
+        free(cVal)
+    }
+
+    /// Set a graph-level attribute value.
+    func set(_ param: GVGraphParameters, _ value: String) {
+        let cName = strdup(param.rawValue)
+        let cVal = strdup(value)
+        agset(self, cName, cVal)
+        free(cName)
+        free(cVal)
+    }
+
+    /// Get a graph-level attribute value.
+    func get(_ param: GVGraphParameters) -> String {
+        let cName = strdup(param.rawValue)
+        defer { free(cName) }
+        if let result = agget(self, cName) {
+            return String(cString: result)
+        }
+        return ""
+    }
+
+    // MARK: - I/O
+
     func saveTo(fileName: String) {
         fileName.withCString { nameCStr in
             "w".withCString { modeCStr in

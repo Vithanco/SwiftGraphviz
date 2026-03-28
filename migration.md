@@ -28,19 +28,19 @@ let rect = graph.getGraphRect()
 **After:**
 ```swift
 let g = agopen("G", Agdesc_t(directed: 1, strict: 0, no_loop: 0, maingraph: 1, no_write: 0, has_attrs: 0, has_cmpnd: 0), nil)!
-// Set base values (required before setting attribute values)
-agattr(g, Int32(AGRAPH), "rankdir", "LR")
-agattr(g, Int32(AGNODE), "label", "")
-agattr(g, Int32(AGNODE), "shape", "")
-agattr(g, Int32(AGEDGE), "dir", "")
+// Register default attributes (required before setting values on individual elements)
+g.setDefault(.graph(.rankdir), value: "LR")
+g.setDefault(.node(.label))
+g.setDefault(.node(.shape))
+g.setDefault(.edge(.dir))
 
 let n1 = agnode(g, "a", 1)!
-agset(n1, "label", "A")
+n1.set(.label, "A")
 let n2 = agnode(g, "b", 1)!
-agset(n2, "label", "B")
+n2.set(.label, "B")
 let edge = agedge(g, n1, n2, "e1", 1)!
-agset(edge, "dir", GVEdgeParamDir.forward.rawValue)
-agset(n1, "shape", "box")
+edge.set(.dir, GVEdgeParamDir.forward.rawValue)
+n1.set(.shape, "box")
 
 gvLayout(gblGVContext, g, GVLayoutEngine.dot.graphvizName)
 let rect = CGRect(box: gd_bb(g))
