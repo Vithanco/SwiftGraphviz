@@ -1,0 +1,11 @@
+module CGraphviz [system] {
+    header "/usr/include/graphviz/gvc.h"
+    header "/usr/include/graphviz/cgraph.h"
+    header "/usr/include/graphviz/gvcext.h"
+    header "/usr/include/graphviz/types.h"
+    link "gvc"
+    link "cgraph"
+    link "cdt"
+    link "pathplan"
+    export *
+}
