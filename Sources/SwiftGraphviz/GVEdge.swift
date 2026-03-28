@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import GraphvizBridge
 
 
 public typealias GVEdge = UnsafeMutablePointer<Agedge_t>

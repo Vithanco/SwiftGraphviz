@@ -18,14 +18,10 @@
  * Updated by Emden Gansner
  * Adopted for Vithanco by Klaus Kneupner (added unflatten func, added unflatten.h)
  */
-#include "config.h"
-
 #include    <stdio.h>
 #include    <stdlib.h>
 #include    <string.h>
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
+#include    <unistd.h>
 //#include    <cgraph.h>
 
 #include <getopt.h>
