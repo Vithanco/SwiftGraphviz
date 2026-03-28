@@ -57,7 +57,7 @@ public extension CGPoint {
     }
     
     func orderByDistance(set: Set<CGPoint>) -> [CGPoint] {
-        return self.orderByDistance(points: set.asArray)
+        return self.orderByDistance(points: Array(set))
     }
     
     func orderByDistance(points: [CGPoint]) -> [CGPoint] {
@@ -103,12 +103,6 @@ func pointTransformGraphvizToCGPoint(_ point: pointf_s) -> CGPoint {
     return CGPoint(gvPoint: point)
 }
 
- extension CGPoint : Hashable {
-    public  func hash(into hasher: inout Hasher){
-        hasher.combine(x)
-        hasher.combine(y)
-    }
-}
 //
 //func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
 //    return lhs.distance(to: rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)

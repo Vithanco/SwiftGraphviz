@@ -12,35 +12,47 @@ import GraphvizBridge
 
 public typealias GVNode = UnsafeMutablePointer<Agnode_t>
 
-extension UnsafeMutablePointer where Pointee == Agnode_t  {
+extension UnsafeMutablePointer where Pointee == Agnode_t {
 
-    public var pos : CGPoint {
+    public var pos: CGPoint {
         let s = nd_coord(self)
         return CGPoint(gvPoint: s)
     }
-    public var width : CGFloat {
-        let s = nd_width(self)
-        return CGFloat(s) * pointsPerInch
+
+    /// Node width as returned by Graphviz (in inches).
+    public var widthInches: GVInches {
+        return GVInches(CGFloat(nd_width(self)))
     }
-    public var height : CGFloat {
-        let s = nd_height(self)
-        return CGFloat(s) * pointsPerInch
+
+    /// Node height as returned by Graphviz (in inches).
+    public var heightInches: GVInches {
+        return GVInches(CGFloat(nd_height(self)))
     }
-    
+
+    /// Node width converted to screen points.
+    public var width: GVPoints {
+        return widthInches.asPoints
+    }
+
+    /// Node height converted to screen points.
+    public var height: GVPoints {
+        return heightInches.asPoints
+    }
+
     public var size: CGSize {
-        return CGSize(width: width, height: height)
+        return CGSize(width: width.value, height: height.value)
     }
-    
-    public var rect : CGRect {
+
+    public var rect: CGRect {
         let mid = self.pos
-        let w = self.width
-        let h = self.height
+        let w = self.width.value
+        let h = self.height.value
         return CGRect(midPoint: mid, size: CGSize(width: w, height: h))
     }
-    
+
 }
 
-extension CGRect{
+extension CGRect {
     init(midPoint: CGPoint, size: CGSize) {
         self.init(x: midPoint.x - size.width / 2, y: midPoint.y - size.height / 2, width: size.width, height: size.height)
     }

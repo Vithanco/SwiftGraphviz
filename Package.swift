@@ -34,7 +34,8 @@ let package = Package(
         // Swift API for Graphviz layout computation.
         .target(
             name: "SwiftGraphviz",
-            dependencies: ["GraphvizBridge"]
+            dependencies: ["GraphvizBridge"],
+            path: "Sources/SwiftGraphviz"
         ),
 
         .testTarget(
