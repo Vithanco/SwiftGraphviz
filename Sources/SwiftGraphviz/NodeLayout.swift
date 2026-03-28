@@ -6,14 +6,12 @@
 //  Copyright © 2023 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
+public struct NodeLayout: Equatable, Sendable {
 
-public  struct NodeLayout: Equatable {
-    
-    public let pos: CGPoint
-    public let size: CGSize
-    
-    public init(pos: CGPoint,size: CGSize) {
+    public let pos: GVPoint
+    public let size: GVSize
+
+    public init(pos: GVPoint, size: GVSize) {
         self.pos = pos
         self.size = size
     }
@@ -24,7 +22,7 @@ public  struct NodeLayout: Equatable {
     public static var zero: NodeLayout {
         return NodeLayout(pos: .zero, size: .zero)
     }
-    public var rect: CGRect {
-        return CGRect(midPoint: self.pos, size: self.size)
+    public var rect: GVRect {
+        return GVRect(midPoint: self.pos, size: self.size)
     }
 }

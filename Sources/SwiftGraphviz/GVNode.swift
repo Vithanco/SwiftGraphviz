@@ -6,7 +6,13 @@
 //  Copyright © 2019 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
+#if canImport(Darwin)
+import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#elseif canImport(Musl)
+import Musl
+#endif
 import GraphvizBridge
 
 
@@ -27,19 +33,19 @@ extension UnsafeMutablePointer where Pointee == Agnode_t {
 
     // MARK: - Layout results
 
-    public var pos: CGPoint {
+    public var pos: GVPoint {
         let s = nd_coord(self)
-        return CGPoint(gvPoint: s)
+        return GVPoint(gvPoint: s)
     }
 
     /// Node width as returned by Graphviz (in inches).
     public var widthInches: GVInches {
-        return GVInches(CGFloat(nd_width(self)))
+        return GVInches(nd_width(self))
     }
 
     /// Node height as returned by Graphviz (in inches).
     public var heightInches: GVInches {
-        return GVInches(CGFloat(nd_height(self)))
+        return GVInches(nd_height(self))
     }
 
     /// Node width converted to screen points.
@@ -52,21 +58,15 @@ extension UnsafeMutablePointer where Pointee == Agnode_t {
         return heightInches.asPoints
     }
 
-    public var size: CGSize {
-        return CGSize(width: width.value, height: height.value)
+    public var size: GVSize {
+        return GVSize(width: width.value, height: height.value)
     }
 
-    public var rect: CGRect {
+    public var rect: GVRect {
         let mid = self.pos
         let w = self.width.value
         let h = self.height.value
-        return CGRect(midPoint: mid, size: CGSize(width: w, height: h))
+        return GVRect(midPoint: mid, size: GVSize(width: w, height: h))
     }
 
-}
-
-extension CGRect {
-    init(midPoint: CGPoint, size: CGSize) {
-        self.init(x: midPoint.x - size.width / 2, y: midPoint.y - size.height / 2, width: size.width, height: size.height)
-    }
 }

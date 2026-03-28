@@ -6,7 +6,13 @@
 //  Copyright © 2019 Klaus Kneupner. All rights reserved.
 //
 
-import AppKit
+#if canImport(Darwin)
+import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#elseif canImport(Musl)
+import Musl
+#endif
 import GraphvizBridge
 
 
@@ -27,46 +33,46 @@ public extension UnsafeMutablePointer where Pointee == Agedge_t {
 
     // MARK: - Layout results
 
-    var labelPos: CGPoint? { //lp
+    var labelPos: GVPoint? {
         if let lPos = ed_lp(self) {
-            return convertZeroPointToNil(CGPoint(gvPoint: lPos.pointee))
+            return convertZeroPointToNil(GVPoint(gvPoint: lPos.pointee))
         }
         return nil
     }
-    var headLabelPos:CGPoint? {
+    var headLabelPos: GVPoint? {
         if let lPos = ed_head_lp(self) {
-            return convertZeroPointToNil(CGPoint(gvPoint: lPos.pointee))
+            return convertZeroPointToNil(GVPoint(gvPoint: lPos.pointee))
         }
         return nil
     }
-    var tailLabelPos:CGPoint? {
+    var tailLabelPos: GVPoint? {
         if let lPos = ed_tail_lp(self) {
-            return convertZeroPointToNil(CGPoint(gvPoint: lPos.pointee))
+            return convertZeroPointToNil(GVPoint(gvPoint: lPos.pointee))
         }
         return nil
     }
-    
+
     var labelText: String? {
         if let text = ed_label_text(self) {
             return String(cString: text)
         }
         return nil
     }
-    
+
     var headLabelText: String? {
         if let text = ed_head_label_text(self) {
             return String(cString: text)
         }
         return nil
     }
-    
+
     var tailLabelText: String? {
         if let text = ed_tail_label_text(self) {
             return String(cString: text)
         }
         return nil
     }
-    
+
     var spline: GVSplines? {
         guard let t = pointee.base.data else {
             return nil
@@ -79,9 +85,9 @@ public extension UnsafeMutablePointer where Pointee == Agedge_t {
         }
         return spline
     }
-    
-    func getPath() throws -> [CGPoint]  {
-        guard let spline = spline, let bezier = spline.pointee.list else {  //warning! this could be an array, see warning log in var spine: GVSlines?
+
+    func getPath() throws -> [GVPoint]  {
+        guard let spline = spline, let bezier = spline.pointee.list else {
             throw GraphvizError.noPath
         }
         let nrPoints = Int(bezier.pointee.size)
@@ -90,37 +96,29 @@ public extension UnsafeMutablePointer where Pointee == Agedge_t {
         for i in 0..<nrPoints {
             points.append(pointer[i])
         }
-        return points.map(pointTransformGraphvizToCGPoint)
+        return points.map(pointTransformToGVPoint)
     }
-    
-    var arrowHead: CGPoint? {
-        guard let spline = spline, let bezier = spline.pointee.list else {
-            fatalError()
-            
-        }
-        let result = bezier.pointee.ep
-//        return convertZeroPointToNil(pointTransformGraphvizToCGPoint(result))
-        return pointTransformGraphvizToCGPoint(result)
-    }
-    
-    var arrowTail: CGPoint? {
+
+    var arrowHead: GVPoint? {
         guard let spline = spline, let bezier = spline.pointee.list else {
             fatalError()
         }
-        let result = bezier.pointee.sp
-//        return convertZeroPointToNil(pointTransformGraphvizToCGPoint(result))
-        return pointTransformGraphvizToCGPoint(result)
-   
+        return pointTransformToGVPoint(bezier.pointee.ep)
     }
-    
-    var headPortPos: CGPoint {
-        return pointTransformGraphvizToCGPoint(ed_headPort_pos(self))
+
+    var arrowTail: GVPoint? {
+        guard let spline = spline, let bezier = spline.pointee.list else {
+            fatalError()
+        }
+        return pointTransformToGVPoint(bezier.pointee.sp)
     }
-    
-    var tailPortPos: CGPoint {
-        return pointTransformGraphvizToCGPoint(ed_tailPort_pos(self))
+
+    var headPortPos: GVPoint {
+        return pointTransformToGVPoint(ed_headPort_pos(self))
     }
-    
+
+    var tailPortPos: GVPoint {
+        return pointTransformToGVPoint(ed_tailPort_pos(self))
+    }
 
 }
-
