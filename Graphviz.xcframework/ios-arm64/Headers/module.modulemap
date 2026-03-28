@@ -1,0 +1,18 @@
+module CGraphviz [system] {
+    header "cgraph.h"
+    header "gvc.h"
+    header "gvcint.h"
+    header "gvcext.h"
+    header "gvcjob.h"
+    header "gvcommon.h"
+    header "gvplugin.h"
+    header "cdt.h"
+    header "types.h"
+    header "geom.h"
+    header "arith.h"
+    header "pathgeom.h"
+    header "textspan.h"
+    header "color.h"
+    header "usershape.h"
+    export *
+}
