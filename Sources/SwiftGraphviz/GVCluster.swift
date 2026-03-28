@@ -6,7 +6,6 @@
 //  Copyright © 2019 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
 import GraphvizBridge
 
 
@@ -15,25 +14,25 @@ public typealias GVCluster = UnsafeMutablePointer<Agraph_t>
 
 
 public extension UnsafeMutablePointer where Pointee == Agraph_t {
-    var labelPos: CGPoint? { //lp
+    var labelPos: GVPoint? {
         if let lPos = gd_lp(self) {
-            return convertZeroPointToNil(CGPoint(gvPoint: lPos.pointee))
+            return convertZeroPointToNil(GVPoint(gvPoint: lPos.pointee))
         }
         return nil
     }
-    
-    var labelSize: CGSize? { //lsize
+
+    var labelSize: GVSize? {
         if let lPos = gd_lsize(self) {
-            return CGSize(gvPoint: lPos.pointee).convertZeroSizeToNil()
+            return GVSize(gvPoint: lPos.pointee).convertZeroToNil()
         }
         return nil
     }
-    
-    var rect: CGRect {
-        let box = gd_bb (self)
-        return CGRect(box: box)
+
+    var rect: GVRect {
+        let box = gd_bb(self)
+        return GVRect(box: box)
     }
-    
+
     var labelText: String? {
         if let text = gd_label_text(self) {
             return String(cString: text)
@@ -41,10 +40,3 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
         return nil
     }
 }
-
-extension CGRect {
-    public init (box: boxf) {
-        self.init(x: box.LL.x, y: box.LL.y, width: box.UR.x - box.LL.x, height: box.UR.y - box.LL.y)
-    }
-}
-
