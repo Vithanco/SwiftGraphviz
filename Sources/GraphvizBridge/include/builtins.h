@@ -9,10 +9,12 @@
 #ifndef builtins_h
 #define builtins_h
 
-#include "gvplugin.h" //
-#include "gvc.h"
 #ifdef __APPLE__
+#include "gvplugin.h"
+#include "gvc.h"
 #include "gvcint.h"
+#else
+@import CGraphviz;
 #endif
 
 GVC_t * loadGraphvizLibraries(void) ;

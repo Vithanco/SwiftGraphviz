@@ -3,6 +3,7 @@ module CGraphviz [system] {
     header "/usr/include/graphviz/cgraph.h"
     header "/usr/include/graphviz/gvcext.h"
     header "/usr/include/graphviz/types.h"
+    header "/usr/include/graphviz/gvplugin.h"
     link "gvc"
     link "cgraph"
     link "cdt"
