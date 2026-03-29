@@ -14,7 +14,9 @@
 #include "gvc.h"
 #include "gvcint.h"
 #else
-@import CGraphviz;
+#include <graphviz/gvplugin.h>
+#include <graphviz/gvc.h>
+#include <graphviz/cgraph.h>
 #endif
 
 GVC_t * loadGraphvizLibraries(void) ;
