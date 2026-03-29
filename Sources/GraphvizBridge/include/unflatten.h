@@ -12,7 +12,8 @@
 #ifdef __APPLE__
 #include "gvc.h"
 #else
-@import CGraphviz;
+#include <graphviz/gvc.h>
+#include <graphviz/cgraph.h>
 #endif
 
 int agUnflatten(Agraph_t * g, int doFans, int maxMinlen, int chainLimit);
