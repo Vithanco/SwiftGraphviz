@@ -155,6 +155,8 @@ LIB_COMPONENTS=(
     lib/rbtree/librbtree.a
     lib/vpsc/libvpsc.a
     lib/xdot/libxdot.a
+    lib/util/libutil.a
+    lib/sfdpgen/libsfdpgen.a
     plugin/core/libgvplugin_core.a
     plugin/dot_layout/libgvplugin_dot_layout.a
     plugin/neato_layout/libgvplugin_neato_layout.a
@@ -261,7 +263,7 @@ patch_graphviz_source() {
     # 1. Comment out subdirectories we don't need (gvpr, expr, sfio, ast,
     #    edgepaint, glcomp, mingle, sfdpgen, topfish) — some use system()
     #    which is unavailable on iOS.
-    for lib in ast edgepaint expr glcomp gvpr mingle sfio sfdpgen topfish; do
+    for lib in ast edgepaint expr glcomp gvpr mingle sfio topfish; do
         sed -i '' "s|^add_subdirectory($lib)|# add_subdirectory($lib)  # disabled — not needed for layout|" "$lib_cmake"
     done
 
