@@ -3,11 +3,9 @@
 import PackageDescription
 
 #if os(Linux)
-let graphvizTarget: Target = .systemLibrary(
+let graphvizTarget: Target = .binaryTarget(
     name: "CGraphviz",
-    path: "Sources/CGraphvizSystem",
-    pkgConfig: "libgvc",
-    providers: [.apt(["libgraphviz-dev"])]
+    path: "CGraphviz.artifactbundle"
 )
 #else
 let graphvizTarget: Target = .binaryTarget(
@@ -26,7 +24,7 @@ let package = Package(
         .library(name: "SwiftGraphviz", targets: ["SwiftGraphviz"]),
     ],
     targets: [
-        // Graphviz C library: xcframework on Apple, system library on Linux.
+        // Graphviz C library: xcframework on Apple, artifact bundle on Linux.
         graphvizTarget,
 
         // C bridge: static plugin registration (builtins.c) + unflatten algorithm.

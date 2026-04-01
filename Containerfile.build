@@ -1,0 +1,58 @@
+# Containerfile.build
+#
+# Multi-stage build for SwiftGraphviz on Linux.
+#
+# Stage 1: Build Graphviz from source as a static library and package as artifact bundle.
+# Stage 2: Build the Swift project against the artifact bundle.
+# Stage 3: Slim runtime image — no Graphviz runtime dependency needed.
+#
+# Usage (podman):
+#   podman build -f Containerfile.build -t swiftgraphviz-builder .
+#
+# To just build the artifact bundle (copy it out of the container):
+#   podman build -f Containerfile.build --target graphviz-builder -t gv-static .
+#   podman create --name gv-tmp gv-static
+#   podman cp gv-tmp:/src/CGraphviz.artifactbundle ./CGraphviz.artifactbundle
+#   podman rm gv-tmp
+
+# ── Stage 1: Build Graphviz static library ──────────────────────────────────
+
+FROM swift:6.2 AS graphviz-builder
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cmake bison flex python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+
+# Clone graphviz source (or copy a local checkout)
+RUN git clone --depth 1 https://gitlab.com/graphviz/graphviz.git graphviz_src
+
+COPY build_linux_static.sh .
+RUN GRAPHVIZ_SRC=/src/graphviz_src ./build_linux_static.sh
+
+# ── Stage 2: Build Swift project ────────────────────────────────────────────
+
+FROM swift:6.2 AS swift-builder
+
+WORKDIR /src
+COPY . /src
+
+# Use the artifact bundle built in stage 1
+COPY --from=graphviz-builder /src/CGraphviz.artifactbundle /src/CGraphviz.artifactbundle
+
+RUN swift build -c release
+
+# ── Stage 3: Runtime (slim, no graphviz needed) ─────────────────────────────
+
+FROM ubuntu:24.04 AS runtime
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libstdc++6 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy Swift runtime libraries
+COPY --from=swift-builder /usr/lib/swift/linux /usr/lib/swift/linux
+
+# Copy your built binary (adjust path as needed)
+# COPY --from=swift-builder /src/.build/release/YourBinary /usr/local/bin/

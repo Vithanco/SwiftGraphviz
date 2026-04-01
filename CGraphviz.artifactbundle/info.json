@@ -1,0 +1,19 @@
+{
+    "schemaVersion": "1.0",
+    "artifacts": {
+        "CGraphviz": {
+            "version": "0.0.0",
+            "type": "staticLibrary",
+            "variants": [
+                {
+                    "path": "linux-x86_64/libgraphviz.a",
+                    "supportedTriples": ["x86_64-unknown-linux-gnu"],
+                    "staticLibraryMetadata": {
+                        "headerPaths": ["linux-x86_64/Headers"],
+                        "moduleMapPath": "linux-x86_64/Headers/module.modulemap"
+                    }
+                }
+            ]
+        }
+    }
+}
