@@ -20,14 +20,9 @@ public nonisolated(unsafe) var gblGVContext: GVGlobalContextPointer = loadGraphv
 public typealias GVSplines = UnsafeMutablePointer<splines>
 public typealias GVBezier = UnsafeMutablePointer<bezier>
 
-// On Apple, gvcint.h provides the full GVC_s struct definition so Swift can use
-// UnsafeMutablePointer<GVC_t>. On Linux, GVC_t is opaque (forward-declared only),
-// so Swift imports GVC_t* as OpaquePointer.
-#if canImport(Darwin)
+// gvcint.h is available on all platforms (xcframework on Apple, artifact bundle
+// on Linux), so GVC_t is always a full struct and never opaque.
 public typealias GVGlobalContextPointer = UnsafeMutablePointer<GVC_t>
-#else
-public typealias GVGlobalContextPointer = OpaquePointer
-#endif
 
 public enum GVLayoutEngine: Int, CaseIterable {
     case dot = 0

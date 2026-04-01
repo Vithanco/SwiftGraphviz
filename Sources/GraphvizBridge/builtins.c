@@ -5,10 +5,11 @@
 //  Created by Klaus Kneupner on 30/04/2017.
 //
 
-#include "builtins.h" //
+#include "builtins.h"
 
-#ifdef __APPLE__
-// Apple: static plugin registration for the xcframework (no dynamic loading)
+// Static plugin registration — used on all platforms.
+// Both Apple (xcframework) and Linux (artifact bundle) link Graphviz statically,
+// so plugins must be registered explicitly rather than discovered dynamically.
 
 extern gvplugin_library_t gvplugin_dot_layout_LTX_library;
 extern gvplugin_library_t gvplugin_neato_layout_LTX_library;
@@ -24,7 +25,7 @@ lt_symlist_t lt_preloaded_symbols[] = {
 };
 
 GVC_t * loadGraphvizLibraries(void) {
-    GVC_t * gvc =  gvNEWcontext(&lt_preloaded_symbols[0], 0);
+    GVC_t * gvc = gvNEWcontext(&lt_preloaded_symbols[0], 0);
     textfont_dict_open(gvc);  // workaround for https://gitlab.com/graphviz/graphviz/issues/1520
 
     gvAddLibrary(gvc, &gvplugin_core_LTX_library);
@@ -33,15 +34,6 @@ GVC_t * loadGraphvizLibraries(void) {
 
     return gvc;
 }
-
-#else
-// Linux: use standard gvContext() which discovers plugins dynamically
-
-GVC_t * loadGraphvizLibraries(void) {
-    return gvContext();
-}
-
-#endif
 
 pointf nd_coord(Agnode_t* n) {
     return ND_coord(n);
