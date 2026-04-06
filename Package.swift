@@ -43,7 +43,10 @@ let package = Package(
         .target(
             name: "SwiftGraphviz",
             dependencies: ["GraphvizBridge"],
-            path: "Sources/SwiftGraphviz"
+            path: "Sources/SwiftGraphviz",
+            linkerSettings: [
+                .linkedLibrary("c++"),
+            ]
         ),
 
         .testTarget(
