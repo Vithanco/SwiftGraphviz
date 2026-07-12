@@ -25,11 +25,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <assert.h>
-/* <signal.h> removed for the wasm bundle: no public header uses any signal
- * symbol, and wasi-libc's <signal.h> #errors without _WASI_EMULATED_SIGNAL —
- * which as a command-line -D would force unsafeFlags and block version-based
- * SwiftPM consumption. The Graphviz .c sources still handle signals internally;
- * this only affects the module's header view. (Stripped by build_wasm_static.sh.) */
 #include "geom.h"
 #include "gvcext.h"
 #include "pathgeom.h"

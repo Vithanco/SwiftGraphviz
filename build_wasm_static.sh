@@ -102,7 +102,7 @@ SRC_HEADERS=(
 get_graphviz_source() {
     if [ -z "$GRAPHVIZ_SRC" ]; then
         GRAPHVIZ_SRC="$SCRIPT_DIR/graphviz_src"
-        [ -d "$GRAPHVIZ_SRC" ] || git clone --depth 1 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
+        [ -d "$GRAPHVIZ_SRC" ] || git clone --depth 1 --branch 15.1.0 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
     fi
     [ -f "$GRAPHVIZ_SRC/CMakeLists.txt" ] || { echo "ERROR: no CMakeLists.txt at $GRAPHVIZ_SRC"; exit 1; }
 }
@@ -117,6 +117,14 @@ patch_graphviz_source() {
     perl -0pi -e 's/^add_subdirectory\(quartz\)/# add_subdirectory(quartz) disabled for wasm/mg' \
         "$GRAPHVIZ_SRC/plugin/CMakeLists.txt"
     perl -0pi -e 's/set\(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON\)/# disabled for static build/g' "$root"
+    # Fix a Graphviz UB bug: storeline() leaves textspan_t.free_layout/.layout
+    # uninitialized for EMPTY label lines (the non-empty path sets them via
+    # textspan_size(); gv_recalloc doesn't zero this slot). free_textspan() then
+    # does `if (layout && free_layout) free_layout(layout)` on garbage — a no-op
+    # on a zeroed native heap but a call_indirect to a bogus index under wasm
+    # (crash on any label with a blank line, e.g. a leading "\n"). Initialize them.
+    perl -0pi -e 's/(\n\s*span->just = terminator;\n)/$1\tspan->layout = NULL;\n\tspan->free_layout = NULL;\n/' \
+        "$GRAPHVIZ_SRC/lib/common/labels.c"
     echo "# PATCHED by build_wasm_static.sh" >> "$root"
 }
 
