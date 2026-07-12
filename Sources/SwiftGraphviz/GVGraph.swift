@@ -72,7 +72,9 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
         fileName.withCString { nameCStr in
             "w".withCString { modeCStr in
                 guard let f = fopen(nameCStr, modeCStr) else { return }
-                agwrite(self, f)
+                // agwrite takes `void *chan`; wrap because on WASI `FILE` is opaque
+                // so fopen returns OpaquePointer, which has no implicit raw-pointer conversion.
+                agwrite(self, UnsafeMutableRawPointer(f))
                 fsync(fileno(f))
                 fclose(f)
             }
@@ -91,7 +93,7 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
         guard let stream = open_memstream(&buffer, &size) else {
             return nil
         }
-        agwrite(self, stream)
+        agwrite(self, UnsafeMutableRawPointer(stream))
         // Closing flushes the stream, then sets `buffer`/`size` and NUL-terminates.
         fclose(stream)
         guard let buffer else { return nil }

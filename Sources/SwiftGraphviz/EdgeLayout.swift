@@ -23,13 +23,13 @@ public struct EdgeLayout: Equatable, Hashable, Sendable {
     public let headLabelPos: GVPoint?
     public let tailLabelPos: GVPoint?
 
-    public init(gvEdge: GVEdge) throws {
+    public init(gvEdge: GVEdge) throws(GraphvizError) {
         self.labelPos = gvEdge.labelPos
         self.headLabelPos = gvEdge.headLabelPos
         self.tailLabelPos = gvEdge.tailLabelPos
 
         guard let head = gvEdge.arrowHead, let tail = gvEdge.arrowTail else {
-            throw LayoutError.gvHeadTailMissing
+            throw GraphvizError.headTailMissing
         }
         arrowHead = head
         arrowTail = tail

@@ -55,6 +55,11 @@ let package = Package(
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
+                // wasm: Graphviz headers pull in <signal.h> (via types.h), which wasi-libc
+                // gates behind _WASI_EMULATED_SIGNAL. (setjmp lowering isn't needed here —
+                // the bridge sources don't include <setjmp.h>; it's handled in the C lib
+                // build and at final link. See wasm-toolchain.cmake / WASM.md.)
+                .define("_WASI_EMULATED_SIGNAL", .when(platforms: [.wasi])),
             ]
         ),
 
@@ -63,8 +68,19 @@ let package = Package(
             name: "SwiftGraphviz",
             dependencies: ["GraphvizBridge"],
             path: "Sources/SwiftGraphviz",
+            swiftSettings: [
+                // Propagate the signal define to the transitive Clang module builds
+                // (CGraphviz/GraphvizBridge) that this target's imports trigger — a
+                // target's own cSettings don't reach dependency module compilation.
+                .unsafeFlags(["-Xcc", "-D_WASI_EMULATED_SIGNAL"], .when(platforms: [.wasi])),
+                // Embedded Swift on wasm (matches VGraph's wasm targets). Must be set
+                // here too: embedded is per-module, so a dependency built non-embedded
+                // would mismatch an embedded consumer.
+                .enableExperimentalFeature("Embedded", .when(platforms: [.wasi])),
+                .unsafeFlags(["-wmo"], .when(platforms: [.wasi])),
+            ],
             linkerSettings: [
-                .linkedLibrary("c++"),
+                .linkedLibrary("c++", .when(platforms: [.macOS, .iOS, .linux])),
             ]
         ),
 
