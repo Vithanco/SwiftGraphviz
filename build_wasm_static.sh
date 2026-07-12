@@ -74,9 +74,18 @@ COMMON_CMAKE_FLAGS=(
     -DCMAKE_DISABLE_FIND_PACKAGE_ANN=TRUE
 )
 
-# Components to merge (same as build_linux_static.sh).
+# wasm-only cmake flags on top of COMMON. Disable IPSEPCOLA/DIGCOLA: they pull in
+# the VPSC solver, the only C++ code that throws exceptions — and the Swift wasm
+# SDK's libc++abi is built without exceptions (no __cxa_throw). Dropping them keeps
+# the wasm lib exception-free. Native/Linux builds keep these features.
+WASM_ONLY_CMAKE_FLAGS=(
+    -Dwith_ipsepcola=OFF
+    -Dwith_digcola=OFF
+)
+
+# Components to merge (same as build_linux_static.sh, minus vpsc — excluded on wasm).
 LIB_COMPONENTS=(cdt cgraph gvc common pathplan dotgen neatogen fdpgen twopigen
-    circogen osage patchwork sparse label pack ortho rbtree vpsc xdot util sfdpgen)
+    circogen osage patchwork sparse label pack ortho rbtree xdot util sfdpgen)
 PLUGIN_COMPONENTS=(core dot_layout neato_layout)
 
 SRC_HEADERS=(
@@ -117,7 +126,7 @@ build_graphviz() {
         -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN_FILE" \
         -DWASM_CLANG="$WASM_CLANG" -DWASM_SYSROOT="$WASM_SYSROOT" \
         -DWASM_AR="$WASM_AR" -DWASM_RANLIB="$WASM_RANLIB" \
-        -DCMAKE_BUILD_TYPE=Release "${COMMON_CMAKE_FLAGS[@]}"
+        -DCMAKE_BUILD_TYPE=Release "${COMMON_CMAKE_FLAGS[@]}" "${WASM_ONLY_CMAKE_FLAGS[@]}"
     cmake --build "$BUILD_ROOT" -j"$NJOBS"
 }
 
