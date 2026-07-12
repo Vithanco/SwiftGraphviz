@@ -234,7 +234,7 @@ get_graphviz_source() {
         GRAPHVIZ_SRC="$SCRIPT_DIR/graphviz_src"
         if [ ! -d "$GRAPHVIZ_SRC" ]; then
             echo "Cloning Graphviz source (shallow)..."
-            git clone --depth 1 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
+            git clone --depth 1 --branch 15.1.0 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
         fi
     fi
 
@@ -271,6 +271,13 @@ patch_graphviz_source() {
     #    for Release builds (line ~801), which produces LLVM bitcode .o files
     #    that xcodebuild -create-xcframework cannot read.
     sed -i '' 's|set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)|# set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)  # disabled for xcframework|' "$root_cmake"
+
+    # Fix a Graphviz UB bug: storeline() leaves textspan_t.free_layout/.layout
+    # uninitialized for EMPTY label lines, which free_textspan() later calls via
+    # a function pointer. Harmless on a zeroed native heap but a crash under wasm;
+    # patched on every platform for correctness (kept in sync with build_wasm_static.sh).
+    perl -0pi -e 's/(\n\s*span->just = terminator;\n)/$1\tspan->layout = NULL;\n\tspan->free_layout = NULL;\n/' \
+        "$GRAPHVIZ_SRC/lib/common/labels.c"
 
     # Add marker so we don't patch twice
     echo "# PATCHED by build_xcframework.sh" >> "$root_cmake"

@@ -152,6 +152,16 @@ declares but doesn't implement it, and Graphviz `timing.c` (profiling only) call
 Graphviz declares it `void`. Harmless on native (linkers ignore return type) but **fatal
 on wasm** — a call-site/definition signature mismatch traps (`RuntimeError: unreachable`).
 
+**Graphviz UB bug fixed (patched in all three build scripts):** `lib/common/labels.c`
+`storeline()` only initializes `textspan_t.free_layout`/`.layout` (via `textspan_size()`)
+for NON-empty label lines; for an EMPTY line (e.g. the leading `\n` in a graph label
+`"\nSmoke"`) those fields are left uninitialized, and `free_textspan()` later does
+`if (layout && free_layout) free_layout(layout)` on the garbage. No-op on a zeroed native
+heap, but a `call_indirect` to a bogus table index under wasm → crash during teardown
+(`gvFreeLayout → free_label`). The build scripts patch `storeline` to zero those fields.
+(Also the likely cause of `@hpcc-js/wasm-graphviz`'s "table index out of bounds" — worth
+an upstream report.)
+
 **VPSC / C++ exceptions — resolved by dropping VPSC from the wasm build.** The
 Swift wasm SDK's `libc++abi` is built without exceptions (`__cxa_throw` absent).
 Only Graphviz's VPSC solver (neato `ipsep`/DIGCOLA) throws, so `build_wasm_static.sh`

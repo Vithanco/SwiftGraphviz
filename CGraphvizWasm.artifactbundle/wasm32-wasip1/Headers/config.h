@@ -46,7 +46,7 @@ typedef SSIZE_T ssize_t;
 #define BROWSER "xdg-open"
 #define DEFAULT_DPI 96
 #define GVPLUGIN_CONFIG_FILE "config8"
-#define PACKAGE_VERSION "15.1.1~dev.20260630.1303"
+#define PACKAGE_VERSION "15.1.1~dev.20260618.0150"
 
 // Conditional values
 /* #undef DARWIN */
