@@ -5,10 +5,14 @@
 
 # Build artifacts
 _build/
+_build_linux/
+_build_wasm/
 _staging/
 staging/
 graphviz_src/
 *.o
+.swift-version
+*.artifactbundle.bak/
 
 # Xcode
 *.xcodeproj/

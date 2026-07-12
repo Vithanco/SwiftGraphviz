@@ -6,14 +6,19 @@
 //  Copyright © 2019 Klaus Kneupner. All rights reserved.
 //
 
-import Foundation
+#if canImport(Darwin)
+import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#elseif canImport(Musl)
+import Musl
+#elseif canImport(WASILibc)
+import WASILibc
+#endif
 import GraphvizBridge
 
 
 public typealias GVGraph = UnsafeMutablePointer<Agraph_t>
-
-public struct AGWriteWrongEncoding: Error { }
-public struct CannotOpenFileDescriptor: Error { }
 
 public extension UnsafeMutablePointer where Pointee == Agraph_t {
 
@@ -74,39 +79,27 @@ public extension UnsafeMutablePointer where Pointee == Agraph_t {
         }
     }
 
-    /// adapted from: https://stackoverflow.com/questions/59653517/how-to-use-file-descriptor-to-divert-write-to-file-in-swift/59654364#59654364
+    /// The graph serialized to DOT text.
+    ///
+    /// Uses `open_memstream` to give Graphviz's `agwrite` a `FILE*` backed by an
+    /// auto-growing in-memory buffer. This avoids an OS pipe (which can deadlock
+    /// once the output exceeds the pipe buffer, since nothing drains the read end)
+    /// and keeps this Foundation-free so it builds for WebAssembly / embedded Swift.
     var asString: String? {
-        let pipe = Pipe()
-        do {
-            try use(fileDescriptor: pipe.fileHandleForWriting.fileDescriptor, mode: "w") { filePointer in
-                agwrite(self, filePointer)
-            }
-            let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            guard let output = String(data: data, encoding: .utf8) else {
-                return nil
-            }
-            return output
-        } catch {
+        var buffer: UnsafeMutablePointer<CChar>? = nil
+        var size: Int = 0
+        guard let stream = open_memstream(&buffer, &size) else {
             return nil
         }
+        agwrite(self, stream)
+        // Closing flushes the stream, then sets `buffer`/`size` and NUL-terminates.
+        fclose(stream)
+        guard let buffer else { return nil }
+        defer { free(buffer) }
+        return String(cString: buffer)
     }
 
     func unflatten(doFan: Bool = false, maxMinlen: Int32 = 0, chainLimit: Int32 = 0) {
         agUnflatten(self, doFan ? 1 : 0, maxMinlen, chainLimit)
     }
-}
-
-@discardableResult
-fileprivate func use<R>(
-    fileDescriptor: Int32,
-    mode: UnsafePointer<Int8>!,
-    closure: (UnsafeMutablePointer<FILE>) throws -> R
-) throws -> R {
-    guard let filePointer = fdopen(fileDescriptor, mode) else {
-        throw CannotOpenFileDescriptor()
-    }
-    defer {
-        fclose(filePointer)
-    }
-    return try closure(filePointer)
 }

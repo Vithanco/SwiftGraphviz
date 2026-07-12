@@ -5,6 +5,17 @@
 //  Cross-platform geometry types replacing CoreGraphics dependencies.
 //
 
+// Explicit libm import for sin/cos/atan2 rather than relying on them leaking
+// through the GraphvizBridge C module (which is fragile across toolchains/targets).
+#if canImport(Darwin)
+import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#elseif canImport(Musl)
+import Musl
+#elseif canImport(WASILibc)
+import WASILibc
+#endif
 import GraphvizBridge
 
 // MARK: - GVPoint
