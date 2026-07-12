@@ -22,6 +22,15 @@ To rebuild the macOS/iOS xcframework:
 ./build_xcframework.sh
 ```
 
+WebAssembly (`wasm32-unknown-wasip1`) support is in progress — see [WASM.md](WASM.md).
+The Swift layer is Foundation-free (builds toward embedded Swift). The Graphviz C
+library **compiles to wasm** via `./build_wasm_static.sh` (verified: ~2.4 MB
+`CGraphvizWasm.artifactbundle`), using `wasm-toolchain.cmake` + `wasm_compat.h`
+against the WASI sysroot bundled in an installed Swift wasm SDK — no separate
+wasi-sdk needed. Still pending: compiling SwiftGraphviz/GraphvizBridge under the
+embedded wasm toolchain and wiring into VGraph. Select the wasm binary target with
+`GRAPHVIZ_WASM=1 swift build --swift-sdk <...wasm-embedded>`.
+
 Swift tools version: 6.0. Minimum platforms: macOS 15, iOS 18. Linux requires Swift 6.2+ (for artifact bundle support).
 
 ## Architecture

@@ -2,17 +2,36 @@
 
 import PackageDescription
 
-#if os(Linux)
-let graphvizTarget: Target = .binaryTarget(
-    name: "CGraphviz",
-    path: "CGraphviz.artifactbundle"
-)
-#else
-let graphvizTarget: Target = .binaryTarget(
-    name: "CGraphviz",
-    path: "Graphviz.xcframework"
-)
-#endif
+// Binary target selection.
+//
+// The SPM manifest is evaluated on the HOST, so `#if os(...)` reflects the machine
+// running `swift build`, not the build *target*. That's fine for native macOS/iOS
+// (xcframework) and native Linux (artifact bundle), but a WebAssembly build is a
+// CROSS-compile from macOS or Linux — the host check can't detect it. Opt in
+// explicitly via the GRAPHVIZ_WASM env var when cross-compiling to wasm32-wasi:
+//
+//   GRAPHVIZ_WASM=1 swift build --swift-sdk wasm32-unknown-wasi
+//
+// See WASM.md for the full workflow and CGraphvizWasm.artifactbundle build steps.
+let graphvizTarget: Target
+if Context.environment["GRAPHVIZ_WASM"] != nil {
+    graphvizTarget = .binaryTarget(
+        name: "CGraphviz",
+        path: "CGraphvizWasm.artifactbundle"
+    )
+} else {
+    #if os(Linux)
+    graphvizTarget = .binaryTarget(
+        name: "CGraphviz",
+        path: "CGraphviz.artifactbundle"
+    )
+    #else
+    graphvizTarget = .binaryTarget(
+        name: "CGraphviz",
+        path: "Graphviz.xcframework"
+    )
+    #endif
+}
 
 let package = Package(
     name: "SwiftGraphviz",
@@ -51,7 +70,8 @@ let package = Package(
 
         .testTarget(
             name: "SwiftGraphvizTests",
-            dependencies: ["SwiftGraphviz"]
+            dependencies: ["SwiftGraphviz", "GraphvizBridge"],
+            path: "Tests/SwiftGraphvizTests"
         ),
     ]
 )

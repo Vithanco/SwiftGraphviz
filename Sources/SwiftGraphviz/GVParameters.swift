@@ -143,7 +143,7 @@ public enum GVParamValueOverlap: String, CaseIterable {
 
 // MARK: - Edge Ending (used by EdgeLayout rendering)
 
-public enum GVEdgeEnding: Int, Codable, CaseIterable {
+public enum GVEdgeEnding: Int, CaseIterable {
     /// no ending
     case none = 0
     /// arrow
