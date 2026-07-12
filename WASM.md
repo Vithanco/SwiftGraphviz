@@ -129,30 +129,28 @@ OK  (wasi exit code: 0)
 ```
 
 **Link recipe** for any executable/consumer that pulls in the Graphviz static lib
-(this is what VGraph's wasi target needs):
+(this is what VGraph's wasi target needs) — now stub-free:
 - The consumer target (not just SwiftGraphviz) must pass
   `-Xcc -D_WASI_EMULATED_SIGNAL` if it imports GraphvizBridge/CGraphviz — the
   define is needed to build those Clang modules and does not propagate from the
   dependency.
-- Link: `-lc++ -lc++abi`, and bump stack: `-Xlinker -z -Xlinker stack-size=1048576`.
+- Link: `-lsetjmp -lwasi-emulated-signal -lc++`, and bump stack:
+  `-Xlinker -z -Xlinker stack-size=1048576`.
+- No `-lc++abi`, no `__cxa_*` stubs — see VPSC note below.
+- `clock()` is provided by GraphvizBridge (`wasi_compat.c`, `#if __wasi__`); wasi-libc
+  declares but doesn't implement it, and Graphviz `timing.c` (profiling only) calls it.
 - Fixed a real bug: `builtins.c` declared `textfont_dict_open` returning
   `struct _dt_s *`, but Graphviz declares it `void`. Harmless on native (linkers
   ignore return type) but **fatal on wasm** — a call-site/definition signature
   mismatch traps (`RuntimeError: unreachable`). Now matches (`void`).
 
-**Two symbols the SDK's wasi-libc / libc++abi don't provide** (see decision below):
-- `clock()` — wasi-libc omits it entirely; Graphviz `timing.c` uses it for
-  profiling only. A `0`-returning stub is harmless.
-- `__cxa_throw` / `__cxa_allocate_exception` / … — the SDK's `libc++abi` is built
-  **without exceptions**, so these are absent. Only Graphviz's **VPSC** solver
-  (C++, used by neato `ipsep`/DIGCOLA) throws. Dot/neato layout of well-formed
-  graphs never reaches those throw sites.
-
-**DECISION for production (VGraph): rebuild the wasm Graphviz lib without VPSC**
-(disable `ipsep`/DIGCOLA in the cmake config) so there are no C++ exceptions and
-no `__cxa_*` to resolve — cleaner than shipping aborting stubs. Fold this into the
-phase-3 (15.1.0) rebuild. Until then, the smoke used aborting stubs for `__cxa_*`
-plus a `clock()` stub (scratchpad only, not committed).
+**VPSC / C++ exceptions — resolved by dropping VPSC from the wasm build.** The
+Swift wasm SDK's `libc++abi` is built without exceptions (`__cxa_throw` absent).
+Only Graphviz's VPSC solver (neato `ipsep`/DIGCOLA) throws, so `build_wasm_static.sh`
+now configures `-Dwith_ipsepcola=OFF -Dwith_digcola=OFF` and omits `vpsc` from the
+merged archive. Result: the wasm `libgraphviz.a` is exception-free (~2.2 MB), links
+with just `-lc++`, and needs no `__cxa_*` stubs. Native/Linux builds keep ipsep/DIGCOLA.
+(Verified: the smoke links and runs with no shims.)
 
 ### 2. Package.swift wiring — done
 `Package.swift` selects `CGraphvizWasm.artifactbundle` when `GRAPHVIZ_WASM` is
