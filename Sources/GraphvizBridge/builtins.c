@@ -15,7 +15,12 @@ extern gvplugin_library_t gvplugin_dot_layout_LTX_library;
 extern gvplugin_library_t gvplugin_neato_layout_LTX_library;
 extern gvplugin_library_t gvplugin_core_LTX_library;
 
-extern struct _dt_s * textfont_dict_open(GVC_t * gvc);
+// Signature must match Graphviz's real declaration (render.h): returns void.
+// The old `struct _dt_s *` return was stale — harmless on native (linkers ignore
+// return type) but fatal on wasm, where a call-site/definition signature mismatch
+// traps at runtime. The return value is unused; this is called for its side effect
+// (workaround for https://gitlab.com/graphviz/graphviz/issues/1520).
+extern void textfont_dict_open(GVC_t * gvc);
 
 lt_symlist_t lt_preloaded_symbols[] = {
     { "gvplugin_core_LTX_library", (void*)(&gvplugin_core_LTX_library) },
