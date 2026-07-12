@@ -55,11 +55,6 @@ let package = Package(
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
-                // wasm: Graphviz headers pull in <signal.h> (via types.h), which wasi-libc
-                // gates behind _WASI_EMULATED_SIGNAL. (setjmp lowering isn't needed here —
-                // the bridge sources don't include <setjmp.h>; it's handled in the C lib
-                // build and at final link. See wasm-toolchain.cmake / WASM.md.)
-                .define("_WASI_EMULATED_SIGNAL", .when(platforms: [.wasi])),
             ]
         ),
 
@@ -69,18 +64,25 @@ let package = Package(
             dependencies: ["GraphvizBridge"],
             path: "Sources/SwiftGraphviz",
             swiftSettings: [
-                // Propagate the signal define to the transitive Clang module builds
-                // (CGraphviz/GraphvizBridge) that this target's imports trigger — a
-                // target's own cSettings don't reach dependency module compilation.
-                .unsafeFlags(["-Xcc", "-D_WASI_EMULATED_SIGNAL"], .when(platforms: [.wasi])),
                 // Embedded Swift on wasm (matches VGraph's wasm targets). Must be set
                 // here too: embedded is per-module, so a dependency built non-embedded
                 // would mismatch an embedded consumer.
+                //
+                // NOTE: no `.unsafeFlags` here on purpose — a product using unsafe flags
+                // cannot be consumed via a version requirement (only path/branch). The
+                // `_WASI_EMULATED_SIGNAL` define is baked into the wasm bundle's types.h
+                // instead of passed via `-Xcc`.
                 .enableExperimentalFeature("Embedded", .when(platforms: [.wasi])),
-                .unsafeFlags(["-wmo"], .when(platforms: [.wasi])),
             ],
             linkerSettings: [
-                .linkedLibrary("c++", .when(platforms: [.macOS, .iOS, .linux])),
+                // Graphviz has C++ objects (e.g. neato layout) on every platform.
+                .linkedLibrary("c++"),
+                // wasm: the Graphviz lib was compiled with setjmp/longjmp SjLj and
+                // wasi-libc signal emulation; pull the runtime support at final link.
+                // (.linkedLibrary is a *safe* setting — unlike unsafeFlags it does not
+                // block version-based SwiftPM consumption.)
+                .linkedLibrary("setjmp", .when(platforms: [.wasi])),
+                .linkedLibrary("wasi-emulated-signal", .when(platforms: [.wasi])),
             ]
         ),
 
