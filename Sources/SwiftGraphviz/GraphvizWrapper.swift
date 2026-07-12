@@ -8,7 +8,11 @@
 
 import GraphvizBridge
 
-enum GraphvizError: Error {
+/// Errors from reading layout results off Graphviz structures.
+///
+/// Public and used with typed `throws` so the throwing API compiles under
+/// Embedded Swift, which forbids `any Error` existentials.
+public enum GraphvizError: Error {
     case noPath
     case headTailMissing
 }
@@ -49,6 +53,14 @@ public enum GVLayoutEngine: Int, CaseIterable {
 }
 
 /// Needs to be called once before closing down the application
+#if os(WASI)
+// Embedded Swift (wasm) has no global actors and is single-threaded, so @MainActor
+// is both unavailable and unnecessary here.
+public func finishGraphviz() {
+    gvFreeContext(gblGVContext)
+}
+#else
 @MainActor public func finishGraphviz() {
     gvFreeContext(gblGVContext)
 }
+#endif

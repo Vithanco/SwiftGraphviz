@@ -90,15 +90,37 @@ modules — use a browser or Node (V8) to test.
 The C library is done. What's left is compiling the Swift side for wasm and
 wiring it into VGraph.
 
-### 1. Compile SwiftGraphviz + GraphvizBridge for embedded wasm — NOT yet done
-- `GraphvizBridge` (C) must compile to wasm — trivial, same toolchain.
-- `SwiftGraphviz` (Swift) must compile under **Embedded Swift** targeting
-  `wasm32-unknown-wasip1`. The Foundation-free refactor already done is the
-  prerequisite. Still to verify against the embedded toolchain:
-  - `GraphvizWrapper.swift`: `@MainActor func finishGraphviz()` and
-    `nonisolated(unsafe) var gblGVContext` — embedded concurrency is limited.
-  - Double string interpolation in `GVParameters.pixelToInchParameter`.
-  - `[GVParameter: String]` dictionary + enum `CaseIterable` — expected fine.
+### 1. Compile SwiftGraphviz + GraphvizBridge for embedded wasm — DONE ✅
+Both compile cleanly under **Embedded Swift** for `wasm32-unknown-wasip1`
+(verified 2026-07-12 with `swift-6.3.3-RELEASE_wasm-embedded`):
+
+```sh
+GRAPHVIZ_WASM=1 swift build --swift-sdk swift-6.3.3-RELEASE_wasm-embedded
+```
+
+Package.swift wiring (all conditioned on `.wasi`):
+- GraphvizBridge `cSettings`: `.define("_WASI_EMULATED_SIGNAL")` — Graphviz headers
+  pull in `<signal.h>` via `types.h`.
+- SwiftGraphviz `swiftSettings`: `-Xcc -D_WASI_EMULATED_SIGNAL` (propagates the
+  define to the transitive CGraphviz/GraphvizBridge Clang **module** builds — a
+  target's own cSettings don't reach dependency module compilation),
+  `.enableExperimentalFeature("Embedded")`, `-wmo`.
+- SwiftGraphviz `linkerSettings`: `.linkedLibrary("c++")` scoped to non-wasi.
+
+Embedded-specific source changes made:
+- `@MainActor func finishGraphviz()` → dropped under `#if os(WASI)` (no global
+  actors in embedded; single-threaded anyway).
+- Typed throws: `getPath()` and `EdgeLayout.init` now `throws(GraphvizError)`
+  (embedded forbids `any Error`). `GraphvizError` made `public`; the redundant
+  internal `LayoutError` was removed.
+- `agwrite(self, UnsafeMutableRawPointer(f))` — on WASI `FILE` is opaque so
+  `fopen`/`open_memstream` return `OpaquePointer`, which needs an explicit raw wrap.
+
+**Not yet verified: linking + running.** Only *compilation* of the library is
+proven. A full executable link (embedded reactor + `-lsetjmp`
+`-lwasi-emulated-signal` + libc++ for the C++ layout objects) and an actual
+`gvLayout` round-trip are exercised in phase 3 below / VGraph integration. A
+standalone C smoke (malloc/stdio/setjmp) *did* link and run under V8.
 
 ### 2. Package.swift wiring — done
 `Package.swift` selects `CGraphvizWasm.artifactbundle` when `GRAPHVIZ_WASM` is
