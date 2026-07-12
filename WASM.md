@@ -116,11 +116,43 @@ Embedded-specific source changes made:
 - `agwrite(self, UnsafeMutableRawPointer(f))` — on WASI `FILE` is opaque so
   `fopen`/`open_memstream` return `OpaquePointer`, which needs an explicit raw wrap.
 
-**Not yet verified: linking + running.** Only *compilation* of the library is
-proven. A full executable link (embedded reactor + `-lsetjmp`
-`-lwasi-emulated-signal` + libc++ for the C++ layout objects) and an actual
-`gvLayout` round-trip are exercised in phase 3 below / VGraph integration. A
-standalone C smoke (malloc/stdio/setjmp) *did* link and run under V8.
+### 1b. Link + run — VERIFIED ✅
+A throwaway embedded-wasm executable that imports SwiftGraphviz, runs
+`gvLayout(dot)`, and reads a node coordinate via the `.pos` Swift API **links and
+runs under Node/V8**:
+
+```
+gvLayout rc=0
+node a pos: 63.0,90.0
+asString bytes: 77
+OK  (wasi exit code: 0)
+```
+
+**Link recipe** for any executable/consumer that pulls in the Graphviz static lib
+(this is what VGraph's wasi target needs):
+- The consumer target (not just SwiftGraphviz) must pass
+  `-Xcc -D_WASI_EMULATED_SIGNAL` if it imports GraphvizBridge/CGraphviz — the
+  define is needed to build those Clang modules and does not propagate from the
+  dependency.
+- Link: `-lc++ -lc++abi`, and bump stack: `-Xlinker -z -Xlinker stack-size=1048576`.
+- Fixed a real bug: `builtins.c` declared `textfont_dict_open` returning
+  `struct _dt_s *`, but Graphviz declares it `void`. Harmless on native (linkers
+  ignore return type) but **fatal on wasm** — a call-site/definition signature
+  mismatch traps (`RuntimeError: unreachable`). Now matches (`void`).
+
+**Two symbols the SDK's wasi-libc / libc++abi don't provide** (see decision below):
+- `clock()` — wasi-libc omits it entirely; Graphviz `timing.c` uses it for
+  profiling only. A `0`-returning stub is harmless.
+- `__cxa_throw` / `__cxa_allocate_exception` / … — the SDK's `libc++abi` is built
+  **without exceptions**, so these are absent. Only Graphviz's **VPSC** solver
+  (C++, used by neato `ipsep`/DIGCOLA) throws. Dot/neato layout of well-formed
+  graphs never reaches those throw sites.
+
+**DECISION for production (VGraph): rebuild the wasm Graphviz lib without VPSC**
+(disable `ipsep`/DIGCOLA in the cmake config) so there are no C++ exceptions and
+no `__cxa_*` to resolve — cleaner than shipping aborting stubs. Fold this into the
+phase-3 (15.1.0) rebuild. Until then, the smoke used aborting stubs for `__cxa_*`
+plus a `clock()` stub (scratchpad only, not committed).
 
 ### 2. Package.swift wiring — done
 `Package.swift` selects `CGraphvizWasm.artifactbundle` when `GRAPHVIZ_WASM` is
