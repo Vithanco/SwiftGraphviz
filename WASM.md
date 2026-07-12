@@ -128,21 +128,29 @@ asString bytes: 77
 OK  (wasi exit code: 0)
 ```
 
-**Link recipe** for any executable/consumer that pulls in the Graphviz static lib
-(this is what VGraph's wasi target needs) — now stub-free:
-- The consumer target (not just SwiftGraphviz) must pass
-  `-Xcc -D_WASI_EMULATED_SIGNAL` if it imports GraphvizBridge/CGraphviz — the
-  define is needed to build those Clang modules and does not propagate from the
-  dependency.
-- Link: `-lsetjmp -lwasi-emulated-signal -lc++`, and bump stack:
-  `-Xlinker -z -Xlinker stack-size=1048576`.
-- No `-lc++abi`, no `__cxa_*` stubs — see VPSC note below.
-- `clock()` is provided by GraphvizBridge (`wasi_compat.c`, `#if __wasi__`); wasi-libc
-  declares but doesn't implement it, and Graphviz `timing.c` (profiling only) calls it.
-- Fixed a real bug: `builtins.c` declared `textfont_dict_open` returning
-  `struct _dt_s *`, but Graphviz declares it `void`. Harmless on native (linkers
-  ignore return type) but **fatal on wasm** — a call-site/definition signature
-  mismatch traps (`RuntimeError: unreachable`). Now matches (`void`).
+**Consumer recipe** — minimal, because SwiftGraphviz carries the wasm details itself:
+- A consumer target only needs `.enableExperimentalFeature("Embedded", .when(platforms: [.wasi]))`
+  and (app-dependent) a stack bump `-Xlinker -z -Xlinker stack-size=1048576`.
+- **No `-Xcc -D_WASI_EMULATED_SIGNAL`, no `-lsetjmp`/`-lwasi-emulated-signal`/`-lc++`.**
+  SwiftGraphviz's `linkerSettings` provide the link libs (via safe `.linkedLibrary`,
+  which — unlike `unsafeFlags` — does not block version-based SwiftPM consumption).
+
+**Why no unsafe flags in the package** (this matters — `unsafeFlags` in a dependency
+blocks `from:`/version consumption, breaking both native and wasm builds downstream):
+- The `_WASI_EMULATED_SIGNAL` define was eliminated by **stripping `<signal.h>` from the
+  bundled `types.h`** (no public header uses a signal symbol; the `.c` sources — already
+  compiled into the `.a` — still handle signals). A textual `#define` can't substitute:
+  clang builds the `wasi_emulated_signal` system module in isolation, so the define must
+  be a command-line `-D` (= unsafeFlags) — hence removing the include instead.
+- `-wmo` is not set: SwiftPM enables whole-module for embedded targets automatically.
+- Link libs use `.linkedLibrary` (safe), not `-Xlinker -l…` (unsafe).
+
+**`clock()`** is provided by GraphvizBridge (`wasi_compat.c`, `#if __wasi__`); wasi-libc
+declares but doesn't implement it, and Graphviz `timing.c` (profiling only) calls it.
+
+**Bug fixed:** `builtins.c` declared `textfont_dict_open` returning `struct _dt_s *`, but
+Graphviz declares it `void`. Harmless on native (linkers ignore return type) but **fatal
+on wasm** — a call-site/definition signature mismatch traps (`RuntimeError: unreachable`).
 
 **VPSC / C++ exceptions — resolved by dropping VPSC from the wasm build.** The
 Swift wasm SDK's `libc++abi` is built without exceptions (`__cxa_throw` absent).

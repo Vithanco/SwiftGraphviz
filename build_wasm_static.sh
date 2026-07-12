@@ -156,6 +156,13 @@ collect_headers_and_bundle() {
     rm -rf "$OUTPUT_BUNDLE"; mkdir -p "$headers"
     for h in "${SRC_HEADERS[@]}"; do [ -f "$GRAPHVIZ_SRC/$h" ] && cp "$GRAPHVIZ_SRC/$h" "$headers/" || echo "  WARNING: $h not found"; done
     [ -f "$BUILD_ROOT/config.h" ] && cp "$BUILD_ROOT/config.h" "$headers/"
+
+    # Strip <signal.h> from types.h: no public header uses a signal symbol, and
+    # wasi-libc's <signal.h> #errors without _WASI_EMULATED_SIGNAL. Passing that
+    # -D would require unsafeFlags in the Swift target, which blocks version-based
+    # SwiftPM consumption. The Graphviz .c sources (already compiled into the .a)
+    # still handle signals; this only trims the module's header view.
+    perl -0pi -e 's{^#include <signal\.h>\n}{}mg' "$headers/types.h"
     cat > "$headers/module.modulemap" << 'MODULEMAP'
 module CGraphviz [system] {
     header "cgraph.h"
