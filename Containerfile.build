@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /src
 
 # Clone graphviz source (or copy a local checkout)
-RUN git clone --depth 1 https://gitlab.com/graphviz/graphviz.git graphviz_src
+RUN git clone --depth 1 --branch 15.1.0 https://gitlab.com/graphviz/graphviz.git graphviz_src
 
 COPY build_linux_static.sh .
 RUN GRAPHVIZ_SRC=/src/graphviz_src ./build_linux_static.sh

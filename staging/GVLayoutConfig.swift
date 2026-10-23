@@ -51,7 +51,6 @@ public struct GVLayoutConfig {
         if saveGVOutput {
             Swift.print("now saving Graphviz Graph to file!")
             gvRenderFilename(gvc, g, "png", cString(("~/Downloads/Graphviz.png" as NSString).expandingTildeInPath))
-            //        gvRenderFilename(gvc, g, "cmap", cString("/Users/klauskneupner/Downloads/out.map"))
             
             //            gvRender(gvc, g, "plain", stdout);
         }

@@ -87,8 +87,7 @@ modules — use a browser or Node (V8) to test.
 
 ## Remaining work (next phase — integration)
 
-The C library is done. What's left is compiling the Swift side for wasm and
-wiring it into VGraph.
+The C library, the Swift side and the VGraph integration are done.
 
 ### 1. Compile SwiftGraphviz + GraphvizBridge for embedded wasm — DONE ✅
 Both compile cleanly under **Embedded Swift** for `wasm32-unknown-wasip1`
@@ -180,12 +179,9 @@ GRAPHVIZ_WASM=1 swift build --swift-sdk swift-6.3.3-RELEASE_wasm-embedded \
   -Xlinker -lsetjmp -Xlinker -lwasi-emulated-signal
 ```
 
-### 3. VGraph integration
-VGraph currently excludes SwiftGraphviz from wasm (`VGraphvizLib` is
-macOS/iOS/linux-only; wasm uses `VGraphvizWasm` → host-side JS Graphviz). To get
-the single self-contained module: make the `VGraphvizLib` in-process adapter
-available on `.wasi` too (linking this artifact bundle), then retire the
-JS round-trip in `VGraphvizWasm`. That's a VGraph-side change.
+### 3. VGraph integration — DONE ✅
+VGraph's `VGraphvizLib` in-process adapter links this artifact bundle on `.wasi`,
+so Graphviz layout runs inside the single wasm module with no JS round-trip.
 
 ### 4. JS interop
 VGraph already uses **BridgeJS** + JavaScriptKit. Once layout runs in-module, the
