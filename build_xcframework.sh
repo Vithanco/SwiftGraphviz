@@ -10,7 +10,7 @@
 #
 # Usage:
 #   ./build_xcframework.sh                                          # clones graphviz
-#   GRAPHVIZ_SRC=/Users/kkn/private/c/graphviz ./build_xcframework.sh  # use local copy
+#   GRAPHVIZ_SRC=/path/to/graphviz ./build_xcframework.sh  # use local copy
 #
 # Prerequisites: Xcode (with CLI tools), CMake (brew install cmake)
 

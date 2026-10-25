@@ -150,6 +150,26 @@ To use a local Graphviz checkout:
 GRAPHVIZ_SRC=/path/to/graphviz ./build_xcframework.sh
 ```
 
+## Prebuilt binaries
+
+The three libraries in this repository are built from unmodified Graphviz release tags plus the patches below, using the scripts in the root. `artifacts.sha256` records a digest of each (file paths and contents), and `scripts/check-artifacts.sh` verifies it; SwiftPM does not, because they are local-path binary targets. To update the digests after a rebuild, run `scripts/check-artifacts.sh --update`.
+
+| Artifact | Platforms | Graphviz | Rebuild with |
+|---|---|---|---|
+| `Graphviz.xcframework` | macOS, iOS, iOS Simulator | 15.1.0 | `./build_xcframework.sh` |
+| `CGraphvizWasm.artifactbundle` | wasm32-wasip1 | 15.1.0 | `./build_wasm_static.sh` |
+| `CGraphviz.artifactbundle` | Linux x86_64 | 14.1.6 (not yet rebuilt; `./build_linux_static.sh` and `Containerfile.build` pin 15.1.0) | `./build_linux_static.sh` |
+
+Patches applied to the Graphviz source, kept in sync across the three build scripts:
+
+- `lib/common/labels.c`, `storeline()`: zero `span->layout` and `span->free_layout` for empty label lines (an uninitialised function pointer that crashes under wasm). See `WASM.md`.
+- CMake: use `GRAPHVIZ_VERSION_*` for the version, drop the subdirectories not needed for layout (`gvpr`, `expr`, `sfio`, `ast`, `edgepaint`, `glcomp`, `mingle`, `topfish`), and disable LTO for the xcframework.
+- The macOS `quartz` plugin is disabled.
+- `signal.h` is removed from the bundled `types.h` to avoid `unsafeFlags`.
+- wasm only: `-Dwith_ipsepcola=OFF -Dwith_digcola=OFF`, VPSC omitted, `wasm-toolchain.cmake` and `wasm_compat.h`.
+
+Graphviz source for each version is at https://gitlab.com/graphviz/graphviz (tag shown above), as the Eclipse Public License asks.
+
 ## License
 
-The source code in this repository uses the Eclipse Public License 1.0, the same license as Graphviz.
+This repository is licensed under the [Eclipse Public License 2.0](LICENSE), the license of the Graphviz version it bundles (15.1.0; a few `lib/vpsc` files in Graphviz carry a Common Public License 1.0 header). Nothing else is vendored: no GLib, GTS, expat, zlib or iconv.

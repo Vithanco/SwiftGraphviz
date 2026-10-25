@@ -1,0 +1,16 @@
+# Files that run code when the package is resolved or built, the prebuilt libraries
+# that end up inside every app and wasm module, and the files that steer coding agents.
+# Whoever can change one changes what downstream builds contain, so the maintainer
+# approves every change. scripts/hygiene.test.sh holds this list to the files that exist.
+/Package.swift                    @Vithanco
+/*.sh                             @Vithanco
+/scripts/                         @Vithanco
+/Containerfile.build              @Vithanco
+/wasm-toolchain.cmake             @Vithanco
+/wasm_compat.h                    @Vithanco
+/Graphviz.xcframework/            @Vithanco
+/CGraphviz.artifactbundle/        @Vithanco
+/CGraphvizWasm.artifactbundle/    @Vithanco
+/artifacts.sha256                 @Vithanco
+/CLAUDE.md                        @Vithanco
+/.github/                         @Vithanco

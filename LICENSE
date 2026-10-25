@@ -1,11 +1,3 @@
-This repository is licensed under the Eclipse Public License 2.0,
-the same license used by Graphviz (https://graphviz.org).
-
-The build script (build_xcframework.sh) compiles Graphviz from source.
-No third-party libraries are vendored or included in this repository.
-
----
-
 Eclipse Public License - v 2.0
 
     THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE
