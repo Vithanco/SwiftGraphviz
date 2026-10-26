@@ -20,15 +20,19 @@
 FROM swift:6.2 AS graphviz-builder
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    cmake bison flex python3 \
+    build-essential cmake bison flex python3 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
 
 # Clone graphviz source (or copy a local checkout)
-RUN git clone --depth 1 --branch 15.1.0 https://gitlab.com/graphviz/graphviz.git graphviz_src
+# Without .git, gen_version.py reports the release version, not "~dev.<date>" (see build_linux_static.sh)
+RUN git clone --depth 1 --branch 16.1.0 https://gitlab.com/graphviz/graphviz.git graphviz_src \
+    && rm -rf graphviz_src/.git
 
 COPY build_linux_static.sh .
+# Lower with --build-arg NJOBS=2 when building under emulation, where gcc can crash on many jobs
+ARG NJOBS
 RUN GRAPHVIZ_SRC=/src/graphviz_src ./build_linux_static.sh
 
 # ── Stage 2: Build Swift project ────────────────────────────────────────────

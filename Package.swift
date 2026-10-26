@@ -75,8 +75,10 @@ let package = Package(
                 .enableExperimentalFeature("Embedded", .when(platforms: [.wasi])),
             ],
             linkerSettings: [
-                // Graphviz has C++ objects (e.g. neato layout) on every platform.
-                .linkedLibrary("c++"),
+                // Graphviz has C++ objects (e.g. neato layout) on every platform. The Linux
+                // bundle is built with gcc, so it needs libstdc++, not libc++.
+                .linkedLibrary("c++", .when(platforms: [.macOS, .iOS, .wasi])),
+                .linkedLibrary("stdc++", .when(platforms: [.linux])),
                 // wasm: the Graphviz lib was compiled with setjmp/longjmp SjLj and
                 // wasi-libc signal emulation; pull the runtime support at final link.
                 // (.linkedLibrary is a *safe* setting — unlike unsafeFlags it does not

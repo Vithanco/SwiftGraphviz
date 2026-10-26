@@ -22,7 +22,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GRAPHVIZ_SRC="${GRAPHVIZ_SRC:-}"
 BUILD_ROOT="$SCRIPT_DIR/_build_linux"
 OUTPUT_BUNDLE="$SCRIPT_DIR/CGraphviz.artifactbundle"
-NJOBS="$(nproc)"
+NJOBS="${NJOBS:-$(nproc)}"
 
 # Detect host architecture for the artifact bundle variant directory and triple.
 ARCH="$(uname -m)"
@@ -99,7 +99,10 @@ get_graphviz_source() {
         GRAPHVIZ_SRC="$SCRIPT_DIR/graphviz_src"
         if [ ! -d "$GRAPHVIZ_SRC" ]; then
             echo "Cloning Graphviz source (shallow)..."
-            git clone --depth 1 --branch 15.1.0 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
+            git clone --depth 1 --branch 16.1.0 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
+            # gen_version.py reads git history, and the release tag sits on a merge commit, so with .git it
+            # stamps "16.1.1~dev.<date>" into the binary instead of the release version.
+            rm -rf "$GRAPHVIZ_SRC/.git"
         fi
     fi
 

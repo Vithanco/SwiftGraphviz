@@ -13,12 +13,14 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <util/unused.h>
 
 /* these are intended to be private entry points - see gvc.h for the public ones */
 
 /* configuration */
 
-    char *gvconfig_libdir(GVC_t * gvc);
+    /// The return value is heap-allocated and should be freed by the caller.
+    WUR char *gvconfig_libdir(GVC_t *gvc);
     void gvconfig(GVC_t * gvc, bool rescan);
     char *gvhostname(void);
 

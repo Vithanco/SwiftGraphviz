@@ -453,8 +453,6 @@ CGRAPH_API Agraph_t *agread(void *chan, Agdisc_t *disc);
 CGRAPH_API Agraph_t *agmemread(const char *cp);
 ///< reads a graph from the input string
 
-CGRAPH_API Agraph_t *agmemconcat(Agraph_t *g, const char *cp);
-
 CGRAPH_API Agraph_t *agconcat(Agraph_t *g, const char *filename, void *chan,
                               Agdisc_t *disc);
 /**< @brief merges the file contents with a pre-existing graph
@@ -552,6 +550,9 @@ CGRAPH_API int agdelete(Agraph_t *g, void *obj);
 CGRAPH_API int agobjkind(void *obj);
 ///< returns @ref AGRAPH, @ref AGNODE, or @ref AGEDGE depending on the type of
 ///< the object. Synonym for @ref AGTYPE.
+
+CGRAPH_API uint64_t aggetseq(const Agraph_t *g, int objtype);
+///< returns highest sequence number allocated so far, for given object type
 /// @}
 
 /** @defgroup cgraph_string string utilities
@@ -872,6 +873,9 @@ CGRAPH_API int agdelsubg(Agraph_t *g, Agraph_t *sub); /* could be agclose */
  * @ref agnnodes, @ref agnedges, and @ref agnsubg return the
  * sizes of node, edge and subgraph sets of a graph.
  *
+ * Where possible, @ref agnnodes_z should be used in preference to
+ * @ref agnnodes.
+ *
  * The function @ref agdegree returns the size of a node’s edge set,
  * and takes flags to select in-edges, out-edges, or both.
  *
@@ -882,6 +886,7 @@ CGRAPH_API int agdelsubg(Agraph_t *g, Agraph_t *sub); /* could be agclose */
  *
  * @{
  */
+CGRAPH_API size_t agnnodes_z(const Agraph_t *g);
 CGRAPH_API int agnnodes(Agraph_t *g);
 CGRAPH_API int agnedges(Agraph_t *g);
 CGRAPH_API int agnsubg(Agraph_t *g);
