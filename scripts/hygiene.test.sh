@@ -12,6 +12,12 @@ hits=$(git ls-files -z | xargs -0 grep -IlF '/Users/' -- 2>/dev/null | grep -v '
 if [ -z "$hits" ]; then pass 'Given the repo, when tracked files are searched, then /Users/ appears nowhere'
 else fail "/Users/ in: $hits"; fi
 
+# A dependency or workflow added later is only watched if its ecosystem is listed
+DEP=.github/dependabot.yml
+if [ -f "$DEP" ] && grep -q 'package-ecosystem: swift' "$DEP" && grep -q 'package-ecosystem: github-actions' "$DEP"; then
+    pass 'Given the repo, when Dependabot config is read, then it covers swift and github-actions'
+else fail "$DEP is missing or does not list swift and github-actions"; fi
+
 FILE=.github/CODEOWNERS
 if [ ! -f "$FILE" ]; then
     fail "$FILE is missing"; exit 1
