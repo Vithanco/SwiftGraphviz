@@ -102,7 +102,12 @@ SRC_HEADERS=(
 get_graphviz_source() {
     if [ -z "$GRAPHVIZ_SRC" ]; then
         GRAPHVIZ_SRC="$SCRIPT_DIR/graphviz_src"
-        [ -d "$GRAPHVIZ_SRC" ] || git clone --depth 1 --branch 15.1.0 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
+        # gen_version.py reads git history, and the release tag sits on a merge commit, so with .git it
+        # stamps "16.1.1~dev.<date>" into the binary instead of the release version.
+        if [ ! -d "$GRAPHVIZ_SRC" ]; then
+            git clone --depth 1 --branch 16.1.0 https://gitlab.com/graphviz/graphviz.git "$GRAPHVIZ_SRC"
+            rm -rf "$GRAPHVIZ_SRC/.git"
+        fi
     fi
     [ -f "$GRAPHVIZ_SRC/CMakeLists.txt" ] || { echo "ERROR: no CMakeLists.txt at $GRAPHVIZ_SRC"; exit 1; }
 }

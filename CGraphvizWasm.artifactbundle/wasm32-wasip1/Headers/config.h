@@ -37,16 +37,16 @@ typedef SSIZE_T ssize_t;
 /* #undef HAVE_LIBZ */
 /* #undef HAVE_GTS */
 /* #undef HAVE_PANGOCAIRO */
-#define HAVE_POPPLER
+/* #undef HAVE_POPPLER */
 #define HAVE_QUARTZ
 /* #undef HAVE_RSVG */
-#define HAVE_WEBP
+/* #undef HAVE_WEBP */
 
 // Values
 #define BROWSER "xdg-open"
 #define DEFAULT_DPI 96
 #define GVPLUGIN_CONFIG_FILE "config8"
-#define PACKAGE_VERSION "15.1.1~dev.20260618.0150"
+#define PACKAGE_VERSION "16.1.0"
 
 // Conditional values
 /* #undef DARWIN */
