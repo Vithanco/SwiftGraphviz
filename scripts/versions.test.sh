@@ -22,7 +22,7 @@ want=$(echo "$versions" | head -1)
 # 2
 bad=""
 for art in Graphviz.xcframework CGraphvizWasm.artifactbundle CGraphviz.artifactbundle; do
-    shown=$(grep -F "| \`$art\`" README.md | awk -F'|' '{print $4}' | tr -d ' ')
+    shown=$(awk -F"|" -v a="\`$art\`" '$2 == " " a " "' README.md | awk -F'|' '{print $4}' | tr -d ' ')
     [ "$shown" = "$want" ] || bad+=" $art:${shown:-none}"
 done
 if [ -z "$bad" ]; then pass 'Given the README table, when each artifact row is read, then it states the pinned version'

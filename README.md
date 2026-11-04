@@ -193,6 +193,8 @@ The three libraries in this repository are built from unmodified Graphviz releas
 | `CGraphvizWasm.artifactbundle` | wasm32-wasip1 | 16.1.0 | `./build_wasm_static.sh` |
 | `CGraphviz.artifactbundle` | Linux x86_64 | 16.1.0 | `./build_linux_static.sh` |
 
+On the 1st of each month, the [Graphviz upgrade workflow](.github/workflows/graphviz-upgrade.yml) checks for a newer Graphviz release. If there is one, it moves the pin with `scripts/bump-graphviz.sh`, rebuilds all three libraries (Linux and wasm on Ubuntu, the xcframework on macOS), re-records the digests, runs `swift test` and the `scripts/*.test.sh` checks, and opens a PR. It never merges. Start it by hand with a version and `open_pr` off for a dry run.
+
 Patches applied to the Graphviz source, kept in sync across the three build scripts:
 
 - `lib/common/labels.c`, `storeline()`: zero `span->layout` and `span->free_layout` for empty label lines (an uninitialised function pointer that crashes under wasm). See `WASM.md`.
