@@ -46,6 +46,8 @@ agclose(g)
 `EdgeLayout.controlPoints` holds the raw cubic bezier points: a start point followed by groups of three (control 1, control 2, end). Build a path with whatever drawing API you use, e.g. Core Graphics:
 
 ```swift
+import CoreGraphics
+
 let pts = edgeLayout.controlPoints
 let path = CGMutablePath()
 path.move(to: pts[0].cgPoint)
