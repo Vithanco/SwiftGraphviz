@@ -1,6 +1,8 @@
 # SwiftGraphviz
 
-A Swift package that wraps the [Graphviz](https://graphviz.org) C layout engine for macOS and iOS. Build graphs in memory, run layout, and get back node positions, edge paths, and bounding boxes — then draw them however you like with AppKit, SwiftUI, or Core Graphics.
+A Swift package that wraps the [Graphviz](https://graphviz.org) C layout engine for macOS, iOS, Linux and WebAssembly. Build graphs in memory, run layout, and get back node positions, edge bezier points, and bounding boxes — then draw them however you like with AppKit, SwiftUI, Core Graphics, a canvas, or anything else.
+
+The Swift layer is Foundation-free (its own `GVPoint`/`GVSize`/`GVRect`/`GVVector` geometry types) and compiles under Embedded Swift.
 
 This is a **layout-only** package. It does not render to images or PDF. You get coordinates; you do the drawing.
 
@@ -30,14 +32,31 @@ let e = agedge(g, a, b, "e", 1)!
 gvLayout(gblGVContext, g, GVLayoutEngine.dot.graphvizName)
 
 // Read results
-let nodeA = NodeLayout(node: a)       // .pos, .size, .rect
-let edgeLayout = try EdgeLayout(gvEdge: e) // .path (CGPath), .arrowHead, .arrowTail
-let graphRect = CGRect(box: gd_bb(g))
+let nodeA = NodeLayout(node: a)            // .pos, .size, .rect (GVPoint/GVSize/GVRect)
+let edgeLayout = try EdgeLayout(gvEdge: e) // .controlPoints, .arrowHead, .arrowTail
+let graphRect = GVRect(box: gd_bb(g))
 
 // Clean up
 gvFreeLayout(gblGVContext, g)
 agclose(g)
 ```
+
+### Drawing an edge
+
+`EdgeLayout.controlPoints` holds the raw cubic bezier points: a start point followed by groups of three (control 1, control 2, end). Build a path with whatever drawing API you use, e.g. Core Graphics:
+
+```swift
+import CoreGraphics
+
+let pts = edgeLayout.controlPoints
+let path = CGMutablePath()
+path.move(to: pts[0].cgPoint)
+for i in stride(from: 1, to: pts.count - 2, by: 3) {
+    path.addCurve(to: pts[i + 2].cgPoint, control1: pts[i].cgPoint, control2: pts[i + 1].cgPoint)
+}
+```
+
+On Apple platforms, `cgPoint`, `cgSize`, `cgRect` and `cgVector` convert the geometry types to Core Graphics (and `GVPoint(_: CGPoint)` etc. convert back).
 
 ## Installation
 
@@ -51,12 +70,24 @@ dependencies: [
 
 Then add `"SwiftGraphviz"` to your target's dependencies.
 
-> **Note**: The package includes a pre-built `Graphviz.xcframework` (static library). If you need to rebuild it from source, see [Building from Source](#building-from-source) below.
+> **Note**: The package includes pre-built static Graphviz libraries for every platform (see [Prebuilt binaries](#prebuilt-binaries)). If you need to rebuild them from source, see [Building from Source](#building-from-source) below.
 
 ## Platforms
 
-- macOS 15+
-- iOS 18+
+| Platform | Requirement | Graphviz binary |
+|---|---|---|
+| macOS 15+ | Swift 6.0+ | `Graphviz.xcframework` |
+| iOS 18+ (device and simulator) | Swift 6.0+ | `Graphviz.xcframework` |
+| Linux x86_64 | Swift 6.2+ (artifact bundles, SE-0482) | `CGraphviz.artifactbundle` |
+| WebAssembly (`wasm32-unknown-wasip1`, incl. Embedded Swift) | Swift wasm SDK | `CGraphvizWasm.artifactbundle` |
+
+Apple and Linux are picked automatically. WebAssembly is a cross-compile, so opt in with an environment variable:
+
+```bash
+GRAPHVIZ_WASM=1 swift build --swift-sdk <your wasm SDK, e.g. swift-6.3.3-RELEASE_wasm-embedded>
+```
+
+See [WASM.md](WASM.md) for the full wasm workflow and its limitations.
 
 ## What You Get
 
@@ -71,12 +102,12 @@ On top of the C API, the package provides:
 **Pointer extensions** for setting attributes and reading layout results:
 - `GVGraph.setDefault(_:value:)`, `.set(_:_:)`, `.get(_:)`
 - `GVNode.set(_:_:)`, `.pos`, `.width`, `.height`, `.size`, `.rect`
-- `GVEdge.set(_:_:)`, `.getPath()`, `.labelPos`, `.arrowHead`, `.arrowTail`
+- `GVEdge.set(_:_:)`, `.getPath()` (bezier points as `[GVPoint]`), `.labelPos`, `.arrowHead`, `.arrowTail`
 - `GVGraph.asString`, `.saveTo(fileName:)`, `.unflatten()`
 
 **Layout structs** that snapshot results into safe value types:
 - `NodeLayout` — position + size + bounding rect
-- `EdgeLayout` — CGPath from bezier splines, arrow head/tail geometry
+- `EdgeLayout` — raw cubic bezier control points, arrow head/tail points, label positions
 - `ClusterLayout` — label position + bounding rect
 
 **Enums** for type-safe Graphviz attribute names and values:
@@ -90,14 +121,14 @@ On top of the C API, the package provides:
 - `GVPoints` — screen points (72 per inch)
 - `GVInches` — Graphviz internal unit for node dimensions
 
-**Geometry utilities** for rendering edges:
-- NSBezierPath extensions for arrow heads, circles, and diamonds
-- CGVector algebra (normalize, orthogonal, rotation)
-- CGPoint/CGSize/CGRect bridging from Graphviz C structs
+**Geometry types** (Foundation-free, replacing CoreGraphics):
+- `GVPoint`, `GVSize`, `GVRect`, `GVVector`, built from Graphviz C structs (`GVRect(box:)`, `GVPoint(gvPoint:)`)
+- `GVVector` algebra (normalize, orthogonal, rotation) and point helpers (distance, interpolation, `midPoint(between:and:)`)
+- `cgPoint`/`cgSize`/`cgRect`/`cgVector` bridging where CoreGraphics is available
 
 ### Layout engines
 
-The xcframework bundles seven Graphviz layout algorithms:
+The prebuilt libraries bundle seven Graphviz layout algorithms:
 
 | Engine | Use case |
 |--------|----------|
@@ -121,16 +152,16 @@ public var gblGVContext: GVGlobalContextPointer
 finishGraphviz()
 ```
 
-## What's Included in the XCFramework
+## What's Included in the Prebuilt Libraries
 
-The pre-built `Graphviz.xcframework` bundles only what's needed for layout:
+The prebuilt Graphviz libraries bundle only what's needed for layout:
 
 - **Core**: libcgraph, libcdt, libgvc, libcommon, libpathplan
 - **Layout engines**: libdotgen, libneatogen, libfdpgen, libtwopigen, libcircogen, libosage, libpatchwork
 - **Layout support**: libortho, libpack, librbtree, liblabel, libvpsc, libsparse, libxdot
 - **Plugins**: gvplugin_core, gvplugin_dot_layout, gvplugin_neato_layout
 
-No external dependencies (no GLib, GTS, expat, zlib, iconv, etc.).
+No external dependencies (no GLib, GTS, expat, zlib, iconv, etc.). The wasm build additionally omits VPSC, IPSEPCOLA and DIGCOLA.
 
 ## Building from Source
 
@@ -149,6 +180,8 @@ To use a local Graphviz checkout:
 ```bash
 GRAPHVIZ_SRC=/path/to/graphviz ./build_xcframework.sh
 ```
+
+The Linux bundle is rebuilt inside a Linux container with `./build_linux_static.sh`, and the wasm bundle with `./build_wasm_static.sh` (uses the WASI sysroot of an installed Swift wasm SDK; see [WASM.md](WASM.md)). Both accept `GRAPHVIZ_SRC` too.
 
 ## Prebuilt binaries
 
