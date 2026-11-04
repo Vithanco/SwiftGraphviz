@@ -53,7 +53,9 @@ jobs:
             version=$FORCED; build=true
           elif [ "$(printf '%s\n%s\n' "$current" "$latest" | sort -V | tail -1)" = "$current" ]; then
             version=$current; build=false; echo "Already on the latest release."
-          elif [ -n "$(gh pr list --head "graphviz-upgrade/$latest" --state open --json number --jq '.[].number')" ]; then
+          elif ! open_pr=$(gh pr list --head "graphviz-upgrade/$latest" --state open --json number --jq '.[].number'); then
+            echo "::error::could not list PRs"; exit 1
+          elif [ -n "$open_pr" ]; then
             version=$latest; build=false; echo "A PR for graphviz-upgrade/$latest is already open."
           else
             version=$latest; build=true
@@ -169,20 +171,17 @@ jobs:
       - run: scripts/check-artifacts.sh --update
       - name: Repo checks
         run: for t in scripts/*.test.sh; do echo "== $t"; "$t" || exit 1; done
+      - name: Pack dry-run tree (tar keeps the scripts executable)
+        if: env.OPEN_PR != 'true'
+        run: |
+          tar -czf "$RUNNER_TEMP/upgrade-$VERSION.tar.gz" Graphviz.xcframework CGraphviz.artifactbundle \
+            CGraphvizWasm.artifactbundle artifacts.sha256 README.md \
+            build_xcframework.sh build_wasm_static.sh build_linux_static.sh Containerfile.build
       - uses: actions/upload-artifact@v4
         if: env.OPEN_PR != 'true'
         with:
           name: upgrade-${{ env.VERSION }}
-          path: |
-            Graphviz.xcframework
-            CGraphviz.artifactbundle
-            CGraphvizWasm.artifactbundle
-            artifacts.sha256
-            README.md
-            build_xcframework.sh
-            build_wasm_static.sh
-            build_linux_static.sh
-            Containerfile.build
+          path: ${{ runner.temp }}/upgrade-${{ env.VERSION }}.tar.gz
       - name: Open PR
         if: env.OPEN_PR == 'true'
         env:
@@ -190,6 +189,9 @@ jobs:
           OLD: ${{ steps.bump.outputs.old }}
         run: |
           branch="graphviz-upgrade/$VERSION"
+          # A manual run skips detect's open-PR check; never force-push over an open PR's branch.
+          open_pr=$(gh pr list --head "$branch" --state open --json number --jq '.[].number')
+          if [ -n "$open_pr" ]; then echo "::error::PR #$open_pr is already open for $branch; not pushing."; exit 1; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$branch"
