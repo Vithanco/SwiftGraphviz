@@ -31,6 +31,9 @@ env:
 jobs:
   detect:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: read
     outputs:
       version: ${{ steps.check.outputs.version }}
       build: ${{ steps.check.outputs.build }}
@@ -39,6 +42,7 @@ jobs:
       - id: check
         env:
           FORCED: ${{ inputs.version }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           current=$(grep -ho -- '--branch [0-9][0-9.]*' build_linux_static.sh | awk '{print $2}')
           latest=$(curl -fsS "https://gitlab.com/api/v4/projects/graphviz%2Fgraphviz/repository/tags?per_page=100" \
@@ -49,8 +53,8 @@ jobs:
             version=$FORCED; build=true
           elif [ "$(printf '%s\n%s\n' "$current" "$latest" | sort -V | tail -1)" = "$current" ]; then
             version=$current; build=false; echo "Already on the latest release."
-          elif git ls-remote --exit-code --heads origin "graphviz-upgrade/$latest" >/dev/null; then
-            version=$latest; build=false; echo "Branch graphviz-upgrade/$latest already exists; its PR is pending."
+          elif [ -n "$(gh pr list --head "graphviz-upgrade/$latest" --state open --json number --jq '.[].number')" ]; then
+            version=$latest; build=false; echo "A PR for graphviz-upgrade/$latest is already open."
           else
             version=$latest; build=true
           fi
@@ -66,6 +70,8 @@ jobs:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # the Graphviz build never sees the token
       - run: |
           apt-get update && apt-get install -y --no-install-recommends build-essential cmake bison flex python3
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
@@ -87,6 +93,8 @@ jobs:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # the Graphviz build never sees the token
       - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends clang-18 llvm-18 cmake ninja-build bison flex python3
       - name: Fetch the WASI sysroot (Swift wasm SDK)
         run: |
@@ -121,6 +129,8 @@ jobs:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # the Graphviz build never sees the token
       - name: Tools (Apple's bison/flex are too old for Graphviz)
         run: |
           brew install cmake bison flex || true
@@ -168,6 +178,11 @@ jobs:
             CGraphviz.artifactbundle
             CGraphvizWasm.artifactbundle
             artifacts.sha256
+            README.md
+            build_xcframework.sh
+            build_wasm_static.sh
+            build_linux_static.sh
+            Containerfile.build
       - name: Open PR
         if: env.OPEN_PR == 'true'
         env:
@@ -181,7 +196,8 @@ jobs:
           git add -A Graphviz.xcframework CGraphviz.artifactbundle CGraphvizWasm.artifactbundle \
             artifacts.sha256 README.md build_xcframework.sh build_wasm_static.sh build_linux_static.sh Containerfile.build
           git commit -m "feat(deps): bump bundled Graphviz to $VERSION on all platforms"
-          git push -u origin "$branch"
+          # The branch is the workflow's own; a leftover one from a run whose PR step failed is replaced.
+          git push --force -u origin "$branch"
           gh pr create --base "${{ github.event.repository.default_branch }}" --head "$branch" \
             --title "Bump bundled Graphviz $OLD → $VERSION" \
             --body "Rebuilt by the monthly [Graphviz upgrade workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).

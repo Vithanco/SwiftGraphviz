@@ -9,7 +9,10 @@ pass() { echo "ok   $1"; }
 fail() { echo "FAIL $*" >&2; FAILED=1; }
 
 git clone -q "$ROOT" "$TMP/repo"
-cp "$ROOT"/scripts/*.sh "$TMP/repo/scripts/"; cp "$ROOT/README.md" "$TMP/repo/"  # test the working tree, not HEAD
+# Test the working tree, not HEAD: in the upgrade workflow the pin is already bumped when this runs.
+cp "$ROOT"/scripts/*.sh "$TMP/repo/scripts/"
+cp "$ROOT"/README.md "$ROOT"/build_xcframework.sh "$ROOT"/build_wasm_static.sh \
+    "$ROOT"/build_linux_static.sh "$ROOT"/Containerfile.build "$TMP/repo/"
 cd "$TMP/repo"
 before=$(grep -ho -- '--branch [0-9][0-9.]*' build_linux_static.sh | awk '{print $2}')
 
