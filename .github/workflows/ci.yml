@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Repo checks: artifact checksums, bundled versions, linking, CODEOWNERS hygiene.
+  scripts:
+    name: Repo checks (scripts/*.test.sh)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verify artifact checksums
+        run: scripts/check-artifacts.sh
+      - name: Run script tests
+        run: |
+          status=0
+          for t in scripts/*.test.sh; do
+            echo "::group::$t"
+            bash "$t" || status=1
+            echo "::endgroup::"
+          done
+          exit $status
+
+  linux:
+    name: Linux (Swift 6.2)
+    runs-on: ubuntu-latest # the bundled Linux library is x86_64 only
+    container: swift:6.2
+    steps:
+      - uses: actions/checkout@v5
+      - run: swift --version
+      - run: swift build
+      - run: swift test
+
+  macos:
+    name: macOS (Xcode 26)
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v5
+      - run: swift --version
+      - run: swift build
+      - run: swift test
