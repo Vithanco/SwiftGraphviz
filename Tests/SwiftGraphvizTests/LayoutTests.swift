@@ -100,7 +100,8 @@ extension GraphvizTests {
                 // One cubic bezier: start point + 3 points per segment.
                 #expect(points.count >= 4)
                 #expect((points.count - 1) % 3 == 0)
-                #expect(points.allSatisfy(\.isFinite))
+                let allFinite = points.allSatisfy(\.isFinite)  // outside #expect: the macro treats the key path as throwing
+                #expect(allFinite)
 
                 // Spline starts at a's boundary and ends above b (before the arrowhead).
                 #expect(isClose(points[0].x, a.pos.x))
@@ -186,7 +187,8 @@ extension GraphvizTests {
         @Test func trianglePlacesNodesApart() throws {
             try withLayout(Self.triangle, engine: .neato) { g in
                 let points = try ["a", "b", "c"].map { try node(g, $0).pos }
-                #expect(points.allSatisfy(\.isFinite))
+                let allFinite = points.allSatisfy(\.isFinite)  // outside #expect: the macro treats the key path as throwing
+                #expect(allFinite)
 
                 // Equal edge weights: the three sides have roughly the same length.
                 let d = [points[0].distance(to: points[1]),

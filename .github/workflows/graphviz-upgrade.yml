@@ -1,0 +1,213 @@
+# Monthly: if Graphviz has tagged a release newer than the pin, rebuild the three bundled
+# libraries from it, re-record their checksums, run the checks and open a PR. Nothing is
+# merged automatically. Run it by hand with a version (and "open_pr" off) as a dry run.
+name: Graphviz upgrade
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"   # 06:00 UTC on the 1st of each month
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Graphviz tag to build (empty = latest release)"
+        required: false
+        default: ""
+      open_pr:
+        description: "Open a PR with the rebuilt libraries"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: graphviz-upgrade
+  cancel-in-progress: false
+
+env:
+  # Only the WASI sysroot inside this SDK is used; it need not match any Swift version.
+  SWIFT_WASM_SDK: "6.2"
+  # From swift.org's release list (swift-org-website _data/builds/swift_releases.yml).
+  SWIFT_WASM_SDK_SHA256: "fe4e8648309fce86ea522e9e0d1dc48e82df6ba6e5743dbf0c53db8429fb5224"
+
+jobs:
+  detect:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      version: ${{ steps.check.outputs.version }}
+      build: ${{ steps.check.outputs.build }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        env:
+          FORCED: ${{ inputs.version }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          current=$(grep -ho -- '--branch [0-9][0-9.]*' build_linux_static.sh | awk '{print $2}')
+          latest=$(curl -fsS "https://gitlab.com/api/v4/projects/graphviz%2Fgraphviz/repository/tags?per_page=100" \
+            | jq -r '.[].name' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          echo "pinned: $current  latest release: $latest"
+          if [ -n "$FORCED" ]; then
+            [[ "$FORCED" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "::error::bad version '$FORCED'"; exit 1; }
+            version=$FORCED; build=true
+          elif [ "$(printf '%s\n%s\n' "$current" "$latest" | sort -V | tail -1)" = "$current" ]; then
+            version=$current; build=false; echo "Already on the latest release."
+          elif ! open_pr=$(gh pr list --head "graphviz-upgrade/$latest" --state open --json number --jq '.[].number'); then
+            echo "::error::could not list PRs"; exit 1
+          elif [ -n "$open_pr" ]; then
+            version=$latest; build=false; echo "A PR for graphviz-upgrade/$latest is already open."
+          else
+            version=$latest; build=true
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "build=$build" >> "$GITHUB_OUTPUT"
+
+  linux:
+    needs: detect
+    if: needs.detect.outputs.build == 'true'
+    runs-on: ubuntu-24.04
+    container: swift:6.2   # same image as Containerfile.build
+    env:
+      VERSION: ${{ needs.detect.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # the Graphviz build never sees the token
+      - run: |
+          apt-get update && apt-get install -y --no-install-recommends build-essential cmake bison flex python3
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - run: scripts/bump-graphviz.sh "$VERSION"
+      - run: ./build_linux_static.sh
+      - name: swift test against the new bundle
+        run: swift test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CGraphviz.artifactbundle
+          path: CGraphviz.artifactbundle
+          if-no-files-found: error
+
+  wasm:
+    needs: detect
+    if: needs.detect.outputs.build == 'true'
+    runs-on: ubuntu-24.04
+    env:
+      VERSION: ${{ needs.detect.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # the Graphviz build never sees the token
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends clang-18 llvm-18 cmake ninja-build bison flex python3
+      - name: Fetch the WASI sysroot (Swift wasm SDK)
+        run: |
+          v=$SWIFT_WASM_SDK
+          url="https://download.swift.org/swift-$v-release/wasm-sdk/swift-$v-RELEASE/swift-$v-RELEASE_wasm.artifactbundle.tar.gz"
+          mkdir -p "$RUNNER_TEMP/wasm-sdk"
+          curl -fsSL "$url" -o "$RUNNER_TEMP/wasm-sdk.tar.gz"
+          echo "$SWIFT_WASM_SDK_SHA256  $RUNNER_TEMP/wasm-sdk.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/wasm-sdk.tar.gz" -C "$RUNNER_TEMP/wasm-sdk"
+          sysroot=$(find "$RUNNER_TEMP/wasm-sdk" -type d -name WASI.sdk -path '*wasm32-unknown-wasip1/*' | grep -v threads | grep -v embedded | head -1)
+          [ -n "$sysroot" ] || sysroot=$(find "$RUNNER_TEMP/wasm-sdk" -type d -name WASI.sdk | grep -v threads | head -1)
+          [ -n "$sysroot" ] || { echo "::error::no WASI.sdk in the wasm SDK"; exit 1; }
+          echo "sysroot: $sysroot"
+          echo "WASM_SDK_BUNDLE=$sysroot" >> "$GITHUB_ENV"
+      - run: scripts/bump-graphviz.sh "$VERSION"
+      - run: ./build_wasm_static.sh
+        env:
+          WASM_CLANG: /usr/lib/llvm-18/bin/clang
+          WASM_AR: /usr/lib/llvm-18/bin/llvm-ar
+          WASM_RANLIB: /usr/lib/llvm-18/bin/llvm-ranlib
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CGraphvizWasm.artifactbundle
+          path: CGraphvizWasm.artifactbundle
+          if-no-files-found: error
+
+  apple:
+    needs: detect
+    if: needs.detect.outputs.build == 'true'
+    runs-on: macos-15
+    env:
+      VERSION: ${{ needs.detect.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # the Graphviz build never sees the token
+      - name: Tools (Apple's bison/flex are too old for Graphviz)
+        run: |
+          brew install cmake bison flex || true
+          echo "$(brew --prefix bison)/bin" >> "$GITHUB_PATH"
+          echo "$(brew --prefix flex)/bin" >> "$GITHUB_PATH"
+      - run: scripts/bump-graphviz.sh "$VERSION"
+      - run: ./build_xcframework.sh   # ends with swift build
+      - name: swift test against the new xcframework
+        run: swift test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Graphviz.xcframework
+          path: Graphviz.xcframework
+          if-no-files-found: error
+
+  assemble:
+    needs: [detect, linux, wasm, apple]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      VERSION: ${{ needs.detect.outputs.version }}
+      OPEN_PR: ${{ github.event_name == 'schedule' || inputs.open_pr }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: bump
+        run: echo "old=$(scripts/bump-graphviz.sh "$VERSION")" >> "$GITHUB_OUTPUT"
+      - run: rm -rf Graphviz.xcframework CGraphviz.artifactbundle CGraphvizWasm.artifactbundle
+      - uses: actions/download-artifact@v4
+        with: { name: Graphviz.xcframework, path: Graphviz.xcframework }
+      - uses: actions/download-artifact@v4
+        with: { name: CGraphviz.artifactbundle, path: CGraphviz.artifactbundle }
+      - uses: actions/download-artifact@v4
+        with: { name: CGraphvizWasm.artifactbundle, path: CGraphvizWasm.artifactbundle }
+      - run: scripts/check-artifacts.sh --update
+      - name: Repo checks
+        run: for t in scripts/*.test.sh; do echo "== $t"; "$t" || exit 1; done
+      - name: Pack dry-run tree (tar keeps the scripts executable)
+        if: env.OPEN_PR != 'true'
+        run: |
+          tar -czf "$RUNNER_TEMP/upgrade-$VERSION.tar.gz" Graphviz.xcframework CGraphviz.artifactbundle \
+            CGraphvizWasm.artifactbundle artifacts.sha256 README.md \
+            build_xcframework.sh build_wasm_static.sh build_linux_static.sh Containerfile.build
+      - uses: actions/upload-artifact@v4
+        if: env.OPEN_PR != 'true'
+        with:
+          name: upgrade-${{ env.VERSION }}
+          path: ${{ runner.temp }}/upgrade-${{ env.VERSION }}.tar.gz
+      - name: Open PR
+        if: env.OPEN_PR == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OLD: ${{ steps.bump.outputs.old }}
+        run: |
+          branch="graphviz-upgrade/$VERSION"
+          # A manual run skips detect's open-PR check; never force-push over an open PR's branch.
+          open_pr=$(gh pr list --head "$branch" --state open --json number --jq '.[].number')
+          if [ -n "$open_pr" ]; then echo "::error::PR #$open_pr is already open for $branch; not pushing."; exit 1; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add -A Graphviz.xcframework CGraphviz.artifactbundle CGraphvizWasm.artifactbundle \
+            artifacts.sha256 README.md build_xcframework.sh build_wasm_static.sh build_linux_static.sh Containerfile.build
+          git commit -m "feat(deps): bump bundled Graphviz to $VERSION on all platforms"
+          # The branch is the workflow's own; a leftover one from a run whose PR step failed is replaced.
+          git push --force -u origin "$branch"
+          gh pr create --base "${{ github.event.repository.default_branch }}" --head "$branch" \
+            --title "Bump bundled Graphviz $OLD → $VERSION" \
+            --body "Rebuilt by the monthly [Graphviz upgrade workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+
+          - Graphviz changes: https://gitlab.com/graphviz/graphviz/-/blob/$VERSION/CHANGELOG.md
+          - All three libraries rebuilt from the \`$VERSION\` tag; \`artifacts.sha256\` re-recorded.
+          - \`swift test\` passed on Linux and macOS; \`scripts/*.test.sh\` passed.
+
+          The wasm bundle is built and version-checked but not run. Review before merging."
