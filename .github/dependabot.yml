@@ -1,7 +1,9 @@
 version: 2
 updates:
-  # No swift entry: Package.swift has no package dependencies (only local
-  # binary targets), so the swift updater had nothing to update and failed.
+  - package-ecosystem: swift
+    directory: /
+    schedule:
+      interval: weekly
   - package-ecosystem: github-actions
     directory: /
     schedule:
