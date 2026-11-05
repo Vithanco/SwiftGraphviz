@@ -90,7 +90,7 @@ static void transform(Agraph_t * g)
 	    if (ChainLimit < 1)
 		continue;
 	    if (ChainNode) {
-		e = agedge(g, ChainNode, n, "", false);
+		e = agedge(g, ChainNode, n, "", true);
 		agxset(e, s_ix, "invis");
 		ChainSize++;
 		if (ChainSize < ChainLimit)
