@@ -38,7 +38,7 @@ typedef SSIZE_T ssize_t;
 /* #undef HAVE_GTS */
 /* #undef HAVE_PANGOCAIRO */
 /* #undef HAVE_POPPLER */
-#define HAVE_QUARTZ
+/* #undef HAVE_QUARTZ */
 /* #undef HAVE_RSVG */
 /* #undef HAVE_WEBP */
 
