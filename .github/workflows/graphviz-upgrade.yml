@@ -27,6 +27,8 @@ concurrency:
 env:
   # Only the WASI sysroot inside this SDK is used; it need not match any Swift version.
   SWIFT_WASM_SDK: "6.2"
+  # From swift.org's release list (swift-org-website _data/builds/swift_releases.yml).
+  SWIFT_WASM_SDK_SHA256: "fe4e8648309fce86ea522e9e0d1dc48e82df6ba6e5743dbf0c53db8429fb5224"
 
 jobs:
   detect:
@@ -104,7 +106,7 @@ jobs:
           url="https://download.swift.org/swift-$v-release/wasm-sdk/swift-$v-RELEASE/swift-$v-RELEASE_wasm.artifactbundle.tar.gz"
           mkdir -p "$RUNNER_TEMP/wasm-sdk"
           curl -fsSL "$url" -o "$RUNNER_TEMP/wasm-sdk.tar.gz"
-          echo "wasm SDK sha256: $(sha256sum "$RUNNER_TEMP/wasm-sdk.tar.gz" | cut -d' ' -f1)"
+          echo "$SWIFT_WASM_SDK_SHA256  $RUNNER_TEMP/wasm-sdk.tar.gz" | sha256sum -c -
           tar -xzf "$RUNNER_TEMP/wasm-sdk.tar.gz" -C "$RUNNER_TEMP/wasm-sdk"
           sysroot=$(find "$RUNNER_TEMP/wasm-sdk" -type d -name WASI.sdk -path '*wasm32-unknown-wasip1/*' | grep -v threads | grep -v embedded | head -1)
           [ -n "$sysroot" ] || sysroot=$(find "$RUNNER_TEMP/wasm-sdk" -type d -name WASI.sdk | grep -v threads | head -1)
