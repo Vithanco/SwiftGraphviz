@@ -5,7 +5,8 @@ language: en-US
 
 reviews:
   profile: chill
-  request_changes_workflow: false   # single maintainer; checks stay advisory
+  auto_approvals:
+    enabled: false   # single maintainer; checks stay advisory
   high_level_summary: true
   poem: false
   in_progress_fortune: false
