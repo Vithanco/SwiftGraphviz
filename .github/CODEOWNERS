@@ -12,6 +12,7 @@
 /CGraphviz.artifactbundle/        @Vithanco
 /CGraphvizWasm.artifactbundle/    @Vithanco
 /artifacts.sha256                 @Vithanco
+/AGENTS.md                        @Vithanco
 /CLAUDE.md                        @Vithanco
 /.coderabbit.yaml                 @Vithanco
 /.github/                         @Vithanco

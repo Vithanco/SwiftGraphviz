@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
-# CodeRabbit review settings for SwiftGraphviz. CLAUDE.md is picked up as review
+# CodeRabbit review settings for SwiftGraphviz. AGENTS.md is picked up as review
 # guidelines automatically; the instructions below add what matters per path.
 language: en-US
 
