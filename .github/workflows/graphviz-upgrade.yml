@@ -40,7 +40,7 @@ jobs:
       version: ${{ steps.check.outputs.version }}
       build: ${{ steps.check.outputs.build }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: check
         env:
           FORCED: ${{ inputs.version }}
@@ -73,7 +73,7 @@ jobs:
     env:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false   # the Graphviz build never sees the token
       - run: |
@@ -83,7 +83,7 @@ jobs:
       - run: ./build_linux_static.sh
       - name: swift test against the new bundle
         run: swift test
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: CGraphviz.artifactbundle
           path: CGraphviz.artifactbundle
@@ -96,7 +96,7 @@ jobs:
     env:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false   # the Graphviz build never sees the token
       - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends clang-18 llvm-18 cmake ninja-build bison flex python3
@@ -119,7 +119,7 @@ jobs:
           WASM_CLANG: /usr/lib/llvm-18/bin/clang
           WASM_AR: /usr/lib/llvm-18/bin/llvm-ar
           WASM_RANLIB: /usr/lib/llvm-18/bin/llvm-ranlib
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: CGraphvizWasm.artifactbundle
           path: CGraphvizWasm.artifactbundle
@@ -132,7 +132,7 @@ jobs:
     env:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false   # the Graphviz build never sees the token
       - name: Tools (Apple's bison/flex are too old for Graphviz)
@@ -144,7 +144,7 @@ jobs:
       - run: ./build_xcframework.sh   # ends with swift build
       - name: swift test against the new xcframework
         run: swift test
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: Graphviz.xcframework
           path: Graphviz.xcframework
@@ -160,15 +160,15 @@ jobs:
       VERSION: ${{ needs.detect.outputs.version }}
       OPEN_PR: ${{ github.event_name == 'schedule' || inputs.open_pr }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: bump
         run: echo "old=$(scripts/bump-graphviz.sh "$VERSION")" >> "$GITHUB_OUTPUT"
       - run: rm -rf Graphviz.xcframework CGraphviz.artifactbundle CGraphvizWasm.artifactbundle
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with: { name: Graphviz.xcframework, path: Graphviz.xcframework }
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with: { name: CGraphviz.artifactbundle, path: CGraphviz.artifactbundle }
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with: { name: CGraphvizWasm.artifactbundle, path: CGraphvizWasm.artifactbundle }
       - run: scripts/check-artifacts.sh --update
       - name: Repo checks
@@ -179,7 +179,7 @@ jobs:
           tar -czf "$RUNNER_TEMP/upgrade-$VERSION.tar.gz" Graphviz.xcframework CGraphviz.artifactbundle \
             CGraphvizWasm.artifactbundle artifacts.sha256 README.md \
             build_xcframework.sh build_wasm_static.sh build_linux_static.sh Containerfile.build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: env.OPEN_PR != 'true'
         with:
           name: upgrade-${{ env.VERSION }}
