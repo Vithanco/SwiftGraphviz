@@ -1,0 +1,105 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# CodeRabbit review settings for SwiftGraphviz. CLAUDE.md is picked up as review
+# guidelines automatically; the instructions below add what matters per path.
+language: en-US
+
+reviews:
+  profile: chill
+  request_changes_workflow: false   # single maintainer; checks stay advisory
+  high_level_summary: true
+  poem: false
+  in_progress_fortune: false
+  sequence_diagrams: false
+  related_prs: true
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    drafts: false
+
+  # The prebuilt libraries are tens of MB of binaries and generated headers. Nothing in
+  # them is reviewable; their integrity is checked by scripts/check-artifacts.sh in CI.
+  path_filters:
+    - "!Graphviz.xcframework/**"
+    - "!CGraphviz.artifactbundle/**"
+    - "!CGraphvizWasm.artifactbundle/**"
+    - "!staging/**"   # parked reference code, not built
+
+  path_instructions:
+    - path: "Sources/SwiftGraphviz/**/*.swift"
+      instructions: |
+        Public Swift API over the Graphviz C library; VGraph and other apps depend on it.
+        - The layer must stay Foundation-free so it builds for wasm32-wasip1 and under
+          Embedded Swift. Flag any `import Foundation`, Foundation types or
+          existential-heavy code that Embedded Swift rejects. CoreGraphics bridging belongs
+          only in GVGeometry+Apple.swift behind `#if canImport(CoreGraphics)`.
+        - GVGraph/GVNode/GVEdge/GVCluster are raw `UnsafeMutablePointer`s. Check for
+          use after `agclose`/`gvFreeLayout`, reading layout data before a layout ran,
+          and C strings whose lifetime ends before Graphviz copies them.
+        - Units: Graphviz uses 72 points per inch; node width/height come back in inches.
+          Flag mixed-up units.
+        - Call out removed or renamed public API and changed defaults as breaking.
+    - path: "Sources/GraphvizBridge/**"
+      instructions: |
+        Thin C bridge that turns Graphviz macros into callable functions. It is compiled
+        for macOS, iOS, Linux and wasm32-wasip1 (see wasm_compat.h, wasi_compat.c).
+        Check NULL handling of every pointer coming from Graphviz (a NULL deref in
+        agUnflatten has happened before), integer overflow and signedness, and anything
+        not available under WASI (threads, dlopen, signals, filesystem assumptions).
+        Plugins are registered statically; no dynamic plugin loading.
+    - path: "Tests/**/*.swift"
+      instructions: |
+        Swift Testing (`import Testing`), not XCTest. The Graphviz context is global and
+        not thread-safe, so every suite must be nested under the `.serialized` root suite
+        `GraphvizTests`; flag a new top-level @Suite or test outside it. Prefer asserting
+        on real layout values over "does not crash".
+    - path: "**/*.sh"
+      instructions: |
+        Scripts run on macOS (BSD userland) and Linux (GNU) and in CI containers. Flag
+        GNU-only or BSD-only flags (sed -i, readlink -f, date, stat), unquoted variables,
+        and missing error handling. No personal or machine-specific absolute paths (scripts/hygiene.test.sh enforces this).
+        scripts/*.test.sh name each case "Given ..., when ..., then ...".
+    - path: ".github/workflows/**"
+      instructions: |
+        Keep `permissions` minimal per job, keep `persist-credentials: false` on jobs that
+        build Graphviz from source so third-party build code never sees the token, verify
+        every download by checksum, and never merge automatically. The upgrade workflow
+        opens a PR only; a human merges it.
+    - path: "{artifacts.sha256,build_*.sh,scripts/bump-graphviz.sh,Containerfile.build,wasm-toolchain.cmake}"
+      instructions: |
+        These decide which Graphviz ends up inside every downstream app. A Graphviz
+        version change must update the pin in all three build scripts consistently and
+        re-record all three digests in artifacts.sha256. Flag a changed digest without a
+        matching version or build-script change, and any new unpinned download.
+    - path: "Package.swift"
+      instructions: |
+        Binary target selection runs on the host: `#if os(...)` picks xcframework vs
+        Linux artifact bundle, and GRAPHVIZ_WASM selects the wasm bundle for cross-builds.
+        Flag anything that breaks one of the three paths or raises minimum platforms
+        (macOS 15, iOS 18, Swift tools 6.0) without saying so.
+
+  pre_merge_checks:
+    docstrings:
+      mode: "off"   # an 80% gate on a small wrapper is noise on every PR
+    title:
+      mode: warning
+    description:
+      mode: warning
+    custom_checks:
+      - name: "Bundled Graphviz consistency"
+        mode: warning
+        instructions: |
+          If the PR changes any of Graphviz.xcframework, CGraphviz.artifactbundle,
+          CGraphvizWasm.artifactbundle or artifacts.sha256, pass only if all three
+          libraries are rebuilt from the same Graphviz version, the version pin in
+          build_linux_static.sh, build_wasm_static.sh and build_xcframework.sh matches it,
+          and the PR description names that version. Otherwise pass as not applicable.
+      - name: "Public API break disclosure"
+        mode: warning
+        instructions: |
+          Fail if a public declaration in Sources/SwiftGraphviz is removed or renamed, or a
+          public signature or default changes, and the PR description does not say so.
+          Additions do not count.
+
+knowledge_base:
+  learnings:
+    scope: local

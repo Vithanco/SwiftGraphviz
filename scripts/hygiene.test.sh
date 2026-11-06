@@ -38,9 +38,9 @@ done <<< "$patterns"
 # 14
 printf '%s\n' "$patterns" > "$TMP/.git/info/exclude"; bad=0
 for path in Package.swift build_xcframework.sh build_linux_static.sh build_wasm_static.sh Containerfile.build \
-    Graphviz.xcframework/x CGraphviz.artifactbundle/x CGraphvizWasm.artifactbundle/x CLAUDE.md .github/CODEOWNERS scripts/x.sh; do
+    Graphviz.xcframework/x CGraphviz.artifactbundle/x CGraphvizWasm.artifactbundle/x CLAUDE.md .coderabbit.yaml .github/CODEOWNERS scripts/x.sh; do
     echo "$path" | git -C "$TMP" check-ignore --no-index -q --stdin || { fail "not covered by CODEOWNERS: $path"; bad=1; }
 done
-[ $bad -eq 0 ] && pass 'Given CODEOWNERS, when its patterns are read, then it covers the manifest, scripts, binaries, CLAUDE.md and .github/'
+[ $bad -eq 0 ] && pass 'Given CODEOWNERS, when its patterns are read, then it covers the manifest, scripts, binaries, agent config and .github/'
 
 exit $FAILED
