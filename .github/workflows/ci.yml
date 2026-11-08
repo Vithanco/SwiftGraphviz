@@ -19,7 +19,7 @@ jobs:
     name: Repo checks (scripts/*.test.sh)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Verify artifact checksums
         run: scripts/check-artifacts.sh
       - name: Run script tests
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest # the bundled Linux library is x86_64 only
     container: swift:6.2
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - run: swift --version
       - run: swift build
       - run: swift test
@@ -46,7 +46,7 @@ jobs:
     name: macOS (Xcode 26)
     runs-on: macos-26
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - run: swift --version
       - run: swift build
       - run: swift test
