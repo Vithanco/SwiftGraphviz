@@ -83,7 +83,7 @@ jobs:
       - run: ./build_linux_static.sh
       - name: swift test against the new bundle
         run: swift test
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: CGraphviz.artifactbundle
           path: CGraphviz.artifactbundle
@@ -119,7 +119,7 @@ jobs:
           WASM_CLANG: /usr/lib/llvm-18/bin/clang
           WASM_AR: /usr/lib/llvm-18/bin/llvm-ar
           WASM_RANLIB: /usr/lib/llvm-18/bin/llvm-ranlib
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: CGraphvizWasm.artifactbundle
           path: CGraphvizWasm.artifactbundle
@@ -144,7 +144,7 @@ jobs:
       - run: ./build_xcframework.sh   # ends with swift build
       - name: swift test against the new xcframework
         run: swift test
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: Graphviz.xcframework
           path: Graphviz.xcframework
@@ -179,7 +179,7 @@ jobs:
           tar -czf "$RUNNER_TEMP/upgrade-$VERSION.tar.gz" Graphviz.xcframework CGraphviz.artifactbundle \
             CGraphvizWasm.artifactbundle artifacts.sha256 README.md \
             build_xcframework.sh build_wasm_static.sh build_linux_static.sh Containerfile.build
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: env.OPEN_PR != 'true'
         with:
           name: upgrade-${{ env.VERSION }}
