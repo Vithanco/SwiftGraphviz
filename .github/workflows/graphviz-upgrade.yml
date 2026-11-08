@@ -164,11 +164,11 @@ jobs:
       - id: bump
         run: echo "old=$(scripts/bump-graphviz.sh "$VERSION")" >> "$GITHUB_OUTPUT"
       - run: rm -rf Graphviz.xcframework CGraphviz.artifactbundle CGraphvizWasm.artifactbundle
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with: { name: Graphviz.xcframework, path: Graphviz.xcframework }
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with: { name: CGraphviz.artifactbundle, path: CGraphviz.artifactbundle }
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with: { name: CGraphvizWasm.artifactbundle, path: CGraphvizWasm.artifactbundle }
       - run: scripts/check-artifacts.sh --update
       - name: Repo checks
