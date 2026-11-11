@@ -91,10 +91,10 @@ The C library, the Swift side and the VGraph integration are done.
 
 ### 1. Compile SwiftGraphviz + GraphvizBridge for embedded wasm — DONE ✅
 Both compile cleanly under **Embedded Swift** for `wasm32-unknown-wasip1`
-(verified 2026-07-12 with `swift-6.3.3-RELEASE_wasm-embedded`):
+(verified 2026-07-12 with `swift-6.3.3-RELEASE_wasm-embedded`, again 2026-11-11 with `swift-6.4.2-RELEASE_wasm-embedded`):
 
 ```sh
-GRAPHVIZ_WASM=1 swift build --swift-sdk swift-6.3.3-RELEASE_wasm-embedded
+GRAPHVIZ_WASM=1 swift build --swift-sdk swift-6.4.2-RELEASE_wasm-embedded
 ```
 
 Package.swift wiring (all conditioned on `.wasi`):
@@ -175,7 +175,7 @@ set (the manifest runs on the host and can't otherwise detect a wasm
 cross-compile):
 
 ```sh
-GRAPHVIZ_WASM=1 swift build --swift-sdk swift-6.3.3-RELEASE_wasm-embedded \
+GRAPHVIZ_WASM=1 swift build --swift-sdk swift-6.4.2-RELEASE_wasm-embedded \
   -Xlinker -lsetjmp -Xlinker -lwasi-emulated-signal
 ```
 
