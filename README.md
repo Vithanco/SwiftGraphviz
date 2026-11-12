@@ -84,7 +84,7 @@ Then add `"SwiftGraphviz"` to your target's dependencies.
 Apple and Linux are picked automatically. WebAssembly is a cross-compile, so opt in with an environment variable:
 
 ```bash
-GRAPHVIZ_WASM=1 swift build --swift-sdk <your wasm SDK, e.g. swift-6.3.3-RELEASE_wasm-embedded>
+GRAPHVIZ_WASM=1 swift build --swift-sdk <your wasm SDK, e.g. swift-6.4.2-RELEASE_wasm-embedded>
 ```
 
 See [WASM.md](WASM.md) for the full wasm workflow and its limitations.
