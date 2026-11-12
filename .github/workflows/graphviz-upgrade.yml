@@ -40,7 +40,7 @@ jobs:
       version: ${{ steps.check.outputs.version }}
       build: ${{ steps.check.outputs.build }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - id: check
         env:
           FORCED: ${{ inputs.version }}
@@ -73,7 +73,7 @@ jobs:
     env:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false   # the Graphviz build never sees the token
       - run: |
@@ -96,7 +96,7 @@ jobs:
     env:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false   # the Graphviz build never sees the token
       - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends clang-18 llvm-18 cmake ninja-build bison flex python3
@@ -132,7 +132,7 @@ jobs:
     env:
       VERSION: ${{ needs.detect.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false   # the Graphviz build never sees the token
       - name: Tools (Apple's bison/flex are too old for Graphviz)
@@ -160,7 +160,7 @@ jobs:
       VERSION: ${{ needs.detect.outputs.version }}
       OPEN_PR: ${{ github.event_name == 'schedule' || inputs.open_pr }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - id: bump
         run: echo "old=$(scripts/bump-graphviz.sh "$VERSION")" >> "$GITHUB_OUTPUT"
       - run: rm -rf Graphviz.xcframework CGraphviz.artifactbundle CGraphvizWasm.artifactbundle
